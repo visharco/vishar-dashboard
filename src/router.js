@@ -16,8 +16,8 @@ class RouterComponent extends Component {
 
             <Router history={browserHistory}>
                 <Route path="/" component={RootComponent} >
-                    <IndexRoute   component={login} /> 
-                    <Route   path="index" component={login} /> 
+                    <IndexRoute   component={LoginScreen} /> 
+                    <Route   path="index" component={LoginScreen} /> 
                     {/* <Route   path="categories" component={CategorieScreen} />   */}
                 </Route>
             </Router>
