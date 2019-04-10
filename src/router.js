@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 
-import RootComponent from './root';
+// import RootComponent from './root';
 import LoginScreen from './container/auth/login/login';
 import RegisterScreen from './container/auth/register/register';
 import ForgetPasswordScreen from './container/auth/forgetPassword/forgetPassword';
 import DashboardComponent from './container/dashboard/dashboard';
 import ProfileScreen from './component/profile/profile';
+import SingleProjectScreen from './component/singleProject/singleProject'
 
 class RouterComponent extends Component {
     constructor(props) {
@@ -24,6 +25,7 @@ class RouterComponent extends Component {
                     <Route path="register" component={RegisterScreen} />
                     <Route path="forgetPassword" component={ForgetPasswordScreen} />
                     <Route path="profile" component={ProfileScreen} />
+                    <Route path="singleProject" component={SingleProjectScreen} />
                 </Route>
             </Router>
         );

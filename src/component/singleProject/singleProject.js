@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 //
 //
 
-import usergrey from '../../assets/icons/usergrey.svg';
-import Input from '../common/input/Input';
-import Button from '../common/Button/Button';
+
+import search from './../../assets/icons/search.svg'
+import plus from './../../assets/icons/plus.svg'
 
 //
 //compoents
@@ -14,9 +14,10 @@ import Button from '../common/Button/Button';
 
 
 import './style.css';
+import Project from '../project/project';
 
 
-class Profile extends Component {
+class SingleProject extends Component {
 
     constructor(props) {
         super(props);
@@ -25,72 +26,29 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="Profile">
-                <div className="P-title" >
-                    پروفایل
+            <div className="SingleProject">
+                <div className="SP-title" >
+                    پروژه های فردی
                 </div>
-                <div className="P-body" >
-                    <div className="P-upload" >
-                        <h1>عکس پروفایل</h1>
-                        <div className="PU-img" >
-                            <img src={usergrey} alt="کاربر" />
-                        </div>
-                        <p className="PU-text" >
-                            برا آپلود عکس کلیک کنید یا عکس را رها کنید
-                        </p>
+                <div className="SP-body" >
+                    <div className="SP-up" >
 
-                    </div>
-                    <div className="P-inputs" >
-                        <Input
-                            type={'text'}
-                            name={'email'}
-                            placeholder={'نام و نام خانوادگی'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
-                        />
-                        <Input
-                            type={'text'}
-                            name={'email'}
-                            placeholder={'Email'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
-                        />
-                        <Input
-                            type={'text'}
-                            name={'email'}
-                            placeholder={' موبایل'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
-                        />
-                        <Input
-                            type={'text'}
-                            name={'email'}
-                            placeholder={'تلفن'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
-                        />
-                        <Input
-                            type={'text'}
-                            name={'email'}
-                            placeholder={'شهر / مکان'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
-                        />
-                        <div className="P-btns" >
-                            <div className="P-cancel" >
-                                انصراف
+                        <div className="SP-search-box " >
+                            <input type="text" />
+                            <img src={search} alt="جستجو" />
                         </div>
-                            <Button
-                                isLoading={this.state.isLoading}
-                                title={'ذخیره'}
-                                bgcolor={'#0080FF'}
-                                hoverbgcolor={'#rgb(160, 160, 160)'}
-                                click={this.callSubmit}
-                                borderRadius="30px"
-                                color="#fff"
-                            />
+                        <div className="SP-create-project-btn" >
+                            <p>ایجاد پروژه جدید</p>
+                            <img src={plus} alt="افزودن" />
                         </div>
                     </div>
+                    <div className="SP-down" >
+                        <Project status={'Completed'} statusText={'کامل شده'} />
+                        <Project status={'Working'} statusText={'در حال انجام '} />
+                        <Project status={'Pending'} statusText={' در صف انجام'} />
+                    </div>
+
+
 
                 </div>
             </div>
@@ -98,4 +56,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default SingleProject;

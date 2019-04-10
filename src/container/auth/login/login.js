@@ -33,7 +33,7 @@ class LoginComponent extends Component {
 
                         <div className="RL-right" >
                             <div className="RL-title" >
-                                <img src={logo} />
+                                <img src={logo} alt="لوگو"/>
                                 <h1>ورود</h1>
                             </div>
                             <div className="RL-inputs" >

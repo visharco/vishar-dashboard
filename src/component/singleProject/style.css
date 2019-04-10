@@ -1,11 +1,11 @@
 
-.Profile{
-display: flex;
-flex-direction: column;
-direction: rtl;
-padding: 30px;
+.SingleProject{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    padding: 30px;
 }
-.P-title{
+.SP-title{
     font-size: 25px;
     font-weight: 900;
     padding-bottom: 20px;
@@ -13,84 +13,80 @@ padding: 30px;
     direction: rtl;
     color: #bababa;
 }
-.P-body{
-display: flex;
-width: 100%;
-justify-content: space-between;
-padding: 20px;
-}
-
-
-.P-inputs{
-width: calc(50% - 40px);
-direction: rtl;
-}
-
-.P-upload{
-    width: calc(50% - 40px);
-    background-color: #f9f9f9;
-    border-radius: 30px;
-    border: 2px dashed #cbcbcb;
+.SP-body{
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
     flex-direction: column;
+}
+.SP-up{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.SP-create-project-btn{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;
-}
-.P-upload h1{
-color: #686868;
-font-size: 28px;
-font-weight: 400;
-}
-
-.P-upload p{
-color: #cdcdcd;
-font-size: 15px;
-}
-
-.P-btns{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.P-cancel{
-    padding: 0px 50px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #cacaca;
+    background-color: #6FCF97;
+    width: 300px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all .2s linear;
+    transition: all .2s linear;     
 
 }
-.P-cancel:hover{
-color: #bababa;
-    transition: all .2s linear;
-
+.SP-create-project-btn:hover{
+    background-color: rgb(145, 211, 172);
+    transition: all .2s linear;     
+    
 }
-
-.P-btns .button-box{
-
+.SP-create-project-btn p{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
 }
-.P-btns .button-style{
-    width: 250px;
-}
-
-
-.PU-img{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 2px dashed #cacaca;
+.SP-search-box{
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.PU-img img{
-width: 50%;
+    width: 60%;
+    margin: 20px 0px ;
+    position: relative;
 }
 
-.PU-text{
-
+.SP-search-box input{
+    border: 1px solid rgba(233, 233, 233, 0.8);
+    width: 100%;
+    height: 60px;
+    border-radius: 30px;
+    margin: auto;
+    padding: 0px 30px;
+    direction: rtl;
+    transition: all .2s linear;     
+}
+.SP-search-box input:focus{
+    box-shadow: 0px 6px 15px -6px #80808094;
+    transition: all .2s linear;     
 }
 
+.SP-search-box img{
+    position: absolute;
+    background-color: #0090CF;
+    width: 40px;
+    padding: 12px;
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.SP-search-box img:hover{
+    opacity: .8;
+    transition: all .2s linear;
+}
+
+.SP-down{
+
+}

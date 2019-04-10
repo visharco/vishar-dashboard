@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-import facebook from './../../assets/icons/facebook.svg'
-import twitter from './../../assets/icons/twitter.svg'
-import instagram from './../../assets/icons/instagram.svg'
-import telegram from './../../assets/icons/telegram.svg'
 
 import './style.css';
 

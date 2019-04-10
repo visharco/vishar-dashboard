@@ -26,13 +26,49 @@ class DashboardMenu extends Component {
         this.state = {}
     }
 
+    componentDidMount = async () => {
+        window.addEventListener('scroll', this.handleScroll);
+    }
 
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    DashboardMenu = React.createRef();
+
+    handleScroll = () => {
+
+        if (window.scrollY >= 100) {
+            this.DashboardMenu.current.style.top = `0px`;
+            this.DashboardMenu.current.style.height = `100vh`;
+        } else {
+            this.DashboardMenu.current.style.top = `80px`;
+            this.DashboardMenu.current.style.height = `calc(100vh - 80px)`;
+        }
+    };
+
+
+    goToProfile = () => {
+        browserHistory.push('/profile');
+    }
+    singleProject = () => {
+        browserHistory.push('/singleProject');
+    }
+    goToProfile = () => {
+        browserHistory.push('/profile');
+    }
+    goToProfile = () => {
+        browserHistory.push('/profile');
+    }
+    goToProfile = () => {
+        browserHistory.push('/profile');
+    }
     goToProfile = () => {
         browserHistory.push('/profile');
     }
     render() {
         return (
-            <div className="DashboardMenu">
+            <div className="DashboardMenu" ref={this.DashboardMenu}>
                 <div>
 
                     <div className="DM-title" >
@@ -48,7 +84,7 @@ class DashboardMenu extends Component {
                             <p>پروفایل</p>
                             <img src={userblack} alt="کاربر" />
                         </div>
-                        <div className="DM-body-child" onClick={this.goToProfile} >
+                        <div className="DM-body-child" onClick={this.singleProject} >
                             <p>پروژه های فردی</p>
                             <img src={employee} alt="فردی" />
                         </div>

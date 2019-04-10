@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {browserHistory } from 'react-router'
+// import {browserHistory } from 'react-router'
  import Header from "./component/header/header";
- import Footer from "./component/footer/footer";
+//  import Footer from "./component/footer/footer";
  
  
 export default class Root extends Component {
