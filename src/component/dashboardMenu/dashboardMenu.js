@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { browserHistory } from 'react-router';
 //
 //
 //
@@ -25,6 +25,11 @@ class DashboardMenu extends Component {
         super(props);
         this.state = {}
     }
+
+
+    goToProfile = () => {
+        browserHistory.push('/profile');
+    }
     render() {
         return (
             <div className="DashboardMenu">
@@ -39,24 +44,24 @@ class DashboardMenu extends Component {
 
                     </div>
                     <div className="DM-body" >
-                        <div className="DM-body-child" >
+                        <div className="DM-body-child" onClick={this.goToProfile} >
                             <p>پروفایل</p>
                             <img src={userblack} alt="کاربر" />
                         </div>
-                        <div className="DM-body-child" >
+                        <div className="DM-body-child" onClick={this.goToProfile} >
                             <p>پروژه های فردی</p>
                             <img src={employee} alt="فردی" />
                         </div>
-                        <div className="DM-body-child" >
+                        <div className="DM-body-child" onClick={this.goToProfile} >
                             <p>پروژه های همکاری</p>
                             <img src={employees} alt="همکاری" />
                         </div>
-                        <div className="DM-body-child" >
-                            <p>صندوق ورودی</p>
+                        <div className="DM-body-child" onClick={this.goToProfile} >
+                            <p>پیامها</p>
                             <img src={message} alt="پیام ها" />
                         </div>
-                        <div className="DM-body-child" >
-                            <p>تراکنش</p>
+                        <div className="DM-body-child" onClick={this.goToProfile} >
+                            <p>تراکگنشها</p>
                             <img src={payment} alt="تراکنش" />
                         </div>
 

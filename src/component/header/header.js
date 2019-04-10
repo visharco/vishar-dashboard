@@ -9,6 +9,7 @@ import logo from './../../assets/images/logo.png'
 import envelope from '../../assets/icons/envelope.svg';
 import bell from '../../assets/icons/bell.svg';
 import user from '../../assets/icons/user.svg';
+import redcircle from '../../assets/icons/redcircle.svg';
 
 //
 //compoents
@@ -43,14 +44,20 @@ class HeaderComponent extends Component {
                         </div>
                         <div className="user-menu" >
                             <div className="user-welcome" >
-                                <div className="user-text" >خوش آمدید , دانیال</div>
+                                <div className="user-text" >خوش اومدی , دانیال</div>
                                 <div className="user-welcome-img">
                                     <img src={user} alt="کاربر" />
 
                                 </div>
                             </div>
-                            <img src={envelope} alt="صندوق ورودی" />
-                            <img src={bell} alt="توجهات"/>
+                            <div className="envelope-box" >
+                                <img className="envelope-icon" src={envelope} alt="صندوق ورودی" />
+                                <span className="envelope-number" >4</span>
+                            </div>
+                            <div className="envelope-box" >
+                                <img className="envelope-icon" src={bell} alt="توجهات"/>  
+                                <span className="envelope-number" >1</span>
+                            </div>
                         </div>
                     </div>
                 </div>

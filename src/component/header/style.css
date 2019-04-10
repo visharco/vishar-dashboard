@@ -64,14 +64,14 @@ margin-left: 40px;
     display: flex;
     align-items: center
 }
-.user-menu img{
-width: 15px;
+.user-welcome-img img{
+width: 20px;
 margin: 0px 15px;
 cursor: pointer;
 transition: all .2s linear;
 }
 
-.user-menu img:hover{
+.user-menu:hover .user-welcome-img img{
     opacity: .7;
 transition: all .2s linear;
 
@@ -82,7 +82,14 @@ background-color: #F5F5F5;
 padding: 8px 15px 8px 45px;
 border-radius: 30px;
 margin-left: 15px;
+cursor: pointer;
 }
+
+.user-welcome:hover .user-welcome-img{
+    box-shadow: 0 0 11px #8db5ff78;
+    transition: all .4s linear;
+}
+
 .user-welcome-img{
     top: -5px;
     left: -15px;
@@ -95,10 +102,45 @@ margin-left: 15px;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 4px gainsboro;
+    transition: all .2s linear;
 }
 
 .user-text{
     color: #959595;
 
 }
+.envelope-box{
+    padding:0px 20px;
+    position: relative;
+    line-height: 10px;
+    cursor: pointer;
+    transition: all .2s linear;
 
+}
+.envelope-box:hover{
+opacity: .5;
+transition: all .2s linear;
+
+}
+
+.envelope-icon{
+    width: 20px;
+
+}
+
+
+.envelope-number{
+    position: absolute;
+    top: -6px;
+    right: 16px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+    background-color: #C50143;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
