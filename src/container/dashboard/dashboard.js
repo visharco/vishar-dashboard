@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 
 import './style.css'
 import DashboardMenu from '../../component/dashboardMenu/dashboardMenu';
+import HeaderComponent from '../../component/header/header';
 
 class DashboardComponent extends Component {
     constructor(props) {
@@ -15,19 +16,23 @@ class DashboardComponent extends Component {
 
     render() {
         return (
-            <div className="dashboard" >
-                <div className="container-fluid" >
-                    <div className="container" >
-                        <div className="dashboard-left" >
+            <div >
+                <HeaderComponent />
+                <div className="dashboard" >
+
+                    <div className="container-fluid" >
+                        <div className="container" >
+                            <div className="dashboard-left" >
+                                {this.props.children}
+                            </div>
+                            <div className="dashboard-right" >
+                                <DashboardMenu />
+                            </div>
+
+
+
 
                         </div>
-                        <div className="dashboard-right" >
-                            <DashboardMenu />
-                        </div>
-
-
-
-
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ export default class Root extends Component {
             <div>
                 <Header />
                 <div> 
+                    
                     { this.props.children}
                 </div>
                 {/* <Footer /> */}
