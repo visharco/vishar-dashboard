@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router';
+import { Link } from 'react-router';
 
 //
 //
 //
+
 import logo from './../../assets/images/logo.png'
+import envelope from '../../assets/icons/envelope.svg';
+import bell from '../../assets/icons/bell.svg';
+import user from '../../assets/icons/user.svg';
+
+//
+//compoents
+//
+
+
 import './style.css';
 
 
@@ -19,8 +29,8 @@ class HeaderComponent extends Component {
                 <div className="container-fluid" >
                     <div className="container" >
                         <div className="header-menu" >
-                            <div className="menu-login" >
-                                <p className="menu-login-text">ثبت نام / ورود</p>
+                            <div className="header-logo" >
+                                <Link to="/" ><img src={logo} alt="لوگو" /></Link>
                             </div>
                             <ul className="menu-links">
                                 <Link to="/contactUs" ><li className="menu-link">تماس ما</li></Link>
@@ -31,8 +41,16 @@ class HeaderComponent extends Component {
                                 <Link to="/categories" ><li className="menu-link">دسته بندی</li></Link>
                             </ul>
                         </div>
-                        <div className="header-logo" >
-                        <Link to="/" ><img src={logo} alt="لوگو" /></Link>
+                        <div className="user-menu" >
+                            <div className="user-welcome" >
+                                <div className="user-text" >خوش آمدید , دانیال</div>
+                                <div className="user-welcome-img">
+                                    <img src={user} alt="کاربر" />
+
+                                </div>
+                            </div>
+                            <img src={envelope} alt="صندوق ورودی" />
+                            <img src={bell} alt="توجهات"/>
                         </div>
                     </div>
                 </div>

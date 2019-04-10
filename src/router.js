@@ -6,6 +6,7 @@ import RootComponent from './root';
 import LoginScreen from './container/auth/login/login';
 import RegisterScreen from './container/auth/register/register';
 import ForgetPasswordScreen from './container/auth/forgetPassword/forgetPassword';   
+import DashboardComponent from './container/dashboard/dashboard';
 
 class RouterComponent extends Component {
     constructor(props) {
@@ -16,8 +17,8 @@ class RouterComponent extends Component {
         return ( 
 
             <Router history={browserHistory}>
-                <Route path="/" component={RootComponent} >
-                    <IndexRoute   component={LoginScreen} /> 
+                    <Route path="/" component={RootComponent} >
+                    <IndexRoute   component={DashboardComponent} /> 
                     <Route   path="login" component={LoginScreen} /> 
                     <Route   path="register" component={RegisterScreen} />  
                     <Route   path="forgetPassword" component={ForgetPasswordScreen} />  

@@ -1,0 +1,30 @@
+
+
+.dashboard{
+    box-shadow: -1px 4px 11px 0px #ececec;
+}
+
+.dashboard .container-fluid{
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8;
+    max-width: 1400px;
+}
+
+.dashboard .container{
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+.dashboard-right{
+background-color: #fff;
+box-shadow: -1px 4px 11px 0px #ececec;
+} 
+.dashboard-left{
+    width: calc(100% - 350px);
+    background-color: #fff;
+    height:calc(100vh - 80px);
+}
