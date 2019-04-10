@@ -9,7 +9,6 @@ import logo from './../../assets/images/logo.png'
 import envelope from '../../assets/icons/envelope.svg';
 import bell from '../../assets/icons/bell.svg';
 import user from '../../assets/icons/user.svg';
-import redcircle from '../../assets/icons/redcircle.svg';
 
 //
 //compoents

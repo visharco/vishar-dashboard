@@ -5,6 +5,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: fixed;
+    top: 80px;
+    background-color: #fff;
+    transition: all .1s cubic-bezier(0.110, 0.480, 0.560, 0.935);
+    box-shadow: -1px 4px 11px 0px #ececec;
 }
 .DM-title img{
     width: 70px;
