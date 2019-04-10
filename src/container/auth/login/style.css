@@ -1,0 +1,69 @@
+.registerLogin{
+
+}
+
+.registerLogin .container-fluid{
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8;
+}
+
+.registerLogin .container{
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.RL-right{
+    width: 500px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    text-align: right;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.RL-title{
+    text-align: center; 
+    }
+.RL-title h1{
+    color:#2D9CDB;
+    margin: 20px 0px;
+}
+
+
+.RL-inputs{
+    direction: rtl;
+    width: 100%;
+}
+
+.forget-pass-text{
+    color: #ADADAD;
+    cursor: pointer;
+    transition: all .2s linear;
+
+}
+.forget-pass-text:hover{
+    color: rgb(124, 124, 124);
+    transition: all .2s linear;
+}
+
+.RL-button{
+    width: 100%;
+}
+.RL-button .button-box{
+    width: 100%;
+}
+.RL-button .button-style{
+    width: 100%;
+    font-weight: 900;
+
+}

@@ -3,9 +3,9 @@ import { Router ,  Route , browserHistory , IndexRoute  } from 'react-router';
 
 
 import RootComponent from './root';
-import LoginScreen from './container/auth/login';
-import RegisterScreen from './container/auth/register';
- 
+import LoginScreen from './container/auth/login/login';
+import RegisterScreen from './container/auth/register/register';
+import ForgetPasswordScreen from './container/auth/forgetPassword/forgetPassword';   
 
 class RouterComponent extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class RouterComponent extends Component {
                     <IndexRoute   component={LoginScreen} /> 
                     <Route   path="login" component={LoginScreen} /> 
                     <Route   path="register" component={RegisterScreen} />  
+                    <Route   path="forgetPassword" component={ForgetPasswordScreen} />  
                 </Route>
             </Router>
          );
