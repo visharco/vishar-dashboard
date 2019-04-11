@@ -21,8 +21,8 @@ class RouterComponent extends Component {
         return (
 
             <Router history={browserHistory}>
-                 <Route path="/login" component={LoginScreen} >
-                 </Route>
+                 <Route path="/login" component={LoginScreen} ></Route>
+                 <Route path="/register" component={RegisterScreen} ></Route>
 
                 <Route path="/" component={RootScreen} >
                     <IndexRoute component={DashboardComponent} />
