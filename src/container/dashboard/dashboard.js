@@ -18,18 +18,12 @@ class DashboardComponent extends Component {
     render() {
         return (
             <div >
-                <HeaderComponent />
+                {/* <HeaderComponent /> */}
                 <div className="dashboard" >
 
                     <div className="container-fluid" >
                         <div className="container" >
-                            <div className="dashboard-left" >
-                                {this.props.children}
-                            </div>
-                            <div className="dashboard-right" >
-                                <DashboardMenu />
-                            </div>
-
+                        
 
 
 

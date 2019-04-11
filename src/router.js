@@ -9,6 +9,8 @@ import ForgetPasswordScreen from './container/auth/forgetPassword/forgetPassword
 import DashboardComponent from './container/dashboard/dashboard';
 import ProfileScreen from './component/profile/profile';
 import SingleProjectScreen from './component/singleProject/singleProject'
+import RootScreen from './root';
+
 
 class RouterComponent extends Component {
     constructor(props) {
@@ -19,14 +21,18 @@ class RouterComponent extends Component {
         return (
 
             <Router history={browserHistory}>
-                <Route path="/" component={DashboardComponent} >
+                 <Route path="/login" component={LoginScreen} ></Route>
+                 <Route path="/register" component={RegisterScreen} ></Route>
+
+                <Route path="/" component={RootScreen} >
                     <IndexRoute component={DashboardComponent} />
-                    <Route path="login" component={LoginScreen} />
+                    <Route path="dashboard" component={DashboardComponent} />
                     <Route path="register" component={RegisterScreen} />
                     <Route path="forgetPassword" component={ForgetPasswordScreen} />
                     <Route path="profile" component={ProfileScreen} />
                     <Route path="singleProject" component={SingleProjectScreen} />
                 </Route>
+            
             </Router>
         );
     }
