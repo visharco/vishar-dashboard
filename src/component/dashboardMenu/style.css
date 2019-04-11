@@ -8,7 +8,7 @@
     position: fixed;
     top: 80px;
     background-color: #fff;
-    transition: all .1s cubic-bezier(0.110, 0.480, 0.560, 0.935);
+    transition: all .4s cubic-bezier(0.000, 0.710, 0.495, 1.000);
     box-shadow: -1px 4px 11px 0px #ececec;
 }
 .DM-title img{

@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     box-shadow: -1px 4px 11px 0px #ececec;
+    position: relative;
 }
 
 .container-fluid{

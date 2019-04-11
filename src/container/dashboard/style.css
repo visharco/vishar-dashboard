@@ -21,7 +21,6 @@
 }
 .dashboard-right{
 background-color: #fff;
-box-shadow: -1px 4px 11px 0px #ececec;
 } 
 .dashboard-left{
     width: calc(100% - 350px);

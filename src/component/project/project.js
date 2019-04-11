@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 
 import design1 from '../../assets/images/design1.png'
@@ -11,9 +12,13 @@ class Project extends Component {
         super(props);
         this.state = {}
     }
+
+    goToProjectDetail= () => {
+        browserHistory.push('/projectDetail');
+    }
     render() {
         return (
-            <div className="project" onClick={this.props.showProject} >
+            <div className="project" onClick={this.goToProjectDetail} >
                 <div className="p-left" >
 
 
