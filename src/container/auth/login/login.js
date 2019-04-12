@@ -23,6 +23,12 @@ class LoginComponent extends Component {
         browserHistory.push('/forgetPassword');
 
     }
+
+    _callLogin = () => {
+        browserHistory.push('/dashboard');
+    }
+
+    
     render() {
         return (
             <div className="registerLogin" >
@@ -59,7 +65,7 @@ class LoginComponent extends Component {
                                     title={'ورود'}
                                     bgcolor={'#0080FF'}
                                     hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                                    click={this.callSubmit}
+                                    click={this._callLogin}
                                     borderRadius="2px"
                                     color="#fff"
                                 />
