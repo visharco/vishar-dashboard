@@ -3,7 +3,7 @@ import Radium from 'radium'
 import './Button.css';
 
 const button = (props) => (
-    <div  className="button-box">
+    <div  className="button-box" id={props.id}>
         <button className="button-style"  
                 onClick={props.click} 
                 style={{backgroundColor : props.bgcolor ,
@@ -38,6 +38,7 @@ How can use this button : ------->
                 click={this.callSubmit}
                 borderRadius="10px"
                 color="#fff"
+                id={'1'}
                 />                                           
                                                                                     
                                                                                     

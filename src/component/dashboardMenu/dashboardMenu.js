@@ -10,7 +10,7 @@ import employees from '../../assets/icons/employees.svg';
 import message from '../../assets/icons/message.svg';
 import payment from '../../assets/icons/payment.svg';
 import logout from '../../assets/icons/logout.svg';
-import pic1 from '../../assets/images/pic1.png';
+import user from '../../assets/icons/user.svg';
 
 //
 //compoents
@@ -72,7 +72,7 @@ class DashboardMenu extends Component {
                 <div>
 
                     <div className="DM-title" >
-                        <img src={pic1} alt="طراح" />
+                        <img src={user} alt="طراح" />
                         <div className="DM-title-name">
                             <h1>امید آرمانی</h1>
                             <h2>omidarmani@gmail.com</h2>
@@ -97,12 +97,13 @@ class DashboardMenu extends Component {
                             <img src={message} alt="پیام ها" />
                         </div>
                         <div className="DM-body-child" onClick={this.goToProfile} >
-                            <p>تراکگنشها</p>
+                            <p>تراکنشها</p>
                             <img src={payment} alt="تراکنش" />
                         </div>
 
                     </div>
                 </div>
+                
                 <div className="logout" >
                     <p>
                         <span>خروج</span>

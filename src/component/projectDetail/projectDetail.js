@@ -86,12 +86,13 @@ class ProjectDetail extends Component {
 
 
                     <div className="PD-desc-box">
-                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages} >پیامها</div>
+                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages} >پیامها
+                            <span className="PD-desc-number" >4</span>
+                        </div>
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design} >طراحی
                             <span className="PD-desc-number" >4</span>
                         </div>
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="brief" ref={this.brief}>توضیحات
-                            <span className="PD-desc-number" >4</span>
                         </div>
                     </div>
 
