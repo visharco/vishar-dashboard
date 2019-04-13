@@ -13,6 +13,7 @@ import SingleProjectScreen from './component/singleProject/singleProject'
 import CollaborateProjectScreen from './component/collaborateProject/collaborateProject';
 import ProjectDetailScreen from './component/projectDetail/projectDetail';
 import CreateNewProjectScreen from './component/createNewProject/createNewProject';
+import NotificationScreen from './component/notification/notification';
 
 
 
@@ -38,6 +39,7 @@ class RouterComponent extends Component {
                     <Route path="collaborateProject" component={CollaborateProjectScreen} />
                     <Route path="projectDetail" component={ProjectDetailScreen} />
                     <Route path="createNewProject" component={CreateNewProjectScreen} />
+                    <Route path="notification" component={NotificationScreen} />
                 </Route>
             
             </Router>
