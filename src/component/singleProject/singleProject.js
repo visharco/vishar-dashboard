@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 //
 //
@@ -11,6 +12,8 @@ import plus from './../../assets/icons/plus.svg'
 //
 //compoents
 //
+import NoProject from '../../component/noProject/noProject'
+
 
 
 import './style.css';
@@ -22,6 +25,10 @@ class SingleProject extends Component {
     constructor(props) {
         super(props);
         this.state = {}
+    }
+    createNewProject =() =>{
+        browserHistory.push('/createNewProject');
+
     }
 
     render() {
@@ -37,7 +44,7 @@ class SingleProject extends Component {
                             <input type="text" />
                             <img src={search} alt="جستجو" />
                         </div>
-                        <div className="SP-create-project-btn" >
+                        <div className="SP-create-project-btn" onClick={this.createNewProject} >
                             <p>ایجاد پروژه جدید</p>
                             <img src={plus} alt="افزودن" />
                         </div>
@@ -47,7 +54,8 @@ class SingleProject extends Component {
                         <Project status={'Working'} statusText={'در حال انجام '} />
                         <Project status={'Pending'} statusText={' در صف انجام'} />
                     </div>
-
+                    
+                    <NoProject />
 
 
                 </div>

@@ -12,7 +12,7 @@ import './textarea.css';
 
 
 
-const textarea = (props) => {
+const TextArea = (props) => {
 
     const handleFocus = (props) =>{ 
         document.getElementById(props.name).focus();
@@ -49,7 +49,7 @@ const textarea = (props) => {
 
 
 
-export default textarea;
+export default TextArea;
 
  
   
