@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 
 //
 //
@@ -22,6 +23,10 @@ class HeaderComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {}
+    }
+
+    goToNotification = () => {
+        browserHistory.push('/notification');
     }
     render() {
         return (
@@ -53,7 +58,7 @@ class HeaderComponent extends Component {
                                 <img className="envelope-icon" src={envelope} alt="صندوق ورودی" />
                                 <span className="envelope-number" >4</span>
                             </div>
-                            <div className="envelope-box" >
+                            <div className="envelope-box" onClick={this.goToNotification} >
                                 <img className="envelope-icon" src={bell} alt="توجهات"/>  
                                 <span className="envelope-number" >1</span>
                             </div>
