@@ -213,10 +213,31 @@ margin-right: 10px;
     transition: all .2s linear;
 
 }
-.PD-design img:hover{
-    opacity: .6;
-    transition: all .2s linear;
 
+.PDD-box{
+    transition: all .2s linear;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 10px;
+}
+
+.PDD-box img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.PDD-box > p {
+    color: #afafaf;
+    font-size: 14px;
+    margin-right: 11px;
+}
+.PDD-box > p  > span{
+    font-weight: 900;
+    color: #666;
 }
 
 .font-padding{

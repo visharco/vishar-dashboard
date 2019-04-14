@@ -55,7 +55,7 @@ class SingleProject extends Component {
                         <Project status={'Pending'} statusText={' در صف انجام'} />
                     </div>
                     
-                    <NoProject />
+                        <NoProject />
 
 
                 </div>
