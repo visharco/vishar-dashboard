@@ -15,6 +15,7 @@ import slide2 from '../../assets/images/slide2.png'
 import passport from '../../assets/images/passport.png'
 
 import './style.css';
+import ViewProjects from '../viewProjects/viewProjects';
 
 
 
@@ -23,7 +24,8 @@ class ProjectDetail extends Component {
         super(props);
         this.state = {
             designerComments: 20,
-            designerLikes: 10
+            designerLikes: 10,
+            viewProject: false
         }
     }
 
@@ -72,12 +74,25 @@ class ProjectDetail extends Component {
     final = React.createRef();
 
 
+    openModalProject = () => {
+        this.setState({ viewProject: true })
+
+    }
+
+    closeModalProject = () => {
+        this.setState({ viewProject: false })
+    }
+
 
 
     render() {
         return (
-            <div className="ProjectDetail" >
 
+
+            <div className="ProjectDetail" >
+                 
+                 {this.state.viewProject ? <ViewProjects closeProject={this.closeModalProject} /> : '' }
+                 
                 <div className="PD-title" >
                     عنوان پروژه - طراحی لوگو
                 </div>
@@ -151,43 +166,43 @@ class ProjectDetail extends Component {
                                 </div>
                                 <h2>قلم ها را پیدا کن</h2>
                                 {/* <div className="PD-fonts" > */}
-                                    <div className="PD-check-color PD-check">
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox" id="font1" />
-                                                <label htmlFor="font1"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font2" />
-                                                <label htmlFor="font2"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font3" />
-                                                <label htmlFor="font3"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font4" />
-                                                <label htmlFor="font4"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font5" />
-                                                <label htmlFor="font5"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font6" />
-                                                <label htmlFor="font6"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font7" />
-                                                <label htmlFor="font7"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="font8" />
-                                                <label htmlFor="font8"><img className="font-padding" src={font} alt="رنگها" /></label>
-                                            </li>
+                                <div className="PD-check-color PD-check">
+                                    <ul>
+                                        <li>
+                                            <input type="checkbox" id="font1" />
+                                            <label htmlFor="font1"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font2" />
+                                            <label htmlFor="font2"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font3" />
+                                            <label htmlFor="font3"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font4" />
+                                            <label htmlFor="font4"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font5" />
+                                            <label htmlFor="font5"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font6" />
+                                            <label htmlFor="font6"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font7" />
+                                            <label htmlFor="font7"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font8" />
+                                            <label htmlFor="font8"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                        </li>
 
 
-                                        </ul>
+                                    </ul>
 
                                     {/* </div> */}
                                 </div>
@@ -230,7 +245,10 @@ class ProjectDetail extends Component {
 
                                 <h1>طرح منتخب </h1>
                                 <div className="PD-design">
-                                    <img src={passport} alt="طرحها" />
+                                    <div className="PDD-box">
+                                        <p> توسط <span>امید آرمانی</span></p>
+                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
+                                    </div>
 
                                 </div>
                             </div>
@@ -238,9 +256,19 @@ class ProjectDetail extends Component {
 
                                 <h1>همه طرح ها </h1>
                                 <div className="PD-design">
-                                    <img src={passport} alt="طرحها" />
-                                    <img src={passport} alt="طرحها" />
-                                    <img src={passport} alt="طرحها" />
+                                    <div className="PDD-box">
+                                        <p> توسط <span>امید آرمانی</span></p>
+                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
+                                    </div>
+                                    <div className="PDD-box">
+                                        <p> توسط <span>امید آرمانی</span></p>
+                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
+                                    </div>
+                                    <div className="PDD-box">
+                                        <p> توسط <span>امید آرمانی</span></p>
+                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -253,6 +281,7 @@ class ProjectDetail extends Component {
 
 
                 </div>
+
             </div>
 
         );
