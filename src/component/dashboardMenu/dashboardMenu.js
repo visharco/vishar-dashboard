@@ -57,8 +57,8 @@ class DashboardMenu extends Component {
     goToCollaborateProject= () => {
         browserHistory.push('/collaborateProject');
     }
-    goToProfile = () => {
-        browserHistory.push('/profile');
+    goToDesignMessage = () => {
+        browserHistory.push('/designMessage');
     }
     goToProfile = () => {
         browserHistory.push('/profile');
@@ -92,7 +92,7 @@ class DashboardMenu extends Component {
                             <p>پروژه های همکاری</p>
                             <img src={employees} alt="همکاری" />
                         </div>
-                        <div className="DM-body-child" onClick={this.goToProfile} >
+                        <div className="DM-body-child" onClick={this.goToDesignMessage} >
                             <p>پیامها</p>
                             <img src={message} alt="پیام ها" />
                         </div>

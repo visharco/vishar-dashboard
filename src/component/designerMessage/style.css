@@ -1,0 +1,117 @@
+
+.DesignMessage{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    padding:40px 30px;
+}
+.DMX-title{
+    font-size: 25px;
+    font-weight: 900;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    direction: rtl;
+    color: #bababa;
+}
+.DMX-body{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 50px 0px;
+    flex-direction: column;
+}
+
+
+.DMX-actions{
+
+}
+
+.DMX-textarea{
+    width: 100%;
+    min-height: 120px;
+    border: 2px solid #d5d5d5;
+    border-radius: 5px;
+    resize: none;
+    padding: 10px;
+}
+.DMX-textarea::placeholder{
+    color: #bcbcbc
+}
+
+.DMX-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.DMX-send{
+    border: 2px solid #EAEAEA;
+    background-color: transparent;
+    width: 200px;
+    color: #a3a3a3;
+    height: 45px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.DMX-send:hover{
+    transition: all .2s linear;
+    background-color: #0090CF;
+    color: #fff;
+}
+.DMX-buttons img{
+    width: 45px;
+    background-color: #f1f1f1;
+    height: 45px;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all .2s linear;
+    cursor: pointer;
+}
+.DMX-buttons img:hover{
+    transition: all .2s linear;
+    background-color:transparent;
+}
+
+.DMX-attachs {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0px;
+}
+.DMX-attachs {
+    justify-content: flex-start;
+}
+
+.DMX-attach{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    margin: 0px 20px;
+    border-radius: 30px;
+}
+.DMX-delete{
+    width: 30px;
+    background-color: #C50143;
+    padding: 7px;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    transition: all .2s linear;
+    cursor: pointer;
+    border-radius: 50%;
+
+}
+.DMX-delete:hover{
+    opacity: .6;
+    transition: all .2s linear;
+
+} 

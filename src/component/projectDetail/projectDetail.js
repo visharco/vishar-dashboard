@@ -90,9 +90,9 @@ class ProjectDetail extends Component {
 
 
             <div className="ProjectDetail" >
-                 
-                 {this.state.viewProject ? <ViewProjects closeProject={this.closeModalProject} /> : '' }
-                 
+
+                {this.state.viewProject ? <ViewProjects closeProject={this.closeModalProject} /> : ''}
+
                 <div className="PD-title" >
                     عنوان پروژه - طراحی لوگو
                 </div>
@@ -275,7 +275,9 @@ class ProjectDetail extends Component {
 
                         <div className="PD-desc-texts" ref={this.messagesText}>
 
-                            پیامها
+                            
+
+
                         </div>
                     </div>
 

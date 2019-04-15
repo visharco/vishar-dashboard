@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 
 
 import './style.css'
-import DashboardMenu from '../../component/dashboardMenu/dashboardMenu';
-import HeaderComponent from '../../component/header/header';
+
 
 class DashboardComponent extends Component {
     constructor(props) {
