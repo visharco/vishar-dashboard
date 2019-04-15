@@ -132,7 +132,7 @@ class CreateNewProject extends Component {
             this.CNP6.current.style.position = 'fixed'
         }
         window.scrollTo({ 
-            top: 0,
+            top: 100,
             behavior: 'smooth' 
           });
     }
