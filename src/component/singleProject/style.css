@@ -90,3 +90,26 @@ justify-content: space-between;
 .SP-down{
 
 }
+
+
+@media screen and (max-width: 700px){
+
+    .SP-up{
+        flex-direction: column-reverse;
+
+    }
+    .SP-search-box , .SP-create-project-btn{
+        width: 100%;
+    }
+    .SP-create-project-btn{
+        padding: 0px 20px;
+        justify-content: space-between;
+    }
+    .SingleProject{
+        padding: 15px;
+    }
+    .SP-body{
+        padding: 0px;
+    }
+
+}

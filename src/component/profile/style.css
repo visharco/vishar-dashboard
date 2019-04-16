@@ -5,7 +5,7 @@ flex-direction: column;
 direction: rtl;
 padding: 30px;
 }
-.P-title{
+.PE-title{
     font-size: 25px;
     font-weight: 900;
     padding-bottom: 20px;
@@ -13,7 +13,7 @@ padding: 30px;
     direction: rtl;
     color: #bababa;
 }
-.P-body{
+.PE-body{
 display: flex;
 width: 100%;
 justify-content: space-between;
@@ -21,12 +21,12 @@ padding: 50px 0px;
 }
 
 
-.P-inputs{
+.PE-inputs{
 width: calc(50% - 40px);
 direction: rtl;
 }
 
-.P-upload{
+.PE-upload{
     width: calc(50% - 40px);
     background-color: #f9f9f9;
     border-radius: 30px;
@@ -38,29 +38,30 @@ direction: rtl;
     cursor: pointer;
     transition: all .2s linear;
 }
-.P-upload:hover{
+.PE-upload:hover{
     opacity: .7;
     transition: all .2s linear;
 }
-.P-upload h1{
+.PE-upload h1{
 color: #686868;
 font-size: 28px;
 font-weight: 400;
 }
 
-.P-upload p{
+.PE-upload p{
 color: #cdcdcd;
 font-size: 15px;
 }
 
-.P-btns{
+.PE-btns{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.P-cancel{
+.PE-cancel{
     padding: 0px 50px;
     font-size: 16px;
     font-weight: 500;
@@ -71,18 +72,19 @@ font-size: 15px;
     border-radius: 30px;
     height: 40px;
     line-height: 40px;
+    margin-bottom: 20px;
 }
-.P-cancel:hover{
+.PE-cancel:hover{
     color: #aaa;
     transition: all .2s linear;
     border: 2px solid #aaa;
 }
 
-.P-btns .button-box{
-
+.PE-btns .button-box{
+    margin-bottom: 20px;    
 }
-.P-btns .button-style{
-    width: 250px;
+.PE-btns .button-style{
+    width: 200px;
 }
 
 
@@ -100,6 +102,40 @@ width: 50%;
 }
 
 .PU-text{
+    padding: 0px 10px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 700px){
+.PE-body{
+    flex-direction: column-reverse;
+    
+}
+.PE-inputs , .PE-upload{
+    width: 100%;
+    padding: 20px 0px;
+
+}  
+.PE-upload{
+    
+ } 
+ .PU-img{
+     margin: 20px 0px;
+ }
+}
+
+@media screen and (max-width: 400px){
+.PE-btns{
+    flex-direction: column-reverse;
+}
+.PE-btns .button-box , .PE-cancel , .PE-btns .button-style{
+    width: 100%;
+    text-align: center;
+}
+.Profile{
+    padding: 15px;
+}
 
 }
 

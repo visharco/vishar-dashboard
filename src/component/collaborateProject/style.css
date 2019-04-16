@@ -90,3 +90,25 @@ justify-content: space-between;
 .CP-down{
 
 }
+
+@media screen and (max-width: 700px){
+
+    .CP-up{
+        flex-direction: column-reverse;
+
+    }
+    .CP-search-box , .CP-create-project-btn{
+        width: 100%;
+    }
+    .CP-create-project-btn{
+        padding: 0px 20px;
+        justify-content: space-between;
+    }
+    .CollaborateProject{
+        padding: 15px;
+    }
+    .CP-body{
+        padding: 0px;
+    }
+
+}

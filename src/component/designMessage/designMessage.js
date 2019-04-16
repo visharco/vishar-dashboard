@@ -7,6 +7,7 @@ import plus from './../../assets/icons/plus.svg'
 
 import './style.css';
 import DesignMessageBox from '../designMessageBox/designMessageBox';
+import NoMessageBox from '../noMessageBox/NoMessageBox';
 
 
 class DesignMessage extends Component {
@@ -14,7 +15,10 @@ class DesignMessage extends Component {
         super(props);
         this.state = {}
     }
+    createNewProject = () => {
+        browserHistory.push('/createNewProject');
 
+    }
 
     render() {
         return (
@@ -37,6 +41,7 @@ class DesignMessage extends Component {
                         <DesignMessageBox />
                         <DesignMessageBox />
                         <DesignMessageBox />
+                        <NoMessageBox />
                     </div>
                 </div>
             </div>

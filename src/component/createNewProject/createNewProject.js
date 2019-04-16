@@ -57,12 +57,21 @@ class CreateNewProject extends Component {
     // myspan1 = React.createRef()
     // myspan2 = React.createRef()
 
+    point1 = React.createRef()
+    point2 = React.createRef()
+    target1 = React.createRef()
+    target2 = React.createRef()
+
     handleScroll = () => {
-        // if ((window.innerHeight + window.scrollY) >= this.informationBtns.current.offsetTop + 200) {
-        //     this.informationBtns.current.className = ['notFixCreateBtn']
-        // } else if ((window.innerHeight + window.scrollY) < this.informationBtns.current.offsetTop + 200) {
-        //     this.informationBtns.current.className = ['fixCreateBtn']
-        // }
+        console.log(this.point1.current.offsetTop)
+        console.log(this.point2.current.offsetTop)
+        if ((window.innerHeight + window.scrollY) >= this.point1.current.offsetTop + 200) {
+            this.target1.current.style.position = 'unset'
+
+        } else if ((window.innerHeight + window.scrollY) < this.point1.current.offsetTop + 300) {
+            // this.target1.current.style.position = 'unset'
+
+        }
 
         // if ((window.innerHeight + window.scrollY) >= this.myspan2.current.offsetTop + 200) {
         //     this.imageBtns.current.className = ['notFixCreateBtn']
@@ -80,6 +89,8 @@ class CreateNewProject extends Component {
     CNP5 = React.createRef()
     CNP6 = React.createRef()
 
+
+    // go to next part
     nextPart = (e) => {
 
         if (e.target.id === 'CNP-N1') {
@@ -109,6 +120,8 @@ class CreateNewProject extends Component {
 
     }
 
+
+    // go to preveiw part 
     backPart = (e) => {
 
         if (e.target.id === 'CNP-P2') {
@@ -137,6 +150,10 @@ class CreateNewProject extends Component {
           });
     }
 
+    // more category load 
+    moreCategory = () =>{
+
+    }
 
     render() {
         return (
@@ -215,23 +232,21 @@ class CreateNewProject extends Component {
 
 
 
-                                <input
-                                    type="radio" name="emotion"
-                                    id="threedot" className="input-hidden" />
-                                <label htmlFor="threedot">
+                                
+                                <div onClick={this.moreCategory} >
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + threedot + ')' }} >
                                         <span className="CNP-logoBoxTitle" >بیشتر</span>
                                     </div>
-                                </label>
+                                </div>
 
                             </div>
                         </div>
-                        <div className="CNP-1-Note" >
+                        <div className="CNP-1-Note" ref={this.point1} >
                             <h1>توجه : لطفا یکی از دسته بندیهای بالا را انتخاب کن</h1>
                             <p>- اطلاعات در مورد پروژه ای که قصد داری انجامش بدی</p>
                             <p>- لطفا مستندات مناسبی رو برای پروژه ات انتخاب کن</p>
                         </div>
-                        <div className="CNP-btnBox">
+                        <div className="CNP-btnBox" ref={this.target1}>
                             <div className="CNP-100" >
                                 <img src={success} alt="موفق" />
                                 <p>
@@ -309,12 +324,12 @@ class CreateNewProject extends Component {
                         </div>
 
 
-                        <div className="CNP-1-Note" >
+                        <div className="CNP-1-Note" ref={this.point2} >
                             <h1>توجه : لطفا یکی از دسته بندیهای بالا را انتخاب کن</h1>
                             <p>- اطلاعات در مورد پروژه ای که قصد داری انجامش بدی</p>
                             <p>- لطفا مستندات مناسبی رو برای پروژه ات انتخاب کن</p>
                         </div>
-                        <div className="CNP-btnBox">
+                        <div className="CNP-btnBox" ref={this.target2}>
                             <div className="CNP-100" >
                                 <img src={success} alt="موفق" />
                                 <p>
@@ -342,35 +357,59 @@ class CreateNewProject extends Component {
                                 <ul>
                                     <li>
                                         <input type="checkbox" id="colors1" />
-                                        <label htmlFor="colors1"><img src={color1} alt="رنگها" /></label>
+                                        <label htmlFor="colors1">
+                                            <img src={color1} alt="رنگها" />
+                                            <span>آبی</span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors2" />
-                                        <label htmlFor="colors2"><img src={color2} alt="رنگها" /></label>
+                                        <label htmlFor="colors2">
+                                            <img src={color2} alt="رنگها" />
+                                            <span>سبز</span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors3" />
-                                        <label htmlFor="colors3"><img src={color3} alt="رنگها" /></label>
+                                        <label htmlFor="colors3">
+                                            <img src={color3} alt="رنگها" />
+                                            <span>بنفش</span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors4" />
-                                        <label htmlFor="colors4"><img src={color4} alt="رنگها" /></label>
+                                        <label htmlFor="colors4">
+                                            <img src={color4} alt="رنگها" />
+                                            <span>صورتی </span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors5" />
-                                        <label htmlFor="colors5"><img src={color5} alt="رنگها" /></label>
+                                        <label htmlFor="colors5">
+                                            <img src={color5} alt="رنگها" />
+                                            <span>قرمز</span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors6" />
-                                        <label htmlFor="colors6"><img src={color6} alt="رنگها" /></label>
+                                        <label htmlFor="colors6">
+                                            <img src={color6} alt="رنگها" />
+                                            <span>نارنجی</span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors7" />
-                                        <label htmlFor="colors7"><img src={color7} alt="رنگها" /></label>
+                                        <label htmlFor="colors7">
+                                            <img src={color7} alt="رنگها" />
+                                            <span>خاکستری</span>
+                                        </label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="colors8" />
-                                        <label htmlFor="colors8"><img src={color8} alt="رنگها" /></label>
+                                        <label htmlFor="colors8">
+                                            <img src={color8} alt="رنگها" />
+                                            <span>قرمز</span>
+                                        </label>
                                     </li>
 
 
@@ -380,7 +419,7 @@ class CreateNewProject extends Component {
                             <h1>قلم ها را پیدا کن</h1>
                             <h2>سه قلم دلخواه را انتخاب کن</h2>
 
-                            <div className="CNP-check-color CNP-check">
+                            <div className="CNP-check-font CNP-check">
                                 <ul>
                                     <li>
                                         <input type="checkbox" id="font1" />

@@ -141,6 +141,25 @@ align-content: center;
 }
 
 
+@media screen and (max-width: 1100px){
+
+    .p-right-text{
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 1000px){
+
+.p-right-text h1 {
+    font-size: 15px;
+}
+.Completed , .Working , .Pending{
+    margin-right: 10px;
+}
+
+}
+
 @media screen and (max-width: 700px){
 
     .project{
@@ -197,6 +216,7 @@ align-content: center;
 }
 .p-right img{
     width: 100%;
+    border-radius: 10px;
 }
 .p-price {
     position: unset;

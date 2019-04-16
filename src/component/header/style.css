@@ -79,12 +79,13 @@ transition: all .2s linear;
 
 }
 .user-welcome{
-position: relative;
-background-color: #F5F5F5;
-padding: 8px 15px 8px 45px;
-border-radius: 30px;
-margin-left: 15px;
-cursor: pointer;
+    position: relative;
+    background-color: #F5F5F5;
+    padding: 8px 15px 8px 45px;
+    border-radius: 30px;
+    margin-left: 15px;
+    cursor: pointer;
+    min-width: 170px;
 }
 
 .user-welcome:hover .user-welcome-img{
@@ -117,12 +118,15 @@ cursor: pointer;
     line-height: 10px;
     cursor: pointer;
     transition: all .2s linear;
-
 }
+
 .envelope-box:hover{
 opacity: .5;
 transition: all .2s linear;
 
+}
+.envelope-boxes{
+    display: flex;
 }
 
 .envelope-icon{
@@ -146,3 +150,60 @@ transition: all .2s linear;
     align-items: center;
     justify-content: center;
 }
+.toggleBtn {
+    display: none;
+}
+
+.menuTablet{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+}
+.headerMenuDown{
+    display: flex;
+}
+.tabletShow{
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+    .menu-link{
+        margin: 10px 0px;
+    }
+}
+@media screen and (max-width: 900px){
+    .menu-link{
+        margin: 2px 2px;
+        padding: 0px 5px;
+    }
+
+    .menu-login-text{
+        width: 100px;
+    }
+    .menu-link {
+        margin: 0px 0px;
+        padding: 0px 5px;
+        font-size: 10px;
+    }
+    .menu-links a {
+        border: 2px solid transparent;
+        margin: 0px 1px;
+        border-radius: 30px;
+        transition: all .2s linear;
+    }
+    .envelope-box{
+        padding: 0px 10px;
+    }
+    .tabletShow{
+        display: flex;
+    }
+    .tabletHidden{
+        display: none;
+    }
+    .header .container{
+        padding: 0px;
+    }
+
+}
+

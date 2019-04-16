@@ -115,3 +115,16 @@
     transition: all .2s linear;
 
 } 
+
+
+
+@media screen and (max-width: 500px){
+.DMX-attachs{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.DMX-attach{
+    margin: 10px 0px;
+}
+}
