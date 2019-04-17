@@ -63,15 +63,15 @@ class CreateNewProject extends Component {
     target2 = React.createRef()
 
     handleScroll = () => {
-        console.log(this.point1.current.offsetTop)
-        console.log(this.point2.current.offsetTop)
-        if ((window.innerHeight + window.scrollY) >= this.point1.current.offsetTop + 200) {
-            this.target1.current.style.position = 'unset'
+        // console.log(this.point1.current.offsetTop)
+        // console.log(this.point2.current.offsetTop)
+        // if ((window.innerHeight + window.scrollY) >= this.point1.current.offsetTop + 200) {
+        //     this.target1.current.style.position = 'unset'
 
-        } else if ((window.innerHeight + window.scrollY) < this.point1.current.offsetTop + 300) {
-            // this.target1.current.style.position = 'unset'
+        // } else if ((window.innerHeight + window.scrollY) < this.point1.current.offsetTop + 300) {
+        //     this.target1.current.style.position = 'unset'
 
-        }
+        // }
 
         // if ((window.innerHeight + window.scrollY) >= this.myspan2.current.offsetTop + 200) {
         //     this.imageBtns.current.className = ['notFixCreateBtn']
@@ -686,7 +686,7 @@ class CreateNewProject extends Component {
                                         </div>
                                         <div className="CNP-BTNS" >
                                             <button className="prevBTN" id="CNP-P6" onClick={this.backPart}><img src={back} alt="قبلی" /> قبلی </button>
-                                            <button className="nextBTN" id="CNP-N6" onClick={this.nextPart}> بعدی </button>
+                                            <button className="paymentBTN" id="CNP-N6" onClick={this.nextPart}> پرداخت </button>
                                         </div>
                                     </div>
                                 </div>
