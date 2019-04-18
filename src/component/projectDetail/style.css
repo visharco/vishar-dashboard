@@ -336,7 +336,7 @@ transition: all .2s linear;
         /* width: 33%; */
     }
     .PDD-box{
-        width: calc(33.333% - 10px);
+        width: calc(30% - 10px);
     }
 
 }
@@ -346,7 +346,7 @@ transition: all .2s linear;
         /* width: 33%; */
     }
     .PDD-box{
-        width: calc(50% - 10px);
+        width: calc(28% - 10px);
     }
 }
 
@@ -385,6 +385,13 @@ transition: all .2s linear;
 }
 .ProjectDetail{
     padding: 15px;
+}
+.PDD-box{
+    width: 100%;
+    align-items: center;
+}
+.PDD-box img{
+    width: 60%;
 }
 }
 
@@ -436,12 +443,9 @@ transition: all .2s linear;
     height: 200px;
     margin: 10px auto;
 }
-.PDD-box{
-    /* width: calc(100% - 10px); */
-}
+
 .PDD-box img{
-    /* width: 100%; */
-    /* height: auto; */
+    width: 100%;
 }
 
 }

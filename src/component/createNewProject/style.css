@@ -34,7 +34,7 @@
 
 
 
-.CNP-btnBox{
+.CNP-btnBox-fixed{
     box-shadow: -1px 4px 11px 0px #ececec;
     width: 90%;
     padding: 20px;
@@ -43,9 +43,24 @@
     align-items: center;
     margin: 50px auto;
     background-color: #fff;
-    /* position: fixed; */
-    /* bottom: 50px; */
-    /* max-width: 700px; */
+    position: fixed;
+    bottom: 50px;
+    max-width: 700px;
+    min-width: 50%;
+    z-index: 1;
+    right: 300px;
+    left: 50px;
+}
+.CNP-btnBox-regular{
+    box-shadow: -1px 4px 11px 0px #ececec;
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto;
+    background-color: #fff;
+    position: unset;
 }
 
 .CNP-100{
@@ -874,6 +889,13 @@ padding: 10px 5px;
     .CNP-select-design label{
         width: 32%;
     }
+    .CNP-btnBox-fixed{
+        right: 280px;
+        left: 30px;
+        width: unset;
+        max-width: unset;
+        min-width: unset;
+    }
 
 
 }
@@ -885,6 +907,10 @@ padding: 10px 5px;
     }
     .CNP-duration{
         flex-wrap: wrap;
+    }
+    .CNP-btnBox-fixed{
+        right: 20px;
+        left: 20px;
     }
 
 }
@@ -907,6 +933,11 @@ padding: 10px 5px;
     .prevBTN{
         width: 80px;
     }
+    .CNP-btnBox-fixed{
+        bottom: 10px;
+        margin: 0px;
+    }
+
 
 }
 
@@ -919,8 +950,12 @@ padding: 10px 5px;
     width: 300px;
     height: 300px;
 }
-.CNP-btnBox{
+.CNP-btnBox-fixed  {
     flex-direction: column;
+}
+.CNP-btnBox-regular {
+    flex-direction: column;
+    width: 100%;
 }
 .CNP-BTNS{
     margin-top: 20px;
@@ -938,6 +973,9 @@ padding: 10px 5px;
     width:50%;
     justify-content: center;
 }
+.nextBTN1{
+    width: 100%;
+}
 .CNP-desc-text p{
     text-align: center;
     padding: 0px 10px;
@@ -946,9 +984,7 @@ padding: 10px 5px;
 .CNP-select-design label{
     width: 100%;
 }
-.CNP-btnBox{
-    width: 100%;
-}
+
 .CNP-duration label{
     width: 100%;
 }

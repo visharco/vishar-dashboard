@@ -196,7 +196,7 @@ transition: all .2s linear;
     
     }
     .hamburger {
-        width: 50px;
+        width: 60px;
         height: 50px;
         position: fixed;
         cursor: pointer;
@@ -204,8 +204,9 @@ transition: all .2s linear;
         display: block;
         top: 12px;
         right: 12px;
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: rgba(255,255,255,.8);
+        border: 1px solid whitesmoke;
     }
     
     .line {
@@ -213,7 +214,7 @@ transition: all .2s linear;
         height: 2px;
         background-color: #2D9CDB;
         position: absolute;
-        left: 12px;
+        left: 8px;
         border-radius: 5px;
         box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
     }
@@ -222,7 +223,7 @@ transition: all .2s linear;
         height: 2px;
         background-color: #2D9CDB;
         position: absolute;
-        left: 7px;
+        left: 8px;
         border-radius: 5px;
         box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
     }
@@ -232,13 +233,13 @@ transition: all .2s linear;
         transition: transform  .2s linear ,top .2s .2s linear;
     }
     .line2{
-        top: 24px;
+        top: 23px;
         opacity: 1;
         transition: opacity .2s .2s linear;
     
     }
     .line3{
-        top: 36px;
+        top: 35px;
         transform: rotate(0deg);
         transition: transform  .2s linear ,top .2s .2s linear;
     }
