@@ -1,4 +1,4 @@
-.NoNotificationBox{
+.NoPaymentBox{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,7 +6,7 @@
     height: 400px;
     text-align: center;
 }
-.NoNotificationBoxBox{
+.NoPaymentBoxBox{
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -14,13 +14,12 @@
     justify-content: center;
     margin: auto;
 }
-.NoNotificationBox img{
+.NoPaymentBox img{
     width: 90px;
     margin-bottom: 20px;
 }
-.NoNotificationBox h1{
+.NoPaymentBox h1{
     font-size: 28px;
     color: #b6b6b6;
     margin-bottom: 10px;
 }
-

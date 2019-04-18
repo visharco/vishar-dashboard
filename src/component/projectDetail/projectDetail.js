@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+//
+//
+// components
+//
+import DesignMessageBox from '../../component/designMessageBox/designMessageBox'
+
+
+
 import color1 from '../../assets/images/color1.png'
 import color2 from '../../assets/images/color2.png'
 import color3 from '../../assets/images/color3.png'
@@ -16,6 +24,7 @@ import passport from '../../assets/images/passport.png'
 
 import './style.css';
 import ViewProjects from '../viewProjects/viewProjects';
+import NoMessageBox from '../noMessageBox/NoMessageBox';
 
 
 
@@ -129,35 +138,59 @@ class ProjectDetail extends Component {
                                     <ul>
                                         <li>
                                             <input type="checkbox" id="colors1" />
-                                            <label htmlFor="colors1"><img src={color1} alt="رنگها" /></label>
+                                            <label htmlFor="colors1">
+                                                <img src={color1} alt="رنگها" />
+                                                <span>بنفش</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors2" />
-                                            <label htmlFor="colors2"><img src={color2} alt="رنگها" /></label>
+                                            <label htmlFor="colors2">
+                                                <img src={color2} alt="رنگها" />
+                                                <span>سبز</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors3" />
-                                            <label htmlFor="colors3"><img src={color3} alt="رنگها" /></label>
+                                            <label htmlFor="colors3">
+                                                <img src={color3} alt="رنگها" />
+                                                <span>آبی</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors4" />
-                                            <label htmlFor="colors4"><img src={color4} alt="رنگها" /></label>
+                                            <label htmlFor="colors4">
+                                                <img src={color4} alt="رنگها" />
+                                                <span>صورتی</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors5" />
-                                            <label htmlFor="colors5"><img src={color5} alt="رنگها" /></label>
+                                            <label htmlFor="colors5">
+                                                <img src={color5} alt="رنگها" />
+                                                <span>قرمز</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors6" />
-                                            <label htmlFor="colors6"><img src={color6} alt="رنگها" /></label>
+                                            <label htmlFor="colors6">
+                                                <img src={color6} alt="رنگها" />
+                                                <span>نارنجی</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors7" />
-                                            <label htmlFor="colors7"><img src={color7} alt="رنگها" /></label>
+                                            <label htmlFor="colors7">
+                                                <img src={color7} alt="رنگها" />
+                                                <span>مشککی</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors8" />
-                                            <label htmlFor="colors8"><img src={color8} alt="رنگها" /></label>
+                                            <label htmlFor="colors8">
+                                                <img src={color8} alt="رنگها" />
+                                                <span>خاکستری</span>
+                                            </label>
                                         </li>
 
 
@@ -170,35 +203,59 @@ class ProjectDetail extends Component {
                                     <ul>
                                         <li>
                                             <input type="checkbox" id="font1" />
-                                            <label htmlFor="font1"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font1">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>ایران سنس</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font2" />
-                                            <label htmlFor="font2"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font2">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>امید سنس</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font3" />
-                                            <label htmlFor="font3"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font3">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>تاهوما </span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font4" />
-                                            <label htmlFor="font4"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font4">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> عربیکیا</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font5" />
-                                            <label htmlFor="font5"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font5">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> امید سنس</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font6" />
-                                            <label htmlFor="font6"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font6">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>ایران سنس</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font7" />
-                                            <label htmlFor="font7"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font7">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> میترا</span>
+                                            </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="font8" />
-                                            <label htmlFor="font8"><img className="font-padding" src={font} alt="رنگها" /></label>
+                                            <label htmlFor="font8">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> کودک</span>
+                                            </label>
                                         </li>
 
 
@@ -275,7 +332,10 @@ class ProjectDetail extends Component {
 
                         <div className="PD-desc-texts" ref={this.messagesText}>
 
-                            
+                        <DesignMessageBox />
+                        <DesignMessageBox />
+                        <DesignMessageBox />
+                        <NoMessageBox />
 
 
                         </div>

@@ -26,12 +26,12 @@ class Profile extends Component {
     render() {
         return (
             <div className="Profile">
-                <div className="P-title" >
+                <div className="PE-title" >
                     پروفایل
                 </div>
-                <div className="P-body" >
+                <div className="PE-body" >
 
-                    <div className="P-inputs" >
+                    <div className="PE-inputs" >
                         <Input
                             type={'text'}
                             name={'email'}
@@ -42,7 +42,7 @@ class Profile extends Component {
                         <Input
                             type={'text'}
                             name={'email'}
-                            placeholder={'Email'}
+                            placeholder={'ایمیل'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
                         />
@@ -67,8 +67,8 @@ class Profile extends Component {
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
                         />
-                        <div className="P-btns" >
-                            <div className="P-cancel" >
+                        <div className="PE-btns" >
+                            <div className="PE-cancel" >
                                 انصراف
                         </div>
                             <Button
@@ -82,13 +82,13 @@ class Profile extends Component {
                             />
                         </div>
                     </div>
-                    <div className="P-upload" >
+                    <div className="PE-upload" >
                         <h1>عکس پروفایل</h1>
                         <div className="PU-img" >
                             <img src={usergrey} alt="کاربر" />
                         </div>
                         <p className="PU-text" >
-                            برا آپلود عکس کلیک کنید یا عکس را رها کنید
+                            برای آپلود عکس کلیک کنید یا عکس را رها کنید
                         </p>
 
                     </div>

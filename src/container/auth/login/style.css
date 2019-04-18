@@ -67,3 +67,11 @@
     font-weight: 900;
 
 }
+
+
+@media screen and (max-width: 400px){
+.RL-right{
+    padding: 20px;
+}
+    
+}

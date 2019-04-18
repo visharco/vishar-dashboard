@@ -63,13 +63,9 @@
 
 
 
-@media screen and (max-width: 700px){
-
-  
-
-}
-
 
 @media screen and (max-width: 500px){
-
+    .DesignMessageBox{
+        flex-direction: column;
+    }
 }

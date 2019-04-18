@@ -9,6 +9,7 @@ import RegisterScreen from './container/auth/register/register';
 import ForgetPasswordScreen from './container/auth/forgetPassword/forgetPassword';
 import DashboardComponent from './container/dashboard/dashboard';
 import ProfileScreen from './component/profile/profile';
+import PaymentsScreen from './component/payments/payments';
 import SingleProjectScreen from './component/singleProject/singleProject'
 import CollaborateProjectScreen from './component/collaborateProject/collaborateProject';
 import ProjectDetailScreen from './component/projectDetail/projectDetail';
@@ -28,15 +29,16 @@ class RouterComponent extends Component {
         return (
 
             <Router history={browserHistory}>
-                 <Route path="/login" component={LoginScreen} ></Route>
-                 <Route path="/register" component={RegisterScreen} ></Route>
+                <Route path="/login" component={LoginScreen} ></Route>
+                <Route path="/register" component={RegisterScreen} ></Route>
+                <Route path="forgetPassword" component={ForgetPasswordScreen} />
 
                 <Route path="/" component={RootScreen} >
                     <IndexRoute component={DashboardComponent} />
                     <Route path="dashboard" component={DashboardComponent} />
                     <Route path="register" component={RegisterScreen} />
-                    <Route path="forgetPassword" component={ForgetPasswordScreen} />
                     <Route path="profile" component={ProfileScreen} />
+                    <Route path="payments" component={PaymentsScreen} />
                     <Route path="singleProject" component={SingleProjectScreen} />
                     <Route path="collaborateProject" component={CollaborateProjectScreen} />
                     <Route path="projectDetail" component={ProjectDetailScreen} />
@@ -45,7 +47,7 @@ class RouterComponent extends Component {
                     <Route path="designMessage" component={DesignMessageScreen} />
                     <Route path="designerMessage" component={DesignerMessageScreen} />
                 </Route>
-            
+
             </Router>
         );
     }
