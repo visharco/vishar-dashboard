@@ -45,8 +45,10 @@ import React, { Component } from 'react';
 
 
  
-import DashboardMenu from './component/dashboardMenu/dashboardMenu';
+// import DashboardMenu from './component/dashboardMenu/dashboardMenu';
 import HeaderComponent from './component/header/header';
+import DesignerDashboardMenu from './component/Designer/DesignerDashboardMenu/DesignerDashboardMenu';
+
 
 class RootComponent extends Component {
     constructor(props) {
@@ -69,6 +71,7 @@ class RootComponent extends Component {
                             </div>
                             <div className="dashboard-right" >
                                 {/* <DashboardMenu /> */}
+                                <DesignerDashboardMenu />
                                 
                             </div>
 

@@ -34,7 +34,7 @@ class Profile extends Component {
                     <div className="PE-inputs" >
                         <Input
                             type={'text'}
-                            name={'email'}
+                            name={'name'}
                             placeholder={'نام و نام خانوادگی'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
@@ -48,21 +48,21 @@ class Profile extends Component {
                         />
                         <Input
                             type={'text'}
-                            name={'email'}
+                            name={'mobile'}
                             placeholder={' موبایل'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
                         />
                         <Input
                             type={'text'}
-                            name={'email'}
+                            name={'phone'}
                             placeholder={'تلفن'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
                         />
                         <Input
                             type={'text'}
-                            name={'email'}
+                            name={'city'}
                             placeholder={'شهر / مکان'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}

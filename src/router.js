@@ -19,6 +19,10 @@ import DesignMessageScreen from './component/designMessage/designMessage';
 import DesignerMessageScreen from './component/designerMessage/designerMessage';
 
 
+import DesignerProfileScreen from './component/Designer/DesignerProfile/DesignerProfile'
+import DesignerWalletScreen from './component/Designer/DesignerWallet/DesignerWallet'
+
+
 
 class RouterComponent extends Component {
     constructor(props) {
@@ -46,6 +50,11 @@ class RouterComponent extends Component {
                     <Route path="notification" component={NotificationScreen} />
                     <Route path="designMessage" component={DesignMessageScreen} />
                     <Route path="designerMessage" component={DesignerMessageScreen} />
+                    
+
+                    <Route path="DesignerProfile" component={DesignerProfileScreen} />
+                    <Route path="DesignerWallet" component={DesignerWalletScreen} />
+
                 </Route>
 
             </Router>

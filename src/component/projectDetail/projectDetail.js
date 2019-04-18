@@ -107,22 +107,19 @@ class ProjectDetail extends Component {
                 </div>
 
                 <div className="PD-desc-up" >
-
-
                     <div className="PD-desc-box">
-                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages} >پیامها
+                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages}>پیامها
                             <span className="PD-desc-number" >4</span>
                         </div>
-                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design} >طراحی
+                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design}>طراحی
                             <span className="PD-desc-number" >4</span>
                         </div>
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="brief" ref={this.brief}>توضیحات
                         </div>
                     </div>
-
                 </div>
-                <div className="PD-desc-down" >
-                    <div className="PD-desc-box2" >
+                <div className="PD-desc-down">
+                    <div className="PD-desc-box2">
                         <div className="PD-desc-texts" ref={this.briefText}>
                             <div className="PD-desc-text" >
                                 <h1>توضیحات</h1>
