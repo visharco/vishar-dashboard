@@ -68,7 +68,8 @@ class RootComponent extends Component {
                                 {this.props.children}
                             </div>
                             <div className="dashboard-right" >
-                                <DashboardMenu />
+                                {/* <DashboardMenu /> */}
+                                
                             </div>
 
 
