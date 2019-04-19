@@ -11,9 +11,7 @@
 }
 
 .button-style:hover{
- 
   transition: all .2s linear;
-  opacity: .8;
 }
 
 

@@ -1,11 +1,11 @@
 
-.DesignMessage{
+.Message{
     display: flex;
     flex-direction: column;
     direction: rtl;
     padding: 40px 30px;
 }
-.DMX-title{
+.M-title{
     font-size: 25px;
     font-weight: 900;
     padding-bottom: 20px;
@@ -13,7 +13,7 @@
     direction: rtl;
     color: #bababa;
 }
-.DMX-body{
+.M-body{
     display: flex;
     width: 100%;
     justify-content: space-between;

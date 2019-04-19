@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 //
 //
-import close from '../../../assets/icons/close.svg'
 //
 
 import DesignerNoWallet from './../DesignerNoWallet/DesignerNoWallet'
@@ -13,14 +12,18 @@ import Button from './../../common/Button/Button'
 
 
 import './style.css';
+import StatusMessage from '../../StatusMessage/StatusMessage';
 
 
 class DesignerWallet extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            statusYellow:true
+        }
     }
+
 
 
 
@@ -31,14 +34,14 @@ class DesignerWallet extends Component {
                 <div className="DW-title" >
                     کیف پول
             </div>
-                <div className="DW-access" >
-                    <img src={close} alt="بستن" />
-                    <p>
+                    <StatusMessage
+                    bgColor="rgba(242, 201, 76, 0.7)"
+                    color="#A88823"
+                    text="
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-
-                    </p>
-
-                </div>
+                    
+                    " /> 
+             
                 <div className="DW-table" >
                     <table  >
                         <tr className="DW-table-title">
