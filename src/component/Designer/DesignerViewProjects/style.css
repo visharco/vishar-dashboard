@@ -1,5 +1,5 @@
 
-.ViewProjects{
+.DesignerViewProjects{
     display: flex;
     flex-direction: column;
     direction: rtl;
@@ -10,52 +10,65 @@
     right: 0;
     top: 0;
     left: 0;
+    overflow: scroll;
 }
-
-.VP-title{
+.DVP-title{
     font-size: 25px;
     font-weight: 900;
     padding-bottom: 20px;
     border-bottom: 2px solid #eee;
     direction: rtl;
     color: #bababa;
-}
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
 
-.VP-body{
+}
+.DVP-body{
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding:  0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: scroll;
 }
 
-.VP-left{
+.DVP-left{
     width: 400px;
     background-color: #f8f8f8;
     padding: 50px 20px;
     position: relative;
+
 }
 
-.VPL-title{
+.DVPL-title{
     display: flex;
     border-bottom: 1px solid #efefef;
     padding: 20px 0px;
     align-items: center;
     flex-direction: column;
 }
-
-.VPLT-up{
+.DVPLT-up{
     display: flex;
     align-items: center;
     width: 100%;
 }
 
 
-.VPLT-desc{
+.DVPLT-desc{
 
 }
 
 
-.VPL-close{
+.DVPL-close{
     position: absolute;
     left: 30px;
     top: 30px;
@@ -63,38 +76,37 @@
     cursor: pointer;
     transition: all .2s linear;
 }
-.VPL-close:hover{
+.DVPL-close:hover{
     opacity: .7;
     transition: all .2s linear;
 
 }
-
-.VPLT-up img{
+.DVPLT-up img{
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
 
-.VPLT-desc{
+.DVPLT-desc{
     display: flex;
     flex-direction: column;
 }
 
-.VPLT-text{
+.DVPLT-text{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.VPLT-text p{
+.DVPLT-text p{
     color: #707070;
 }
 
-.VPLT-text h2{
+.DVPLT-text h2{
     font-size: 14px;
     margin-right: 10px;
 
 }
-.VPLT-text span {
+.DVPLT-text span {
     color: #999;
     font-size: 12px;
 }
@@ -118,23 +130,23 @@
     background-color: #EAEAEA;
 }
 
-.VPL-desc{
+.DVPL-desc{
     padding: 20px 0px;
     border-bottom: 1px solid #efefef;
 }
 
 
-.VPL-desc h1{
+.DVPL-desc h1{
     color: #444;
     font-weight: 500;
     font-size: 18px;
 }
 
-.VPL-desc p{
+.DVPL-desc p{
     color: #666;
 }
 
-.VPL-rating{
+.DVPL-rating{
     padding: 20px 0px;
     border-bottom: 1px solid #efefef;
     direction: ltr;
@@ -143,24 +155,24 @@
     align-items: center;
 }
 
-.VPL-action{
+.DVPL-action{
     padding: 20px 0px;
     border-bottom: 1px solid #efefef;
 }
 
-.VPL-action h1{
+.DVPL-action h1{
     color: #444;
     font-weight: 500;
     font-size: 18px;
 }
 
-.VPL-action p{
+.DVPL-action p{
     color: #666;
     padding: 20px 0px;
     color: #F57777;
 }
 
-.VPL-button {
+.DVPL-button {
     background-color: #6FCF97;
     width: 100%;
     margin: auto;
@@ -174,17 +186,17 @@
     cursor: pointer;
     transition: all .2s linear;
 }
-.VPL-button:hover {
+.DVPL-button:hover {
     opacity: .6;
     transition: all .2s linear;
 }
 
-.VPL-button img{
+.DVPL-button img{
     width: 20px;
     margin-left: 10px;
 }
 
-.VP-report{
+.DVP-report{
     bottom: 20px;
     left: 20px;
     position: absolute;
@@ -200,11 +212,11 @@
     transition: all .2s linear;
 
 }
-.VP-report:hover{
+.DVP-report:hover{
     transition: all .2s linear;
     background-color: #fff;
 }
-.VP-report img{
+.DVP-report img{
     width: 15px;
     margin-left: 5px;
 }
@@ -246,15 +258,32 @@
 /* STARS  */
 
 
-.VP-sliders {
+.DVP-sliders {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: calc(100% - 400px)
 }
 
-.VP-sliders img{
+.DVP-sliders img{
     width: 80%;
     margin-bottom: 20px;
 
 }
+
+@media screen and (max-width: 700px){
+.DVP-body{
+    flex-direction: column-reverse;
+}
+.DVP-sliders , .DVP-left{
+    width: 100%;
+    padding: 100px 20px;
+}
+.DVP-sliders img{
+    width: 100%;
+}
+    
+}
+    
+
+    

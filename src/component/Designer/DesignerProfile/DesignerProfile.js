@@ -5,8 +5,8 @@ import React, { Component } from 'react';
 //
 
 import usergrey from '../../../assets/icons/usergrey.svg';
-import Input from '../../../component/common/input/Input';
-import Button from '../../../component/common/Button/Button';
+import Input from '../../common/input/Input';
+import Button from '../../common/Button/Button';
 
 //
 //compoents
@@ -115,7 +115,7 @@ class DesignerProfile extends Component {
                                 <div className="DPE-btns" >
                                     <div className="DPE-cancel" >
                                         انصراف
-                        </div>
+                                    </div>
                                     <Button
                                         isLoading={this.state.isLoading}
                                         title={'ذخیره'}
@@ -134,7 +134,7 @@ class DesignerProfile extends Component {
                                 </div>
                                 <p className="DPE-text" >
                                     برای آپلود عکس کلیک کنید یا عکس را رها کنید
-                        </p>
+                                </p>
 
                             </div>
                         </div>

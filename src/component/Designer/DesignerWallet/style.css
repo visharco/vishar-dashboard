@@ -15,17 +15,7 @@ padding: 30px;
     color: #bababa;
 }
 
-.DW-access {
-    background-color: rgba(242, 201, 76, 0.7);
-    padding: 20px 30px;
-    border-radius: 10px;
-    position: relative;
-}
 
-.DW-access img{
-    position: absolute;
-    top: 10px;
-}
 .DW-table-title , .DW-table-body , .DW-request-box {
     display: flex;
     justify-content: space-between;
@@ -67,6 +57,7 @@ padding: 30px;
   
 .DW-table{
    overflow-x:auto;
+   padding-top: 20px;
 } 
 
 .DW-request-box{

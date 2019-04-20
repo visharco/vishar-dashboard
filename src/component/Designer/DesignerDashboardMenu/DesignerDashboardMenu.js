@@ -57,24 +57,27 @@ class DesignerDashboardMenu extends Component {
 
     goToDesignerProfile = () => {
         browserHistory.push('/DesignerProfile');
+        console.log('0')
+
     }
     goToDesignerWallet = () => {
         browserHistory.push('/DesignerWallet');
     }
     goToDesignerSingleProject = () => {
-        // browserHistory.push('/DesignerSingleProject');
+        browserHistory.push('/DesignerSingleProject');
+        console.log('0')
     }
     goToDesignerCollaborateProject = () => {
-        // browserHistory.push('/DesignerCollaborateProject');
+        browserHistory.push('/DesignerCollaborateProject');
     }
-    goToDesignerDesignMessage = () => {
-        // browserHistory.push('/DesignerDesignMessage');
+    goToDesignerMessage = () => {
+        browserHistory.push('/DesignerMessage');
     }
     goToDesignerPayments = (e) => {
-        // browserHistory.push('/DesignerPayments');
+        browserHistory.push('/DesignerPayments');
     }
-    goToDesignerPortfoilo = (e) => {
-        // browserHistory.push('/DesignerPortfoilo');
+    goToDesignerPorfolio = (e) => {
+        browserHistory.push('/DesignerPorfolio');
     }
 
     menuTablet = React.createRef()
@@ -150,7 +153,7 @@ class DesignerDashboardMenu extends Component {
                                 <p>پروژه های همکاری</p>
                                 <img src={employees} alt="همکاری" />
                             </div>
-                            <div className="DDM-body-child" onClick={this.goToDesignerDesignMessage} >
+                            <div className="DDM-body-child" onClick={this.goToDesignerMessage} >
                                 <p>پیامها</p>
                                 <img src={message} alt="پیام ها" />
                             </div>
@@ -158,7 +161,7 @@ class DesignerDashboardMenu extends Component {
                                 <p>تراکنشها</p>
                                 <img src={payment} alt="تراکنش" />
                             </div>
-                            <div className="DDM-body-child" onClick={this.goToDesignerPortfoilo} >
+                            <div className="DDM-body-child" onClick={this.goToDesignerPorfolio} >
                                 <p>نمونه کارهای من</p>
                                 <img src={portfoilo} alt="تراکنش" />
                             </div>

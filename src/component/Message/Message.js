@@ -6,11 +6,11 @@ import plus from './../../assets/icons/plus.svg'
 
 
 import './style.css';
-import DesignMessageBox from '../designMessageBox/designMessageBox';
+import MessageBox from '../MessageBox/MessageBox';
 import NoMessageBox from '../noMessageBox/NoMessageBox';
 
 
-class DesignMessage extends Component {
+class Message extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -22,11 +22,11 @@ class DesignMessage extends Component {
 
     render() {
         return (
-            <div className="DesignMessage" >
-                <div className="DMX-title" >
+            <div className="Message" >
+                <div className="M-title" >
                     پیامها
                 </div>
-                <div className="DMX-body" >
+                <div className="M-body" >
                     <div className="CP-up" >
                         <div className="CP-search-box " >
                             <input type="text" />
@@ -38,9 +38,9 @@ class DesignMessage extends Component {
                         </div>
                     </div>
                     <div>
-                        <DesignMessageBox />
-                        <DesignMessageBox />
-                        <DesignMessageBox />
+                        <MessageBox />
+                        <MessageBox />
+                        <MessageBox />
                         <NoMessageBox />
                     </div>
                 </div>
@@ -49,6 +49,6 @@ class DesignMessage extends Component {
     }
 }
 
-export default DesignMessage;
+export default Message;
 
 

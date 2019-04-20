@@ -15,12 +15,22 @@ import CollaborateProjectScreen from './component/collaborateProject/collaborate
 import ProjectDetailScreen from './component/projectDetail/projectDetail';
 import CreateNewProjectScreen from './component/createNewProject/createNewProject';
 import NotificationScreen from './component/notification/notification';
-import DesignMessageScreen from './component/designMessage/designMessage';
-import DesignerMessageScreen from './component/designerMessage/designerMessage';
+import MessageScreen from './component/Message/Message';
+import ChatBoxScreen from './component/ChatBox/ChatBox';
 
 
 import DesignerProfileScreen from './component/Designer/DesignerProfile/DesignerProfile'
 import DesignerWalletScreen from './component/Designer/DesignerWallet/DesignerWallet'
+import DesignerSingleProjectScreen from './component/Designer/DesignerSingleProject/DesignerSingleProject'
+import DesignerCollaborateProjectScreen from './component/Designer/DesignerCollaborateProject/DesignerCollaborateProject'
+import DesignerProjectDetailScreen from './component/Designer/DesignerProjectDetail/DesignerProjectDetail'
+import DesignerMessageScreen from './component/Designer/DesignerMessage/DesignerMessage'
+import DesignerChatBoxScreen from './component/Designer/DesignerChatBox/DesignerChatBox'
+import DesignerPaymentsScreen from './component/Designer/DesignerPayments/DesignerPayments'
+import SubmitDesignScreen from './component/Designer/SubmitDesign/SubmitDesign'
+import DesignerPorfolioScreen from './component/Designer/DesignerPorfolio/DesignerPorfolio'
+import DesignerLogoesScreen from './component/Designer/DesignerLogoes/DesignerLogoes'
+
 
 
 
@@ -48,12 +58,23 @@ class RouterComponent extends Component {
                     <Route path="projectDetail" component={ProjectDetailScreen} />
                     <Route path="createNewProject" component={CreateNewProjectScreen} />
                     <Route path="notification" component={NotificationScreen} />
-                    <Route path="designMessage" component={DesignMessageScreen} />
-                    <Route path="designerMessage" component={DesignerMessageScreen} />
+                    <Route path="message" component={MessageScreen} />
+                    <Route path="chatBox" component={ChatBoxScreen} />
                     
 
                     <Route path="DesignerProfile" component={DesignerProfileScreen} />
                     <Route path="DesignerWallet" component={DesignerWalletScreen} />
+                    <Route path="DesignerSingleProject" component={DesignerSingleProjectScreen} />
+                    <Route path="DesignerCollaborateProject" component={DesignerCollaborateProjectScreen} />
+                    <Route path="DesignerProjectDetail" component={DesignerProjectDetailScreen} />
+                    <Route path="DesignerMessage" component={DesignerMessageScreen} />
+                    <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
+                    <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
+                    <Route path="SubmitDesigne" component={SubmitDesignScreen} /> 
+                    <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
+                    <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
+                    
+                    
 
                 </Route>
 
