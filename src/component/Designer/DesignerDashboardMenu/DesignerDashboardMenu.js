@@ -35,14 +35,20 @@ class DesignerDashboardMenu extends Component {
 
 
         let self = this
-        window.addEventListener('wheel', function (e) {
-            if (e.deltaY < 0) {
+        let lastScroll = 0;
+
+        window.onscroll = function () {
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
+
+            if (currentScroll > 0 && lastScroll <= currentScroll) {
+                lastScroll = currentScroll;
+                self.humberger.current.style.display = 'none'
+            } else {
+                lastScroll = currentScroll;
                 self.humberger.current.style.display = 'block'
             }
-            if (e.deltaY > 0) {
-                self.humberger.current.style.display = 'none'
-            }
-        })
+        };
+
     }
 
     componentDidMount = async () => {
