@@ -26,7 +26,9 @@ class DesignerPorfolio extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            designerLogoStatus:true
+        }
     }
 
 
@@ -63,12 +65,12 @@ class DesignerPorfolio extends Component {
                     </div>
 
                     <div className="DPO-select-logo" >
-                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} />
-                        <DesignerLogo />
-                        <DesignerLogo />
-                        <DesignerLogo />
-                        <DesignerLogo />
-                        <DesignerLogo />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
                     </div>
 
                     <div className="pagination" >

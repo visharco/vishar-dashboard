@@ -8,6 +8,7 @@
     transition: all .2s linear;
     cursor: pointer;
     flex-direction: row;
+    justify-content: space-between;
 }
 .DesignerMyMessageBox:hover{
     background-color: #efefef;

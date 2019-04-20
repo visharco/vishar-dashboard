@@ -10,6 +10,7 @@
     right: 0;
     top: 0;
     left: 0;
+    overflow: scroll;
 }
 .DVP-title{
     font-size: 25px;
@@ -18,12 +19,26 @@
     border-bottom: 2px solid #eee;
     direction: rtl;
     color: #bababa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+
 }
 .DVP-body{
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding:  0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: scroll;
 }
 
 .DVP-left{
@@ -255,3 +270,20 @@
     margin-bottom: 20px;
 
 }
+
+@media screen and (max-width: 700px){
+.DVP-body{
+    flex-direction: column-reverse;
+}
+.DVP-sliders , .DVP-left{
+    width: 100%;
+    padding: 100px 20px;
+}
+.DVP-sliders img{
+    width: 100%;
+}
+    
+}
+    
+
+    

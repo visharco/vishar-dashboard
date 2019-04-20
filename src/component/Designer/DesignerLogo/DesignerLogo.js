@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import comment from '../../../assets/icons/comment.svg'
 import like from '../../../assets/icons/like.svg'
+import tikgreen from '../../../assets/icons/tikgreen.svg'
 
 
-import designerLogo from '../../../assets/images/profilelogo.png';
-
+import logoo1 from './../../../assets/images/logoo1.png'
 
 import './style.css';
 
@@ -13,15 +13,24 @@ import './style.css';
 class DesignerLogo extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+          
+        }
     }
     render() {
         return (
             <div className="DesignerLogo"
-                style={{ backgroundImage: 'url(' + designerLogo + ')' }}
+                style={{ backgroundImage: 'url(' + logoo1 + ')' }}
                 onClick={this.props.goToDesigns}
             >
-            <div className="DesignerLogo-CL" >
+                <div className="DL-status" >
+                    {this.props.designerLogoStatus ?
+                        <img className="DL-verify" src={tikgreen} alt="تایید شد" /> :
+                        <div className="DL-pending" >pending ...</div>
+                    }
+                </div>
+
+                <div className="DesignerLogo-CL" >
                     <div className="DesignerLogo-II" >
                         <span>
                             لوگو
@@ -38,8 +47,9 @@ class DesignerLogo extends Component {
                         <span>23</span>
                         <img src={like} alt="لایک" />
                     </div>
+
                 </div>
-                
+
 
             </div>
         );
