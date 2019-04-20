@@ -21,12 +21,27 @@ import './style.css';
 
 
 class DashboardMenu extends Component {
+    humberger = React.createRef()
+
+
     constructor(props) {
         super(props);
         this.state = {
             openHumberger: false
         }
+
+
+        let self = this
+        window.addEventListener('wheel', function (e) {
+            if (e.deltaY < 0) {
+                self.humberger.current.style.display = 'block'
+            }
+            if (e.deltaY > 0) {
+                self.humberger.current.style.display = 'none'
+            }
+        })
     }
+
 
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);

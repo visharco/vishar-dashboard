@@ -25,6 +25,9 @@ class DesignerLogoes extends Component {
             designerName: 'امید آرمانی',
             designerLevel: '1'
         }
+
+
+
     }
 
     aboutmeText = React.createRef();
@@ -71,11 +74,12 @@ class DesignerLogoes extends Component {
         browserHistory.push('/designer-logo');
     }
 
+   
+
 
     render() {
         return (
             <div className="DesignerLogoes" >
-
                 <div className="DL-title" >
                     <DesignerLogoTitle />
                 </div>

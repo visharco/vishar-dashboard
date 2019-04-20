@@ -23,11 +23,26 @@ import './style.css';
 
 
 class DesignerDashboardMenu extends Component {
+
+    humberger = React.createRef()
+
+
     constructor(props) {
         super(props);
         this.state = {
             openHumberger: false
         }
+
+
+        let self = this
+        window.addEventListener('wheel', function (e) {
+            if (e.deltaY < 0) {
+                self.humberger.current.style.display = 'block'
+            }
+            if (e.deltaY > 0) {
+                self.humberger.current.style.display = 'none'
+            }
+        })
     }
 
     componentDidMount = async () => {
@@ -42,11 +57,11 @@ class DesignerDashboardMenu extends Component {
 
     handleScroll = () => {
 
-        if(window.innerWidth > 900){
-            if (window.scrollY >= 100 ) {
+        if (window.innerWidth > 900) {
+            if (window.scrollY >= 100) {
                 this.DesignerDashboardMenu.current.style.top = `0px`;
                 this.DesignerDashboardMenu.current.style.height = `100vh`;
-            } else if(window.scrollY < 100) {
+            } else if (window.scrollY < 100) {
                 this.DesignerDashboardMenu.current.style.top = `80px`;
                 this.DesignerDashboardMenu.current.style.height = `calc(100vh - 80px)`;
             }
@@ -82,8 +97,8 @@ class DesignerDashboardMenu extends Component {
 
     menuTablet = React.createRef()
 
-    openCloseHumbergerMenu = () =>{
-        if(window.innerWidth < 900){
+    openCloseHumbergerMenu = () => {
+        if (window.innerWidth < 900) {
 
             this.setState((prevState) => {
                 return {
@@ -100,7 +115,7 @@ class DesignerDashboardMenu extends Component {
                 this.DesignerDashboardMenu.current.style.width = 'inherit'
             }
         }
-       
+
     }
 
 
@@ -119,7 +134,7 @@ class DesignerDashboardMenu extends Component {
         }
         return (
             <div className="DesignerDashboardMenu" ref={this.DesignerDashboardMenu} onClick={this.openCloseHumbergerMenu}>
-                <div className="hamburger"  ref={this.humberger}>
+                <div className="hamburger" ref={this.humberger}>
                     <span className={line1.join(' ')}></span>
                     <span className={line2.join(' ')} ></span>
                     <span className={line3.join(' ')} ></span>
