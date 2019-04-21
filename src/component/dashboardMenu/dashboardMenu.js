@@ -21,12 +21,32 @@ import './style.css';
 
 
 class DashboardMenu extends Component {
+    humberger = React.createRef()
+
+
     constructor(props) {
         super(props);
         this.state = {
             openHumberger: false
         }
+
+
+        let self = this
+        let lastScroll = 0;
+
+        window.onscroll = function () {
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
+
+            if (currentScroll > 0 && lastScroll <= currentScroll) {
+                lastScroll = currentScroll;
+                self.humberger.current.style.display = 'none'
+            } else {
+                lastScroll = currentScroll;
+                self.humberger.current.style.display = 'block'
+            }
+        };
     }
+
 
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
