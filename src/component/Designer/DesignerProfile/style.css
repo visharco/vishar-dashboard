@@ -70,7 +70,10 @@ padding: 50px 0px;
 .DPE-desc-title:nth-child(2){
     background-color: #f1f1f1;
 }
-
+.DPEA-desc-text{
+    width: 100%;
+    margin-top: 40px;
+}
 
 .DPE-desc-title{
     font-size: 16px;
@@ -139,6 +142,10 @@ font-size: 15px;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-top: 40px;
+}
+.sample-card{
+   color: #D1D1D1;;
 }
 
 .DPE-cancel{
@@ -153,6 +160,7 @@ font-size: 15px;
     height: 40px;
     line-height: 40px;
     margin-bottom: 20px;
+    width: 50%;
 }
 .DPE-cancel:hover{
     color: #aaa;
@@ -161,10 +169,11 @@ font-size: 15px;
 }
 
 .DPE-btns .button-box{
-    margin-bottom: 20px;    
+    margin-bottom: 20px; 
+    width: 50%;   
 }
 .DPE-btns .button-style{
-    width: 200px;
+    width: 100%;
 }
 
 
@@ -202,6 +211,12 @@ width: 50%;
  } 
  .PU-img{
      margin: 20px 0px;
+ }
+ .DPE-profile{
+     flex-direction: column-reverse;
+ }
+ .DPE-desc-title{
+     font-size: 13px;
  }
 }
 
