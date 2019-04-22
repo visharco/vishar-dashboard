@@ -26,12 +26,19 @@
     width: 100%;
     justify-content: space-between;
     padding:  0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    overflow: scroll;
 }
 
 .VP-left{
     width: 400px;
     background-color: #f8f8f8;
-    padding: 50px 20px;
+    padding: 100px 20px;
     position: relative;
 }
 
@@ -257,4 +264,16 @@
     width: 80%;
     margin-bottom: 20px;
 
+}
+
+
+
+@media screen and (max-width: 700px){
+    .VP-body{
+        flex-direction: column-reverse;
+    }
+    .VP-sliders , .VP-left{
+        width: 100%;
+        padding: 100px 20px;
+    }
 }

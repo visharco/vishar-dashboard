@@ -9,7 +9,6 @@ import { browserHistory } from 'react-router';
 import logo from './../../assets/images/logo.png'
 import envelope from '../../assets/icons/envelope.svg';
 import bell from '../../assets/icons/bell.svg';
-import user from '../../assets/icons/user.svg';
 
 //
 //compoents
@@ -48,12 +47,6 @@ class HeaderComponent extends Component {
                         </div>
 
                         <div className="user-menu" >
-                            {/* <div className="user-welcome" >
-                                <div className="user-text" >خوش اومدی , دانیال</div>
-                                <div className="user-welcome-img">
-                                    <img src={user} alt="کاربر" />
-                                </div>
-                            </div> */}
                             <div className="header-logo tabletShow "  >
                                 <Link to="/" className="menu-login" >
                                     <img src={logo} alt="لوگو" />

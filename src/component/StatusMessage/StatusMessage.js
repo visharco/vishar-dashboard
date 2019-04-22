@@ -47,10 +47,18 @@ export default StatusMessage;
 
 ////////////////////////////
 
-{/* <StatusMessage 
+/* <StatusMessage 
     bgColor=" rgba(242, 201, 76, 0.7);"
     color="#A88823"
-    text="" /> */}
+    text="" />
+    
+    green 
+    #6FCF97  bgcolor
+    #308051  color
+
+    red
+     bgcolor #D15353
+    */
 
 
 

@@ -45,7 +45,7 @@ import React, { Component } from 'react';
 
 
  
-// import DashboardMenu from './component/dashboardMenu/dashboardMenu';
+import DashboardMenu from './component/dashboardMenu/dashboardMenu';
 import HeaderComponent from './component/header/header';
 import DesignerDashboardMenu from './component/Designer/DesignerDashboardMenu/DesignerDashboardMenu';
 

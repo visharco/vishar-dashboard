@@ -7,7 +7,6 @@ import { browserHistory } from 'react-router';
 
 
 import search from './../../../assets/icons/search.svg'
-import plus from './../../../assets/icons/plus.svg'
 
 //
 //compoents
@@ -81,7 +80,7 @@ class DesignerPorfolio extends Component {
                         <p className="pagination-number">5</p>
                     </div>
 
-                    {/* <NoPortfilo /> */}
+                    <NoPortfilo />
 
                 </div>
             </div>

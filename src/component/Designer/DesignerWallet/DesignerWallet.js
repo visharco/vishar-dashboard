@@ -44,30 +44,32 @@ class DesignerWallet extends Component {
              
                 <div className="DW-table" >
                     <table  >
-                        <tr className="DW-table-title">
-                            <th className="DWT-child1" >ردیف</th>
-                            <th className="DWT-child" >قیمت</th>
-                            <th className="DWT-child" >تاریخ</th>
-                            <th className="DWT-child" >توضیحات</th>
-                        </tr>
-                        <tr className="DW-table-body">
-                            <td className="DWT-child1" >1</td>
-                            <td className="DWT-child" >100,000 ت</td>
-                            <td className="DWT-child" >10/10/1398 10:20 PM</td>
-                            <td className="DWT-child" >طراحی لوگوی محصول </td>
-                        </tr>
-                        <tr className="DW-table-body">
-                            <td className="DWT-child1" >2</td>
-                            <td className="DWT-child" >100,000 ت</td>
-                            <td className="DWT-child" >10/10/1398 10:20 PM</td>
-                            <td className="DWT-child" >طراحی لوگوی محصول </td>
-                        </tr>
-                        <tr className="DW-table-body">
-                            <td className="DWT-child1" >3</td>
-                            <td className="DWT-child" >100,000 ت</td>
-                            <td className="DWT-child" >10/10/1398 10:20 PM</td>
-                            <td className="DWT-child" >طراحی لوگوی محصول </td>
-                        </tr>
+                        <tbody>
+                            <tr className="DW-table-title">
+                                <th className="DWT-child1" >ردیف</th>
+                                <th className="DWT-child" >قیمت</th>
+                                <th className="DWT-child" >تاریخ</th>
+                                <th className="DWT-child" >توضیحات</th>
+                            </tr>
+                            <tr className="DW-table-body">
+                                <td className="DWT-child1" >1</td>
+                                <td className="DWT-child" >100,000 ت</td>
+                                <td className="DWT-child" >10/10/1398 10:20 PM</td>
+                                <td className="DWT-child" >طراحی لوگوی محصول </td>
+                            </tr>
+                            <tr className="DW-table-body">
+                                <td className="DWT-child1" >2</td>
+                                <td className="DWT-child" >100,000 ت</td>
+                                <td className="DWT-child" >10/10/1398 10:20 PM</td>
+                                <td className="DWT-child" >طراحی لوگوی محصول </td>
+                            </tr>
+                            <tr className="DW-table-body">
+                                <td className="DWT-child1" >3</td>
+                                <td className="DWT-child" >100,000 ت</td>
+                                <td className="DWT-child" >10/10/1398 10:20 PM</td>
+                                <td className="DWT-child" >طراحی لوگوی محصول </td>
+                            </tr>
+                        </tbody>
                     </table>
 
                 </div>

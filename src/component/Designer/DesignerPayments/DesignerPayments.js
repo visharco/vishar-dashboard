@@ -31,6 +31,8 @@ class DesignerPayments extends Component {
                 
                 <div className="DP-box" >
                     <table  >
+                        <tbody>
+                            
                         <tr className="DPB-title">
                             <th className="title-child1" >ردیف</th>
                             <th className="title-child" >قیمت</th>
@@ -59,6 +61,7 @@ class DesignerPayments extends Component {
                             <td className="body-child paymentSuccess"  >موفق</td>
                             <td className="body-child" >برای پروژه لوگو</td>
                         </tr>
+                        </tbody>
                        
                     </table>
                 </div>
