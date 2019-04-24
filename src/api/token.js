@@ -4,8 +4,6 @@ Get TOken Component from localStorg
 
 */
 
-
-// console.log(localStorage.getItem('authorization'))
  
 function getToken(token){
     if(token !== null)

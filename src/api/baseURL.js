@@ -17,3 +17,19 @@
 
      baseURL
     };
+
+
+
+/* How can Use It. ---------------->
+
+
+import base from '../../../../api/baseURL';
+
+console.log(base);  // http:api.example.com
+
+
+
+
+
+
+*/
