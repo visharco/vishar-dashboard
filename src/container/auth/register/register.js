@@ -24,11 +24,19 @@ class RegisterComponent extends Component {
     }
 
     changedHandler = (e) => {
-        // console.log(e.target.name);
-        // console.log(e.target.value);
+        console.log(e.target.name);
+        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    changedHandlerRadio = (e) => {
+        console.log(e.target.id);
+        console.log(e.target.value);
+        // this.setState({
+        //     [e.target.name]: e.target.value
+        // })
     }
 
     
@@ -69,13 +77,13 @@ class RegisterComponent extends Component {
                                 <div className="R-checkbox" >
 
                                     <p>
-                                        <input type="radio" id="design" name="radio-group" defaultChecked />
+                                        <input type="radio" id="customer" name="radio-group" defaultChecked onChange={this.changedHandlerRadio} />
                                         <label htmlFor="design">
                                             <span>من نیاز به یک طرح دارم</span>
                                         </label>
                                     </p>
                                     <p>
-                                        <input type="radio" id="designer" name="radio-group" />
+                                        <input type="radio" id="designer" name="radio-group" onChange={this.changedHandlerRadio} />
                                         <label htmlFor="designer">
                                             <span>من یک طراحم</span>
                                         </label>
