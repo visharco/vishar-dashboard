@@ -25,7 +25,33 @@ class RegisterComponent extends Component {
     }
 
     _onClickRegister = () =>{
-        alert(this.state.name)
+       // alert(this.state.name)
+       let validation = false;
+
+       const data = {
+           "name": this.state.name,
+           "email": this.state.email,
+           "password": this.state.password,
+           "password_confirmation": this.state.password,
+           "type": this.state.userType
+       };
+
+       // chek simple validation // TODO later to be control correct
+       if(this.state.name === '' || this.state.name === null || this.state.name === undefined)
+            validation = true
+       if(this.state.email === '' || this.state.email === null || this.state.email === undefined)
+            validation = true
+       if(this.state.password === '' || this.state.password === null || this.state.password === undefined)
+            validation = true
+       if(this.state.userType === '' || this.state.userType === null || this.state.userType === undefined)
+            validation = true
+
+       if(validation=== false){
+        const res = PostData(data, 'auth/email/register');
+        console.log(res)
+        this.goToRegister();
+       }
+ 
     }
 
     changedHandler = (e) => {
@@ -73,7 +99,7 @@ class RegisterComponent extends Component {
                                     error={this.state.forgetEmailError}
                                 />
                                 <Input
-                                    type={'text'}
+                                    type={'password'}
                                     name={'password'}
                                     placeholder={'رمز عبور'}
                                     changed={this.changedHandler}
@@ -82,7 +108,7 @@ class RegisterComponent extends Component {
                                 <div className="R-checkbox" >
 
                                     <p>
-                                        <input type="radio" id="customer" name="radio-group" defaultChecked onChange={this.changedHandlerRadio} />
+                                        <input type="radio" id="customer" name="radio-group"   onChange={this.changedHandlerRadio} />
                                         <label htmlFor="customer">
                                             <span>من نیاز به یک طرح دارم</span>
                                         </label>
