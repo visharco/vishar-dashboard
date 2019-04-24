@@ -16,8 +16,22 @@ class RegisterComponent extends Component {
     }
 
     goToRegister = () => {
-        browserHistory.push('/login');
+         browserHistory.push('/login');
     }
+
+    _onClickRegister = () =>{
+        alert(this.state.name)
+    }
+
+    changedHandler = (e) => {
+        // console.log(e.target.name);
+        // console.log(e.target.value);
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    
     render() {
         return (
             <div className="registerLogin" >
@@ -40,8 +54,8 @@ class RegisterComponent extends Component {
                                 />
                                 <Input
                                     type={'text'}
-                                    name={'emailnumber'}
-                                    placeholder={'ایمیل / شماره همراه'}
+                                    name={'email'}
+                                    placeholder={'ایمیل '}
                                     changed={this.changedHandler}
                                     error={this.state.forgetEmailError}
                                 />
@@ -75,10 +89,10 @@ class RegisterComponent extends Component {
                             <div className="RL-button" >
                                 <Button
                                     isLoading={this.state.isLoading}
-                                    title={'ورود'}
+                                    title={'ثبت نام'}
                                     bgcolor={'#0080FF'}
                                     hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                                    click={this.callSubmit}
+                                    click={this._onClickRegister}
                                     borderRadius="2px"
                                     color="#fff"
                                 />
