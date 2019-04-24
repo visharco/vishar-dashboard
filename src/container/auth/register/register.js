@@ -4,8 +4,13 @@ import { browserHistory } from 'react-router';
 import Cover from '../../../component/cover/cover';
 import Input from '../../../component/common/input/Input';
 import Button from '../../../component/common/Button/Button';
-
 import logo from '../../../assets/images/logo.png'
+
+//
+// controler
+//
+import PostData from '../../../controler/postToApi';
+
 
 import './style.css'
 
@@ -24,19 +29,18 @@ class RegisterComponent extends Component {
     }
 
     changedHandler = (e) => {
-        console.log(e.target.name);
-        console.log(e.target.value);
+        //console.log(e.target.name);
+        //console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
     changedHandlerRadio = (e) => {
-        console.log(e.target.id);
-        console.log(e.target.value);
-        // this.setState({
-        //     [e.target.name]: e.target.value
-        // })
+        //console.log(e.target.id); 
+        this.setState({
+            userType: e.target.id
+        })
     }
 
     
@@ -60,6 +64,7 @@ class RegisterComponent extends Component {
                                     changed={this.changedHandler}
                                     error={this.state.forgetEmailError}
                                 />
+                                <span>لطفا نام و نام خانودادگی خود را به صورت فارسی وارد نمایید</span>
                                 <Input
                                     type={'text'}
                                     name={'email'}
@@ -78,7 +83,7 @@ class RegisterComponent extends Component {
 
                                     <p>
                                         <input type="radio" id="customer" name="radio-group" defaultChecked onChange={this.changedHandlerRadio} />
-                                        <label htmlFor="design">
+                                        <label htmlFor="customer">
                                             <span>من نیاز به یک طرح دارم</span>
                                         </label>
                                     </p>
