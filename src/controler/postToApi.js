@@ -19,7 +19,7 @@ function postApi(data,key){
             "Content-Type": "application/json",
             "Accept": "application/json",
             "agent" : "web" ,
-            "Authorization" : Token
+            "Authorization" : Token  
         },
         redirect: "follow", 
         referrer: "no-referrer", 
@@ -31,14 +31,10 @@ function postApi(data,key){
       return Promise.all([statusCode, data])
     })
     .then(([res, data]) => {
-      console.log(res, data) 
+      //console.log(res, data) 
       return ({'status':res, 'data':data.data , 'error':data.error, 'isLoading':false})
     })
-
-     
-    
-            
-    // }
+ 
 }
  
 
