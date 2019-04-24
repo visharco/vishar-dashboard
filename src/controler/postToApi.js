@@ -43,7 +43,17 @@ export default postApi;
 
 
 
-/*
+/* how can use it ------------------->
+
+import PostData  from './controler/postToApi';
+
+
+const res = PostData(data,'api url');
+
+console.log(res)  // data, error,status
+console.log(res.status) // 200 means success
+console.log(res.error) // show the error from server
+console.log(res.data) // show the data from server
 
 
 */
