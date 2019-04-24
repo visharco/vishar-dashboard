@@ -18,3 +18,16 @@ const Token = getToken(localStorage.getItem('authorization'))
 
 
 export default Token;
+
+
+/* How can use it=====>
+
+import Token from '../../../.....';
+
+
+console.log(Token);
+
+
+
+
+*/
