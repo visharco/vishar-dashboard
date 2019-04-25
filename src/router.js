@@ -50,21 +50,21 @@ class RouterComponent extends Component {
                 <Route path="forgetPassword" component={ForgetPasswordScreen} />
 
                 <Route path="/" component={RootScreen} >
-                    <IndexRoute component={DashboardComponent} />
+                    {/* <IndexRoute component={DashboardComponent} /> */}
                    {Token ? 
                     <Route path="dashboard" component={DashboardComponent}>
-                    <Route path="dashboard" component={DashboardComponent} />
-                    <Route path="register" component={RegisterScreen} />
-                    <Route path="profile" component={ProfileScreen} />
-                    <Route path="payments" component={PaymentsScreen} />
-                    <Route path="singleProject" component={SingleProjectScreen} />
-                    <Route path="collaborateProject" component={CollaborateProjectScreen} />
-                    <Route path="projectDetail" component={ProjectDetailScreen} />
-                    <Route path="createNewProject" component={CreateNewProjectScreen} />
-                    <Route path="notification" component={NotificationScreen} />
-                    <Route path="message" component={MessageScreen} />
-                    <Route path="chatBox" component={ChatBoxScreen} />
-                </Route> : '' // TODO Not Found Component
+                        <Route path="dashboard" component={DashboardComponent} />
+                        <Route path="register" component={RegisterScreen} />
+                        <Route path="profile" component={ProfileScreen} />
+                        <Route path="payments" component={PaymentsScreen} />
+                        <Route path="singleProject" component={SingleProjectScreen} />
+                        <Route path="collaborateProject" component={CollaborateProjectScreen} />
+                        <Route path="projectDetail" component={ProjectDetailScreen} />
+                        <Route path="createNewProject" component={CreateNewProjectScreen} />
+                        <Route path="notification" component={NotificationScreen} />
+                        <Route path="message" component={MessageScreen} />
+                        <Route path="chatBox" component={ChatBoxScreen} />
+                    </Route> : '' // TODO Not Found Component
                 }
                     
 
