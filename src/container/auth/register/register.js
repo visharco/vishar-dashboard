@@ -24,7 +24,7 @@ class RegisterComponent extends Component {
          browserHistory.push('/login');
     }
 
-    _onClickRegister = () =>{
+    _onClickRegister = async() =>{
        // alert(this.state.name)
        let validation = false;
 
@@ -47,7 +47,7 @@ class RegisterComponent extends Component {
             validation = true
 
        if(validation=== false){
-        const res = PostData(data, 'auth/email/register');
+        const res = await PostData(data, 'auth/email/register');
         console.log(res)
         this.goToRegister();
        }
