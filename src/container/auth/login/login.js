@@ -36,15 +36,18 @@ class LoginComponent extends Component {
             "password":this.state.password
         }
 
-        console.log(data)
+        //console.log(data)
 
         const res = await PostData(data,'auth/email/login',null)
         console.log(res)
 
         //
         // when the login infromation is ok, go to dashboard component.
-        if(res.status === 200)
+        if(res.status === 200){
+            localStorage.setItem('@authorization_vishar',res.data.token);
             browserHistory.push('/dashboard');
+        }
+            
     }
 
     changedHandler = (e) => { 

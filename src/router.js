@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
+import Token from './api/token';
+
 
 // import RootComponent from './root';
 import RootScreen from './root';
@@ -49,6 +51,8 @@ class RouterComponent extends Component {
 
                 <Route path="/" component={RootScreen} >
                     <IndexRoute component={DashboardComponent} />
+                   {Token ? 
+                    <Route path="dashboard" component={DashboardComponent}>
                     <Route path="dashboard" component={DashboardComponent} />
                     <Route path="register" component={RegisterScreen} />
                     <Route path="profile" component={ProfileScreen} />
@@ -60,6 +64,8 @@ class RouterComponent extends Component {
                     <Route path="notification" component={NotificationScreen} />
                     <Route path="message" component={MessageScreen} />
                     <Route path="chatBox" component={ChatBoxScreen} />
+                </Route> : '' // TODO Not Found Component
+                }
                     
 
                     <Route path="DesignerProfile" component={DesignerProfileScreen} />
