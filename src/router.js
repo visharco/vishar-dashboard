@@ -6,6 +6,7 @@ import Token from './api/token';
 
 // import RootComponent from './root';
 import RootScreen from './root';
+import RootLooginScreen from './rootLogin';
 import LoginScreen from './container/auth/login/login';
 import RegisterScreen from './container/auth/register/register';
 import ForgetPasswordScreen from './container/auth/forgetPassword/forgetPassword';
@@ -45,43 +46,55 @@ class RouterComponent extends Component {
         return (
 
             <Router history={browserHistory}>
-                <Route path="/login" component={LoginScreen} ></Route>
+                {/* <Route path="/login" component={LoginScreen} ></Route>
                 <Route path="/register" component={RegisterScreen} ></Route>
-                <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
+                <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route> */}
 
-                <Route path="/" component={RootScreen} >
+                {Token ? 
+                             <Route path="/" component={RootScreen} >
 
-                        <IndexRoute component={DashboardComponent} />
-
-                        <Route path="dashboard" component={DashboardComponent} />
-                        <Route path="register" component={RegisterScreen} />
-                        <Route path="profile" component={ProfileScreen} />
-                        <Route path="payments" component={PaymentsScreen} />
-                        <Route path="singleProject" component={SingleProjectScreen} />
-                        <Route path="collaborateProject" component={CollaborateProjectScreen} />
-                        <Route path="projectDetail" component={ProjectDetailScreen} />
-                        <Route path="createNewProject" component={CreateNewProjectScreen} />
-                        <Route path="notification" component={NotificationScreen} />
-                        <Route path="message" component={MessageScreen} />
-                        <Route path="chatBox" component={ChatBoxScreen} />
-                 
-                    
-
-                        <Route path="DesignerProfile" component={DesignerProfileScreen} />
-                        <Route path="DesignerWallet" component={DesignerWalletScreen} />
-                        <Route path="DesignerSingleProject" component={DesignerSingleProjectScreen} />
-                        <Route path="DesignerCollaborateProject" component={DesignerCollaborateProjectScreen} />
-                        <Route path="DesignerProjectDetail" component={DesignerProjectDetailScreen} />
-                        <Route path="DesignerMessage" component={DesignerMessageScreen} />
-                        <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
-                        <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
-                        <Route path="SubmitDesigne" component={SubmitDesignScreen} /> 
-                        <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
-                        <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
+                                <IndexRoute component={DashboardComponent} />
+        
+                                <Route path="dashboard" component={DashboardComponent} />
+                                <Route path="register" component={RegisterScreen} />
+                                <Route path="profile" component={ProfileScreen} />
+                                <Route path="payments" component={PaymentsScreen} />
+                                <Route path="singleProject" component={SingleProjectScreen} />
+                                <Route path="collaborateProject" component={CollaborateProjectScreen} />
+                                <Route path="projectDetail" component={ProjectDetailScreen} />
+                                <Route path="createNewProject" component={CreateNewProjectScreen} />
+                                <Route path="notification" component={NotificationScreen} />
+                                <Route path="message" component={MessageScreen} />
+                                <Route path="chatBox" component={ChatBoxScreen} />
                         
-                        
-
-                </Route>
+                            
+        
+                                <Route path="DesignerProfile" component={DesignerProfileScreen} />
+                                <Route path="DesignerWallet" component={DesignerWalletScreen} />
+                                <Route path="DesignerSingleProject" component={DesignerSingleProjectScreen} />
+                                <Route path="DesignerCollaborateProject" component={DesignerCollaborateProjectScreen} />
+                                <Route path="DesignerProjectDetail" component={DesignerProjectDetailScreen} />
+                                <Route path="DesignerMessage" component={DesignerMessageScreen} />
+                                <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
+                                <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
+                                <Route path="SubmitDesigne" component={SubmitDesignScreen} /> 
+                                <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
+                                <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
+                                
+                                
+     
+                            </Route> : 
+                                       
+                                     
+                                <Route path="/" component={RootLooginScreen} >
+                                        <Route path="/login" component={LoginScreen} ></Route>
+                                        <Route path="/register" component={RegisterScreen} ></Route>
+                                        <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
+                                </Route>
+               
+                                      
+                                
+                                }
 
             </Router>
         );

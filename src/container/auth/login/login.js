@@ -51,6 +51,8 @@ class LoginComponent extends Component {
         if(res.status === 200){
              localStorage.setItem('@authorization_vishar',res.data.token);
             browserHistory.push('/dashboard');
+            window.location.reload();
+
         }
         this.setState({
             isLoading:false
