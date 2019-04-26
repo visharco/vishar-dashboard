@@ -47,12 +47,12 @@ class RouterComponent extends Component {
             <Router history={browserHistory}>
                 <Route path="/login" component={LoginScreen} ></Route>
                 <Route path="/register" component={RegisterScreen} ></Route>
-                <Route path="forgetPassword" component={ForgetPasswordScreen} />
+                <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
 
                 <Route path="/" component={RootScreen} >
-                    {/* <IndexRoute component={DashboardComponent} /> */}
-                   {Token ? 
-                    <Route path="dashboard" component={DashboardComponent}>
+
+                        <IndexRoute component={DashboardComponent} />
+
                         <Route path="dashboard" component={DashboardComponent} />
                         <Route path="register" component={RegisterScreen} />
                         <Route path="profile" component={ProfileScreen} />
@@ -64,23 +64,22 @@ class RouterComponent extends Component {
                         <Route path="notification" component={NotificationScreen} />
                         <Route path="message" component={MessageScreen} />
                         <Route path="chatBox" component={ChatBoxScreen} />
-                    </Route> : '' // TODO Not Found Component
-                }
+                 
                     
 
-                    <Route path="DesignerProfile" component={DesignerProfileScreen} />
-                    <Route path="DesignerWallet" component={DesignerWalletScreen} />
-                    <Route path="DesignerSingleProject" component={DesignerSingleProjectScreen} />
-                    <Route path="DesignerCollaborateProject" component={DesignerCollaborateProjectScreen} />
-                    <Route path="DesignerProjectDetail" component={DesignerProjectDetailScreen} />
-                    <Route path="DesignerMessage" component={DesignerMessageScreen} />
-                    <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
-                    <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
-                    <Route path="SubmitDesigne" component={SubmitDesignScreen} /> 
-                    <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
-                    <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
-                    
-                    
+                        <Route path="DesignerProfile" component={DesignerProfileScreen} />
+                        <Route path="DesignerWallet" component={DesignerWalletScreen} />
+                        <Route path="DesignerSingleProject" component={DesignerSingleProjectScreen} />
+                        <Route path="DesignerCollaborateProject" component={DesignerCollaborateProjectScreen} />
+                        <Route path="DesignerProjectDetail" component={DesignerProjectDetailScreen} />
+                        <Route path="DesignerMessage" component={DesignerMessageScreen} />
+                        <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
+                        <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
+                        <Route path="SubmitDesigne" component={SubmitDesignScreen} /> 
+                        <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
+                        <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
+                        
+                        
 
                 </Route>
 

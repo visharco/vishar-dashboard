@@ -171,7 +171,7 @@ class DashboardMenu extends Component {
                         </div>
                     </div>
 
-                    <div className="logout" >
+                    <div className="logout"   >
                         <p>
                             <span>خروج</span>
                             <img src={logout} alt="خروج" />

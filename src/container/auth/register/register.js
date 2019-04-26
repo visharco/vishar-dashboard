@@ -25,6 +25,10 @@ class RegisterComponent extends Component {
     }
 
     _onClickRegister = async() =>{
+        this.setState({
+            isLoading:true
+        })
+
        // alert(this.state.name)
        let validation = false;
 
@@ -48,9 +52,14 @@ class RegisterComponent extends Component {
 
        if(validation=== false){
         const res = await PostData(data, 'auth/email/register');
-        console.log(res)
-        this.goToRegister();
+        console.log(res) 
+        if(res.status === 200)
+            this.goToRegister();
        }
+
+       this.setState({
+            isLoading:false
+        })
  
     }
 

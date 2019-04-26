@@ -30,6 +30,9 @@ class LoginComponent extends Component {
     }
 
     _callLogin = async() => {
+        this.setState({
+            isLoading:true
+        })
 
         const data = {
             "email":this.state.email,
@@ -43,10 +46,15 @@ class LoginComponent extends Component {
 
         //
         // when the login infromation is ok, go to dashboard component.
+        //
+        
         if(res.status === 200){
-            localStorage.setItem('@authorization_vishar',res.data.token);
+             localStorage.setItem('@authorization_vishar',res.data.token);
             browserHistory.push('/dashboard');
         }
+        this.setState({
+            isLoading:false
+        })
             
     }
 
@@ -81,7 +89,7 @@ class LoginComponent extends Component {
                                     error={this.state.forgetEmailError}
                                 />
                                 <Input
-                                    type={'text'}
+                                    type={'password'}
                                     name={'password'}
                                     placeholder={'رمز عبور'}
                                     changed={this.changedHandler}
