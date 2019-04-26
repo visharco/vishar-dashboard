@@ -54,6 +54,9 @@ class Profile extends Component {
     }
 
     _CallSave = async()=>{
+        this.setState({
+            isLoading:true
+        })
 
         const data ={
             "name"  : this.state.name, 
@@ -63,8 +66,11 @@ class Profile extends Component {
         }
 
         const res = await PostToApi(data, 'profile/update');
-        console.log(res)
-        // profile/update
+        console.log(res);
+        this.setState({
+            isLoading:false
+        })
+
 
     }
 
