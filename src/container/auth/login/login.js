@@ -10,6 +10,11 @@ import logo from '../../../assets/images/logo.png'
 
 import './style.css'
 
+//
+// controler ------------->
+
+import PostData from '../../../controler/postToApi';
+
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -24,9 +29,44 @@ class LoginComponent extends Component {
 
     }
 
-    _callLogin = () => {
-        browserHistory.push('/dashboard');
+    _callLogin = async() => {
+        this.setState({
+            isLoading:true
+        })
+
+        const data = {
+            "email":this.state.email,
+            "password":this.state.password
+        }
+
+        //console.log(data)
+
+        const res = await PostData(data,'auth/email/login',null)
+        console.log(res)
+
+        //
+        // when the login infromation is ok, go to dashboard component.
+        //
+        
+        if(res.status === 200){
+             localStorage.setItem('@authorization_vishar',res.data.token);
+            browserHistory.push('/dashboard');
+            window.location.reload();
+
+        }
+        this.setState({
+            isLoading:false
+        })
+            
     }
+
+    changedHandler = (e) => { 
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+
 
     
     render() {
@@ -45,13 +85,13 @@ class LoginComponent extends Component {
                             <div className="RL-inputs" >
                                 <Input
                                     type={'text'}
-                                    name={'emailnumber'}
+                                    name={'email'}
                                     placeholder={'ایمیل / شماره همراه'}
                                     changed={this.changedHandler}
                                     error={this.state.forgetEmailError}
                                 />
                                 <Input
-                                    type={'text'}
+                                    type={'password'}
                                     name={'password'}
                                     placeholder={'رمز عبور'}
                                     changed={this.changedHandler}

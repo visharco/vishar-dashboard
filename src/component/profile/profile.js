@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 
 //
-//
+// Internal Component
 //
 
-import usergrey from '../../assets/icons/usergrey.svg';
 import Input from '../../component/common/input/Input';
 import Button from '../../component/common/Button/Button';
 
 //
-//compoents
+// ّIcons -------------------->
 //
+import usergrey from '../../assets/icons/usergrey.svg';
+
+//
+// Controler-------------------->
+//
+
+import GetToApi from '../../controler/getToApi';
+import PostToApi from '../../controler/postToApi';
+import Token from '../../api/token';
+import LoadingComponent from '../loading/loadingComponent';
+
 
 
 import './style.css';
@@ -20,12 +30,58 @@ class Profile extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            isLoadingGetData:true
+        }
     }
+
+
+    changedHandler = (e) => { 
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    componentDidMount = async()=> {
+        const res = await GetToApi('profile/init');
+        console.log(res)
+        this.setState({
+            name : res.data.name,
+            email : res.data.email,
+            phone : res.data.phone,
+            tell : res.data.tell,
+            city : res.data.city,
+            isLoadingGetData:false
+        }) 
+    }
+
+    _CallSave = async()=>{
+        this.setState({
+            isLoading:true
+        })
+
+        const data ={
+            "name"  : this.state.name, 
+            "phone" : this.state.phone,
+            "tell"  : this.state.tell,
+            "city"  : this.state.city
+        }
+
+        const res = await PostToApi(data, 'profile/update');
+        console.log(res);
+        this.setState({
+            isLoading:false
+        })
+
+
+    }
+
+
 
     render() {
         return (
             <div className="Profile">
+           { this.state.isLoadingGetData ?  <LoadingComponent /> : ''}
                 <div className="PE-title" >
                     پروفایل
                 </div>
@@ -38,6 +94,7 @@ class Profile extends Component {
                             placeholder={'نام و نام خانوادگی'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
+                            val={this.state.name}
                         />
                         <Input
                             type={'text'}
@@ -45,20 +102,24 @@ class Profile extends Component {
                             placeholder={'ایمیل'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
-                        />
-                        <Input
-                            type={'text'}
-                            name={'mobile'}
-                            placeholder={' موبایل'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
+                            val={this.state.email}
+                            readonly={true} 
                         />
                         <Input
                             type={'text'}
                             name={'phone'}
+                            placeholder={' تلفن همراه'}
+                            changed={this.changedHandler}
+                            error={this.state.forgetEmailError}
+                            val={this.state.phone}
+                        />
+                        <Input
+                            type={'text'}
+                            name={'tell'}
                             placeholder={'تلفن'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
+                            val={this.state.tell}
                         />
                         <Input
                             type={'text'}
@@ -66,7 +127,10 @@ class Profile extends Component {
                             placeholder={'شهر / مکان'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
-                        />
+                            val={this.state.city}
+                        /> 
+
+                        
                         <div className="PE-btns" >
                             <div className="PE-cancel" >
                                 انصراف
@@ -76,7 +140,7 @@ class Profile extends Component {
                                 title={'ذخیره'}
                                 bgcolor={'#0080FF'}
                                 hoverbgcolor={'#rgb(160, 160, 160)'}
-                                click={this.callSubmit}
+                                click={this._CallSave}
                                 borderRadius="30px"
                                 color="#fff"
                             />

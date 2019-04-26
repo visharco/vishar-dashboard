@@ -113,6 +113,19 @@ class DashboardMenu extends Component {
        
     }
 
+    //
+    // Log Out Press
+    //
+
+    _logOut = () => {
+
+        localStorage.removeItem('@authorization_vishar');   // remove local storage.
+        browserHistory.push('/login');                      // Navigate to login page.
+        window.location.reload();                           // Refresh Component, to refresh rout.
+
+
+        
+    }
 
     render() {
         let line1 = ['line line1']
@@ -171,7 +184,7 @@ class DashboardMenu extends Component {
                         </div>
                     </div>
 
-                    <div className="logout" >
+                    <div className="logout"  onClick={this._logOut}  >
                         <p>
                             <span>خروج</span>
                             <img src={logout} alt="خروج" />

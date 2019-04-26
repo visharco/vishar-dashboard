@@ -4,8 +4,13 @@ import { browserHistory } from 'react-router';
 import Cover from '../../../component/cover/cover';
 import Input from '../../../component/common/input/Input';
 import Button from '../../../component/common/Button/Button';
-
 import logo from '../../../assets/images/logo.png'
+
+//
+// controler
+//
+import PostData from '../../../controler/postToApi';
+
 
 import './style.css'
 
@@ -16,8 +21,64 @@ class RegisterComponent extends Component {
     }
 
     goToRegister = () => {
-        browserHistory.push('/login');
+         browserHistory.push('/login');
     }
+
+    _onClickRegister = async() =>{
+        this.setState({
+            isLoading:true
+        })
+
+       // alert(this.state.name)
+       let validation = false;
+
+       const data = {
+           "name": this.state.name,
+           "email": this.state.email,
+           "password": this.state.password,
+           "password_confirmation": this.state.password,
+           "type": this.state.userType
+       };
+
+       // chek simple validation // TODO later to be control correct
+       if(this.state.name === '' || this.state.name === null || this.state.name === undefined)
+            validation = true
+       if(this.state.email === '' || this.state.email === null || this.state.email === undefined)
+            validation = true
+       if(this.state.password === '' || this.state.password === null || this.state.password === undefined)
+            validation = true
+       if(this.state.userType === '' || this.state.userType === null || this.state.userType === undefined)
+            validation = true
+
+       if(validation=== false){
+        const res = await PostData(data, 'auth/email/register');
+        console.log(res) 
+        if(res.status === 200)
+            this.goToRegister();
+       }
+
+       this.setState({
+            isLoading:false
+        })
+ 
+    }
+
+    changedHandler = (e) => {
+        //console.log(e.target.name);
+        //console.log(e.target.value);
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    changedHandlerRadio = (e) => {
+        //console.log(e.target.id); 
+        this.setState({
+            userType: e.target.id
+        })
+    }
+
+    
     render() {
         return (
             <div className="registerLogin" >
@@ -38,15 +99,16 @@ class RegisterComponent extends Component {
                                     changed={this.changedHandler}
                                     error={this.state.forgetEmailError}
                                 />
+                                <span>لطفا نام و نام خانودادگی خود را به صورت فارسی وارد نمایید</span>
                                 <Input
                                     type={'text'}
-                                    name={'emailnumber'}
-                                    placeholder={'ایمیل / شماره همراه'}
+                                    name={'email'}
+                                    placeholder={'ایمیل '}
                                     changed={this.changedHandler}
                                     error={this.state.forgetEmailError}
                                 />
                                 <Input
-                                    type={'text'}
+                                    type={'password'}
                                     name={'password'}
                                     placeholder={'رمز عبور'}
                                     changed={this.changedHandler}
@@ -55,13 +117,13 @@ class RegisterComponent extends Component {
                                 <div className="R-checkbox" >
 
                                     <p>
-                                        <input type="radio" id="design" name="radio-group" defaultChecked />
-                                        <label htmlFor="design">
+                                        <input type="radio" id="customer" name="radio-group"   onChange={this.changedHandlerRadio} />
+                                        <label htmlFor="customer">
                                             <span>من نیاز به یک طرح دارم</span>
                                         </label>
                                     </p>
                                     <p>
-                                        <input type="radio" id="designer" name="radio-group" />
+                                        <input type="radio" id="designer" name="radio-group" onChange={this.changedHandlerRadio} />
                                         <label htmlFor="designer">
                                             <span>من یک طراحم</span>
                                         </label>
@@ -75,10 +137,10 @@ class RegisterComponent extends Component {
                             <div className="RL-button" >
                                 <Button
                                     isLoading={this.state.isLoading}
-                                    title={'ورود'}
+                                    title={'ثبت نام'}
                                     bgcolor={'#0080FF'}
                                     hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                                    click={this.callSubmit}
+                                    click={this._onClickRegister}
                                     borderRadius="2px"
                                     color="#fff"
                                 />
