@@ -88,7 +88,7 @@ class LoginComponent extends Component {
                                     name={'email'}
                                     placeholder={'ایمیل / شماره همراه'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.forgetEmailError} 
                                 />
                                 <Input
                                     type={'password'}
