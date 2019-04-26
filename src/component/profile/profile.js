@@ -31,7 +31,7 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            isLoadingGetData:true
         }
     }
 
@@ -50,7 +50,8 @@ class Profile extends Component {
             email : res.data.email,
             phone : res.data.phone,
             tell : res.data.tell,
-            city : res.data.city
+            city : res.data.city,
+            isLoadingGetData:false
         }) 
     }
 
@@ -80,7 +81,7 @@ class Profile extends Component {
     render() {
         return (
             <div className="Profile">
-            <LoadingComponent />
+           { this.state.isLoadingGetData ?  <LoadingComponent /> : ''}
                 <div className="PE-title" >
                     پروفایل
                 </div>
@@ -127,16 +128,7 @@ class Profile extends Component {
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
                             val={this.state.city}
-                        />
-
-                        <Input
-                            type={'text'}
-                            name={'ciwty'}
-                            placeholder={'شهر / مکان'}
-                            changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
-                            val={this.state.citwy}
-                        />
+                        /> 
 
                         
                         <div className="PE-btns" >
