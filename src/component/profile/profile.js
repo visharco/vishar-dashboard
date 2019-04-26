@@ -98,7 +98,7 @@ class Profile extends Component {
                         />
                         <Input
                             type={'text'}
-                            name={'mobile'}
+                            name={'phone'}
                             placeholder={' تلفن همراه'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
@@ -106,7 +106,7 @@ class Profile extends Component {
                         />
                         <Input
                             type={'text'}
-                            name={'phone'}
+                            name={'tell'}
                             placeholder={'تلفن'}
                             changed={this.changedHandler}
                             error={this.state.forgetEmailError}
