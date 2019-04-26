@@ -39,7 +39,7 @@ const input = (props) => {
 
 
                 <span className="span-label"   onClick={()=> handleFocus(props)}>{props.placeholder }</span>
-               {props.error ? (  <span className="input-error-text bounceIn" >{props.error}</span> ) : (null)}
+               {props.error ? (  <span className="input-error-text bounceIn" >{props.error}</span> ) : (null)} 
             </div>
 
 

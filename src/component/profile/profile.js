@@ -19,6 +19,7 @@ import usergrey from '../../assets/icons/usergrey.svg';
 import GetToApi from '../../controler/getToApi';
 import PostToApi from '../../controler/postToApi';
 import Token from '../../api/token';
+import LoadingComponent from '../loading/loadingComponent';
 
 
 
@@ -79,6 +80,7 @@ class Profile extends Component {
     render() {
         return (
             <div className="Profile">
+            <LoadingComponent />
                 <div className="PE-title" >
                     پروفایل
                 </div>
@@ -126,6 +128,17 @@ class Profile extends Component {
                             error={this.state.forgetEmailError}
                             val={this.state.city}
                         />
+
+                        <Input
+                            type={'text'}
+                            name={'ciwty'}
+                            placeholder={'شهر / مکان'}
+                            changed={this.changedHandler}
+                            error={this.state.forgetEmailError}
+                            val={this.state.citwy}
+                        />
+
+                        
                         <div className="PE-btns" >
                             <div className="PE-cancel" >
                                 انصراف
