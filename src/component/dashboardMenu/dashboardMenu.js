@@ -119,10 +119,9 @@ class DashboardMenu extends Component {
 
     _logOut = () => {
 
-        localStorage.removeItem('@authorization_vishar')
-
-        browserHistory.push('/login');
-        window.location.reload();
+        localStorage.removeItem('@authorization_vishar');   // remove local storage.
+        browserHistory.push('/login');                      // Navigate to login page.
+        window.location.reload();                           // Refresh Component, to refresh rout.
 
 
         
