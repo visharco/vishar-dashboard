@@ -17,6 +17,7 @@ import usergrey from '../../assets/icons/usergrey.svg';
 //
 
 import GetToApi from '../../controler/getToApi';
+import PostToApi from '../../controler/postToApi';
 import Token from '../../api/token';
 
 
@@ -49,11 +50,22 @@ class Profile extends Component {
             phone : res.data.phone,
             tell : res.data.tell,
             city : res.data.city
-        })
+        }) 
+    }
 
+    _CallSave = async()=>{
 
+        const data ={
+            "name"  : this.state.name, 
+            "phone" : this.state.phone,
+            "tell"  : this.state.tell,
+            "city"  : this.state.city
+        }
 
-        
+        const res = await PostToApi(data, 'profile/update');
+        console.log(res)
+        // profile/update
+
     }
 
 
@@ -117,7 +129,7 @@ class Profile extends Component {
                                 title={'ذخیره'}
                                 bgcolor={'#0080FF'}
                                 hoverbgcolor={'#rgb(160, 160, 160)'}
-                                click={this.callSubmit}
+                                click={this._CallSave}
                                 borderRadius="30px"
                                 color="#fff"
                             />
