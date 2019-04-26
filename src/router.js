@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
 
 import Token from './api/token';
 
@@ -33,6 +33,10 @@ import DesignerPaymentsScreen from './component/Designer/DesignerPayments/Design
 import SubmitDesignScreen from './component/Designer/SubmitDesign/SubmitDesign'
 import DesignerPorfolioScreen from './component/Designer/DesignerPorfolio/DesignerPorfolio'
 import DesignerLogoesScreen from './component/Designer/DesignerLogoes/DesignerLogoes'
+
+
+import NotFoundScreen from './container/notFound/notFound';
+
 
 
 
@@ -81,7 +85,8 @@ class RouterComponent extends Component {
                                 <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
                                 <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
                                 
-                                
+                               
+                                <Route path='*' exact={true} component={NotFoundScreen} />
      
                             </Route> : 
                                        
@@ -95,6 +100,8 @@ class RouterComponent extends Component {
                                       
                                 
                                 }
+
+
 
             </Router>
         );
