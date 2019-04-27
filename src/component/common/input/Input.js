@@ -17,11 +17,9 @@ const input = (props) => {
     const handleFocus = (props) =>{ 
         document.getElementById(props.name).focus();
     }
-
     
     return (
         <div className="Inputbox">
-
             <div  className="input-label">
                 <input    type={props.type}
                           onClick={props.clicked} 
@@ -35,8 +33,6 @@ const input = (props) => {
                           value={props.val  }
                           readOnly={props.readonly} 
                           />
-
-
 
                 <span className="span-label"   onClick={()=> handleFocus(props)}>{props.placeholder }</span>
                {props.error ? (  <span className="input-error-text bounceIn" >{props.error}</span> ) : (null)} 
@@ -52,9 +48,6 @@ const input = (props) => {
 
 export default input;
 
- 
-  
-
 
 /*
 example using 
@@ -64,7 +57,7 @@ example using
             name={'email'}
             placeholder={'Email'}
             changed={this.changedHandler}
-            error={this.state.forgetEmailError}
+            error={this.state.forgetEmailError} // if you want show error pass error text to this props
         />
 
 

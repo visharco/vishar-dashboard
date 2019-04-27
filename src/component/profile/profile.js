@@ -72,18 +72,14 @@ class Profile extends Component {
         this.setState({
             isLoading:false
         })
-
-
     }
-
-
 
     render() {
         return (
             <div className="Profile">
            { this.state.isLoadingGetData ?  <LoadingComponent /> : ''}
                 <div className="PE-title" >
-                    پروفایل
+                پروفایل
                 </div>
                 <div className="PE-body" >
 
@@ -129,8 +125,6 @@ class Profile extends Component {
                             error={this.state.forgetEmailError}
                             val={this.state.city}
                         /> 
-
-                        
                         <div className="PE-btns" >
                             <div className="PE-cancel" >
                                 انصراف

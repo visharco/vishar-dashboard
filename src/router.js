@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, browserHistory, IndexRoute, Redirect } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute, Redirect, Switch } from 'react-router';
 
 import Token from './api/token';
 
@@ -59,6 +59,7 @@ class RouterComponent extends Component {
 
                                 <IndexRoute component={DashboardComponent} />
         
+                                <Route path="/" component={DashboardComponent} />
                                 <Route path="dashboard" component={DashboardComponent} />
                                 <Route path="register" component={RegisterScreen} />
                                 <Route path="profile" component={ProfileScreen} />
@@ -92,6 +93,7 @@ class RouterComponent extends Component {
                                        
                                      
                                 <Route path="/" component={RootLooginScreen} >
+                                        <IndexRoute component={LoginScreen} />                               
                                         <Route path="/login" component={LoginScreen} ></Route>
                                         <Route path="/register" component={RegisterScreen} ></Route>
                                         <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
