@@ -97,9 +97,7 @@ class RouterComponent extends Component {
                                         <Route path="/login" component={LoginScreen} ></Route>
                                         <Route path="/register" component={RegisterScreen} ></Route>
                                         <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
-                                </Route>
-               
-                                      
+                                </Route>    
                                 
                                 }
 
