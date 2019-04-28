@@ -6,6 +6,9 @@ import Cover from '../../../component/cover/cover';
 import Input from './../../../component/common/input/Input';
 import Button from './../../../component/common/Button/Button';
 
+import EmailChecker from '../../../component/EmailChecker/EmailChecker'
+
+
 import logo from '../../../assets/images/logo.png'
 
 import './style.css'
@@ -14,11 +17,48 @@ import './style.css'
 class ForgetPasswordComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            resetPasswordError:'',
+            emailnumber:'',
+            resetPasswordValid:false
+        }
     }
     goToLogin = () => {
         browserHistory.push('/register');
     }
+
+    changedHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+        console.log(isNaN(this.state.emailnumber))
+    }
+
+    _resetPassword = () =>{
+        this.setState({
+            isLoading: true,
+            resetPasswordError:''
+        })
+
+        if( isNaN(this.state.emailnumber) === false){
+            this.setState({
+                resetPasswordValid:true
+            })
+        }else if (EmailChecker(this.state.emailnumber) === true){
+            this.setState({
+                resetPasswordValid:true
+            })
+        }else {
+            this.setState({
+                resetPasswordValid:false,
+                resetPasswordError:'شماره همراه یا ایمیل اشتباه است '
+            })
+        }
+
+        
+    }
+
+
 
     render() {
         return (
@@ -39,7 +79,8 @@ class ForgetPasswordComponent extends Component {
                                     name={'emailnumber'}
                                     placeholder={'ایمیل / شماره همراه'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.resetPasswordError}
+                                    val={this.state.emailnumber}
                                 />
                                 
                             </div>
@@ -49,7 +90,7 @@ class ForgetPasswordComponent extends Component {
                                     title={'به یادآوری رمز عبور'}
                                     bgcolor={'#0080FF'}
                                     hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                                    click={this.callSubmit}
+                                    click={this._resetPassword}
                                     borderRadius="2px"
                                     color="#fff"
                                 />

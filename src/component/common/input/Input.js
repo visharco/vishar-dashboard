@@ -30,7 +30,7 @@ const input = (props) => {
                           maxLength={props.max}
                           style={{color:props.color, marginBottom:5}}  
                           id={props.name}
-                          value={props.val  }
+                          value={props.val}
                           readOnly={props.readonly} 
                           />
 

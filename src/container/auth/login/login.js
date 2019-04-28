@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import { browserHistory } from 'react-router';
 
+import EmailChecker from '../../../component/EmailChecker/EmailChecker'
+
+
 import Cover from '../../../component/cover/cover';
 import Input from '../../../component/common/input/Input';
 import Button from '../../../component/common/Button/Button';
@@ -19,48 +22,103 @@ import PostData from '../../../controler/postToApi';
 class LoginComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            email: '',
+            password: '',
+            emailError: '',
+            passwordError: ''
+        }
     }
+
     goToLogin = () => {
         browserHistory.push('/register');
     }
     goToForgetPassword = () => {
         browserHistory.push('/forgetPassword');
-
     }
 
-    _callLogin = async() => {
+    _callLogin = async () => {
         this.setState({
-            isLoading:true
+            isLoading: true,
+            emailError: '',
+            passwordError: ''
         })
+
+        if ( this.state.email.trim() === '') {
+            this.setState({
+                emailError: 'ایمیل را وارد نکردید'
+            })
+
+        }
+
+        if ( this.state.email.trim() !== '') {
+            if (EmailChecker(this.state.email) === false) {
+                this.setState({ emailError: 'ایمیل را اشتباه وارد کرده اید'})
+            }
+        }
+
+
+        if (this.state.password.trim() === '' ) {
+            this.setState({
+                passwordError: 'پسورد را وارد نکردید'
+            })
+        }
+
+        if (this.state.password.trim() !== '' && this.state.password.length < 8 ) {
+            this.setState({
+                passwordError: 'رمز عبور باید بیشتر از ۸ کاراکتر باشد'
+            })
+        }
 
         const data = {
-            "email":this.state.email,
-            "password":this.state.password
+            "email": this.state.email,
+            "password": this.state.password
         }
 
-        //console.log(data)
 
-        const res = await PostData(data,'auth/email/login',null)
-        console.log(res)
 
-        //
-        // when the login infromation is ok, go to dashboard component.
-        //
-        
-        if(res.status === 200){
-             localStorage.setItem('@authorization_vishar',res.data.token);
-            browserHistory.push('/dashboard');
-            window.location.reload();
 
+        if (this.state.email !== '' && this.state.password !== '' && EmailChecker(this.state.email) === true) {
+
+            const res = await PostData(data, 'auth/email/login', null)
+            console.log(res)
+
+            //
+            // when the login infromation is ok, go to dashboard component.
+            //
+
+            if (res.status === 200) {
+                localStorage.setItem('@authorization_vishar', res.data.token);
+                browserHistory.push('/dashboard');
+                window.location.reload();
+            }
+
+            if (res.status === 400) {
+                this.setState({
+                    emailError: '',
+                    passwordError: 'رمز عبور را اشتباه وارد کرده اید'
+                })
+            }
+            if (res.status === 401) {
+                this.setState({
+                    emailError: '',
+                    passwordError: 'رمز عبور را اشتباه وارد کرده اید'
+                })
+            }
         }
+
+
+
+
+
+
         this.setState({
-            isLoading:false
+            isLoading: false
         })
-            
+
     }
 
-    changedHandler = (e) => { 
+    changedHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -68,7 +126,7 @@ class LoginComponent extends Component {
 
 
 
-    
+
     render() {
         return (
             <div className="registerLogin" >
@@ -79,7 +137,7 @@ class LoginComponent extends Component {
 
                         <div className="RL-right" >
                             <div className="RL-title" >
-                                <img src={logo} alt="لوگو"/>
+                                <img src={logo} alt="لوگو" />
                                 <h1>ورود</h1>
                             </div>
                             <div className="RL-inputs" >
@@ -88,14 +146,16 @@ class LoginComponent extends Component {
                                     name={'email'}
                                     placeholder={'ایمیل / شماره همراه'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError} 
+                                    error={this.state.emailError}
+                                    val={this.state.email}
                                 />
                                 <Input
                                     type={'password'}
                                     name={'password'}
                                     placeholder={'رمز عبور'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.passwordError}
+                                    val={this.state.password}
                                 />
                                 <p className="forget-pass-text" onClick={this.goToForgetPassword} >رمز عبور را فراموش کردید ؟</p>
                             </div>
