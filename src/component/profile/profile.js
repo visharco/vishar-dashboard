@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 
 import Input from '../../component/common/input/Input';
 import Button from '../../component/common/Button/Button';
+import EnglishChecker from '../../component/EnglishChecker/EnglishChecker'
 
 //
 // ّIcons -------------------->
@@ -31,55 +32,132 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoadingGetData:true
+            isLoadingGetData: true,
+            name: '',
+            email: '',
+            phone: '',
+            tell: '',
+            city: '',
+            nameError: '',
+            emailError: '',
+            phoneError: '',
+            tellError: '',
+            cityError: '',
+            selectedFile: ''
         }
     }
 
 
-    changedHandler = (e) => { 
+
+
+    componentDidMount = async () => {
+        const res = await GetToApi('profile/init');
+        console.log(res)
+        this.setState({
+            name: res.data.name,
+            email: res.data.email,
+            phone: res.data.phone,
+            tell: res.data.tell,
+            city: res.data.city,
+            isLoadingGetData: false
+        })
+    }
+
+
+    changedHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    componentDidMount = async()=> {
-        const res = await GetToApi('profile/init');
-        console.log(res)
+    _uploadPicture = (e) => {
         this.setState({
-            name : res.data.name,
-            email : res.data.email,
-            phone : res.data.phone,
-            tell : res.data.tell,
-            city : res.data.city,
-            isLoadingGetData:false
-        }) 
+            selectedFile: e.target.files[0]
+        })
+        console.log(e.target.files[0])
     }
 
-    _CallSave = async()=>{
+
+    _CallSave = async () => {
         this.setState({
-            isLoading:true
+            isLoading: true
         })
 
-        const data ={
-            "name"  : this.state.name, 
-            "phone" : this.state.phone,
-            "tell"  : this.state.tell,
-            "city"  : this.state.city
+        this.setState({
+            nameError: '',
+            emailError: '',
+            phoneError: '',
+            tellError: '',
+            cityError: ''
+        })
+
+
+
+        // const data ={
+        //     "name"  : this.state.name, 
+        //     "email" : this.state.email,
+        //     "phone" : this.state.phone,
+        //     "tell"  : this.state.tell,
+        //     "city"  : this.state.city,
+        // }
+
+        const data = new FormData();
+
+        data.append('title', this.state.name);
+        data.append('email', this.state.email);
+        data.append('phone', this.state.phone);
+        data.append('tell', this.state.tell);
+        data.append('city', this.state.city);
+        data.append('image', this.state.selectedFile, this.state.selectedFile.name || '')
+
+
+        // name validation
+        if (this.state.name === '') {
+            this.setState({
+                nameError: 'نام و نام خانوادگی را وارد نکرده اید',
+            })
+        } else if (EnglishChecker(this.state.name) === true) {
+            this.setState({
+                nameError: 'نام و نام خانوادگی را به صورت فارسی بنویسید',
+            })
         }
+
+        // phone validation
+        if (isNaN(this.state.phone) === true) {
+            this.setState({
+                phoneError: 'شماره موبایل باید فقط شامل عدد انگلیسی باشد ',
+            })
+        }
+
+        // tell validation        
+        if (isNaN(this.state.tell) === true) {
+            this.setState({
+                tellError: 'شماره موبایل باید فقط شامل عدد  انگلیسی باشد ',
+            })
+        }
+
+
+
 
         const res = await PostToApi(data, 'profile/update');
         console.log(res);
+
+
+
         this.setState({
-            isLoading:false
+            isLoading: false
         })
     }
+
+
+
 
     render() {
         return (
             <div className="Profile">
-           { this.state.isLoadingGetData ?  <LoadingComponent /> : ''}
+                {this.state.isLoadingGetData ? <LoadingComponent /> : ''}
                 <div className="PE-title" >
-                پروفایل
+                    پروفایل
                 </div>
                 <div className="PE-body" >
 
@@ -89,7 +167,7 @@ class Profile extends Component {
                             name={'name'}
                             placeholder={'نام و نام خانوادگی'}
                             changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
+                            error={this.state.nameError}
                             val={this.state.name}
                         />
                         <Input
@@ -97,16 +175,16 @@ class Profile extends Component {
                             name={'email'}
                             placeholder={'ایمیل'}
                             changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
+                            error={this.state.emailError}
                             val={this.state.email}
-                            readonly={true} 
+                            readonly={true}
                         />
                         <Input
                             type={'text'}
                             name={'phone'}
                             placeholder={' تلفن همراه'}
                             changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
+                            error={this.state.phoneError}
                             val={this.state.phone}
                         />
                         <Input
@@ -114,7 +192,7 @@ class Profile extends Component {
                             name={'tell'}
                             placeholder={'تلفن'}
                             changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
+                            error={this.state.tellError}
                             val={this.state.tell}
                         />
                         <Input
@@ -122,9 +200,9 @@ class Profile extends Component {
                             name={'city'}
                             placeholder={'شهر / مکان'}
                             changed={this.changedHandler}
-                            error={this.state.forgetEmailError}
+                            error={this.state.cityError}
                             val={this.state.city}
-                        /> 
+                        />
                         <div className="PE-btns" >
                             <div className="PE-cancel" >
                                 انصراف
@@ -142,6 +220,11 @@ class Profile extends Component {
                     </div>
                     <div className="PE-upload" >
                         <h1>عکس پروفایل</h1>
+                        <input className="PE-input" type="file" accept="image/*"
+                            onChange={this._uploadPicture}
+                            name="profilepicture"
+                            value="" />
+
                         <div className="PU-img" >
                             <img src={usergrey} alt="کاربر" />
                         </div>
