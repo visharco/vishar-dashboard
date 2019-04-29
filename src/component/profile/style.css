@@ -101,9 +101,14 @@ font-size: 15px;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 .PU-img img{
 width: 50%;
+}
+.showImageForUpload{
+    width: 100%!important;
+    height: 100%;
 }
 .PE-input{
     color: transparent;

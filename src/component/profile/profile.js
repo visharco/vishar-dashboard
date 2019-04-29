@@ -72,7 +72,8 @@ class Profile extends Component {
 
     _uploadPicture = (e) => {
         this.setState({
-            selectedFile: e.target.files[0]
+            selectedFile: e.target.files[0],
+            showImageForUpload:URL.createObjectURL(e.target.files[0])
         })
         console.log(e.target.files[0])
     }
@@ -226,7 +227,13 @@ class Profile extends Component {
                             value="" />
 
                         <div className="PU-img" >
-                            <img src={usergrey} alt="کاربر" />
+                            {
+                                !this.state.selectedFile ?
+                                <img src={usergrey} alt="کاربر" /> :
+                                <img className="showImageForUpload"  src={this.state.showImageForUpload} alt="کاربر" />
+                            }
+
+                            
                         </div>
                         <p className="PU-text" >
                             برای آپلود عکس کلیک کنید یا عکس را رها کنید
