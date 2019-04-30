@@ -59,7 +59,8 @@ class Profile extends Component {
             phone: res.data.phone,
             tell: res.data.tell,
             city: res.data.city,
-            isLoadingGetData: false
+            isLoadingGetData: false,
+            image: res.data.image
         })
     }
 
@@ -229,7 +230,7 @@ class Profile extends Component {
                         <div className="PU-img" >
                             {
                                 !this.state.selectedFile ?
-                                <img src={usergrey} alt="کاربر" /> :
+                                <img className="showImageForUpload" src={this.state.image} alt="کاربر" /> :
                                 <img className="showImageForUpload"  src={this.state.showImageForUpload} alt="کاربر" />
                             }
 
