@@ -24,7 +24,7 @@ class StatusMessage extends Component {
             status : false
         })
     }
-    componentDidMount(){
+    componentWillMount(){
         if(this.props.type ==='success'){
             this.setState({
                 backgroundColor:'#6FCF97',
@@ -46,6 +46,10 @@ class StatusMessage extends Component {
 
     }
 
+    componentDidMount(){
+        setInterval(() => this.closeStatus(),3000)
+    }
+
 
     render() {
         return (
@@ -53,7 +57,7 @@ class StatusMessage extends Component {
 
             {
                 this.state.status ? 
-                <div className="StatusMessage"
+                <div className="StatusMessage zoomIn"
                 style={{ backgroundColor: this.state.backgroundColor }}>
                     <img src={close} alt="بستن" className="StatusClose" onClick={this.closeStatus} />
                     <p style={{ color: this.state.color }}>
