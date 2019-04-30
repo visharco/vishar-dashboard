@@ -99,12 +99,12 @@ class Profile extends Component {
         //     "email" : this.state.email,
         //     "phone" : this.state.phone,
         //     "tell"  : this.state.tell,
-        //     "city"  : this.state.city,
+        //     "city"  : this.state.city
         // }
 
         const data = new FormData();
 
-        data.append('title', this.state.name);
+        data.append('name', this.state.name);
         data.append('email', this.state.email);
         data.append('phone', this.state.phone);
         data.append('tell', this.state.tell);

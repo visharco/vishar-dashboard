@@ -16,14 +16,15 @@ function postApi(data,key){
         method: "POST", 
         cache: "no-cache",  
         headers: {
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
             "Accept": "application/json",
             "agent" : "web" ,
             "Authorization" : Token  
         },
         redirect: "follow", 
         referrer: "no-referrer", 
-        body: JSON.stringify(data), 
+        // body: JSON.stringify(data), 
+        body: data 
     })
     .then(response => {
       const statusCode = response.status
