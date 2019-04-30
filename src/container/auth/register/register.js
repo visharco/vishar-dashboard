@@ -69,14 +69,19 @@ class RegisterComponent extends Component {
 
         // alert(this.state.name)
         let validation = false;
+ 
 
-        const data = {
-            "name": this.state.namefamily,
-            "email": this.state.email,
-            "password": this.state.password,
-            "password_confirmation": this.state.password,
-            "type": this.state.userType
-        };
+        const data = new FormData();
+ 
+        data.append('name', this.state.namefamily);
+        data.append('email', this.state.email); 
+        data.append('password', this.state.password); 
+        data.append('password_confirmation', this.state.password); 
+        data.append('type', this.state.userType); 
+
+
+
+
         console.log(this.state.password.trim())
 
         // chek simple validation // TODO later to be control correct
