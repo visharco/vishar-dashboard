@@ -30,6 +30,7 @@ import Input from './../common/input/Input'
 import TextArea from '../common/textarea/textarea'
 
 import './style.css';
+import GetToApi from '../../controler/getToApi';
 
 
 
@@ -44,10 +45,19 @@ class CreateNewProject extends Component {
             part4: false,
             part5: false,
             part6: false,
+            category:[],
         }
     }
 
 
+    componentWillMount = async() => {
+        const res = await GetToApi('category');
+        if(res.status === 200)
+            this.setState({
+                category: res.data
+            })
+        console.log(res.data)
+    }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
@@ -55,8 +65,11 @@ class CreateNewProject extends Component {
 
 
 
-    componentWillUnmount() {
+    componentWillUnmount = async() =>  {
         window.removeEventListener('scroll', this.handleScroll);
+
+   
+
     }
 
     // informationBtns = React.createRef()
@@ -335,6 +348,20 @@ class CreateNewProject extends Component {
     }
 
     render() {
+
+
+        const renderCategory = (
+               this.state.category ?  this.state.category.map((data,index) => {
+              return  <div key={index}>
+                        <input type="radio" name="emotion" id={index} className="input-hidden" />
+                        <label htmlFor={index}>
+                            <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + data.icon + ')' }} >
+                                <span className="CNP-logoBoxTitle" >{data.title}</span>
+                            </div>
+                        </label>
+                </div>
+        }) : ''
+        )
         return (
             <div className="CreateNewProject">
 
@@ -352,18 +379,18 @@ class CreateNewProject extends Component {
                             <h1>همه دسته بندی ها را ببین</h1>
                             <div className="CNP-1-radio" >
 
-                                <input
+                                {/* <input
                                     type="radio" name="emotion"
                                     id="logoA" className="input-hidden" />
                                 <label htmlFor="logoA">
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + logoA + ')' }} >
                                         <span className="CNP-logoBoxTitle" >لوگو</span>
                                     </div>
-                                </label>
+                                </label> */}
 
 
 
-
+{/* 
                                 <input
                                     type="radio" name="emotion"
                                     id="BC" className="input-hidden" />
@@ -372,11 +399,11 @@ class CreateNewProject extends Component {
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + BC + ')' }} >
                                         <span className="CNP-logoBoxTitle" >کارت تجاری</span>
                                     </div>
-                                </label>
+                                </label> */}
 
 
 
-
+{/* 
                                 <input
                                     type="radio" name="emotion"
                                     id="PC" className="input-hidden" />
@@ -385,23 +412,15 @@ class CreateNewProject extends Component {
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + PC + ')' }} >
                                         <span className="CNP-logoBoxTitle" >وب و اپ</span>
                                     </div>
-                                </label>
+                                </label> */}
 
 
 
 
-                                <input
-                                    type="radio" name="emotion"
-                                    id="uxui" className="input-hidden" />
-                                <label htmlFor="uxui">
-
-                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + uxui + ')' }} >
-                                        <span className="CNP-logoBoxTitle" >رابط کاربری</span>
-                                    </div>
-                                </label>
+                            
 
 
-
+{/* 
 
                                 <input
                                     type="radio" name="emotion"
@@ -410,16 +429,18 @@ class CreateNewProject extends Component {
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + content + ')' }} >
                                         <span className="CNP-logoBoxTitle" >محتوا</span>
                                     </div>
-                                </label>
+                                </label> */}
+
+                                {renderCategory}
 
 
 
 
-                                <div onClick={this.moreCategory} >
+                                {/* <div onClick={this.moreCategory} >
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + threedot + ')' }} >
                                         <span className="CNP-logoBoxTitle" >بیشتر</span>
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>
