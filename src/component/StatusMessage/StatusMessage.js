@@ -48,6 +48,7 @@ class StatusMessage extends Component {
 
     componentDidMount(){
         setInterval(() => this.closeStatus(),3000)
+
     }
 
 

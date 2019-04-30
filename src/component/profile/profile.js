@@ -43,7 +43,9 @@ class Profile extends Component {
             phoneError: '',
             tellError: '',
             cityError: '',
-            selectedFile: ''
+            selectedFile: '',
+            successMessage:''
+
         }
     }
 
@@ -63,7 +65,7 @@ class Profile extends Component {
             tell: res.data.tell,
             city: res.data.city,
             isLoadingGetData: false,
-            image: res.data.image
+            image: res.data.image,
         })
     }
 
@@ -144,6 +146,11 @@ class Profile extends Component {
         const res = await PostToApi(data, 'profile/update');
         console.log(res);
 
+        if(res.status === 200){
+            this.setState({
+                successMessage:'تغیرات با موفقیت ذخیره شده است.'
+            })
+        }
 
 
         this.setState({
@@ -161,9 +168,9 @@ class Profile extends Component {
                 <div className="PE-title" >
                     پروفایل
                 </div>
-                <MessageBox type="success"
-    color="#success"
-    text="sdsdsd"/>
+                <MessageBox type="success" 
+                            text={this.state.successMessage}
+                />
                 <div className="PE-body" >
 
                     <div className="PE-inputs" >
