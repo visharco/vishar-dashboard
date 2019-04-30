@@ -21,7 +21,7 @@ import GetToApi from '../../controler/getToApi';
 import PostToApi from '../../controler/postToApi';
 import Token from '../../api/token';
 import LoadingComponent from '../loading/loadingComponent';
-
+import MessageBox from '../../component/StatusMessage/StatusMessage'
 
 
 import './style.css';
@@ -141,8 +141,6 @@ class Profile extends Component {
         }
 
 
-
-
         const res = await PostToApi(data, 'profile/update');
         console.log(res);
 
@@ -163,6 +161,9 @@ class Profile extends Component {
                 <div className="PE-title" >
                     پروفایل
                 </div>
+                <MessageBox type="success"
+    color="#success"
+    text="sdsdsd"/>
                 <div className="PE-body" >
 
                     <div className="PE-inputs" >

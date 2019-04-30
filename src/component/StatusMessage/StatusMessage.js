@@ -12,7 +12,10 @@ class StatusMessage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: true
+            status: true,
+            backgroundColor:'',
+            color:'',
+
         }
     }
 
@@ -20,6 +23,27 @@ class StatusMessage extends Component {
         this.setState({
             status : false
         })
+    }
+    componentDidMount(){
+        if(this.props.type ==='success'){
+            this.setState({
+                backgroundColor:'#6FCF97',
+                color:'#308051'
+            })
+        }
+        else if (this.props.type ==='waning'){
+            this.setState({
+                backgroundColor:'#EED27A',
+                color:'#A88823'
+            }) 
+        }
+        else if (this.props.type ==='error'){
+            this.setState({
+                backgroundColor:'#D15353',
+                color:'#333333'
+            }) 
+        }
+
     }
 
 
@@ -30,9 +54,9 @@ class StatusMessage extends Component {
             {
                 this.state.status ? 
                 <div className="StatusMessage"
-                style={{ backgroundColor: this.props.bgColor }}>
+                style={{ backgroundColor: this.state.backgroundColor }}>
                     <img src={close} alt="بستن" className="StatusClose" onClick={this.closeStatus} />
-                    <p style={{ color: this.props.color }}>
+                    <p style={{ color: this.state.color }}>
                         {this.props.text}
                     </p>
                 </div> : ''
