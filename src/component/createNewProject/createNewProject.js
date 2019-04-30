@@ -398,8 +398,7 @@ class CreateNewProject extends Component {
                             </div>
                             <div className="CNP-SD-end" >
                                 انتخاب
-                                </div>
-    
+                            </div>
                         </div>
                     </label>
                 </span>
