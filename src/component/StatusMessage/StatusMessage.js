@@ -31,7 +31,7 @@ class StatusMessage extends Component {
                 color:'#308051'
             })
         }
-        else if (this.props.type ==='waning'){
+        else if (this.props.type ==='warning'){
             this.setState({
                 backgroundColor:'#EED27A',
                 color:'#A88823'
@@ -69,23 +69,19 @@ class StatusMessage extends Component {
 export default StatusMessage;
 
 
-////////////////////////////
 
-/* <StatusMessage 
-    bgColor=" rgba(242, 201, 76, 0.7);"
-    color="#A88823"
-    text="" />
+
+/*  How can use the component ----------------------------------------> 
+
+
+        <StatusMessage  
+            type="success || warning || error"
+            text="" 
+        />
     
-    green 
-    #6FCF97  bgcolor
-    #308051  color
+ 
 
-    red
-     bgcolor #D15353
     */
 
-
-
-///////////////////////////////////
 
 
