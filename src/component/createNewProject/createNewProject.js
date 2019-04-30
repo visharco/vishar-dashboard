@@ -383,27 +383,44 @@ class CreateNewProject extends Component {
         const renderPlans = (
             this.state.categoryId > 0 ?
                  this.state.plans.map((data,index) => {
-                return <span key={index} className="CNP-label">
-                    <input type="radio" id={index} name="select" value="3" />
-                    <label htmlFor="control_03">
+                return <div key={index} style={{width:'28%'}}>
+                    <input type="radio" id={'ss' + data.id} name="select" value={data.id} />
+                    <label htmlFor={'ss' + data.id}>
                         <div className="CNP-label">
                             <div className="CNP-SD-title" >
                                 <h1>{data.title}</h1>
                                 <h2>{data.desc}</h2>
                             </div>
                             <div className="CNP-SD-middle" >
-                                <p>به جز ۳۰ طراحی</p>
+                                <p> {data.min} الی {data.max} طراح</p>
                                 <p>اولیه</p>
                                 <p>تضمین برگشت پول</p>
+                               {data.price === 0 ? <p>رایگان</p> :
+                             <p>{data.price} <span> تومان </span></p>
+                             }
                             </div>
                             <div className="CNP-SD-end" >
                                 انتخاب
                             </div>
                         </div>
                     </label>
-                </span>
+                </div>
                 })  
             : ''
+        );
+
+        const renderDuration = (
+             <p></p>
+
+                                // <input type="radio" id="duration1" name="select" value="1" />
+                                // <label htmlFor="duration1">
+                                //     <div className="CNPD-title" >
+                                //         <p>استاندارد ۷ روز</p>
+                                //         <h1>رایگان</h1>
+                                //     </div>
+                                // </label> 
+
+
         )
         return (
             <div className="CreateNewProject">
@@ -686,68 +703,12 @@ class CreateNewProject extends Component {
 
 
                         <div className="CNP-desc-text" >
-                            <h1>کدام طراحی را انتخاب میکنی ؟</h1>
-                            <h2>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</h2>
+                            <h1>کدام پلن را انتخاب میکنی ؟</h1>
+                            <h2>پیشنهاد ویژه ای برای شما در نظر داریم.</h2>
 
                             <div className="CNP-select-design" >
 
-                                {/* <input type="radio" id="control_01" name="select" value="1" />
-                                <label htmlFor="control_01">
-                                    <div className="CNP-label" >
-                                        <div className="CNP-SD-title" >
-                                            <h1>ساده</h1>
-                                            <h2>طراحی فوق العاده</h2>
-                                        </div>
-                                        <div className="CNP-SD-middle" >
-                                            <p>به جز ۳۰ طراحی</p>
-                                            <p>اولیه</p>
-                                            <p>تضمین برگشت پول</p>
-                                        </div>
-                                        <div className="CNP-SD-end" >
-                                            انتخاب
-                                            </div>
-                                    </div>
-                                </label> */}
-
-
-{/* 
-                                <input type="radio" id="control_02" name="select" value="2" />
-                                <label htmlFor="control_02">
-                                    <div className="CNP-label">
-                                        <div className="CNP-SD-title" >
-                                            <h1>ساده</h1>
-                                            <h2>طراحی فوق العاده</h2>
-                                        </div>
-                                        <div className="CNP-SD-middle" >
-                                            <p>به جز ۳۰ طراحی</p>
-                                            <p>اولیه</p>
-                                            <p>تضمین برگشت پول</p>
-                                        </div>
-                                        <div className="CNP-SD-end" >
-                                            انتخاب
-                                            </div>
-                                    </div>
-                                </label> */}
-
-
-                                {/* <input type="radio" id="control_03" name="select" value="3" />
-                                <label htmlFor="control_03">
-                                    <div className="CNP-label">
-                                        <div className="CNP-SD-title" >
-                                            <h1>ساده</h1>
-                                            <h2>طراحی فوق العاده</h2>
-                                        </div>
-                                        <div className="CNP-SD-middle" >
-                                            <p>به جز ۳۰ طراحی</p>
-                                            <p>اولیه</p>
-                                            <p>تضمین برگشت پول</p>
-                                        </div>
-                                        <div className="CNP-SD-end" >
-                                            انتخاب
-                                            </div>
-
-                                    </div>
-                                </label> */}
+                            
 
                                 {renderPlans}
 
@@ -786,46 +747,46 @@ class CreateNewProject extends Component {
                                 </div>
                         <div className="CNP-desc-text" >
                             <h1>زمانبندی</h1>
-                            <h2>دوست داری پروژه ات چند روزه آماده بشه ؟</h2>
+                          <h2>آیا مایلید طراح های  خود را سریعتر دریافت نمایید؟</h2>
 
                             <div className="CNP-duration" >
 
-                                <input type="radio" id="duration1" name="select" value="1" />
+                                {/* <input type="radio" id="duration1" name="select" value="1" />
                                 <label htmlFor="duration1">
                                     <div className="CNPD-title" >
                                         <p>استاندارد ۷ روز</p>
                                         <h1>رایگان</h1>
                                     </div>
-                                </label>
+                                </label> */}
 
 
 
-                                <input type="radio" id="duration2" name="select" value="2" />
+                                {/* <input type="radio" id="duration2" name="select" value="2" />
                                 <label htmlFor="duration2">
 
                                     <div className="CNPD-title" >
                                         <p>4 روز </p>
                                         <h1>250000 ت</h1>
                                     </div>
-                                </label>
+                                </label> */}
 
 
-                                <input type="radio" id="duration3" name="select" value="3" />
+                                {/* <input type="radio" id="duration3" name="select" value="3" />
                                 <label htmlFor="duration3">
 
                                     <div className="CNPD-title" >
                                         <p>2 روز </p>
                                         <h1>450000 ت</h1>
                                     </div>
-                                </label>
+                                </label> */}
 
-                                <input type="radio" id="duration4" name="select" value="3" />
+                                {/* <input type="radio" id="duration4" name="select" value="3" />
                                 <label htmlFor="duration4">
                                     <div className="CNPD-title" >
                                         <p>۲۴ ساعت </p>
                                         <h1>900000 ت</h1>
                                     </div>
-                                </label>
+                                </label> */}
 
                             </div>
 

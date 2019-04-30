@@ -632,11 +632,10 @@ width: 50%;
     cursor: not-allowed;
   }
   
- .CNP-select-design label {
-     width:28%;
+ .CNP-select-design label { 
     height: 450px;
     display: block;
-    background: white;
+    background: #f1f1f1;
     border-radius: 20px;
     padding: 2rem 1rem;
     margin-bottom: 1rem;
