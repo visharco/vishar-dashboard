@@ -51,6 +51,9 @@ class Profile extends Component {
 
 
     componentDidMount = async () => {
+        //
+        // get data from API for showing to user ------------------------------->
+        //
         const res = await GetToApi('profile/init');
         console.log(res)
         this.setState({
@@ -65,12 +68,18 @@ class Profile extends Component {
     }
 
 
+    //
+    // get data from input by event target -------------------------------------------------------------->
+    //
     changedHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
+    //
+    //  get image uploader for avatar of user ----------------------------------------------------------->
+    //
     _uploadPicture = (e) => {
         this.setState({
             selectedFile: e.target.files[0],
@@ -93,16 +102,9 @@ class Profile extends Component {
             cityError: ''
         })
 
-
-
-        // const data ={
-        //     "name"  : this.state.name, 
-        //     "email" : this.state.email,
-        //     "phone" : this.state.phone,
-        //     "tell"  : this.state.tell,
-        //     "city"  : this.state.city
-        // }
-
+        //
+        // provider data for API --------------------------------------------------------------->
+        //
         const data = new FormData();
 
         data.append('name', this.state.name);
