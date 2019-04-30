@@ -39,6 +39,8 @@ direction: rtl;
     justify-content: space-around;
     cursor: pointer;
     transition: all .2s linear;
+    position: relative;
+    overflow: hidden;
 }
 .PE-upload:hover{
     opacity: .7;
@@ -98,9 +100,26 @@ font-size: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 .PU-img img{
 width: 50%;
+}
+.showImageForUpload{
+    width: 100%!important;
+    height: 100%;
+}
+.PE-input{
+    color: transparent;
+    font-size: 0;
+    width: 100%;
+    position: absolute;
+    top: -6px;
+    left: 0;
+    cursor: pointer;
+    height: 500px;
+    z-index: 2;
 }
 
 .PU-text{
