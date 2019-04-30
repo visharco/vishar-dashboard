@@ -46,6 +46,8 @@ class CreateNewProject extends Component {
             part5: false,
             part6: false,
             category:[],
+            plans:[],
+            categoryId:0
         }
     }
 
@@ -91,14 +93,14 @@ class CreateNewProject extends Component {
     target6 = React.createRef()
 
     handleScroll = () => {
-        console.log('1 :: ' + this.point1.current.offsetTop)
-        console.log('H :: ' + window.innerHeight)
-        console.log('Y :: ' + window.scrollY)
-        console.log('2 ::  ' + this.point2.current.offsetTop)
-        console.log(this.target2.current.style.position)
-        console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
+        // console.log('1 :: ' + this.point1.current.offsetTop)
+        // console.log('H :: ' + window.innerHeight)
+        // console.log('Y :: ' + window.scrollY)
+        // console.log('2 ::  ' + this.point2.current.offsetTop)
+        // console.log(this.target2.current.style.position)
+        // console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
 
-        console.log()
+        // console.log()
 
 
             if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
@@ -195,6 +197,7 @@ class CreateNewProject extends Component {
 
     // go to next part
     nextPart = (e) => {
+        console.log(this.state.categoryId)
 
         // next1 pushed
         if (e.target.id === 'CNP-N1') {
@@ -347,13 +350,24 @@ class CreateNewProject extends Component {
 
     }
 
+    getPlan = async(id) => {
+        this.setState({categoryId:id})
+        const res = await GetToApi('category/'+ id + '/plan');
+        this.setState({
+            plans:res.data
+        })
+        console.log(res.data)
+    }
+
     render() {
 
-
+        //
+        // Get All Category -------------------------->
+        //
         const renderCategory = (
                this.state.category ?  this.state.category.map((data,index) => {
               return  <div key={index}>
-                        <input type="radio" name="emotion" id={index} className="input-hidden" />
+                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id)} />
                         <label htmlFor={index}>
                             <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + data.icon + ')' }} >
                                 <span className="CNP-logoBoxTitle" >{data.title}</span>
@@ -361,6 +375,36 @@ class CreateNewProject extends Component {
                         </label>
                 </div>
         }) : ''
+        )
+
+        //
+        // Get all plans from api ------------------------>
+        //
+        const renderPlans = (
+            this.state.categoryId > 0 ?
+                 this.state.plans.map((data,index) => {
+                return <span key={index} className="CNP-label">
+                    <input type="radio" id={index} name="select" value="3" />
+                    <label htmlFor="control_03">
+                        <div className="CNP-label">
+                            <div className="CNP-SD-title" >
+                                <h1>{data.title}</h1>
+                                <h2>{data.desc}</h2>
+                            </div>
+                            <div className="CNP-SD-middle" >
+                                <p>به جز ۳۰ طراحی</p>
+                                <p>اولیه</p>
+                                <p>تضمین برگشت پول</p>
+                            </div>
+                            <div className="CNP-SD-end" >
+                                انتخاب
+                                </div>
+    
+                        </div>
+                    </label>
+                </span>
+                })  
+            : ''
         )
         return (
             <div className="CreateNewProject">
@@ -378,69 +422,15 @@ class CreateNewProject extends Component {
                         <div className="CNP1-category" >
                             <h1>همه دسته بندی ها را ببین</h1>
                             <div className="CNP-1-radio" >
-
-                                {/* <input
-                                    type="radio" name="emotion"
-                                    id="logoA" className="input-hidden" />
-                                <label htmlFor="logoA">
-                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + logoA + ')' }} >
-                                        <span className="CNP-logoBoxTitle" >لوگو</span>
-                                    </div>
-                                </label> */}
-
-
-
-{/* 
-                                <input
-                                    type="radio" name="emotion"
-                                    id="BC" className="input-hidden" />
-                                <label htmlFor="BC">
-
-                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + BC + ')' }} >
-                                        <span className="CNP-logoBoxTitle" >کارت تجاری</span>
-                                    </div>
-                                </label> */}
-
-
-
-{/* 
-                                <input
-                                    type="radio" name="emotion"
-                                    id="PC" className="input-hidden" />
-                                <label htmlFor="PC">
-
-                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + PC + ')' }} >
-                                        <span className="CNP-logoBoxTitle" >وب و اپ</span>
-                                    </div>
-                                </label> */}
-
-
-
-
-                            
-
-
-{/* 
-
-                                <input
-                                    type="radio" name="emotion"
-                                    id="content" className="input-hidden" />
-                                <label htmlFor="content">
-                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + content + ')' }} >
-                                        <span className="CNP-logoBoxTitle" >محتوا</span>
-                                    </div>
-                                </label> */}
-
+ 
                                 {renderCategory}
 
-
-
-
-                                {/* <div onClick={this.moreCategory} >
+ 
+                                <div onClick={this.moreCategory} >
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + threedot + ')' }} >
                                         <span className="CNP-logoBoxTitle" >بیشتر</span>
                                     </div>
-                                </div> */}
+                                </div>
 
                             </div>
                         </div>
@@ -702,7 +692,7 @@ class CreateNewProject extends Component {
 
                             <div className="CNP-select-design" >
 
-                                <input type="radio" id="control_01" name="select" value="1" />
+                                {/* <input type="radio" id="control_01" name="select" value="1" />
                                 <label htmlFor="control_01">
                                     <div className="CNP-label" >
                                         <div className="CNP-SD-title" >
@@ -718,10 +708,10 @@ class CreateNewProject extends Component {
                                             انتخاب
                                             </div>
                                     </div>
-                                </label>
+                                </label> */}
 
 
-
+{/* 
                                 <input type="radio" id="control_02" name="select" value="2" />
                                 <label htmlFor="control_02">
                                     <div className="CNP-label">
@@ -738,10 +728,10 @@ class CreateNewProject extends Component {
                                             انتخاب
                                             </div>
                                     </div>
-                                </label>
+                                </label> */}
 
 
-                                <input type="radio" id="control_03" name="select" value="3" />
+                                {/* <input type="radio" id="control_03" name="select" value="3" />
                                 <label htmlFor="control_03">
                                     <div className="CNP-label">
                                         <div className="CNP-SD-title" >
@@ -758,7 +748,9 @@ class CreateNewProject extends Component {
                                             </div>
 
                                     </div>
-                                </label>
+                                </label> */}
+
+                                {renderPlans}
 
 
                             </div>
