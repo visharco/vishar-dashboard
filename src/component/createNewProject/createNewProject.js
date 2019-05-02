@@ -47,6 +47,7 @@ class CreateNewProject extends Component {
             part6: false,
             category:[],
             plans:[],
+            durations:[],
             categoryId:0
         }
     }
@@ -355,6 +356,16 @@ class CreateNewProject extends Component {
         const res = await GetToApi('category/'+ id + '/plan');
         this.setState({
             plans:res.data
+        })
+        console.log(res.data)
+    }
+
+
+    getDuration = async(id) => {
+        this.setState({categoryId:id})
+        const res = await GetToApi('category/'+ id + '/timing');
+        this.setState({
+            durations:res.data
         })
         console.log(res.data)
     }
