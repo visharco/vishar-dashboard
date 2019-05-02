@@ -357,6 +357,7 @@ class CreateNewProject extends Component {
         this.setState({
             plans:res.data
         })
+        this.getDuration(id); // get time duration --->
         console.log(res.data)
     }
 
@@ -420,16 +421,23 @@ class CreateNewProject extends Component {
             : ''
         );
 
-        const renderDuration = (
-             <p></p>
+        const  renderDuration = ( 
+                           this.state.durations ? 
+                                this.state.durations.map((data,index) => {
+                                    return   <div key={index}>
+                                    <input type="radio" id="duration1" name="select" value="1" />
+                                    <label htmlFor="duration1">
+                                        <div className="CNPD-title" >
+                                            <p>{data.title}</p>
+                                            {data.price !== 0 ? <h1>  {data.price} تومان</h1> : <h1>رایگان</h1>}
+                                        </div>
+                                    </label> 
+                                </div>
+                                })
+                       :
+                       ''
 
-                                // <input type="radio" id="duration1" name="select" value="1" />
-                                // <label htmlFor="duration1">
-                                //     <div className="CNPD-title" >
-                                //         <p>استاندارد ۷ روز</p>
-                                //         <h1>رایگان</h1>
-                                //     </div>
-                                // </label> 
+                        
 
 
         )
@@ -798,6 +806,7 @@ class CreateNewProject extends Component {
                                         <h1>900000 ت</h1>
                                     </div>
                                 </label> */}
+                                {renderDuration}
 
                             </div>
 
