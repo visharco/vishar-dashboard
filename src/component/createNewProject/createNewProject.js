@@ -50,7 +50,8 @@ class CreateNewProject extends Component {
             category:[],
             plans:[],
             durations:[],
-            categoryId:0
+            categoryId:0,
+            fileZop:[]
         }
     }
 
@@ -447,11 +448,16 @@ class CreateNewProject extends Component {
 
         const  renderViewFiles = ( 
                 this.state.fileZop ? this.state.fileZop.map((data,index) => {
+                  var xx = data;
+                return  xx.map((val,ind) =>{  
+                    return <div key={ind}>
+                  
+                    {/* {console.log(val)} */}
+                        {/* <img src={URL.createObjectURL(data)} alt="" style={{width:'200px', height:'200px', backgroundColor:'red'}} /> */}
+                        <img src={URL.createObjectURL(val)} alt="" style={{width:'200px', height:'200px', backgroundColor:'red'}} />
+                    </div>
+                  })
                    
-                   return <div key={index}>
-                   <p>{window.location.origin}</p>
-                       <img src={URL.createObjectURL(data)} alt="" style={{width:'200px', height:'200px', backgroundColor:'red'}} />
-                   </div>
                 })
                 : ''
             )
@@ -467,7 +473,20 @@ class CreateNewProject extends Component {
                     {/* STEP 1 */}
 
                    <div>
-                   <Dropzone onDrop={acceptedFiles => {console.log(acceptedFiles); this.setState({fileZop: acceptedFiles})}}>
+                   <Dropzone onDrop={acceptedFiles => {console.log(acceptedFiles);
+                    
+                    // this.setState({fileZop: acceptedFiles})
+
+                    var newArray = this.state.fileZop.slice();    
+                    newArray.push(acceptedFiles);   
+                    this.setState({fileZop:newArray})
+
+                    console.log(typeof(this.state.fileZop))
+                    console.log(this.state.fileZop)
+                
+                }
+                    
+                    }>
                     {({getRootProps, getInputProps}) => (
                         <section>
                         <div {...getRootProps()}>
