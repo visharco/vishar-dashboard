@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone'
+
 
 //
 //
@@ -441,12 +443,45 @@ class CreateNewProject extends Component {
 
 
         )
+
+
+        const  renderViewFiles = ( 
+                this.state.fileZop ? this.state.fileZop.map((data,index) => {
+                   
+                   return <div key={index}>
+                   <p>{window.location.origin}</p>
+                       <img src={URL.createObjectURL(data)} alt="" style={{width:'200px', height:'200px', backgroundColor:'red'}} />
+                   </div>
+                })
+                : ''
+            )
+
+
+ 
+
         return (
             <div className="CreateNewProject">
 
                 <div className="CNP-body" >
 
                     {/* STEP 1 */}
+
+                   <div>
+                   <Dropzone onDrop={acceptedFiles => {console.log(acceptedFiles); this.setState({fileZop: acceptedFiles})}}>
+                    {({getRootProps, getInputProps}) => (
+                        <section>
+                        <div {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <p>Drag 'n' drop some files here, or click to select files</p>
+                        </div>
+                        </section>
+                    )}
+                    </Dropzone>
+                   </div>
+
+                    <div>
+                    {renderViewFiles}
+                    </div>
 
 
 
