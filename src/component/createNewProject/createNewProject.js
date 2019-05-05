@@ -495,9 +495,7 @@ class CreateNewProject extends Component {
                     </Dropzone>
                    </div>
 
-                    <div className="CNP-attach-file-view-container ">
-                    {renderViewFiles}
-                    </div>
+             
 
 
 
@@ -601,10 +599,10 @@ class CreateNewProject extends Component {
                     }>
                     {({getRootProps, getInputProps}) => (
                         <section  className="tests">
-                        <div {...getRootProps()}>
+                        <div style={{width:'100%'}} {...getRootProps()}>
                             <input {...getInputProps()} />
                          
-                            <div  >
+                            <div  className="CNP-image-uploader">
                                     <h1>عکس پروفایل</h1>
                                     <div className="CNPU-img" >
                                         <img src={document} alt="اسناد" />
@@ -618,15 +616,15 @@ class CreateNewProject extends Component {
                         </div>
                         </section>
                     )}
-                    </Dropzone>
-                              </div>
-                                <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
-
-
-                               
-                    
+                    </Dropzone> 
+                            </div>
 
                             </div>
+
+<div className="CNP-attach-file-view-container ">
+{renderViewFiles}
+</div>
+
 
                         </div>
 

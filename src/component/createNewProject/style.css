@@ -748,14 +748,24 @@ font-weight: 200;
 
 }
 
-.tests {
-    background-color: red;
+.tests { 
+   
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
+}
+
+
+.CNP-image-uploader {
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
