@@ -203,7 +203,7 @@ class CreateNewProject extends Component {
     nextPart = (e) => {
         console.log(this.state.categoryId)
 
-            // next1 pushed
+            // next1 pushedfi
             if (e.target.id === 'CNP-N1') {
 
                 if(this.state.categoryId !== 0){
