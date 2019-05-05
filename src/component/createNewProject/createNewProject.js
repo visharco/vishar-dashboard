@@ -203,16 +203,19 @@ class CreateNewProject extends Component {
     nextPart = (e) => {
         console.log(this.state.categoryId)
 
-        // next1 pushed
-        if (e.target.id === 'CNP-N1') {
-            this.CNP1.current.style.position = 'fixed'
-            this.CNP2.current.style.position = 'unset'
-            this.target1.current.className = 'CNP-btnBox-regular'
+            // next1 pushed
+            if (e.target.id === 'CNP-N1') {
 
-            this.setState({
-                part1: false,
-                part2: true
-            })
+                if(this.state.categoryId !== 0){
+                this.CNP1.current.style.position = 'fixed'
+                this.CNP2.current.style.position = 'unset'
+                this.target1.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part1: false,
+                    part2: true
+                })
+            }   
         }
 
         // next2 pushed
