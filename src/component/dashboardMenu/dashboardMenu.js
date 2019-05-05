@@ -168,10 +168,10 @@ class DashboardMenu extends Component {
                                 <p>پروژه های فردی</p>
                                 <img src={employee} alt="فردی" />
                             </div>
-                            <div className="DM-body-child" onClick={this.goToCollaborateProject} >
+                            {/* <div className="DM-body-child" onClick={this.goToCollaborateProject} >
                                 <p>پروژه های همکاری</p>
                                 <img src={employees} alt="همکاری" />
-                            </div>
+                            </div> */}
                             <div className="DM-body-child" onClick={this.goToMessage} >
                                 <p>پیامها</p>
                                 <img src={message} alt="پیام ها" />
