@@ -41,7 +41,7 @@ class HeaderComponent extends Component {
                         <div className="menuTablet" >
                             <div className="header-logo tabletHidden"  >
                                 <Link to="/" className="menu-login " >
-                                    <img src={logo} alt="لوگو" style={{height:'72px'}}/>
+                                    <img src={logo} alt="لوگو" />
                                 </Link>
                             </div>
                         </div>

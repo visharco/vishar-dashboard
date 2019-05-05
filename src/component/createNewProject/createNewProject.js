@@ -30,7 +30,6 @@ import Input from './../common/input/Input'
 import TextArea from '../common/textarea/textarea'
 
 import './style.css';
-import GetToApi from '../../controler/getToApi';
 
 
 
@@ -45,22 +44,10 @@ class CreateNewProject extends Component {
             part4: false,
             part5: false,
             part6: false,
-            category:[],
-            plans:[],
-            durations:[],
-            categoryId:0
         }
     }
 
 
-    componentWillMount = async() => {
-        const res = await GetToApi('category');
-        if(res.status === 200)
-            this.setState({
-                category: res.data
-            })
-        console.log(res.data)
-    }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
@@ -68,11 +55,8 @@ class CreateNewProject extends Component {
 
 
 
-    componentWillUnmount = async() =>  {
+    componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
-
-   
-
     }
 
     // informationBtns = React.createRef()
@@ -94,14 +78,14 @@ class CreateNewProject extends Component {
     target6 = React.createRef()
 
     handleScroll = () => {
-        // console.log('1 :: ' + this.point1.current.offsetTop)
-        // console.log('H :: ' + window.innerHeight)
-        // console.log('Y :: ' + window.scrollY)
-        // console.log('2 ::  ' + this.point2.current.offsetTop)
-        // console.log(this.target2.current.style.position)
-        // console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
+        console.log('1 :: ' + this.point1.current.offsetTop)
+        console.log('H :: ' + window.innerHeight)
+        console.log('Y :: ' + window.scrollY)
+        console.log('2 ::  ' + this.point2.current.offsetTop)
+        console.log(this.target2.current.style.position)
+        console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
 
-        // console.log()
+        console.log()
 
 
             if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
@@ -198,7 +182,6 @@ class CreateNewProject extends Component {
 
     // go to next part
     nextPart = (e) => {
-        console.log(this.state.categoryId)
 
         // next1 pushed
         if (e.target.id === 'CNP-N1') {
@@ -351,96 +334,7 @@ class CreateNewProject extends Component {
 
     }
 
-    getPlan = async(id) => {
-        this.setState({categoryId:id})
-        const res = await GetToApi('category/'+ id + '/plan');
-        this.setState({
-            plans:res.data
-        })
-        this.getDuration(id); // get time duration --->
-        console.log(res.data)
-    }
-
-
-    getDuration = async(id) => {
-        this.setState({categoryId:id})
-        const res = await GetToApi('category/'+ id + '/timing');
-        this.setState({
-            durations:res.data
-        })
-        console.log(res.data)
-    }
-
     render() {
-
-        //
-        // Get All Category -------------------------->
-        //
-        const renderCategory = (
-               this.state.category ?  this.state.category.map((data,index) => {
-              return  <div key={index}>
-                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id)} />
-                        <label htmlFor={index}>
-                            <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + data.icon + ')' }} >
-                                <span className="CNP-logoBoxTitle" >{data.title}</span>
-                            </div>
-                        </label>
-                </div>
-        }) : ''
-        )
-
-        //
-        // Get all plans from api ------------------------>
-        //
-        const renderPlans = (
-            this.state.categoryId > 0 ?
-                 this.state.plans.map((data,index) => {
-                return <div key={index} style={{width:'28%'}}>
-                    <input type="radio" id={'ss' + data.id} name="select" value={data.id} />
-                    <label htmlFor={'ss' + data.id}>
-                        <div className="CNP-label">
-                            <div className="CNP-SD-title" >
-                                <h1>{data.title}</h1>
-                                <h2>{data.desc}</h2>
-                            </div>
-                            <div className="CNP-SD-middle" >
-                                <p> {data.min} الی {data.max} طراح</p>
-                                <p>اولیه</p>
-                                <p>تضمین برگشت پول</p>
-                               {data.price === 0 ? <p>رایگان</p> :
-                             <p>{data.price} <span> تومان </span></p>
-                             }
-                            </div>
-                            <div className="CNP-SD-end" >
-                                انتخاب
-                            </div>
-                        </div>
-                    </label>
-                </div>
-                })  
-            : ''
-        );
-
-        const  renderDuration = ( 
-                           this.state.durations ? 
-                                this.state.durations.map((data,index) => {
-                                    return   <div key={index}>
-                                    <input type="radio" id="duration1" name="select" value="1" />
-                                    <label htmlFor="duration1">
-                                        <div className="CNPD-title" >
-                                            <p>{data.title}</p>
-                                            {data.price !== 0 ? <h1>  {data.price} تومان</h1> : <h1>رایگان</h1>}
-                                        </div>
-                                    </label> 
-                                </div>
-                                })
-                       :
-                       ''
-
-                        
-
-
-        )
         return (
             <div className="CreateNewProject">
 
@@ -457,10 +351,70 @@ class CreateNewProject extends Component {
                         <div className="CNP1-category" >
                             <h1>همه دسته بندی ها را ببین</h1>
                             <div className="CNP-1-radio" >
- 
-                                {renderCategory}
 
- 
+                                <input
+                                    type="radio" name="emotion"
+                                    id="logoA" className="input-hidden" />
+                                <label htmlFor="logoA">
+                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + logoA + ')' }} >
+                                        <span className="CNP-logoBoxTitle" >لوگو</span>
+                                    </div>
+                                </label>
+
+
+
+
+                                <input
+                                    type="radio" name="emotion"
+                                    id="BC" className="input-hidden" />
+                                <label htmlFor="BC">
+
+                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + BC + ')' }} >
+                                        <span className="CNP-logoBoxTitle" >کارت تجاری</span>
+                                    </div>
+                                </label>
+
+
+
+
+                                <input
+                                    type="radio" name="emotion"
+                                    id="PC" className="input-hidden" />
+                                <label htmlFor="PC">
+
+                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + PC + ')' }} >
+                                        <span className="CNP-logoBoxTitle" >وب و اپ</span>
+                                    </div>
+                                </label>
+
+
+
+
+                                <input
+                                    type="radio" name="emotion"
+                                    id="uxui" className="input-hidden" />
+                                <label htmlFor="uxui">
+
+                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + uxui + ')' }} >
+                                        <span className="CNP-logoBoxTitle" >رابط کاربری</span>
+                                    </div>
+                                </label>
+
+
+
+
+                                <input
+                                    type="radio" name="emotion"
+                                    id="content" className="input-hidden" />
+                                <label htmlFor="content">
+                                    <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + content + ')' }} >
+                                        <span className="CNP-logoBoxTitle" >محتوا</span>
+                                    </div>
+                                </label>
+
+
+
+
                                 <div onClick={this.moreCategory} >
                                     <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + threedot + ')' }} >
                                         <span className="CNP-logoBoxTitle" >بیشتر</span>
@@ -722,14 +676,68 @@ class CreateNewProject extends Component {
 
 
                         <div className="CNP-desc-text" >
-                            <h1>کدام پلن را انتخاب میکنی ؟</h1>
-                            <h2>پیشنهاد ویژه ای برای شما در نظر داریم.</h2>
+                            <h1>کدام طراحی را انتخاب میکنی ؟</h1>
+                            <h2>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</h2>
 
                             <div className="CNP-select-design" >
 
-                            
+                                <input type="radio" id="control_01" name="select" value="1" />
+                                <label htmlFor="control_01">
+                                    <div className="CNP-label" >
+                                        <div className="CNP-SD-title" >
+                                            <h1>ساده</h1>
+                                            <h2>طراحی فوق العاده</h2>
+                                        </div>
+                                        <div className="CNP-SD-middle" >
+                                            <p>به جز ۳۰ طراحی</p>
+                                            <p>اولیه</p>
+                                            <p>تضمین برگشت پول</p>
+                                        </div>
+                                        <div className="CNP-SD-end" >
+                                            انتخاب
+                                            </div>
+                                    </div>
+                                </label>
 
-                                {renderPlans}
+
+
+                                <input type="radio" id="control_02" name="select" value="2" />
+                                <label htmlFor="control_02">
+                                    <div className="CNP-label">
+                                        <div className="CNP-SD-title" >
+                                            <h1>ساده</h1>
+                                            <h2>طراحی فوق العاده</h2>
+                                        </div>
+                                        <div className="CNP-SD-middle" >
+                                            <p>به جز ۳۰ طراحی</p>
+                                            <p>اولیه</p>
+                                            <p>تضمین برگشت پول</p>
+                                        </div>
+                                        <div className="CNP-SD-end" >
+                                            انتخاب
+                                            </div>
+                                    </div>
+                                </label>
+
+
+                                <input type="radio" id="control_03" name="select" value="3" />
+                                <label htmlFor="control_03">
+                                    <div className="CNP-label">
+                                        <div className="CNP-SD-title" >
+                                            <h1>ساده</h1>
+                                            <h2>طراحی فوق العاده</h2>
+                                        </div>
+                                        <div className="CNP-SD-middle" >
+                                            <p>به جز ۳۰ طراحی</p>
+                                            <p>اولیه</p>
+                                            <p>تضمین برگشت پول</p>
+                                        </div>
+                                        <div className="CNP-SD-end" >
+                                            انتخاب
+                                            </div>
+
+                                    </div>
+                                </label>
 
 
                             </div>
@@ -766,47 +774,46 @@ class CreateNewProject extends Component {
                                 </div>
                         <div className="CNP-desc-text" >
                             <h1>زمانبندی</h1>
-                          <h2>آیا مایلید طراح های  خود را سریعتر دریافت نمایید؟</h2>
+                            <h2>دوست داری پروژه ات چند روزه آماده بشه ؟</h2>
 
                             <div className="CNP-duration" >
 
-                                {/* <input type="radio" id="duration1" name="select" value="1" />
+                                <input type="radio" id="duration1" name="select" value="1" />
                                 <label htmlFor="duration1">
                                     <div className="CNPD-title" >
                                         <p>استاندارد ۷ روز</p>
                                         <h1>رایگان</h1>
                                     </div>
-                                </label> */}
+                                </label>
 
 
 
-                                {/* <input type="radio" id="duration2" name="select" value="2" />
+                                <input type="radio" id="duration2" name="select" value="2" />
                                 <label htmlFor="duration2">
 
                                     <div className="CNPD-title" >
                                         <p>4 روز </p>
                                         <h1>250000 ت</h1>
                                     </div>
-                                </label> */}
+                                </label>
 
 
-                                {/* <input type="radio" id="duration3" name="select" value="3" />
+                                <input type="radio" id="duration3" name="select" value="3" />
                                 <label htmlFor="duration3">
 
                                     <div className="CNPD-title" >
                                         <p>2 روز </p>
                                         <h1>450000 ت</h1>
                                     </div>
-                                </label> */}
+                                </label>
 
-                                {/* <input type="radio" id="duration4" name="select" value="3" />
+                                <input type="radio" id="duration4" name="select" value="3" />
                                 <label htmlFor="duration4">
                                     <div className="CNPD-title" >
                                         <p>۲۴ ساعت </p>
                                         <h1>900000 ت</h1>
                                     </div>
-                                </label> */}
-                                {renderDuration}
+                                </label>
 
                             </div>
 
