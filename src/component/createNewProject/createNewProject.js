@@ -470,35 +470,6 @@ class CreateNewProject extends Component {
 
                     {/* STEP 1 */}
 
-                   <div>
-                   <Dropzone onDrop={acceptedFiles => {
-                       // TODO delete not working.!
-                       console.log(acceptedFiles);
-                    
-                    // this.setState({fileZop: acceptedFiles})
-                    var newArray = this.state.fileZop.slice();    
-                    newArray.push(acceptedFiles);   
-                    this.setState({fileZop:newArray})
-
-                    // console.log(typeof(this.state.fileZop))
-                    // console.log(this.state.fileZop)
-                    }
-                    }>
-                    {({getRootProps, getInputProps}) => (
-                        <section>
-                        <div {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            <p>Drag 'n' drop some files here, or click to select files</p>
-                        </div>
-                        </section>
-                    )}
-                    </Dropzone>
-                   </div>
-
-             
-
-
-
                     <div className="CNP-1" ref={this.CNP1} >
                         <div className="CNP-title" >
                             ایجاد پروژه جدید
@@ -584,46 +555,43 @@ class CreateNewProject extends Component {
 
                             <div className="CNP-upload" >
                               <div>
-                              <Dropzone onDrop={acceptedFiles => {
-                       // TODO delete not working.!
-                       console.log(acceptedFiles);
-                    
-                    // this.setState({fileZop: acceptedFiles})
-                    var newArray = this.state.fileZop.slice();    
-                    newArray.push(acceptedFiles);   
-                    this.setState({fileZop:newArray})
+                                <Dropzone onDrop={acceptedFiles => {
+                                        // TODO delete not working.!
+                                        console.log(acceptedFiles);
+                            
+                                        // this.setState({fileZop: acceptedFiles})
+                                        var newArray = this.state.fileZop.slice();    
+                                        newArray.push(acceptedFiles);   
+                                        this.setState({fileZop:newArray})
 
-                    // console.log(typeof(this.state.fileZop))
-                    // console.log(this.state.fileZop)
-                    }
-                    }>
-                    {({getRootProps, getInputProps}) => (
-                        <section  className="tests">
-                        <div style={{width:'100%'}} {...getRootProps()}>
-                            <input {...getInputProps()} />
-                         
-                            <div  className="CNP-image-uploader">
-                                    <h1>عکس پروفایل</h1>
-                                    <div className="CNPU-img" >
-                                        <img src={document} alt="اسناد" />
-                                    </div>
-                                    <p className="CNPU-text" >
-                                        برا آپلود عکس کلیک کنید یا عکس را رها کنید
-                                    </p>
-                                </div> 
-
-
-                        </div>
-                        </section>
-                    )}
-                    </Dropzone> 
+                                        // console.log(typeof(this.state.fileZop))
+                                        // console.log(this.state.fileZop)
+                                    }}>
+                                    {({getRootProps, getInputProps}) => (
+                                        <section  className="tests">
+                                        <div style={{width:'100%'}} {...getRootProps()}>
+                                            <input {...getInputProps()} />
+                                        
+                                            <div  className="CNP-image-uploader">
+                                                    <h1>عکس پروفایل</h1>
+                                                    <div className="CNPU-img" >
+                                                        <img src={document} alt="اسناد" />
+                                                    </div>
+                                                    <p className="CNPU-text" >
+                                                        برا آپلود عکس کلیک کنید یا عکس را رها کنید
+                                                    </p>
+                                                </div> 
+                                        </div>
+                                        </section>
+                                    )}
+                                </Dropzone> 
                             </div>
 
                             </div>
 
-<div className="CNP-attach-file-view-container ">
-{renderViewFiles}
-</div>
+                    <div className="CNP-attach-file-view-container ">
+                    {renderViewFiles}
+                    </div>
 
 
                         </div>
