@@ -70,10 +70,16 @@ class LoginComponent extends Component {
             })
         }
 
-        const data = {
-            "email": this.state.email,
-            "password": this.state.password
-        }
+     
+
+        //
+        // provider data for API --------------------------------------------------------------->
+        //
+        const data = new FormData();
+ 
+        data.append('email', this.state.email);
+        data.append('password', this.state.password); 
+
 
 
 
