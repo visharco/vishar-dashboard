@@ -734,6 +734,30 @@ font-weight: 200;
 
 }
 
+.CNP-attach-file-view-container {
+    display: flex;
+
+}
+
+.CNP-file-attach-view {
+    border-radius: 5px;
+    border: 2px solid #e5e5e5;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+
+}
+
+.tests {
+    background-color: red;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
 
 
 

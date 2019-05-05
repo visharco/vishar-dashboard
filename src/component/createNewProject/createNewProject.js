@@ -450,11 +450,9 @@ class CreateNewProject extends Component {
                 this.state.fileZop ? this.state.fileZop.map((data,index) => {
                   var xx = data;
                 return  xx.map((val,ind) =>{  
-                    return <div key={ind}>
-                  
-                    {/* {console.log(val)} */}
-                        {/* <img src={URL.createObjectURL(data)} alt="" style={{width:'200px', height:'200px', backgroundColor:'red'}} /> */}
-                        <img src={URL.createObjectURL(val)} alt="" style={{width:'200px', height:'200px', backgroundColor:'red'}} />
+                    return <div key={ind} >
+                        {/* <p onClick={ () =>  console.log(ind)}>  Delete</p> */}
+                        <img src={URL.createObjectURL(val)} alt="" className="CNP-file-attach-view"  />
                     </div>
                   })
                    
@@ -473,19 +471,18 @@ class CreateNewProject extends Component {
                     {/* STEP 1 */}
 
                    <div>
-                   <Dropzone onDrop={acceptedFiles => {console.log(acceptedFiles);
+                   <Dropzone onDrop={acceptedFiles => {
+                       // TODO delete not working.!
+                       console.log(acceptedFiles);
                     
                     // this.setState({fileZop: acceptedFiles})
-
                     var newArray = this.state.fileZop.slice();    
                     newArray.push(acceptedFiles);   
                     this.setState({fileZop:newArray})
 
-                    console.log(typeof(this.state.fileZop))
-                    console.log(this.state.fileZop)
-                
-                }
-                    
+                    // console.log(typeof(this.state.fileZop))
+                    // console.log(this.state.fileZop)
+                    }
                     }>
                     {({getRootProps, getInputProps}) => (
                         <section>
@@ -498,7 +495,7 @@ class CreateNewProject extends Component {
                     </Dropzone>
                    </div>
 
-                    <div>
+                    <div className="CNP-attach-file-view-container ">
                     {renderViewFiles}
                     </div>
 
@@ -588,7 +585,26 @@ class CreateNewProject extends Component {
                             </div>
 
                             <div className="CNP-upload" >
-                                <div  >
+                              <div>
+                              <Dropzone onDrop={acceptedFiles => {
+                       // TODO delete not working.!
+                       console.log(acceptedFiles);
+                    
+                    // this.setState({fileZop: acceptedFiles})
+                    var newArray = this.state.fileZop.slice();    
+                    newArray.push(acceptedFiles);   
+                    this.setState({fileZop:newArray})
+
+                    // console.log(typeof(this.state.fileZop))
+                    // console.log(this.state.fileZop)
+                    }
+                    }>
+                    {({getRootProps, getInputProps}) => (
+                        <section  className="tests">
+                        <div {...getRootProps()}>
+                            <input {...getInputProps()} />
+                         
+                            <div  >
                                     <h1>عکس پروفایل</h1>
                                     <div className="CNPU-img" >
                                         <img src={document} alt="اسناد" />
@@ -596,9 +612,19 @@ class CreateNewProject extends Component {
                                     <p className="CNPU-text" >
                                         برا آپلود عکس کلیک کنید یا عکس را رها کنید
                                     </p>
-                                </div>
+                                </div> 
+
+
+                        </div>
+                        </section>
+                    )}
+                    </Dropzone>
+                              </div>
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
 
+
+                               
+                    
 
                             </div>
 
