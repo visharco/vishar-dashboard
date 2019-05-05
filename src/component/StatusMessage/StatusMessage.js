@@ -46,10 +46,10 @@ class StatusMessage extends Component {
 
     }
 
-    componentDidMount(){
-        setInterval(() => this.closeStatus(),3000)
+    // componentDidMount =() => {
+    //     setInterval(() => this.closeStatus(),5000)
 
-    }
+    // }
 
 
     render() {
@@ -57,7 +57,7 @@ class StatusMessage extends Component {
             <div>
 
             {
-                this.state.status ? 
+                this.state.status  ? 
                 <div className="StatusMessage zoomIn"
                 style={{ backgroundColor: this.state.backgroundColor }}>
                     <img src={close} alt="بستن" className="StatusClose" onClick={this.closeStatus} />

@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
+import StatusMessage from '../../component/StatusMessage/StatusMessage';
+
 
 
 //
@@ -51,7 +53,8 @@ class CreateNewProject extends Component {
             plans:[],
             durations:[],
             categoryId:0,
-            fileZop:[]
+            fileZop:[],
+            errorMessage:'null'
         }
     }
 
@@ -214,6 +217,11 @@ class CreateNewProject extends Component {
                 this.setState({
                     part1: false,
                     part2: true
+                })
+            }
+            else{
+                this.setState({
+                    errorMessage:'لطفا یکی از دسته بندی های زیر را انتخاب کنید.'
                 })
             }   
         }
@@ -474,6 +482,10 @@ class CreateNewProject extends Component {
                     {/* STEP 1 */}
 
                     <div className="CNP-1" ref={this.CNP1} >
+                    <StatusMessage  
+                        type="error"
+                        text={this.state.errorMessage} 
+                    />
                         <div className="CNP-title" >
                             ایجاد پروژه جدید
                                 </div>
