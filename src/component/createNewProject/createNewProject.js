@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import StatusMessage from '../../component/StatusMessage/StatusMessage';
-
+import SweetAlert from 'sweetalert-react';
+import '../../../node_modules/sweetalert/dist/sweetalert.css';
 
 
 //
@@ -54,7 +55,11 @@ class CreateNewProject extends Component {
             durations:[],
             categoryId:0,
             fileZop:[],
-            errorMessage:'null'
+            errorMessage:'',
+            title:'',
+            errorTitle:'',
+            description:'',
+            errorDescription:''
         }
     }
 
@@ -76,10 +81,19 @@ class CreateNewProject extends Component {
 
     componentWillUnmount = async() =>  {
         window.removeEventListener('scroll', this.handleScroll);
-
-   
-
+ 
     }
+
+    //
+    // get data from input by event target -------------------------------------------------------------->
+    //
+    changedHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+
 
     // informationBtns = React.createRef()
     // imageBtns = React.createRef()
@@ -220,22 +234,43 @@ class CreateNewProject extends Component {
                 })
             }
             else{
-                this.setState({
-                    errorMessage:'لطفا یکی از دسته بندی های زیر را انتخاب کنید.'
-                })
+                // this.setState({
+                //     errorMessage:'لطفا یکی از دسته بندی های زیر را انتخاب کنید.'
+                // })
+
+                this.setState({ show: true ,  errorMessage:'لطفا یکی از دسته بندی های زیر را انتخاب کنید.'})
             }   
         }
 
         // next2 pushed
         else if (e.target.id === 'CNP-N2') {
-            this.CNP2.current.style.position = 'fixed'
-            this.CNP3.current.style.position = 'unset'
-            this.target2.current.className = 'CNP-btnBox-regular'
+         
+            let valid = true;
 
-            this.setState({
-                part2: false,
-                part3: true
-            })
+
+            if(this.state.title === '')
+            {
+                this.setState({errorTitle:'لطفا عنوان پروژه خود را وارد نمایید'});
+                valid = false
+
+            }
+            if(this.state.description ===''){
+                this.setState({errorDescription:'لطفا توضیحاتی درباره پروژه خود ذکر کنید'});
+                valid = false
+            }
+
+            if( valid === true){
+                this.CNP2.current.style.position = 'fixed'
+                this.CNP3.current.style.position = 'unset'
+                this.target2.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part2: false,
+                    part3: true,
+                    errorDescription:'',
+                    errorTitle:''
+                })
+            }
         }
 
         // next3 pushed
@@ -439,8 +474,8 @@ class CreateNewProject extends Component {
                            this.state.durations ? 
                                 this.state.durations.map((data,index) => {
                                     return   <div key={index}>
-                                    <input type="radio" id="duration1" name="select" value="1" />
-                                    <label htmlFor="duration1">
+                                    <input type="radio" id={'dd' + index} name="select" value="1" />
+                                    <label htmlFor={'dd' + index}>
                                         <div className="CNPD-title" >
                                             <p>{data.title}</p>
                                             {data.price !== 0 ? <h1>  {data.price} تومان</h1> : <h1>رایگان</h1>}
@@ -482,10 +517,13 @@ class CreateNewProject extends Component {
                     {/* STEP 1 */}
 
                     <div className="CNP-1" ref={this.CNP1} >
-                    <StatusMessage  
-                        type="error"
-                        text={this.state.errorMessage} 
-                    />
+                        <SweetAlert
+                            show={this.state.show}
+                            title=""
+                            text={this.state.errorMessage}
+                            onConfirm={() => this.setState({ show: false })}
+                        />
+                      
                         <div className="CNP-title" >
                             ایجاد پروژه جدید
                                 </div>
@@ -540,7 +578,8 @@ class CreateNewProject extends Component {
                                     name={'title'}
                                     placeholder={'عنوان پروژه '}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.errorTitle}
+                                    val={this.state.title}
                                 />
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
                             </div>
@@ -551,7 +590,8 @@ class CreateNewProject extends Component {
                                     name={'description'}
                                     placeholder={'هرچیزی که در پروژه نیاز داری رو شرح بده'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.errorDescription}
+                                    val={this.state.description}
                                 />
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
 
@@ -562,7 +602,8 @@ class CreateNewProject extends Component {
                                     name={'otherDescription'}
                                     placeholder={'چشز دیگری در مورد پروژه نیاز هست را اضافه کن'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.errorOtherDescription}
+                                    val={this.state.otherDescription}
                                 />
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
 
