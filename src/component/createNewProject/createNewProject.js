@@ -37,7 +37,7 @@ import TextArea from '../common/textarea/textarea'
 import './style.css';
 import GetToApi from '../../controler/getToApi';
 import PostToApii from '../../controler/postToApi';
-
+import LoadingComponent from '../loading/loadingComponent';
 
 
 
@@ -46,6 +46,7 @@ class CreateNewProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoadingGetData: false,
             part1: true,
             part2: false,
             part3: false,
@@ -54,6 +55,7 @@ class CreateNewProject extends Component {
             part6: false,
             category:[],
             categoryTitle:'',
+            categoryPrice:0,
             plans:[],
             durations:[],
             categoryId:0,
@@ -423,7 +425,7 @@ class CreateNewProject extends Component {
         console.log(e.target.value)
     }
     //PAYMENT 
-    paymentHandler = () =>{
+    paymentHandler = async() =>{
 
         console.log(`
         category_id : ${this.state.categoryId}
@@ -437,6 +439,9 @@ class CreateNewProject extends Component {
         path :
         `);
 
+        this.setState({
+            isLoadingGetData:true
+        })
 
 
         //
@@ -459,13 +464,19 @@ class CreateNewProject extends Component {
 
 
 
-        const res = PostToApii(data,'projects');
+        const res =await PostToApii(data,'projects');
 
         console.log(res);          // data, error,status
         console.log(res.status);   // 200 means success
         console.log(res.error);    // show the error from server
         console.log(res.data);     // show the data from server
 
+       // window.location.pathname = '/addsellers'
+        window.location = res.data.url;
+
+        this.setState({
+            isLoadingGetData:false
+        })
 
 
 
@@ -478,8 +489,12 @@ class CreateNewProject extends Component {
 
     }
 
-    getPlan = async(id,title) => {
-        this.setState({categoryId:id, categoryTitle:title})
+    getPlan = async(id,title,price) => {
+        this.setState({
+            categoryId:id,
+            categoryTitle:title,
+            categoryPrice:price
+        })
         const res = await GetToApi('category/'+ id + '/plan');
         this.setState({
             plans:res.data
@@ -530,7 +545,7 @@ class CreateNewProject extends Component {
         const renderCategory = (
                this.state.category ?  this.state.category.map((data,index) => {
               return  <div key={index}>
-                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id,data.title)} />
+                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id,data.title, data.pay)} />
                         <label htmlFor={index}>
                             <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + data.icon + ')' }} >
                                 <span className="CNP-logoBoxTitle" >{data.title}</span>
@@ -613,7 +628,7 @@ class CreateNewProject extends Component {
 
         return (
             <div className="CreateNewProject">
-
+                {this.state.isLoadingGetData ? <LoadingComponent /> : ''}
                 <div className="CNP-body" >
 
                     {/* STEP 1 */}
@@ -1050,6 +1065,7 @@ class CreateNewProject extends Component {
                             <h1>صورتحساب</h1>
                             <ul>
                                 <li> دسته بندی :<span>{this.state.categoryTitle}</span></li>
+                                <li> قیمت :<span>{this.state.categoryPrice}</span></li>
                                 <li>نوع پروژه : <span>پروژه انفرادی</span></li>
                                 <li>عنوان پروژه :<span>{this.state.title}</span></li>
                                 <li>زمان : <span>{this.state.projectDuration}  - {this.state.projectDurationPrice}</span> <span>تومان</span></li>
@@ -1058,7 +1074,7 @@ class CreateNewProject extends Component {
                             <p>
                                 مجموع هزینه ها :
                                             <h2>
-                                                {this.state.projectDurationPrice + this.state.planPrice} <span>تومان</span>
+                                                {this.state.projectDurationPrice + this.state.planPrice + this.state.categoryPrice} <span>تومان</span>
                                             </h2>
                             </p>
                         </div>
