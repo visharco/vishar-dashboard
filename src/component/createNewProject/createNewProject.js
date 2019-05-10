@@ -36,6 +36,8 @@ import TextArea from '../common/textarea/textarea'
 
 import './style.css';
 import GetToApi from '../../controler/getToApi';
+import PostToApii from '../../controler/postToApi';
+
 
 
 
@@ -51,6 +53,7 @@ class CreateNewProject extends Component {
             part5: false,
             part6: false,
             category:[],
+            categoryTitle:'',
             plans:[],
             durations:[],
             categoryId:0,
@@ -59,7 +62,16 @@ class CreateNewProject extends Component {
             title:'',
             errorTitle:'',
             description:'',
-            errorDescription:''
+            errorDescription:'',
+            otherDescription:'',
+            colors:[],
+            planPrice:0,
+            projectDuration:0,
+            projectDurationPrice:0,
+            category_plan_id:0,
+            category_timing_id:0,
+
+
         }
     }
 
@@ -273,7 +285,7 @@ class CreateNewProject extends Component {
             }
         }
 
-        // next3 pushed
+        // next3 pushed  ---  select colors and fonts -------------->
         else if (e.target.id === 'CNP-N3') {
             this.CNP3.current.style.position = 'fixed'
             this.CNP4.current.style.position = 'unset'
@@ -285,28 +297,42 @@ class CreateNewProject extends Component {
             })
         }
 
-        // next4 pushed
+        // next4 pushed  --- select plans ------------>
         else if (e.target.id === 'CNP-N4') {
-            this.CNP4.current.style.position = 'fixed'
-            this.CNP5.current.style.position = 'unset'
-            this.target4.current.className = 'CNP-btnBox-regular'
 
-            this.setState({
-                part4: false,
-                part5: true
-            })
+            if(this.state.category_plan_id !== 0)
+            {   
+                this.CNP4.current.style.position = 'fixed'
+                this.CNP5.current.style.position = 'unset'
+                this.target4.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part4: false,
+                    part5: true
+                })
+            }
+            else{
+                this.setState({ show: true ,  errorMessage:'لطفا یکی از پلن های زیر را انتخاب کنید.'})
+            }
         }
 
         // next5 pushed
         else if (e.target.id === 'CNP-N5') {
-            this.CNP5.current.style.position = 'fixed'
-            this.CNP6.current.style.position = 'unset'
-            this.target5.current.className = 'CNP-btnBox-regular'
 
-            this.setState({
-                part5: false,
-                part6: true
-            })
+            if(this.state.category_timing_id !== 0 )
+            {
+                this.CNP5.current.style.position = 'fixed'
+                this.CNP6.current.style.position = 'unset'
+                this.target5.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part5: false,
+                    part6: true
+                })
+            }
+            else{
+                this.setState({ show: true ,  errorMessage:'لطفا مدت زمان انجام پروژه خود را انتخاب کنید.'})
+            }
         }
 
         //focus top of screen
@@ -388,9 +414,61 @@ class CreateNewProject extends Component {
         });
     }
 
+
+    //
+    //
+    //
     
+    getValueColor = (e) => {
+        console.log(e.target.value)
+    }
     //PAYMENT 
     paymentHandler = () =>{
+
+        console.log(`
+        category_id : ${this.state.categoryId}
+        category_plan_id : ${this.state.category_plan_id}
+        category_timing_id : ${this.state.category_timing_id}
+        title : ${this.state.title}
+        desc : ${this.state.description}
+        desc_more : ${this.state.otherDescription}
+        colors :
+        fonts :
+        path :
+        `);
+
+
+
+        //
+        // provider data for API --------------------------------------------------------------->
+        //
+
+       const data = new FormData();
+
+        data.append('category_id', this.state.categoryId);
+        data.append('category_plan_id', this.state.category_plan_id);
+        data.append('category_timing_id', this.state.category_timing_id);
+        data.append('title', this.state.title);
+        data.append('desc', this.state.description);
+        data.append('desc_more', this.state.otherDescription)
+        var details = JSON.stringify({age: 12}); // TODO fixed later for get colors and fonts
+        data.append('colors', details);
+        data.append('fonts', details);
+
+
+
+
+
+        const res = PostToApii(data,'projects');
+
+        console.log(res);          // data, error,status
+        console.log(res.status);   // 200 means success
+        console.log(res.error);    // show the error from server
+        console.log(res.data);     // show the data from server
+
+
+
+
 
     }
 
@@ -400,8 +478,8 @@ class CreateNewProject extends Component {
 
     }
 
-    getPlan = async(id) => {
-        this.setState({categoryId:id})
+    getPlan = async(id,title) => {
+        this.setState({categoryId:id, categoryTitle:title})
         const res = await GetToApi('category/'+ id + '/plan');
         this.setState({
             plans:res.data
@@ -420,6 +498,30 @@ class CreateNewProject extends Component {
         console.log(res.data)
     }
 
+    //
+    // get plan id ----------------------->
+    //
+    _getPlanId = (id,title, price) => {
+        console.log(id) // TODO delete later
+
+        this.setState({
+            category_plan_id: id,
+            planPrice:price
+        })
+    }
+
+    //
+    //
+    //
+    _getDurationId  = (id,title,price) => {
+        console.log(id) // TODO delete later
+
+        this.setState({
+            category_timing_id: id,
+            projectDurationPrice:price,
+            projectDuration:title
+        })
+    }
     render() {
 
         //
@@ -428,7 +530,7 @@ class CreateNewProject extends Component {
         const renderCategory = (
                this.state.category ?  this.state.category.map((data,index) => {
               return  <div key={index}>
-                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id)} />
+                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id,data.title)} />
                         <label htmlFor={index}>
                             <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + data.icon + ')' }} >
                                 <span className="CNP-logoBoxTitle" >{data.title}</span>
@@ -445,7 +547,7 @@ class CreateNewProject extends Component {
             this.state.categoryId > 0 ?
                  this.state.plans.map((data,index) => {
                 return <div key={index} style={{width:'28%'}}>
-                    <input type="radio" id={'ss' + data.id} name="select" value={data.id} />
+                    <input type="radio" id={'ss' + data.id} name="select" value={data.id} onClick={() => this._getPlanId(data.id, data.title, data.price) }/>
                     <label htmlFor={'ss' + data.id}>
                         <div className="CNP-label">
                             <div className="CNP-SD-title" >
@@ -474,7 +576,7 @@ class CreateNewProject extends Component {
                            this.state.durations ? 
                                 this.state.durations.map((data,index) => {
                                     return   <div key={index}>
-                                    <input type="radio" id={'dd' + index} name="select" value="1" />
+                                    <input type="radio" id={'dd' + index} name="select" value={data.id}  onClick={() => this._getDurationId(data.id, data.title, data.price) }/>
                                     <label htmlFor={'dd' + index}>
                                         <div className="CNPD-title" >
                                             <p>{data.title}</p>
@@ -566,7 +668,7 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-2" ref={this.CNP2}  >
                         <div className="CNP-title" >
-                            کارت تجاری
+                           {this.state.categoryTitle}
                         </div>
                         <div className="CNP-desc-text" >
                             <h1>توضیحات پس زمینه</h1>
@@ -681,7 +783,7 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-3" ref={this.CNP3} >
                         <div className="CNP-title" >
-                            کارت تجاری
+                            {this.state.categoryTitle}
                         </div>
                         <div className="CNP-desc-text" >
                             <h1>رنگها را پیدا کن</h1>
@@ -689,56 +791,56 @@ class CreateNewProject extends Component {
                             <div className="CNP-check-color CNP-check">
                                 <ul>
                                     <li>
-                                        <input type="checkbox" id="colors1" />
+                                        <input type="checkbox" id="colors1" value="blue" onClick={this.getValueColor}/>
                                         <label htmlFor="colors1">
                                             <img src={color1} alt="رنگها" />
                                             <span>آبی</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors2" />
+                                        <input type="checkbox" id="colors2" value="green" onClick={this.getValueColor}/>
                                         <label htmlFor="colors2">
                                             <img src={color2} alt="رنگها" />
                                             <span>سبز</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors3" />
+                                        <input type="checkbox" id="colors3" onClick={this.getValueColor}/>
                                         <label htmlFor="colors3">
                                             <img src={color3} alt="رنگها" />
                                             <span>بنفش</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors4" />
+                                        <input type="checkbox" id="colors4" onClick={this.getValueColor}/>
                                         <label htmlFor="colors4">
                                             <img src={color4} alt="رنگها" />
                                             <span>صورتی </span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors5" />
+                                        <input type="checkbox" id="colors5" onClick={this.getValueColor}/>
                                         <label htmlFor="colors5">
                                             <img src={color5} alt="رنگها" />
                                             <span>قرمز</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors6" />
+                                        <input type="checkbox" id="colors6" onClick={this.getValueColor}/>
                                         <label htmlFor="colors6">
                                             <img src={color6} alt="رنگها" />
                                             <span>نارنجی</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors7" />
+                                        <input type="checkbox" id="colors7" onClick={this.getValueColor}/>
                                         <label htmlFor="colors7">
                                             <img src={color7} alt="رنگها" />
                                             <span>خاکستری</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors8" />
+                                        <input type="checkbox" id="colors8" onClick={this.getValueColor}/>
                                         <label htmlFor="colors8">
                                             <img src={color8} alt="رنگها" />
                                             <span>قرمز</span>
@@ -819,7 +921,7 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-4" ref={this.CNP4}>
                         <div className="CNP-title" >
-                            کارت تجاری
+                            {this.state.categoryTitle}
                         </div>
 
 
@@ -864,8 +966,8 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-5" ref={this.CNP5}>
                         <div className="CNP-title" >
-                            کارت تجاری
-                                </div>
+                            {this.state.categoryTitle}
+                        </div>
                         <div className="CNP-desc-text" >
                             <h1>زمانبندی</h1>
                           <h2>آیا مایلید طراح های  خود را سریعتر دریافت نمایید؟</h2>
@@ -941,22 +1043,22 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-6" ref={this.CNP6}>
                         <div className="CNP-title" >
-                            کارت تجاری
-                                    </div>
+                            {this.state.categoryTitle}
+                        </div>
 
                         <div className="CNP-invoice" >
                             <h1>صورتحساب</h1>
                             <ul>
-                                <li> دسته بندی :<span>لوگو</span></li>
-                                <li>نوع پروژه : <span>سوپراستار</span></li>
-                                <li>عنوان پروژه :<span>طراحی لوگو</span></li>
-                                <li>زمان : <span>7 روز - رایگان</span></li>
-                                <li>هزینه :<span>150000 ت</span></li>
+                                <li> دسته بندی :<span>{this.state.categoryTitle}</span></li>
+                                <li>نوع پروژه : <span>پروژه انفرادی</span></li>
+                                <li>عنوان پروژه :<span>{this.state.title}</span></li>
+                                <li>زمان : <span>{this.state.projectDuration}  - {this.state.projectDurationPrice}</span> <span>تومان</span></li>
+                                <li>قیمت پلن :<span>{this.state.planPrice}</span> <span>تومان</span></li>
                             </ul>
                             <p>
                                 مجموع هزینه ها :
                                             <h2>
-                                    1800000 ت
+                                                {this.state.projectDurationPrice + this.state.planPrice} <span>تومان</span>
                                             </h2>
                             </p>
                         </div>
