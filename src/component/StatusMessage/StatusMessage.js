@@ -66,7 +66,7 @@ class StatusMessage extends Component {
 
             {
                 this.state.text  ? 
-                <div className="StatusMessage zoomIn"
+                <div className="StatusMessage  "
                 style={{ backgroundColor: this.state.backgroundColor }}>
                     <img src={close} alt="بستن" className="StatusClose" onClick={this.closeStatus} />
                     <p style={{ color: this.state.color }}>
