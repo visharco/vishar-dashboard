@@ -8,11 +8,11 @@ import './style.css';
 //
 //
 //
-import imgSuccess from '../../../assets/images/success.png'
+import imgFaild from '../../../assets/images/faild.png'
 
 
 
-class SuccessPayment extends Component {
+class FaildPayment extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -22,9 +22,11 @@ class SuccessPayment extends Component {
             <div>
                 <div className="CreateNewProject">
                      <div className="container">
-                        <div className="success-payment-container">
-                            <img src={imgSuccess} alt="success" style={{width:'150px'}} />
-                            <h1>کاربر گرامی ، پرداخت با موفقیت انجام شد.</h1>
+                        <div className="faild-payment-container">
+                            <img src={imgFaild} alt="success" style={{width:'150px'}} />
+                            <h1>کاربر گرامی ، پرداخت با موفقیت انجام نشد.</h1>
+                            <p>لطفا برای پرداخت مجدد ، دوباره امتحان کنید.</p>
+                            <br />
                             <Link to="/singleProject" >
                             <Button                                                                  
                                 isLoading={this.state.isLoading}                                    
@@ -46,4 +48,4 @@ class SuccessPayment extends Component {
     }
 }
  
-export default SuccessPayment;
+export default FaildPayment;

@@ -20,6 +20,8 @@ import CreateNewProjectScreen from './component/createNewProject/createNewProjec
 import NotificationScreen from './component/notification/notification';
 import MessageScreen from './component/Message/Message';
 import ChatBoxScreen from './component/ChatBox/ChatBox';
+import successPaymentScreen from './component/createNewProject/successPayment/successPayment';
+import faildPaymentScreen from './component/createNewProject/faildPayment/faildPayment';
 
 
 import DesignerProfileScreen from './component/Designer/DesignerProfile/DesignerProfile'
@@ -71,6 +73,8 @@ class RouterComponent extends Component {
                                 <Route path="notification" component={NotificationScreen} />
                                 <Route path="message" component={MessageScreen} />
                                 <Route path="chatBox" component={ChatBoxScreen} />
+                                <Route path="success-payment" component={successPaymentScreen} />
+                                <Route path="faild-payment" component={faildPaymentScreen} />
                         
                             
         
