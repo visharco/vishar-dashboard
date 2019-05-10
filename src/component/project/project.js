@@ -30,7 +30,7 @@ class Project extends Component {
                         <div className="p-right-text" >
                             <div className="p-status-box" >
                                 <h1>{this.props.data.title}</h1>
-                                <p className={this.props.status} >{this.props.statusText}</p>
+                                <p className={this.props.data.status} >{this.props.data.status}</p>
                             </div>
                             <p>
                                 {/* لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است */}

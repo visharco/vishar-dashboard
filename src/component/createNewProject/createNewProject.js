@@ -461,8 +461,8 @@ class CreateNewProject extends Component {
         data.append('colors', details);
         data.append('fonts', details);
 
-        console.log(this.state.fileZop)
-
+        //console.log(this.state.fileZop)
+        if(this.state.fileZop[0])
         for (const file of this.state.fileZop[0]) {
                 data.append('path[]', file, file.name );
           }

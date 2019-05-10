@@ -14,10 +14,7 @@ import plus from './../../assets/icons/plus.svg'
 //
 import NoProject from '../../component/noProject/noProject'
 import GetApi from '../../controler/getToApi';
-
-
-
-
+ 
 import './style.css';
 import Project from '../project/project';
 
@@ -81,7 +78,7 @@ class SingleProject extends Component {
                         {/* <Project status={'Completed'} statusText={'کامل شده'} /> */}
                         {/* <Project status={'Working'} statusText={'در حال انجام '} />
                         <Project status={'Pending'} statusText={' در صف انجام'} /> */}
-                        {renderProject}
+                        {this.state.myProjects.length > 0 ?  renderProject : <NoProject />}
                     </div>
                     
                         {/* <NoProject /> */}

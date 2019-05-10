@@ -43,6 +43,46 @@
     width: 100%;
     
 }
+.finish{
+    background-color: #6FCF97;
+    padding: 0px 15px;
+    font-weight: 900;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+
+}
+.working{
+    background-color: #56CCF2;
+    padding: 0px 15px;
+    font-weight: 900;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+}
+.pending{
+    background-color: #F2C94C;
+    padding: 0px 15px;
+    font-weight: 900;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+}
 
 .p-right-text h1{
     font-size: 20px;

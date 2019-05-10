@@ -36,12 +36,10 @@ class NoProject extends Component {
             <div className="noProject">
                 <div className="noProjectBox" >
                     <img src={layerempty} alt="لایه ها" />
-                    <h1>به حساب کاربریت خوش اومدی</h1>
-                    <p>
-
-
-                        متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
-                </p>
+                    <h1>پروژه ثبت نشده است</h1>
+                    <p> 
+                        برای سفارش و ثبت اولین پروژه خود ، برروی لینک <b>ایجاد پروژه جدید</b> کلیک نمایید
+                    </p>
                     <button onClick={this.createNewProject}>
                         ایجاد پروژه جدید
                     </button>
