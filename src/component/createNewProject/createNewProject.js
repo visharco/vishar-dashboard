@@ -459,6 +459,7 @@ class CreateNewProject extends Component {
         var details = JSON.stringify({age: 12}); // TODO fixed later for get colors and fonts
         data.append('colors', details);
         data.append('fonts', details);
+        data.append('path', this.state.fileZop);
 
 
 

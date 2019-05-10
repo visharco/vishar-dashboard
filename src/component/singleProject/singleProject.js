@@ -13,6 +13,8 @@ import plus from './../../assets/icons/plus.svg'
 //compoents
 //
 import NoProject from '../../component/noProject/noProject'
+import GetApi from '../../controler/getToApi';
+
 
 
 
@@ -24,14 +26,40 @@ class SingleProject extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            myProjects:[],
+
+        }
     }
     createNewProject =() =>{
         browserHistory.push('/createNewProject');
 
     }
 
+    componentWillMount = async() => {
+
+        const res = await GetApi('projects');
+
+        console.log(res);          // data, error,status
+        console.log(res.status);   // 200 means success
+        console.log(res.error);    // show the error from server
+        console.log(res.data);     // show the data from server
+
+        this.setState({
+            myProjects:res.data
+        })
+
+
+
+    }
+
     render() {
+
+        const renderProject = (
+             this.state.myProjects.map((data,index) => {
+               return <Project status={'Completed'} key={index} data={data} id={data.id} statusText={'کامل شده'} />
+            })
+        )
         return (
             <div className="SingleProject">
                 <div className="SP-title" >
@@ -50,12 +78,13 @@ class SingleProject extends Component {
                         </div>
                     </div>
                     <div className="SP-down" >
-                        <Project status={'Completed'} statusText={'کامل شده'} />
-                        <Project status={'Working'} statusText={'در حال انجام '} />
-                        <Project status={'Pending'} statusText={' در صف انجام'} />
+                        {/* <Project status={'Completed'} statusText={'کامل شده'} /> */}
+                        {/* <Project status={'Working'} statusText={'در حال انجام '} />
+                        <Project status={'Pending'} statusText={' در صف انجام'} /> */}
+                        {renderProject}
                     </div>
                     
-                        <NoProject />
+                        {/* <NoProject /> */}
 
 
                 </div>
