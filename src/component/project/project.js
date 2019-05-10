@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
 
-import design1 from '../../assets/images/design1.png'
+import defualtDesing from '../../assets/images/defualtProjectImage.png'
 
 import './style.css';
 
@@ -25,7 +25,7 @@ class Project extends Component {
 
                 </div>
                 <div className="p-right" >
-                    <img src={design1} alt="طرح" />
+                    <img src={defualtDesing} alt="طرح"  />
                     <div className="p-right-title" >
                         <div className="p-right-text" >
                             <div className="p-status-box" >
