@@ -34,7 +34,8 @@ class DashboardMenu extends Component {
             openHumberger: false,
             nameFamily:'',
             email:'',
-            avatar:loadinggif
+            avatar:loadinggif,
+            type:''
         }
 
 
@@ -66,6 +67,7 @@ class DashboardMenu extends Component {
        await this.setState({
             nameFamily:res.data.name,
             email:res.data.email,
+            type:res.data.type,
             avatar:res.data.image || defualtAvata,
         })
 
@@ -177,7 +179,7 @@ class DashboardMenu extends Component {
                             <div className="DM-title-name">
                                 <h1>{this.state.nameFamily}</h1>
                                 <h2>{this.state.email}</h2>
-                                <span>مشتری</span>
+                                <span>{this.state.type}</span>
                             </div>
                         </div>
                         <div className="DM-body" >

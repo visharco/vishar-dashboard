@@ -42,6 +42,7 @@
 
 import React, { Component } from 'react';
 
+import GetApi from './controler/getToApi';
 
 
  
@@ -53,7 +54,18 @@ import DesignerDashboardMenu from './component/Designer/DesignerDashboardMenu/De
 class RootComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            userInfo: []
+        }
+    }
+
+    componentWillMount = async() => {
+        const res = await GetApi('profile/init');
+
+       await this.setState({
+            userInfo: res.data
+        })
+
     }
 
 
@@ -70,7 +82,8 @@ class RootComponent extends Component {
                                 {this.props.children}
                             </div>
                             <div className="dashboard-right" >
-                                <DashboardMenu />
+                            {this.state.userInfo.type ==='customer' ?  <DashboardMenu /> :   <DesignerDashboardMenu data={this.state.userInfo} />}
+                               
                                 {/* <DesignerDashboardMenu /> */}
                                 
                             </div>
