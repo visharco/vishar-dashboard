@@ -4,6 +4,7 @@
     flex-direction: column;
     direction: rtl;
     padding:40px 30px;
+    position: relative;
 }
 .CNP-title{
     font-size: 25px;

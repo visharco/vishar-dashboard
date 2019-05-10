@@ -26,6 +26,11 @@ max-width: 1600px;
 display: flex;
 }
 
+.header-logo img {
+    height: 72px;
+    
+}
+
 
 .header-menu{
 display: flex;
@@ -180,6 +185,11 @@ transition: all .2s linear;
 
     .menu-login-text{
         width: 100px;
+    }
+
+    .header-logo img {
+        height: 50px;
+        
     }
     .menu-link {
         margin: 0px 0px;

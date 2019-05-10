@@ -17,7 +17,8 @@ import user from '../../assets/icons/user.svg';
 //
 
 import GetApi from '../../controler/getToApi';
-
+import defualtAvata from '../../assets/icons/user.svg'
+import loadinggif from '../../assets/images/loading-image.gif'
 
 
 import './style.css';
@@ -33,7 +34,7 @@ class DashboardMenu extends Component {
             openHumberger: false,
             nameFamily:'',
             email:'',
-            avatar:''
+            avatar:loadinggif
         }
 
 
@@ -65,7 +66,7 @@ class DashboardMenu extends Component {
        await this.setState({
             nameFamily:res.data.name,
             email:res.data.email,
-            avatar:res.data.image,
+            avatar:res.data.image || defualtAvata,
         })
 
 

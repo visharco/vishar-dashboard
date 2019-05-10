@@ -138,87 +138,94 @@ class CreateNewProject extends Component {
         // console.log()
 
 
-            if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
-                this.target1.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
-                this.target1.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 600) >= this.point2.current.offsetTop) ) {
-                this.target2.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
-                this.target2.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 600) >= this.point3.current.offsetTop)) {
-                this.target3.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
-                this.target3.current.className = 'CNP-btnBox-fixed'
-            }
 
 
-            if (((window.scrollY + 600) >= this.point4.current.offsetTop) ) {
-                this.target4.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
-                this.target4.current.className = 'CNP-btnBox-fixed'
-            }
 
 
-            if (((window.scrollY + 600) >= this.point5.current.offsetTop) ) {
-                this.target5.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
-                this.target5.current.className = 'CNP-btnBox-fixed'
-            }
 
 
-            if (((window.scrollY + 600) >= this.point6.current.offsetTop) ) {
-                this.target6.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6) {
-                this.target6.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
+        //         this.target1.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
+        //         this.target1.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 600) >= this.point2.current.offsetTop) ) {
+        //         this.target2.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
+        //         this.target2.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 600) >= this.point3.current.offsetTop)) {
+        //         this.target3.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
+        //         this.target3.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-        // tablet and mobile size scroll
-        if (window.innerWidth <= 700) {
-            if (((window.scrollY + 700) >= this.point1.current.offsetTop) ) {
-                this.target1.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
-                this.target1.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 700) >= this.point2.current.offsetTop) ) {
-                this.target2.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
-                this.target2.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 700) >= this.point3.current.offsetTop) ) {
-                this.target3.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
-                this.target3.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point4.current.offsetTop) ) {
+        //         this.target4.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
+        //         this.target4.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-            if (((window.scrollY + 700) >= this.point4.current.offsetTop) ) {
-                this.target4.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
-                this.target4.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point5.current.offsetTop) ) {
+        //         this.target5.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
+        //         this.target5.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-            if (((window.scrollY + 700) >= this.point5.current.offsetTop) ) {
-                this.target5.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
-                this.target5.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point6.current.offsetTop) ) {
+        //         this.target6.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6) {
+        //         this.target6.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-            if (((window.scrollY + 700) >= this.point6.current.offsetTop) ) {
-                this.target6.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point6.current.offsetTop) && this.state.part6) {
-                this.target6.current.className = 'CNP-btnBox-fixed'
-            }
-        }
+        // // tablet and mobile size scroll
+        // if (window.innerWidth <= 700) {
+        //     if (((window.scrollY + 700) >= this.point1.current.offsetTop) ) {
+        //         this.target1.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
+        //         this.target1.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 700) >= this.point2.current.offsetTop) ) {
+        //         this.target2.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
+        //         this.target2.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 700) >= this.point3.current.offsetTop) ) {
+        //         this.target3.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
+        //         this.target3.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+
+        //     if (((window.scrollY + 700) >= this.point4.current.offsetTop) ) {
+        //         this.target4.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
+        //         this.target4.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+
+        //     if (((window.scrollY + 700) >= this.point5.current.offsetTop) ) {
+        //         this.target5.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
+        //         this.target5.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+
+        //     if (((window.scrollY + 700) >= this.point6.current.offsetTop) ) {
+        //         this.target6.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point6.current.offsetTop) && this.state.part6) {
+        //         this.target6.current.className = 'CNP-btnBox-fixed'
+        //     }
+ 
+        // }
 
     };
 
