@@ -50,11 +50,11 @@
 .title-child2 , .body-child2{
     min-width: 170px;
 }
-.paymentSuccess{
-    color: #6FCF97;
+.paymentsuccess {
+    color: #6FCF97!important;
 }
-.paymentFail{
-    color:#C50143;
+.paymentwarning{
+    color:#C50143!important;
 }
 
 

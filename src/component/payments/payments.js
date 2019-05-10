@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 //
 //
 
+import GetApi from '../../controler/getToApi';
+
 //
 //compoents
 //
@@ -17,10 +19,37 @@ class Payments extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            invoice:[]
+        }
+    }
+
+    componentWillMount = async() => {
+        const res = await GetApi('invoice');
+
+        console.log(res.data)
+
+        await this.setState({
+            invoice: res.data
+        })
     }
 
     render() {
+
+        const renderInvoice = (
+            this.state.invoice.length > 0 ? this.state.invoice.map((data,index) => {
+                return <tr className="PSB-body">
+                <td className="body-child1" >{index + 1}</td>
+                <td className="body-child2" >{data.project.title}</td>
+                <td className="body-child" >{data.updated_at}</td>
+                <td className="body-child" >{data.price_all}</td>
+                <td className="body-child" >{data.market}</td>
+                <td className="body-child" >{data.info.zarinpal.refId ? data.info.zarinpal.refId : '---'}</td>
+                <td className={"body-child " + "payment"+data.info.zarinpal.result}  >{data.info.zarinpal.result}</td>
+            </tr>
+            }) :  <NoPaymentBox />
+        )
+
         return (
             <div className="Payments">
                 <div className="PS-title" >
@@ -40,40 +69,14 @@ class Payments extends Component {
                                 <th className="title-child" >شماره پرداخت</th>
                                 <th className="title-child" >وضعیت</th>
                             </tr>
-                            <tr className="PSB-body">
-                                <td className="body-child1" >1</td>
-                                <td className="body-child2" >طراحی لوگو برای شرکت من</td>
-                                <td className="body-child" >10/10/1398</td>
-                                <td className="body-child" >50,000 ت</td>
-                                <td className="body-child" >زرین پال</td>
-                                <td className="body-child" >زرین 123</td>
-                                <td className="body-child paymentSuccess"  >موفق</td>
-                            </tr>
-                            <tr className="PSB-body">
-                                <td className="body-child1" >1</td>
-                                <td className="body-child2" >طراحی لوگو برای شرکت من</td>
-                                <td className="body-child" >10/10/1398</td>
-                                <td className="body-child" >50,000 ت</td>
-                                <td className="body-child" >زرین پال</td>
-                                <td className="body-child" >زرین 123</td>
-                                <td className="body-child paymentFail"  >ناموفق</td>
-                            </tr>
-                            <tr className="PSB-body">
-                                <td className="body-child1" >1</td>
-                                <td className="body-child2" >طراحی لوگو برای شرکت من</td>
-                                <td className="body-child" >10/10/1398</td>
-                                <td className="body-child" >50,000 ت</td>
-                                <td className="body-child" >زرین پال</td>
-                                <td className="body-child" >زرین 123</td>
-                                <td className="body-child paymentSuccess"  >موفق</td>
-                            </tr>
+                            {renderInvoice}
                         </tbody>
                     </table>
                 </div>
 
 
 
-                <NoPaymentBox />
+               
 
 
 
