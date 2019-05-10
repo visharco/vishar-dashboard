@@ -110,6 +110,19 @@ class ProjectDetail extends Component {
 
 
     render() {
+
+        const renderImagesFiles = (
+                this.state.myProject.file ?   this.state.myProject.file.map((data,index) => {
+                    return       <div key={index} className="PD-attach" style={{ backgroundImage: 'url(' + data.path + ')', }} >
+                                    
+                                 </div> 
+            }) : ''
+        )
+
+
+  
+
+
         return (
 
 
@@ -284,15 +297,9 @@ class ProjectDetail extends Component {
                                 <h1>منابع</h1>
                                 <h2>ضمیمه ها</h2>
                                 <div className="PD-attachs" >
-                                    <div className="PD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
-                                    <div className="PD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
-                                    <div className="PD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
+                               
+                                {renderImagesFiles}
+                              
                                 </div>
                                 <h2>توضیحات دیگر</h2>
                                 <p>
