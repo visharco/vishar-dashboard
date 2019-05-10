@@ -47,7 +47,7 @@ export default GetToApi;
 import PostData  from './controler/postToApi';
 
 
-const res = PostData(data,'api url');
+const res = PostData('api url');
 
   console.log(res);          // data, error,status
   console.log(res.status);   // 200 means success
