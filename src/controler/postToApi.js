@@ -49,6 +49,22 @@ export default postApi;
 import PostData  from './controler/postToApi';
 
 
+        //
+        // provider data for API --------------------------------------------------------------->
+        //
+        const data = new FormData();
+
+        data.append('name', this.state.name);
+        data.append('email', this.state.email);
+        data.append('phone', this.state.phone);
+        data.append('tell', this.state.tell);
+        data.append('city', this.state.city);
+        data.append('image', this.state.selectedFile, this.state.selectedFile.name || '')
+
+
+
+
+
 const res = PostData(data,'api url');
 
   console.log(res);          // data, error,status

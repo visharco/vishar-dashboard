@@ -72,46 +72,7 @@ margin-bottom: 10px;
 align-content: center;
 
 }
-.Completed{
-    background-color: #6FCF97;
-    padding: 0px 15px;
-    font-weight: 900;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 30px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 30px;
 
-}
-.Working{
-    background-color: #56CCF2;
-    padding: 0px 15px;
-    font-weight: 900;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 30px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 30px;
-}
-.Pending{
-    background-color: #F2C94C;
-    padding: 0px 15px;
-    font-weight: 900;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 30px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 30px;
-}
 
 .DPT-icons{
     display: flex;

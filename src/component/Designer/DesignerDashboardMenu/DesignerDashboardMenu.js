@@ -152,9 +152,9 @@ class DesignerDashboardMenu extends Component {
                         <div className="DDM-title" >
                             <img src={user} alt="طراح" />
                             <div className="DDM-title-name">
-                                <h1>امید آرمانی</h1>
-                                <h2>omidarmani@gmail.com</h2>
-                                <span>طراح</span>
+                                <h1>{this.props.data.name}</h1>
+                                <h2>{this.props.data.email}</h2>
+                                <span>{this.props.data.type}</span>
                             </div>
                         </div>
                         <div className="DDM-body" >
@@ -170,10 +170,10 @@ class DesignerDashboardMenu extends Component {
                                 <p>پروژه های فردی</p>
                                 <img src={employee} alt="فردی" />
                             </div>
-                            <div className="DDM-body-child" onClick={this.goToDesignerCollaborateProject} >
+                            {/* <div className="DDM-body-child" onClick={this.goToDesignerCollaborateProject} >
                                 <p>پروژه های همکاری</p>
                                 <img src={employees} alt="همکاری" />
-                            </div>
+                            </div> */}
                             <div className="DDM-body-child" onClick={this.goToDesignerMessage} >
                                 <p>پیامها</p>
                                 <img src={message} alt="پیام ها" />

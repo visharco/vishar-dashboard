@@ -1,5 +1,10 @@
 
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone';
+import StatusMessage from '../../component/StatusMessage/StatusMessage';
+import SweetAlert from 'sweetalert-react';
+import '../../../node_modules/sweetalert/dist/sweetalert.css';
+
 
 //
 //
@@ -31,6 +36,8 @@ import TextArea from '../common/textarea/textarea'
 
 import './style.css';
 import GetToApi from '../../controler/getToApi';
+import PostToApii from '../../controler/postToApi';
+import LoadingComponent from '../loading/loadingComponent';
 
 
 
@@ -39,6 +46,7 @@ class CreateNewProject extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoadingGetData: false,
             part1: true,
             part2: false,
             part3: false,
@@ -46,9 +54,26 @@ class CreateNewProject extends Component {
             part5: false,
             part6: false,
             category:[],
+            categoryTitle:'',
+            categoryPrice:0,
             plans:[],
             durations:[],
-            categoryId:0
+            categoryId:0,
+            fileZop:[],
+            errorMessage:'',
+            title:'',
+            errorTitle:'',
+            description:'',
+            errorDescription:'',
+            otherDescription:'',
+            colors:[],
+            planPrice:0,
+            projectDuration:0,
+            projectDurationPrice:0,
+            category_plan_id:0,
+            category_timing_id:0,
+
+
         }
     }
 
@@ -70,10 +95,19 @@ class CreateNewProject extends Component {
 
     componentWillUnmount = async() =>  {
         window.removeEventListener('scroll', this.handleScroll);
-
-   
-
+ 
     }
+
+    //
+    // get data from input by event target -------------------------------------------------------------->
+    //
+    changedHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+
 
     // informationBtns = React.createRef()
     // imageBtns = React.createRef()
@@ -104,87 +138,94 @@ class CreateNewProject extends Component {
         // console.log()
 
 
-            if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
-                this.target1.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
-                this.target1.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 600) >= this.point2.current.offsetTop) ) {
-                this.target2.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
-                this.target2.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 600) >= this.point3.current.offsetTop)) {
-                this.target3.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
-                this.target3.current.className = 'CNP-btnBox-fixed'
-            }
 
 
-            if (((window.scrollY + 600) >= this.point4.current.offsetTop) ) {
-                this.target4.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
-                this.target4.current.className = 'CNP-btnBox-fixed'
-            }
 
 
-            if (((window.scrollY + 600) >= this.point5.current.offsetTop) ) {
-                this.target5.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
-                this.target5.current.className = 'CNP-btnBox-fixed'
-            }
 
 
-            if (((window.scrollY + 600) >= this.point6.current.offsetTop) ) {
-                this.target6.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6) {
-                this.target6.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
+        //         this.target1.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
+        //         this.target1.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 600) >= this.point2.current.offsetTop) ) {
+        //         this.target2.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
+        //         this.target2.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 600) >= this.point3.current.offsetTop)) {
+        //         this.target3.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
+        //         this.target3.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-        // tablet and mobile size scroll
-        if (window.innerWidth <= 700) {
-            if (((window.scrollY + 700) >= this.point1.current.offsetTop) ) {
-                this.target1.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
-                this.target1.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 700) >= this.point2.current.offsetTop) ) {
-                this.target2.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
-                this.target2.current.className = 'CNP-btnBox-fixed'
-            }
-
-            if (((window.scrollY + 700) >= this.point3.current.offsetTop) ) {
-                this.target3.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
-                this.target3.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point4.current.offsetTop) ) {
+        //         this.target4.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
+        //         this.target4.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-            if (((window.scrollY + 700) >= this.point4.current.offsetTop) ) {
-                this.target4.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
-                this.target4.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point5.current.offsetTop) ) {
+        //         this.target5.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
+        //         this.target5.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-            if (((window.scrollY + 700) >= this.point5.current.offsetTop) ) {
-                this.target5.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
-                this.target5.current.className = 'CNP-btnBox-fixed'
-            }
+        //     if (((window.scrollY + 600) >= this.point6.current.offsetTop) ) {
+        //         this.target6.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6) {
+        //         this.target6.current.className = 'CNP-btnBox-fixed'
+        //     }
 
 
-            if (((window.scrollY + 700) >= this.point6.current.offsetTop) ) {
-                this.target6.current.className = 'CNP-btnBox-regular'
-            } else if (((window.scrollY + 700) < this.point6.current.offsetTop) && this.state.part6) {
-                this.target6.current.className = 'CNP-btnBox-fixed'
-            }
-        }
+        // // tablet and mobile size scroll
+        // if (window.innerWidth <= 700) {
+        //     if (((window.scrollY + 700) >= this.point1.current.offsetTop) ) {
+        //         this.target1.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point1.current.offsetTop) && this.state.part1 && !this.state.part2) {
+        //         this.target1.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 700) >= this.point2.current.offsetTop) ) {
+        //         this.target2.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point2.current.offsetTop) && this.state.part2 && !this.state.part3) {
+        //         this.target2.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+        //     if (((window.scrollY + 700) >= this.point3.current.offsetTop) ) {
+        //         this.target3.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point3.current.offsetTop) && this.state.part3 && !this.state.part4) {
+        //         this.target3.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+
+        //     if (((window.scrollY + 700) >= this.point4.current.offsetTop) ) {
+        //         this.target4.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point4.current.offsetTop) && this.state.part4 && !this.state.part5) {
+        //         this.target4.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+
+        //     if (((window.scrollY + 700) >= this.point5.current.offsetTop) ) {
+        //         this.target5.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point5.current.offsetTop) && this.state.part5 && !this.state.part6) {
+        //         this.target5.current.className = 'CNP-btnBox-fixed'
+        //     }
+
+
+        //     if (((window.scrollY + 700) >= this.point6.current.offsetTop) ) {
+        //         this.target6.current.className = 'CNP-btnBox-regular'
+        //     } else if (((window.scrollY + 700) < this.point6.current.offsetTop) && this.state.part6) {
+        //         this.target6.current.className = 'CNP-btnBox-fixed'
+        //     }
+ 
+        // }
 
     };
 
@@ -200,31 +241,60 @@ class CreateNewProject extends Component {
     nextPart = (e) => {
         console.log(this.state.categoryId)
 
-        // next1 pushed
-        if (e.target.id === 'CNP-N1') {
-            this.CNP1.current.style.position = 'fixed'
-            this.CNP2.current.style.position = 'unset'
-            this.target1.current.className = 'CNP-btnBox-regular'
+            // next1 pushedfi
+            if (e.target.id === 'CNP-N1') {
 
-            this.setState({
-                part1: false,
-                part2: true
-            })
+                if(this.state.categoryId !== 0){
+                this.CNP1.current.style.position = 'fixed'
+                this.CNP2.current.style.position = 'unset'
+                this.target1.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part1: false,
+                    part2: true
+                })
+            }
+            else{
+                // this.setState({
+                //     errorMessage:'لطفا یکی از دسته بندی های زیر را انتخاب کنید.'
+                // })
+
+                this.setState({ show: true ,  errorMessage:'لطفا یکی از دسته بندی های زیر را انتخاب کنید.'})
+            }   
         }
 
         // next2 pushed
         else if (e.target.id === 'CNP-N2') {
-            this.CNP2.current.style.position = 'fixed'
-            this.CNP3.current.style.position = 'unset'
-            this.target2.current.className = 'CNP-btnBox-regular'
+         
+            let valid = true;
 
-            this.setState({
-                part2: false,
-                part3: true
-            })
+
+            if(this.state.title === '')
+            {
+                this.setState({errorTitle:'لطفا عنوان پروژه خود را وارد نمایید'});
+                valid = false
+
+            }
+            if(this.state.description ===''){
+                this.setState({errorDescription:'لطفا توضیحاتی درباره پروژه خود ذکر کنید'});
+                valid = false
+            }
+
+            if( valid === true){
+                this.CNP2.current.style.position = 'fixed'
+                this.CNP3.current.style.position = 'unset'
+                this.target2.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part2: false,
+                    part3: true,
+                    errorDescription:'',
+                    errorTitle:''
+                })
+            }
         }
 
-        // next3 pushed
+        // next3 pushed  ---  select colors and fonts -------------->
         else if (e.target.id === 'CNP-N3') {
             this.CNP3.current.style.position = 'fixed'
             this.CNP4.current.style.position = 'unset'
@@ -236,28 +306,42 @@ class CreateNewProject extends Component {
             })
         }
 
-        // next4 pushed
+        // next4 pushed  --- select plans ------------>
         else if (e.target.id === 'CNP-N4') {
-            this.CNP4.current.style.position = 'fixed'
-            this.CNP5.current.style.position = 'unset'
-            this.target4.current.className = 'CNP-btnBox-regular'
 
-            this.setState({
-                part4: false,
-                part5: true
-            })
+            if(this.state.category_plan_id !== 0)
+            {   
+                this.CNP4.current.style.position = 'fixed'
+                this.CNP5.current.style.position = 'unset'
+                this.target4.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part4: false,
+                    part5: true
+                })
+            }
+            else{
+                this.setState({ show: true ,  errorMessage:'لطفا یکی از پلن های زیر را انتخاب کنید.'})
+            }
         }
 
         // next5 pushed
         else if (e.target.id === 'CNP-N5') {
-            this.CNP5.current.style.position = 'fixed'
-            this.CNP6.current.style.position = 'unset'
-            this.target5.current.className = 'CNP-btnBox-regular'
 
-            this.setState({
-                part5: false,
-                part6: true
-            })
+            if(this.state.category_timing_id !== 0 )
+            {
+                this.CNP5.current.style.position = 'fixed'
+                this.CNP6.current.style.position = 'unset'
+                this.target5.current.className = 'CNP-btnBox-regular'
+
+                this.setState({
+                    part5: false,
+                    part6: true
+                })
+            }
+            else{
+                this.setState({ show: true ,  errorMessage:'لطفا مدت زمان انجام پروژه خود را انتخاب کنید.'})
+            }
         }
 
         //focus top of screen
@@ -339,9 +423,78 @@ class CreateNewProject extends Component {
         });
     }
 
+
+    //
+    //
+    //
     
+    getValueColor = (e) => {
+        console.log(e.target.value)
+    }
     //PAYMENT 
-    paymentHandler = () =>{
+    paymentHandler = async() =>{
+
+        console.log(`
+        category_id : ${this.state.categoryId}
+        category_plan_id : ${this.state.category_plan_id}
+        category_timing_id : ${this.state.category_timing_id}
+        title : ${this.state.title}
+        desc : ${this.state.description}
+        desc_more : ${this.state.otherDescription}
+        colors :
+        fonts :
+        path :
+        `);
+
+        this.setState({
+            isLoadingGetData:true
+        })
+
+
+        //
+        // provider data for API --------------------------------------------------------------->
+        //
+
+         
+       const data = new FormData();
+
+        data.append('category_id', this.state.categoryId);
+        data.append('category_plan_id', this.state.category_plan_id);
+        data.append('category_timing_id', this.state.category_timing_id);
+        data.append('title', this.state.title);
+        data.append('desc', this.state.description);
+        data.append('desc_more', this.state.otherDescription)
+        var details = JSON.stringify({age: 12}); // TODO fixed later for get colors and fonts
+        data.append('colors', details);
+        data.append('fonts', details);
+
+        //console.log(this.state.fileZop)
+        if(this.state.fileZop[0])
+        for (const file of this.state.fileZop[0]) {
+                data.append('path[]', file, file.name );
+          }
+
+          
+          console.log(`${data}`)
+
+
+        const res =await PostToApii(data,'projects');
+
+        console.log(res);          // data, error,status
+        console.log(res.status);   // 200 means success
+        console.log(res.error);    // show the error from server
+        console.log(res.data);     // show the data from server
+
+        window.location = res.data.url;
+
+        this.setState({
+            isLoadingGetData:false
+        })
+
+
+
+
+         
 
     }
 
@@ -351,8 +504,12 @@ class CreateNewProject extends Component {
 
     }
 
-    getPlan = async(id) => {
-        this.setState({categoryId:id})
+    getPlan = async(id,title,price) => {
+        this.setState({
+            categoryId:id,
+            categoryTitle:title,
+            categoryPrice:price
+        })
         const res = await GetToApi('category/'+ id + '/plan');
         this.setState({
             plans:res.data
@@ -371,6 +528,30 @@ class CreateNewProject extends Component {
         console.log(res.data)
     }
 
+    //
+    // get plan id ----------------------->
+    //
+    _getPlanId = (id,title, price) => {
+        console.log(id) // TODO delete later
+
+        this.setState({
+            category_plan_id: id,
+            planPrice:price
+        })
+    }
+
+    //
+    //
+    //
+    _getDurationId  = (id,title,price) => {
+        console.log(id) // TODO delete later
+
+        this.setState({
+            category_timing_id: id,
+            projectDurationPrice:price,
+            projectDuration:title
+        })
+    }
     render() {
 
         //
@@ -379,7 +560,7 @@ class CreateNewProject extends Component {
         const renderCategory = (
                this.state.category ?  this.state.category.map((data,index) => {
               return  <div key={index}>
-                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id)} />
+                        <input type="radio" name="emotion" id={index} className="input-hidden" onClick={() =>  this.getPlan(data.id,data.title, data.pay)} />
                         <label htmlFor={index}>
                             <div className="CNP-logoBox" style={{ backgroundImage: 'url(' + data.icon + ')' }} >
                                 <span className="CNP-logoBoxTitle" >{data.title}</span>
@@ -396,7 +577,7 @@ class CreateNewProject extends Component {
             this.state.categoryId > 0 ?
                  this.state.plans.map((data,index) => {
                 return <div key={index} style={{width:'28%'}}>
-                    <input type="radio" id={'ss' + data.id} name="select" value={data.id} />
+                    <input type="radio" id={'ss' + data.id} name="select" value={data.id} onClick={() => this._getPlanId(data.id, data.title, data.price) }/>
                     <label htmlFor={'ss' + data.id}>
                         <div className="CNP-label">
                             <div className="CNP-SD-title" >
@@ -425,8 +606,8 @@ class CreateNewProject extends Component {
                            this.state.durations ? 
                                 this.state.durations.map((data,index) => {
                                     return   <div key={index}>
-                                    <input type="radio" id="duration1" name="select" value="1" />
-                                    <label htmlFor="duration1">
+                                    <input type="radio" id={'dd' + index} name="select" value={data.id}  onClick={() => this._getDurationId(data.id, data.title, data.price) }/>
+                                    <label htmlFor={'dd' + index}>
                                         <div className="CNPD-title" >
                                             <p>{data.title}</p>
                                             {data.price !== 0 ? <h1>  {data.price} تومان</h1> : <h1>رایگان</h1>}
@@ -441,16 +622,40 @@ class CreateNewProject extends Component {
 
 
         )
+
+
+        const  renderViewFiles = ( 
+                this.state.fileZop ? this.state.fileZop.map((data,index) => {
+                  var xx = data;
+                return  xx.map((val,ind) =>{  
+                    return <div key={ind} >
+                        {/* <p onClick={ () =>  console.log(ind)}>  Delete</p> */}
+                        <img src={URL.createObjectURL(val)} alt="" className="CNP-file-attach-view"  />
+                    </div>
+                  })
+                   
+                })
+                : ''
+            )
+
+
+ 
+
         return (
             <div className="CreateNewProject">
-
+                {this.state.isLoadingGetData ? <LoadingComponent /> : ''}
                 <div className="CNP-body" >
 
                     {/* STEP 1 */}
 
-
-
                     <div className="CNP-1" ref={this.CNP1} >
+                        <SweetAlert
+                            show={this.state.show}
+                            title=""
+                            text={this.state.errorMessage}
+                            onConfirm={() => this.setState({ show: false })}
+                        />
+                      
                         <div className="CNP-title" >
                             ایجاد پروژه جدید
                                 </div>
@@ -493,7 +698,7 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-2" ref={this.CNP2}  >
                         <div className="CNP-title" >
-                            کارت تجاری
+                           {this.state.categoryTitle}
                         </div>
                         <div className="CNP-desc-text" >
                             <h1>توضیحات پس زمینه</h1>
@@ -505,7 +710,8 @@ class CreateNewProject extends Component {
                                     name={'title'}
                                     placeholder={'عنوان پروژه '}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.errorTitle}
+                                    val={this.state.title}
                                 />
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
                             </div>
@@ -516,7 +722,8 @@ class CreateNewProject extends Component {
                                     name={'description'}
                                     placeholder={'هرچیزی که در پروژه نیاز داری رو شرح بده'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.errorDescription}
+                                    val={this.state.description}
                                 />
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
 
@@ -527,26 +734,53 @@ class CreateNewProject extends Component {
                                     name={'otherDescription'}
                                     placeholder={'چشز دیگری در مورد پروژه نیاز هست را اضافه کن'}
                                     changed={this.changedHandler}
-                                    error={this.state.forgetEmailError}
+                                    error={this.state.errorOtherDescription}
+                                    val={this.state.otherDescription}
                                 />
                                 <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
 
                             </div>
 
                             <div className="CNP-upload" >
-                                <div  >
-                                    <h1>عکس پروفایل</h1>
-                                    <div className="CNPU-img" >
-                                        <img src={document} alt="اسناد" />
-                                    </div>
-                                    <p className="CNPU-text" >
-                                        برا آپلود عکس کلیک کنید یا عکس را رها کنید
-                                    </p>
-                                </div>
-                                <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
+                              <div>
+                                <Dropzone onDrop={acceptedFiles => {
+                                        // TODO delete not working.!
+                                        console.log(acceptedFiles);
+                            
+                                        // this.setState({fileZop: acceptedFiles})
+                                        var newArray = this.state.fileZop.slice();    
+                                        newArray.push(acceptedFiles);   
+                                        this.setState({fileZop:newArray})
 
+                                        // console.log(typeof(this.state.fileZop))
+                                        // console.log(this.state.fileZop)
+                                    }}>
+                                    {({getRootProps, getInputProps}) => (
+                                        <section  className="tests">
+                                        <div style={{width:'100%'}} {...getRootProps()}>
+                                            <input {...getInputProps()} />
+                                        
+                                            <div  className="CNP-image-uploader">
+                                                    <h1>عکس پروفایل</h1>
+                                                    <div className="CNPU-img" >
+                                                        <img src={document} alt="اسناد" />
+                                                    </div>
+                                                    <p className="CNPU-text" >
+                                                        برا آپلود عکس کلیک کنید یا عکس را رها کنید
+                                                    </p>
+                                                </div> 
+                                        </div>
+                                        </section>
+                                    )}
+                                </Dropzone> 
+                            </div>
 
                             </div>
+
+                    <div className="CNP-attach-file-view-container ">
+                    {renderViewFiles}
+                    </div>
+
 
                         </div>
 
@@ -579,7 +813,7 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-3" ref={this.CNP3} >
                         <div className="CNP-title" >
-                            کارت تجاری
+                            {this.state.categoryTitle}
                         </div>
                         <div className="CNP-desc-text" >
                             <h1>رنگها را پیدا کن</h1>
@@ -587,56 +821,56 @@ class CreateNewProject extends Component {
                             <div className="CNP-check-color CNP-check">
                                 <ul>
                                     <li>
-                                        <input type="checkbox" id="colors1" />
+                                        <input type="checkbox" id="colors1" value="blue" onClick={this.getValueColor}/>
                                         <label htmlFor="colors1">
                                             <img src={color1} alt="رنگها" />
                                             <span>آبی</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors2" />
+                                        <input type="checkbox" id="colors2" value="green" onClick={this.getValueColor}/>
                                         <label htmlFor="colors2">
                                             <img src={color2} alt="رنگها" />
                                             <span>سبز</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors3" />
+                                        <input type="checkbox" id="colors3" onClick={this.getValueColor}/>
                                         <label htmlFor="colors3">
                                             <img src={color3} alt="رنگها" />
                                             <span>بنفش</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors4" />
+                                        <input type="checkbox" id="colors4" onClick={this.getValueColor}/>
                                         <label htmlFor="colors4">
                                             <img src={color4} alt="رنگها" />
                                             <span>صورتی </span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors5" />
+                                        <input type="checkbox" id="colors5" onClick={this.getValueColor}/>
                                         <label htmlFor="colors5">
                                             <img src={color5} alt="رنگها" />
                                             <span>قرمز</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors6" />
+                                        <input type="checkbox" id="colors6" onClick={this.getValueColor}/>
                                         <label htmlFor="colors6">
                                             <img src={color6} alt="رنگها" />
                                             <span>نارنجی</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors7" />
+                                        <input type="checkbox" id="colors7" onClick={this.getValueColor}/>
                                         <label htmlFor="colors7">
                                             <img src={color7} alt="رنگها" />
                                             <span>خاکستری</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="colors8" />
+                                        <input type="checkbox" id="colors8" onClick={this.getValueColor}/>
                                         <label htmlFor="colors8">
                                             <img src={color8} alt="رنگها" />
                                             <span>قرمز</span>
@@ -717,7 +951,7 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-4" ref={this.CNP4}>
                         <div className="CNP-title" >
-                            کارت تجاری
+                            {this.state.categoryTitle}
                         </div>
 
 
@@ -762,8 +996,8 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-5" ref={this.CNP5}>
                         <div className="CNP-title" >
-                            کارت تجاری
-                                </div>
+                            {this.state.categoryTitle}
+                        </div>
                         <div className="CNP-desc-text" >
                             <h1>زمانبندی</h1>
                           <h2>آیا مایلید طراح های  خود را سریعتر دریافت نمایید؟</h2>
@@ -839,22 +1073,23 @@ class CreateNewProject extends Component {
 
                     <div className="CNP-6" ref={this.CNP6}>
                         <div className="CNP-title" >
-                            کارت تجاری
-                                    </div>
+                            {this.state.categoryTitle}
+                        </div>
 
                         <div className="CNP-invoice" >
                             <h1>صورتحساب</h1>
                             <ul>
-                                <li> دسته بندی :<span>لوگو</span></li>
-                                <li>نوع پروژه : <span>سوپراستار</span></li>
-                                <li>عنوان پروژه :<span>طراحی لوگو</span></li>
-                                <li>زمان : <span>7 روز - رایگان</span></li>
-                                <li>هزینه :<span>150000 ت</span></li>
+                                <li> دسته بندی :<span>{this.state.categoryTitle}</span></li>
+                                <li> قیمت :<span>{this.state.categoryPrice}</span></li>
+                                <li>نوع پروژه : <span>پروژه انفرادی</span></li>
+                                <li>عنوان پروژه :<span>{this.state.title}</span></li>
+                                <li>زمان : <span>{this.state.projectDuration}  - {this.state.projectDurationPrice}</span> <span>تومان</span></li>
+                                <li>قیمت پلن :<span>{this.state.planPrice}</span> <span>تومان</span></li>
                             </ul>
                             <p>
                                 مجموع هزینه ها :
                                             <h2>
-                                    1800000 ت
+                                                {this.state.projectDurationPrice + this.state.planPrice + this.state.categoryPrice} <span>تومان</span>
                                             </h2>
                             </p>
                         </div>

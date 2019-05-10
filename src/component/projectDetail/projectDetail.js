@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 // components
 //
 import MessageBox from '../MessageBox/MessageBox'
+import GetApi from '../../controler/getToApi';
 
 
 
@@ -34,7 +35,9 @@ class ProjectDetail extends Component {
         this.state = {
             designerComments: 20,
             designerLikes: 10,
-            viewProject: false
+            viewProject: false,
+            myProject: [],
+
         }
     }
 
@@ -92,9 +95,34 @@ class ProjectDetail extends Component {
         this.setState({ viewProject: false })
     }
 
+    componentWillMount = async() => {
+        const res =await GetApi('projects/'+ this.props.location.state);
+
+        console.log(res);          // data, error,status
+        console.log(res.status);   // 200 means success
+        console.log(res.error);    // show the error from server
+        console.log(res.data);     // show the data from server
+       await this.setState({
+            myProject:res.data
+        })
+    }
+
 
 
     render() {
+
+        const renderImagesFiles = (
+                this.state.myProject.file ?   this.state.myProject.file.map((data,index) => {
+                    return       <div key={index} className="PD-attach" style={{ backgroundImage: 'url(' + data.path + ')', }} >
+                                    
+                                 </div> 
+            }) : ''
+        )
+
+
+  
+
+
         return (
 
 
@@ -103,7 +131,7 @@ class ProjectDetail extends Component {
                 {this.state.viewProject ? <ViewProjects closeProject={this.closeModalProject} /> : ''}
 
                 <div className="PD-title" >
-                    عنوان پروژه - طراحی لوگو
+                    {this.state.myProject.title}
                 </div>
 
                 <div className="PD-desc-up" >
@@ -124,10 +152,14 @@ class ProjectDetail extends Component {
                             <div className="PD-desc-text" >
                                 <h1>توضیحات</h1>
                                 <p>
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                                   {this.state.myProject.desc}
                                 </p>
 
                             </div>
+
+                          
+
+
                             <div className="PD-desc-text" >
                                 <h1>استایل ظاهری</h1>
                                 <h2>رنگها را پیدا کن</h2>
@@ -265,19 +297,13 @@ class ProjectDetail extends Component {
                                 <h1>منابع</h1>
                                 <h2>ضمیمه ها</h2>
                                 <div className="PD-attachs" >
-                                    <div className="PD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
-                                    <div className="PD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
-                                    <div className="PD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
+                               
+                                {renderImagesFiles}
+                              
                                 </div>
                                 <h2>توضیحات دیگر</h2>
                                 <p>
-                                    زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                                    {this.state.myProject.desc_more}
                                 </p>
 
                             </div>

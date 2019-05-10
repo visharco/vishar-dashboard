@@ -15,16 +15,23 @@ class StatusMessage extends Component {
             status: true,
             backgroundColor:'',
             color:'',
+            text:''
 
         }
     }
 
     closeStatus = () => {
         this.setState({
-            status : false
+            status : true,
+            text:''
         })
     }
+ 
     componentWillMount(){
+        this.setState({
+            text: this.props.text,
+            status : true
+        })
         if(this.props.type ==='success'){
             this.setState({
                 backgroundColor:'#6FCF97',
@@ -46,10 +53,11 @@ class StatusMessage extends Component {
 
     }
 
-    componentDidMount(){
-        setInterval(() => this.closeStatus(),3000)
+    // componentDidMount =() => {
+    //     setInterval(() => this.closeStatus(),5000)
+         
 
-    }
+    // }
 
 
     render() {
@@ -57,12 +65,12 @@ class StatusMessage extends Component {
             <div>
 
             {
-                this.state.status ? 
-                <div className="StatusMessage zoomIn"
+                this.state.text  ? 
+                <div className="StatusMessage  "
                 style={{ backgroundColor: this.state.backgroundColor }}>
                     <img src={close} alt="بستن" className="StatusClose" onClick={this.closeStatus} />
                     <p style={{ color: this.state.color }}>
-                        {this.props.text}
+                        {this.state.text}
                     </p>
                 </div> : ''
             }

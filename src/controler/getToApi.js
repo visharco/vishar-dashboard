@@ -44,10 +44,10 @@ export default GetToApi;
 
 /* how can use it ------------------->
 
-import PostData  from './controler/postToApi';
+import GetApi  from './controler/postToApi';
 
 
-const res = PostData(data,'api url');
+const res = GetApi('api url');
 
   console.log(res);          // data, error,status
   console.log(res.status);   // 200 means success

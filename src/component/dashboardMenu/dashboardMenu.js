@@ -16,6 +16,10 @@ import user from '../../assets/icons/user.svg';
 //compoents
 //
 
+import GetApi from '../../controler/getToApi';
+import defualtAvata from '../../assets/icons/user.svg'
+import loadinggif from '../../assets/images/loading-image.gif'
+
 
 import './style.css';
 
@@ -27,7 +31,11 @@ class DashboardMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            openHumberger: false
+            openHumberger: false,
+            nameFamily:'',
+            email:'',
+            avatar:loadinggif,
+            type:''
         }
 
 
@@ -50,10 +58,25 @@ class DashboardMenu extends Component {
 
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
+        const  res = await GetApi('profile/init');
+
+        console.log(res);          // data, error,status
+        console.log(res.status);   // 200 means success
+        console.log(res.error);    // show the error from server
+        console.log(res.data);     // show the data from server
+       await this.setState({
+            nameFamily:res.data.name,
+            email:res.data.email,
+            type:res.data.type,
+            avatar:res.data.image || defualtAvata,
+        })
+
+
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
+        
     }
 
     DashboardMenu = React.createRef();
@@ -152,11 +175,11 @@ class DashboardMenu extends Component {
 
                     <div >
                         <div className="DM-title" >
-                            <img src={user} alt="طراح" />
+                            <img src={this.state.avatar} alt="طراح" />
                             <div className="DM-title-name">
-                                <h1>امید آرمانی</h1>
-                                <h2>omidarmani@gmail.com</h2>
-                                <span>مشتری</span>
+                                <h1>{this.state.nameFamily}</h1>
+                                <h2>{this.state.email}</h2>
+                                <span>{this.state.type}</span>
                             </div>
                         </div>
                         <div className="DM-body" >
@@ -168,10 +191,10 @@ class DashboardMenu extends Component {
                                 <p>پروژه های فردی</p>
                                 <img src={employee} alt="فردی" />
                             </div>
-                            <div className="DM-body-child" onClick={this.goToCollaborateProject} >
+                            {/* <div className="DM-body-child" onClick={this.goToCollaborateProject} >
                                 <p>پروژه های همکاری</p>
                                 <img src={employees} alt="همکاری" />
-                            </div>
+                            </div> */}
                             <div className="DM-body-child" onClick={this.goToMessage} >
                                 <p>پیامها</p>
                                 <img src={message} alt="پیام ها" />
