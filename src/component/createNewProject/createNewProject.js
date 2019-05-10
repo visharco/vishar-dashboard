@@ -448,6 +448,7 @@ class CreateNewProject extends Component {
         // provider data for API --------------------------------------------------------------->
         //
 
+         
        const data = new FormData();
 
         data.append('category_id', this.state.categoryId);
@@ -459,10 +460,15 @@ class CreateNewProject extends Component {
         var details = JSON.stringify({age: 12}); // TODO fixed later for get colors and fonts
         data.append('colors', details);
         data.append('fonts', details);
-        data.append('path', this.state.fileZop);
 
+        console.log(this.state.fileZop)
 
+        for (const file of this.state.fileZop[0]) {
+                data.append('path[]', file, file.name );
+          }
 
+          
+          console.log(`${data}`)
 
 
         const res =await PostToApii(data,'projects');
@@ -472,7 +478,6 @@ class CreateNewProject extends Component {
         console.log(res.error);    // show the error from server
         console.log(res.data);     // show the data from server
 
-       // window.location.pathname = '/addsellers'
         window.location = res.data.url;
 
         this.setState({
@@ -481,6 +486,8 @@ class CreateNewProject extends Component {
 
 
 
+
+         
 
     }
 
