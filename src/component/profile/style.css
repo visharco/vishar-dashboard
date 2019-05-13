@@ -1,4 +1,15 @@
 
+input[type=file] {
+
+    /* width: 1px;
+	height: 1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    z-index: -1; */
+    opacity: 0;
+  }
+
 .Profile{
 display: flex;
 flex-direction: column;
@@ -25,7 +36,8 @@ margin-bottom: 50px;
 
 .PE-inputs{
 width: calc(50% - 40px);
-direction: rtl;
+direction: rtl; 
+
 }
 
 .PE-upload{
