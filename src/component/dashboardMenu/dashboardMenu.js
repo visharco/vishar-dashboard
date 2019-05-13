@@ -146,8 +146,6 @@ class DashboardMenu extends Component {
         browserHistory.push('/login');                      // Navigate to login page.
         window.location.reload();                           // Refresh Component, to refresh rout.
 
-
-        
     }
 
     render() {
