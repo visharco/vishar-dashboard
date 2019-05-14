@@ -53,9 +53,9 @@ class SingleProject extends Component {
     render() {
 
         const renderProject = (
-             this.state.myProjects.map((data,index) => {
-               return <Project status={'Completed'} key={index} data={data} id={data.id} statusText={'کامل شده'} />
-            })
+         this.state.myProjects ?     this.state.myProjects.map((data,index) => {
+            return <Project status={'Completed'} key={index} data={data} id={data.id} statusText={'کامل شده'} />
+         }) : <NoProject />
         )
         return (
             <div className="SingleProject">
@@ -78,7 +78,7 @@ class SingleProject extends Component {
                         {/* <Project status={'Completed'} statusText={'کامل شده'} /> */}
                         {/* <Project status={'Working'} statusText={'در حال انجام '} />
                         <Project status={'Pending'} statusText={' در صف انجام'} /> */}
-                        {this.state.myProjects.length > 0 ?  renderProject : <NoProject />}
+                        { renderProject }
                     </div>
                     
                         {/* <NoProject /> */}
