@@ -485,7 +485,9 @@ class CreateNewProject extends Component {
         console.log(res.error);    // show the error from server
         console.log(res.data);     // show the data from server
 
-        window.location = res.data.url;
+     
+         window.location = res.data.url;
+     
 
         this.setState({
             isLoadingGetData:false
