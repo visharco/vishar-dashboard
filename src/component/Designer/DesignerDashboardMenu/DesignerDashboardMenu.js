@@ -13,6 +13,7 @@ import logout from '../../../assets/icons/logout.svg';
 import user from '../../../assets/icons/user.svg';
 import wallet from '../../../assets/icons/wallet.svg';
 import portfoilo from '../../../assets/icons/portfoilo.svg';
+import loadingImage from '../../../assets/images/loading-image.gif'
 
 //
 //compoents
@@ -159,7 +160,7 @@ class DesignerDashboardMenu extends Component {
 
                     <div >
                         <div className="DDM-title" >
-                            <img src={user} alt="طراح" />
+                            <img src={this.props.data.image ? this.props.data.image : loadingImage} alt="طراح" />
                             <div className="DDM-title-name">
                                 <h1>{this.props.data.name}</h1>
                                 <h2>{this.props.data.email}</h2>

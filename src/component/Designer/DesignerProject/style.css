@@ -21,6 +21,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
+
 }
 
 .DPT-right img{
@@ -38,6 +40,8 @@
     min-height: 180px;
     padding: 10px 0px;
     direction: rtl;
+    width: 100%;
+    
 }
 
 .DPT-right-text h1{

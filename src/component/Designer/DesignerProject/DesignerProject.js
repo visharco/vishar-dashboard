@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-
-
-import design1 from '../../../assets/images/design1.png'
+import defualtImage from '../../../assets/images/defualtProjectImage.png'
+ 
 
 import './style.css';
 
@@ -15,30 +14,30 @@ class DesignerProject extends Component {
 
   
 
-    goToDesignerProjectDetail= () => {
-        browserHistory.push('/DesignerProjectDetail');
+    goToDesignerProjectDetail (id) {
+        browserHistory.push('/DesignerProjectDetail/' + id);
     }
     render() {
         return (
-            <div className="DesignerProject" onClick={this.goToDesignerProjectDetail} >
+            <div className="DesignerProject" onClick={() => this.goToDesignerProjectDetail(this.props.data.id)} >
                 <div className="DPT-left" >
 
 
                 </div>
                 <div className="DPT-right" >
-                    <img src={design1} alt="طرح" />
+                    <img src={defualtImage} alt="طرح" />
                     <div className="DPT-right-title" >
                         <div className="DPT-right-text" >
                             <div className="DPT-status-box" >
-                                <h1>wطراحی لوگو عنوان پروژه</h1>
-                                <p className={this.props.status} >{this.props.statusText}</p>
+                                <h1>{this.props.data.title}</h1>
+                                <p className={this.props.status} >{this.props.status}</p>
                             </div>
                             <p>
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                            {this.props.data.desc}
                             </p>
                         </div>
                         <div className="DPT-right-tags" >
-                            <p>لوگو</p>
+                            <p> {this.props.data.category.title}</p>
                         </div>
                     </div>
 
