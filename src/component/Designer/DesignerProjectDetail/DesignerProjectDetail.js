@@ -118,7 +118,7 @@ class DesignerProjectDetail extends Component {
 
 
     goToSubmitDesign = () =>{
-        browserHistory.push('/SubmitDesigne');
+        browserHistory.push('/SubmitDesigne/' + this.state.projectId  );
     }
 
 

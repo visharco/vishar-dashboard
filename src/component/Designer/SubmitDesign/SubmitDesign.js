@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SweetAlert from 'sweetalert-react';
+import PostToApi from '../../../controler/postToApi';
 
 //
 //
@@ -33,47 +34,104 @@ class SubmitDesign extends Component {
             cover:[],
             tiff:[],
             psd:[], 
+            projectId:0,
+            submitDescription:''
             
         }
     }
 
+
+    componentWillMount = async() => {
+        // console.log(window.location.pathname.split('/')[2]);
+        let id = window.location.pathname.split('/')[2]
+        console.log(id);
+        this.setState({
+            projectId: id
+        })
+        
+        // const res = await GetToApi('site/projects/' + id);
+        // await this.setState({
+        //     projectId: id,
+        //     data: res.data
+        // });
+        // console.log(res.data)
+
+
+    }
+
+    changedHandler//
+    // get data from input by event target -------------------------------------------------------------->
+    //
+    changedHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+
+
+
+
+
     // success submit files
-    submitDesign = () =>{
+    submitDesign = async() =>{
         console.log(this.state.cover.length)
 
-        let validation = true;
 
-        if(this.state.cover.length === 0){
-            validation =false;
-            this.setState({
-                show:true,
-                errorMessage:'لطفا فایل کاور را وارد نمایید'
-            })
+          //
+        // provider data for API --------------------------------------------------------------->
+        //
+        const data = new FormData();
+
         
-        }
-        else if(this.state.tiff.length === 0){
-            validation =false;
-            this.setState({
-                show:true,
-                errorMessage:'لطفا فایل تیف  را وارد نمایید'
-            })
-        }
-        else if(this.state.psd.length === 0){
-            validation =false;
-            this.setState({
-                show:true,
-                errorMessage:'لطفا فایل پی اس دی  را وارد نمایید'
-            })
-        }
-
-        console.log(validation)
+        data.append('project_id', this.state.projectId);
+        data.append('desc', this.state.submitDescription);
+        data.append('image', this.state.cover, this.state.cover.name || '')
+        data.append('psd', this.state.psd, this.state.psd.name || '')
+        data.append('tif', this.state.tiff, this.state.tiff.name || '');
 
 
-        if(validation === true){
-            this.setState({
-                submitDesignSuccess : true
-            })
-        }
+        console.log(data)
+
+        const res = await PostToApi(data, 'projects/design');
+        console.log(res);
+
+
+
+
+        // let validation = true;
+
+        // if(this.state.cover.length === 0){
+        //     validation =false;
+        //     this.setState({
+        //         show:true,
+        //         errorMessage:'لطفا فایل کاور را وارد نمایید'
+        //     })
+        
+        // }
+        // else if(this.state.tiff.length === 0){
+        //     validation =false;
+        //     this.setState({
+        //         show:true,
+        //         errorMessage:'لطفا فایل تیف  را وارد نمایید'
+        //     })
+        // }
+        // else if(this.state.psd.length === 0){
+        //     validation =false;
+        //     this.setState({
+        //         show:true,
+        //         errorMessage:'لطفا فایل پی اس دی  را وارد نمایید'
+        //     })
+        // }
+
+        // console.log(validation)
+
+
+        // if(validation === true){
+        //     this.setState({
+        //         submitDesignSuccess : true
+        //     })
+        // }
 
 
 
@@ -97,7 +155,7 @@ class SubmitDesign extends Component {
             })
       
 
-        // console.log(e.target.files[0])
+            console.log(e.target.files[0])
     }
 
 
@@ -206,7 +264,7 @@ class SubmitDesign extends Component {
                                 name={'submitDescription'}
                                 placeholder={'توضیح خود را بنویسید ...'}
                                 changed={this.changedHandler}
-                                error={this.state.forgetEmailError}
+                                error={this.state.submitDescriptionError}
                             />
 
                         </div>

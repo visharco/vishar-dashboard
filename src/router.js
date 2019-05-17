@@ -86,7 +86,7 @@ class RouterComponent extends Component {
                                 <Route path="DesignerMessage" component={DesignerMessageScreen} />
                                 <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
                                 <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
-                                <Route path="SubmitDesigne" component={SubmitDesignScreen} /> 
+                                <Route path="SubmitDesigne/:id" component={SubmitDesignScreen} /> 
                                 <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
                                 <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
                                 
