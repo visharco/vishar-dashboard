@@ -37,6 +37,7 @@ class ProjectDetail extends Component {
             designerLikes: 10,
             viewProject: false,
             myProject: [],
+            desginId:0
 
         }
     }
@@ -86,8 +87,8 @@ class ProjectDetail extends Component {
     final = React.createRef();
 
 
-    openModalProject = () => {
-        this.setState({ viewProject: true })
+    openModalProject = async(id) => {
+       await this.setState({ viewProject: true, desginId:id })
 
     }
 
@@ -126,7 +127,7 @@ class ProjectDetail extends Component {
                 return       <div className="PDD-box" key={index}>
                                 <p> توسط <span>{data.user.name}</span></p>
                                 {/* <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image , '_blanck')} /> */}
-                                <img src={data.image_thumb} alt="طرحها" onClick={this.openModalProject} />
+                                <img src={data.image_thumb} alt="طرحها" onClick={() => this.openModalProject(this.state.myProject.designs.id)} />
                             </div>
             }) : ''
         )
@@ -139,7 +140,7 @@ class ProjectDetail extends Component {
 
             <div className="ProjectDetail" >
 
-                {this.state.viewProject ? <ViewProjects closeProject={this.closeModalProject} /> : ''}
+                {this.state.viewProject ? <ViewProjects id={this.state.desginId} closeProject={this.closeModalProject} /> : ''}
 
                 <div className="PD-title" >
                     {this.state.myProject.title}

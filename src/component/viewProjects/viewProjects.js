@@ -49,7 +49,7 @@ class ViewProjects extends Component {
                                     <div className="VPLT-desc" >
                                         <div className="VPLT-text" >
                                             <p>طراحی توسط</p>
-                                            <h2>سارا حسینی</h2>
+                                            <h2>سارا {this.props.id}</h2>
                                         </div>
                                         <span>۳ ساعت قبل</span>
                                     </div>
