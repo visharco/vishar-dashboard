@@ -44,7 +44,8 @@ class Profile extends Component {
             tellError: '',
             cityError: '',
             selectedFile: '',
-            successMessage:''
+            successMessage:'',
+            showImageForUpload: usergrey
 
         }
     }
