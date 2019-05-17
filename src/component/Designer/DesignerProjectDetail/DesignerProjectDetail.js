@@ -40,7 +40,8 @@ class DesignerProjectDetail extends Component {
             designerComments: 20,
             designerLikes: 10,
             viewProject: false,
-            projectId:0
+            projectId:0,
+            userType:'customer'
         }
     }
 
@@ -49,11 +50,12 @@ class DesignerProjectDetail extends Component {
         // console.log(window.location.pathname.split('/')[2]);
         let id = window.location.pathname.split('/')[2]
       
-        
+        const resD = await GetToApi('profile/init')
         const res = await GetToApi('site/projects/' + id);
         await this.setState({
             projectId: id,
-            data: res.data
+            data: res.data,
+            userType:resD.data.type
         });
         console.log(res.data)
 
@@ -164,10 +166,16 @@ class DesignerProjectDetail extends Component {
                         <div className="DPD-desc-title" onClick={this.descriptionHandler} id="brief" ref={this.brief}>توضیحات
                         </div>
                     </div>
-                    <div className="DPD-submit-design" onClick={this.goToSubmitDesign} >
-                        ثبت طرح 
-                        <img src={upload} alt="آپلود" />
-                    </div>
+
+                    {this.state.userType === 'customer' ?
+                   ''
+                    :      <div className="DPD-submit-design" onClick={this.goToSubmitDesign} >
+                    ثبت طرح 
+                    <img src={upload} alt="آپلود" />
+                </div> }
+                  
+
+
                 </div>
                 <div className="DPD-desc-down">
                     <div className="DPD-desc-box2">
