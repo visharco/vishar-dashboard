@@ -82,7 +82,7 @@ class RouterComponent extends Component {
                                 <Route path="DesignerWallet" component={DesignerWalletScreen} />
                                 <Route path="DesignerSingleProject" component={DesignerSingleProjectScreen} />
                                 <Route path="DesignerCollaborateProject" component={DesignerCollaborateProjectScreen} />
-                                <Route path="DesignerProjectDetail" component={DesignerProjectDetailScreen} />
+                                <Route path="DesignerProjectDetail/:id" component={DesignerProjectDetailScreen} />
                                 <Route path="DesignerMessage" component={DesignerMessageScreen} />
                                 <Route path="DesignerChatBox" component={DesignerChatBoxScreen} />
                                 <Route path="DesignerPayments" component={DesignerPaymentsScreen} />
