@@ -176,17 +176,21 @@ class DesignerDashboardMenu extends Component {
                                 <img src={wallet} alt="فردی" />
                             </div>
                             <div className="DDM-body-child" onClick={this.goToDesignerSingleProject} >
-                                <p>پروژه های فردی</p>
+                                <p>پروژه ها </p>
+                                <img src={employee} alt="فردی" />
+                            </div>
+                            <div className="DDM-body-child" onClick={this.goToDesignerSingleProject} >
+                                <p>پروژه های من</p>
                                 <img src={employee} alt="فردی" />
                             </div>
                             {/* <div className="DDM-body-child" onClick={this.goToDesignerCollaborateProject} >
                                 <p>پروژه های همکاری</p>
                                 <img src={employees} alt="همکاری" />
                             </div> */}
-                            <div className="DDM-body-child" onClick={this.goToDesignerMessage} >
+                            {/* <div className="DDM-body-child" onClick={this.goToDesignerMessage} >
                                 <p>پیامها</p>
                                 <img src={message} alt="پیام ها" />
-                            </div>
+                            </div> */}
                             <div className="DDM-body-child" onClick={this.goToDesignerPayments} >
                                 <p>تراکنشها</p>
                                 <img src={payment} alt="تراکنش" />
