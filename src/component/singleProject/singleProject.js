@@ -28,7 +28,7 @@ class SingleProject extends Component {
 
         }
     }
-    createNewProject =() =>{
+    createNewProject =()=> {
         browserHistory.push('/createNewProject');
 
     }

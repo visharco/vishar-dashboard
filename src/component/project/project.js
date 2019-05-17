@@ -13,13 +13,13 @@ class Project extends Component {
         this.state = {}
     }
 
-    goToProjectDetail= () => {
-        // browserHistory.push('/projectDetail');
-        browserHistory.push({ pathname: '/projectDetail', state: this.props.id });
+    goToProjectDetail(id)  {
+        browserHistory.push('/projectDetail/' + id);
+        // browserHistory.push({ pathname: '/projectDetail', state: this.props.id });
     }
     render() {
         return (
-            <div key={this.props.id} className="project" onClick={this.goToProjectDetail} >
+            <div key={this.props.id} className="project" onClick={() => this.goToProjectDetail(this.props.data.id)} >
                 <div className="p-left" >
 
 

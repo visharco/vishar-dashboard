@@ -58,7 +58,7 @@ class ProjectDetail extends Component {
             // this.messagesText.current.style.display = 'none' // TODO must be active
 
             e.target.style.backgroundColor = "#D8D8D8"
-            this.messages.current.style.backgroundColor = "#f1f1f1"
+           // this.messages.current.style.backgroundColor = "#f1f1f1"
             this.design.current.style.backgroundColor = "#f1f1f1"
         }
         else if (e.target.id === 'design') {
@@ -96,16 +96,18 @@ class ProjectDetail extends Component {
     }
 
     componentWillMount = async() => {
-        const res =await GetApi('projects/'+ this.props.location.state);
+        let id = window.location.pathname.split('/')[2]
+        const res =await GetApi('projects/'+ id);
 
-        console.log(res);          // data, error,status
-        console.log(res.status);   // 200 means success
-        console.log(res.error);    // show the error from server
-        console.log(res.data);     // show the data from server
-       await this.setState({
-            myProject:res.data
-        })
-    }
+        // console.log(res);          // data, error,status
+        // console.log(res.status);   // 200 means success
+        // console.log(res.error);    // show the error from server
+        // console.log(res.data);     // show the data from server
+
+        await this.setState({
+                myProject:res.data
+            })
+        }
 
 
 
@@ -119,6 +121,15 @@ class ProjectDetail extends Component {
             }) : ''
         )
 
+        const renderDesgins = (
+            this.state.myProject.designs ? this.state.myProject.designs.map((data,index) => {
+                return       <div className="PDD-box" key={index}>
+                                <p> توسط <span>{data.user.name}</span></p>
+                                {/* <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image , '_blanck')} /> */}
+                                <img src={data.image_thumb} alt="طرحها" onClick={this.openModalProject} />
+                            </div>
+            }) : ''
+        )
 
   
 
@@ -323,32 +334,20 @@ class ProjectDetail extends Component {
                         <div className="PD-desc-texts " ref={this.designText} >
                             <div className="PD-desc-text" >
 
-                                <h1>طرح منتخب </h1>
+                                {/* <h1>طرح منتخب </h1>
                                 <div className="PD-design">
                                     <div className="PDD-box">
                                         <p> توسط <span>امید آرمانی</span></p>
                                         <img src={passport} alt="طرحها" onClick={this.openModalProject} />
                                     </div>
 
-                                </div>
+                                </div> */}
                             </div>
                             <div className="PD-desc-text" >
 
                                 <h1>همه طرح ها </h1>
                                 <div className="PD-design">
-                                    <div className="PDD-box">
-                                        <p> توسط <span>امید آرمانی</span></p>
-                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
-                                    </div>
-                                    <div className="PDD-box">
-                                        <p> توسط <span>امید آرمانی</span></p>
-                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
-                                    </div>
-                                    <div className="PDD-box">
-                                        <p> توسط <span>امید آرمانی</span></p>
-                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
-                                    </div>
-
+                                    {renderDesgins}
                                 </div>
                             </div>
                         </div>
