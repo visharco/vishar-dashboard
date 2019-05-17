@@ -13,6 +13,8 @@ class DesignerProject extends Component {
         this.state = {}
     }
 
+  
+
     goToDesignerProjectDetail= () => {
         browserHistory.push('/DesignerProjectDetail');
     }
@@ -28,7 +30,7 @@ class DesignerProject extends Component {
                     <div className="DPT-right-title" >
                         <div className="DPT-right-text" >
                             <div className="DPT-status-box" >
-                                <h1>طراحی لوگو عنوان پروژه</h1>
+                                <h1>wطراحی لوگو عنوان پروژه</h1>
                                 <p className={this.props.status} >{this.props.statusText}</p>
                             </div>
                             <p>

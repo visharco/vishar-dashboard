@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import GetToApi from '../../../controler/getToApi';
+
 
 //
 //
@@ -37,9 +39,28 @@ class DesignerProjectDetail extends Component {
         this.state = {
             designerComments: 20,
             designerLikes: 10,
-            viewProject: false
+            viewProject: false,
+            projectId:0
         }
     }
+
+
+    componentWillMount = async() => {
+        // console.log(window.location.pathname.split('/')[2]);
+        let id = window.location.pathname.split('/')[2]
+      
+        
+        const res = await GetToApi('site/projects/' + id);
+        await this.setState({
+            projectId: id,
+            data: res.data
+        });
+        console.log(res.data)
+
+
+    }
+
+
 
     briefText = React.createRef();
     designText = React.createRef();
@@ -55,19 +76,19 @@ class DesignerProjectDetail extends Component {
         if (e.target.id === 'brief') {
             this.briefText.current.style.display = 'block'
             this.designText.current.style.display = 'none'
-            this.messagesText.current.style.display = 'none'
+           //  this.messagesText.current.style.display = 'none' // TODO later must be active
 
             e.target.style.backgroundColor = "#D8D8D8"
-            this.messages.current.style.backgroundColor = "#f1f1f1"
+            //this.messages.current.style.backgroundColor = "#f1f1f1" // TODO later must be active
             this.design.current.style.backgroundColor = "#f1f1f1"
         }
         else if (e.target.id === 'design') {
             this.briefText.current.style.display = 'none'
             this.designText.current.style.display = 'block'
-            this.messagesText.current.style.display = 'none'
+           // this.messagesText.current.style.display = 'none' // TODO later must be active
 
             e.target.style.backgroundColor = "#D8D8D8"
-            this.messages.current.style.backgroundColor = "#f1f1f1"
+            //this.messages.current.style.backgroundColor = "#f1f1f1"// TODO later must be active
             this.brief.current.style.backgroundColor = "#f1f1f1"
         }
         else if (e.target.id === 'messages') {
@@ -103,6 +124,24 @@ class DesignerProjectDetail extends Component {
 
 
     render() {
+
+        const renderFilesProject =(
+            this.state.data ? this.state.data.file.map((data,index) => {
+                return <div className="DPD-attach" style={{ backgroundImage: 'url(' + data.path_thumb + ')', }} onClick={()=> window.open(data.path, '_blank')} >
+                     
+                        </div>
+            }) : ''
+        );
+
+        const renderDesigns = (
+            this.state.data ? this.state.data.designs.map((data,index) => {
+                return    <div className="DPDD-box" key={index}>
+                            <p> توسط <span>{data.user.name}</span></p>
+                            <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image, '_blank')} />
+                            {/* <img src={data.image_thumb} alt="طرحها" onClick={this.openModalProject} /> */}
+                        </div>
+            }) : ''
+        )
         return (
 
 
@@ -111,16 +150,16 @@ class DesignerProjectDetail extends Component {
                 {this.state.viewProject ? <DesignerViewProjects closeProject={this.closeModalProject} /> : ''}
 
                 <div className="DPD-title" >
-                    عنوان پروژه - طراحی لوگو
+                   {this.state.data ? this.state.data.title : '' }
                 </div>
 
                 <div className="DPD-desc-up" >
                     <div className="DPD-desc-box">
-                        <div className="DPD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages}>پیامها
+                        {/* <div className="DPD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages}>پیامها
                             <span className="DPD-desc-number" >4</span>
-                        </div>
+                        </div> */}
                         <div className="DPD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design}>طراحی
-                            <span className="DPD-desc-number" >4</span>
+                            <span className="DPD-desc-number" >{this.state.data ? this.state.data.designs_count : '' }</span>
                         </div>
                         <div className="DPD-desc-title" onClick={this.descriptionHandler} id="brief" ref={this.brief}>توضیحات
                         </div>
@@ -136,7 +175,7 @@ class DesignerProjectDetail extends Component {
                             <div className="DPD-desc-text" >
                                 <h1>توضیحات</h1>
                                 <p>
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                                {this.state.data ? this.state.data.desc : '' }
                                 </p>
 
                             </div>
@@ -277,19 +316,16 @@ class DesignerProjectDetail extends Component {
                                 <h1>منابع</h1>
                                 <h2>ضمیمه ها</h2>
                                 <div className="DPD-attachs" >
-                                    <div className="DPD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
+                                    {/* <div className="DPD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
                                         <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
-                                    <div className="DPD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
-                                    <div className="DPD-attach" style={{ backgroundImage: 'url(' + slide2 + ')', }} >
-                                        <img className="attach-delete" src={deleted} alt="حذف" />
-                                    </div>
+                                    </div> */}
+
+                                    {renderFilesProject}
+   
                                 </div>
                                 <h2>توضیحات دیگر</h2>
                                 <p>
-                                    زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                                {this.state.data ? this.state.data.desc_more : '' }
                                 </p>
 
                             </div>
@@ -300,14 +336,14 @@ class DesignerProjectDetail extends Component {
                                         <img src={download} alt="دانلود" />
                                         دانلود قالب
                                     </p>
-                                    <h1>طراحی لوگو</h1>
+                                    <h1>{this.state.data ? this.state.data.invoice.category : '' }</h1>
                                 </div>
 
                             </div>
                         </div>
 
                         <div className="DPD-desc-texts " ref={this.designText} >
-                            <div className="DPD-desc-text" >
+                            {/* <div className="DPD-desc-text" >
 
                                 <h1>طرح منتخب </h1>
                                 <div className="DPD-design">
@@ -317,23 +353,13 @@ class DesignerProjectDetail extends Component {
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="DPD-desc-text" >
 
                                 <h1>همه طرح ها </h1>
                                 <div className="DPD-design">
-                                    <div className="DPDD-box">
-                                        <p> توسط <span>امید آرمانی</span></p>
-                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
-                                    </div>
-                                    <div className="DPDD-box">
-                                        <p> توسط <span>امید آرمانی</span></p>
-                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
-                                    </div>
-                                    <div className="DPDD-box">
-                                        <p> توسط <span>امید آرمانی</span></p>
-                                        <img src={passport} alt="طرحها" onClick={this.openModalProject} />
-                                    </div>
+                                 
+                                    {renderDesigns}
 
                                 </div>
                             </div>
