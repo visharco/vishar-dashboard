@@ -55,7 +55,7 @@ class ProjectDetail extends Component {
         if (e.target.id === 'brief') {
             this.briefText.current.style.display = 'block'
             this.designText.current.style.display = 'none'
-            this.messagesText.current.style.display = 'none'
+            // this.messagesText.current.style.display = 'none' // TODO must be active
 
             e.target.style.backgroundColor = "#D8D8D8"
             this.messages.current.style.backgroundColor = "#f1f1f1"
@@ -64,10 +64,10 @@ class ProjectDetail extends Component {
         else if (e.target.id === 'design') {
             this.briefText.current.style.display = 'none'
             this.designText.current.style.display = 'block'
-            this.messagesText.current.style.display = 'none'
+           // this.messagesText.current.style.display = 'none' // TODO must be active
 
             e.target.style.backgroundColor = "#D8D8D8"
-            this.messages.current.style.backgroundColor = "#f1f1f1"
+           // this.messages.current.style.backgroundColor = "#f1f1f1"  // TODO must be active
             this.brief.current.style.backgroundColor = "#f1f1f1"
         }
         else if (e.target.id === 'messages') {
@@ -136,9 +136,9 @@ class ProjectDetail extends Component {
 
                 <div className="PD-desc-up" >
                     <div className="PD-desc-box">
-                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages}>پیامها
+                        {/* <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages}>پیامها
                             <span className="PD-desc-number" >4</span>
-                        </div>
+                        </div> */}
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design}>طراحی
                             <span className="PD-desc-number" >4</span>
                         </div>

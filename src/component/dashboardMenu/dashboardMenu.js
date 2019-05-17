@@ -186,17 +186,17 @@ class DashboardMenu extends Component {
                                 <img src={userblack} alt="کاربر" />
                             </div>
                             <div className="DM-body-child" onClick={this.goToSingleProject} >
-                                <p>پروژه های فردی</p>
+                                <p>پروژه های من</p>
                                 <img src={employee} alt="فردی" />
                             </div>
                             {/* <div className="DM-body-child" onClick={this.goToCollaborateProject} >
                                 <p>پروژه های همکاری</p>
                                 <img src={employees} alt="همکاری" />
                             </div> */}
-                            <div className="DM-body-child" onClick={this.goToMessage} >
+                            {/* <div className="DM-body-child" onClick={this.goToMessage} >
                                 <p>پیامها</p>
                                 <img src={message} alt="پیام ها" />
-                            </div>
+                            </div> */}
                             <div className="DM-body-child" onClick={this.goToPayments} >
                                 <p>تراکنشها</p>
                                 <img src={payment} alt="تراکنش" />

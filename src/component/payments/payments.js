@@ -44,8 +44,8 @@ class Payments extends Component {
                 <td className="body-child" >{data.updated_at}</td>
                 <td className="body-child" >{data.price_all}</td>
                 <td className="body-child" >{data.market}</td>
-                <td className="body-child" >{data.info.zarinpal.refId ? data.info.zarinpal.refId : '---'}</td>
-                <td className={"body-child " + "payment"+data.info.zarinpal.result}  >{data.info.zarinpal.result}</td>
+                <td className="body-child" >{data.payment_token ? data.payment_token : '---'}</td>
+                <td className={"body-child " + "payment"+data.status}  >{data.status}</td>
             </tr>
             }) :  <NoPaymentBox />
         )
