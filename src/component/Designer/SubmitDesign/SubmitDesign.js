@@ -31,9 +31,7 @@ class SubmitDesign extends Component {
         this.state = {
             submitDesignSuccess : false,
             designerExample : false,
-            cover:[],
-            tiff:[],
-            psd:[], 
+            cover:[], 
             projectId:0,
             submitDescription:''
             
@@ -151,11 +149,13 @@ class SubmitDesign extends Component {
 
             this.setState({
                 selectedFile: e.target.files[0],
-                [e.target.name]:URL.createObjectURL(e.target.files[0])
+                [e.target.name]:e.target.files[0]
+                // [e.target.name]:URL.createObjectURL(e.target.files[0])
             })
       
 
             console.log(e.target.files[0])
+            console.log(this.state.tiff)
     }
 
 
