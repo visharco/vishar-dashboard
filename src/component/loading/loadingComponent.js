@@ -13,7 +13,10 @@ class LoadingComponent extends Component {
             <div className="loading-full-screen">
                     <div className="loading-container">
                         <img src={loadingimg} className="loading-image" />
+                        <h2>درحال بارگذاری</h2>
+                        <p>لطفا کمی منتظر بمانید</p>
                     </div>
+                  
             </div>
          );
     }

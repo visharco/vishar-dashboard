@@ -45,10 +45,7 @@ class DesignerSingleProject extends Component {
                             <input type="text" />
                             <img src={search} alt="جستجو" />
                         </div>
-                        <div className="DSP-create-project-btn" onClick={this.createNewProject} >
-                            <p>ایجاد پروژه جدید</p>
-                            <img src={plus} alt="افزودن" />
-                        </div>
+                   
                     </div>
                     <div className="DSP-down" >
                         <DesignerProject status={'Completed'} statusText={'کامل شده'} />

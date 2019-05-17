@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SweetAlert from 'sweetalert-react';
 import PostToApi from '../../../controler/postToApi';
+import LoadingComponent from '../../loading/loadingComponent';
 
 //
 //
@@ -33,7 +34,8 @@ class SubmitDesign extends Component {
             designerExample : false,
             cover:[], 
             projectId:0,
-            submitDescription:''
+            submitDescription:'',
+            isLoadingGetData:false
             
         }
     }
@@ -57,13 +59,17 @@ class SubmitDesign extends Component {
 
     }
 
-    changedHandler//
+    //
     // get data from input by event target -------------------------------------------------------------->
     //
     changedHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    goBack = () =>{
+        window.location="/DesignerSingleProject"
     }
 
 
@@ -75,7 +81,9 @@ class SubmitDesign extends Component {
     submitDesign = async() =>{
         console.log(this.state.cover.length)
 
-
+        this.setState({
+            isLoadingGetData:true
+        })
           //
         // provider data for API --------------------------------------------------------------->
         //
@@ -89,47 +97,60 @@ class SubmitDesign extends Component {
         data.append('tif', this.state.tiff, this.state.tiff.name || '');
 
 
-        console.log(data)
+  
+
+
+
+
+        let validation = true;
+
+        if(this.state.cover.length === 0){
+            validation =false;
+            this.setState({
+                show:true,
+                errorMessage:'لطفا فایل کاور را وارد نمایید'
+            })
+        
+        }
+        else if(this.state.tiff.length === 0){
+            validation =false;
+            this.setState({
+                show:true,
+                errorMessage:'لطفا فایل تیف  را وارد نمایید'
+            })
+        }
+        else if(this.state.psd.length === 0){
+            validation =false;
+            this.setState({
+                show:true,
+                errorMessage:'لطفا فایل پی اس دی  را وارد نمایید'
+            })
+        }
+
+        console.log(validation)
+
+
+        if(validation === true){
 
         const res = await PostToApi(data, 'projects/design');
         console.log(res);
-
-
-
-
-        // let validation = true;
-
-        // if(this.state.cover.length === 0){
-        //     validation =false;
-        //     this.setState({
-        //         show:true,
-        //         errorMessage:'لطفا فایل کاور را وارد نمایید'
-        //     })
-        
-        // }
-        // else if(this.state.tiff.length === 0){
-        //     validation =false;
-        //     this.setState({
-        //         show:true,
-        //         errorMessage:'لطفا فایل تیف  را وارد نمایید'
-        //     })
-        // }
-        // else if(this.state.psd.length === 0){
-        //     validation =false;
-        //     this.setState({
-        //         show:true,
-        //         errorMessage:'لطفا فایل پی اس دی  را وارد نمایید'
-        //     })
-        // }
-
-        // console.log(validation)
-
-
-        // if(validation === true){
-        //     this.setState({
-        //         submitDesignSuccess : true
-        //     })
-        // }
+            if(res.status === 200)
+                this.setState({
+                    isLoadingGetData:false,
+                    submitDesignSuccess : true
+                })
+            else
+            {
+                this.setState({
+                    show:true,
+                    isLoadingGetData:false,
+                    errorMessage:res.error
+                })
+            }
+        }
+        this.setState({
+            isLoadingGetData:false,
+        })
 
 
 
@@ -163,6 +184,7 @@ class SubmitDesign extends Component {
         return (
     
             <div className="SubmitDesign">
+                 {this.state.isLoadingGetData ? <LoadingComponent /> : ''}
                 {this.state.designerExample ? <DesignerExample closeProject={this.closeModalProject} /> : ''}
 
             {
@@ -207,7 +229,7 @@ class SubmitDesign extends Component {
                                     id="cover"
                                     value="" />
                                 <div className="SDC-img" >
-                                    <img src={this.state.cover.length === 0 ? gallery : this.state.cover} alt="کاربر" />
+                                    <img src={this.state.cover.length === 0 ? gallery : URL.createObjectURL(this.state.cover)} alt="کاربر" />
                                 </div>
                                 <p className="SDC-text" >
                                     برای آپلود عکس کلیک کنید یا عکس را رها کنید
@@ -286,16 +308,16 @@ class SubmitDesign extends Component {
                     <div className="SDS-right">
                         <img src={tikgreen} alt="" />
                         <div className="SDS-right-text" >
-                            <h1>برای آپلود عکس کلیک کنید یا عکس را رها کنید</h1>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                            <h1>آپلود موفق</h1>
+                            <p>فایل های شما با موفقیت آپلود شدند</p>
                         </div>
                     </div>
                     <Button                                                                  
                         isLoading={this.state.isLoading}                                    
-                        title={'ثبت طرح'}                                                      
+                        title={'بازگشت'}                                                      
                         bgcolor={'#EEE'}                                                 
                         hoverbgcolor={'#fff'}                                          
-                        click={this.submitDesign}
+                        click={this.goBack}
                         borderRadius="30px"
                         color="#a4a4a4"
                         id={'1'}
