@@ -61,7 +61,8 @@ class DesignerProfile extends Component {
     componentWillMount = async() => {
 
         const res = await GetApi('profile/init');
-
+        const resBanck = await GetApi('profile/init/bank');
+        console.log(resBanck)
         this.setState({
             name: res.data.name,
             email: res.data.email,
@@ -71,7 +72,10 @@ class DesignerProfile extends Component {
             isLoadingGetData: false,
             image: res.data.image,
             summary:res.data.summary,
-            experience: res.data.experience
+            experience: res.data.experience,
+            cart_number: resBanck.data.cart_number,
+            name_cart_number:resBanck.data.name_cart_number,
+            bank_name:resBanck.data.bank_name
         })
 
     }

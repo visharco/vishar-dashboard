@@ -44,6 +44,7 @@ padding: 30px;
 }
 
 .SDC-upload{
+    position: relative;
     width: 100%;
     background-color: #f9f9f9;
     border-radius: 30px;
@@ -86,7 +87,9 @@ padding: 0px 10px;
     margin: 10px 0px ;
 }
 .SDC-img img{
-    width: 50%;
+    width: 100%;
+    border-radius: 500px;
+    
 }
 
 .SDUF-down{
@@ -110,7 +113,7 @@ padding: 0px 10px;
 
 }
 
-.SDUF-button{
+.SDUF-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,6 +125,18 @@ padding: 0px 10px;
     color: #999999;
     transition: all .2s linear;
 
+}
+
+.SDUF-link {
+    padding: 5px;
+    color: #aeaeae;
+    transition: all .2s linear;
+    cursor: pointer;
+
+}
+
+.SDUF-link:hover {
+    color: #555555;
 }
 
 .SDUF-button:hover{
