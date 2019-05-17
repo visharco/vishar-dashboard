@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import comment from '../../../assets/icons/comment.svg'
 import like from '../../../assets/icons/like.svg'
 import tikgreen from '../../../assets/icons/tikgreen.svg'
-
+import loadingImage from '../../../assets/images/loading-image.gif'
 
 import logoo1 from './../../../assets/images/logoo1.png'
 
@@ -14,14 +14,20 @@ class DesignerLogo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          
+          projectImage : loadingImage
         }
+    }
+    componentDidMount = () => {
+        this.setState({
+            projectImage: this.props.data.image_thumb
+        })
     }
     render() {
         return (
             <div className="DesignerLogo"
-                style={{ backgroundImage: 'url(' + logoo1 + ')' }}
+                style={{ backgroundImage: 'url(' + this.state.projectImage+ ')' }}
                 onClick={this.props.goToDesigns}
+                key={this.props.index}
             >
                 <div className="DL-status" >
                     {this.props.designerLogoStatus ?
@@ -33,7 +39,7 @@ class DesignerLogo extends Component {
                 <div className="DesignerLogo-CL" >
                     <div className="DesignerLogo-II" >
                         <span>
-                            لوگو
+                           {this.props.data.project.category.title}
                         </span>
                     </div>
 

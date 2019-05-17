@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 
 //
@@ -25,7 +26,8 @@ class NoPortfilo extends Component {
         this.state = {}
     }
     createNewProject = () => {
-        // browserHistory.push('/createNewProject');
+        // browserHistory.push('/projects');
+        window.location='http://vishar.com/projects';
 
     }
 
@@ -35,14 +37,12 @@ class NoPortfilo extends Component {
             <div className="NoPortfilo">
                 <div className="NoPortfiloBox" >
                     <img src={layerempty} alt="لایه ها" />
-                    <h1>به نمونه کار جدید خودت خوش اومدی </h1>
+                    <h1>نمونه کاری موجود نیست </h1>
                     <p>
-
-
-                        متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                    کاربر گرامی، شما تاکنون هیچ اتودی در سیستم ثبت نکردید
                 </p>
                     <button onClick={this.createNewProject}>
-                        جستجوی محتوا
+                       اولین اتود را ثبت کنید
                     </button>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import GetToAPI from '../../../controler/getToApi';
 
 //
 //
@@ -25,10 +26,21 @@ class DesignerPorfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            designerLogoStatus:true
+            designerLogoStatus:true,
+            data:[]
         }
     }
 
+
+    componentWillMount = async () => {
+        const res = await GetToAPI('portfolio');
+
+        await this.setState({
+            data : res.data
+        })
+
+        console.log(res.data)
+    }
 
     createNewProject = () => {
         browserHistory.push('/createNewProject');
@@ -41,18 +53,24 @@ class DesignerPorfolio extends Component {
 
 
     render() {
+
+        const renderMyProjects = (
+            this.state.data ? this.state.data.map((data,index) => {
+                return     <DesignerLogo key={index} data={data} goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+
+            }) :<NoPortfilo />
+        )
         return (
             <div className="DesignerPorfolio">
                 <div className="DPO-title" >
                     نمونه کارهای من
                 </div>
                 <div className="DPO-body" >
-                <StatusMessage
-                        bgColor=" rgba(242, 201, 76, 0.7)"
-                        color="#A88823"
-                        text="
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                        " />
+                {/* <StatusMessage  
+                    type="success || warning || error"
+                    text="" 
+                /> */}
+    
                     <div className="DPO-up" >
 
                         <div className="DPO-search-box " >
@@ -63,23 +81,26 @@ class DesignerPorfolio extends Component {
                     </div>
 
                     <div className="DPO-select-logo" >
+                        {/* <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
                         <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
                         <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
                         <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
                         <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
-                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
-                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} />
+                        <DesignerLogo goToDesigns={this.goToDesignerLogoes} designerLogoStatus={this.state.designerLogoStatus} /> */}
+
+
+                        {renderMyProjects}
                     </div>
 
-                    <div className="pagination" >
+                    {/* <div className="pagination" >
                         <p className="pagination-number">1</p>
                         <p className="pagination-number">2</p>
                         <p className="pagination-number pagination-number-selected">3</p>
                         <p className="pagination-number">4</p>
                         <p className="pagination-number">5</p>
-                    </div>
+                    </div> */}
 
-                    <NoPortfilo />
+                    
 
                 </div>
             </div>

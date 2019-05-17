@@ -65,8 +65,7 @@ class DesignerSingleProject extends Component {
                     </div>
                     <div className="DSP-down" >
                         {/* <DesignerProject status={'Completed'} statusText={'کامل شده'} />
-                        <DesignerProject status={'Working'} statusText={'در حال انجام '} />
-                        <DesignerProject status={'Pending'} statusText={' در صف انجام'} /> */}
+                        <DesignerProject status={'Working'} statusText={'در حال انجام '} />*/}
 
                         {renderProjects}
 
