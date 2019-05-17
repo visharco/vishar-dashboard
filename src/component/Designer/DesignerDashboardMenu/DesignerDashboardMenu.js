@@ -109,6 +109,9 @@ class DesignerDashboardMenu extends Component {
     }
     goToDesignerPorfolio = (e) => {
         browserHistory.push('/DesignerPorfolio');
+    }  
+    goToProjects = (e) => {
+       window.location = "http://vishar.com/projects"
     }
 
     menuTablet = React.createRef()
@@ -176,7 +179,7 @@ class DesignerDashboardMenu extends Component {
                                 <p>کیف پول </p>
                                 <img src={wallet} alt="فردی" />
                             </div>
-                            <div className="DDM-body-child" onClick={this.goToDesignerSingleProject} >
+                            <div className="DDM-body-child" onClick={this.goToProjects} >
                                 <p>پروژه ها </p>
                                 <img src={employee} alt="فردی" />
                             </div>
