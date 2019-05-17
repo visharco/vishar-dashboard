@@ -53,6 +53,7 @@ direction: rtl;
     transition: all .2s linear;
     position: relative;
     overflow: hidden;
+    height: 500px;
 }
 .PE-upload:hover{
     opacity: .7;

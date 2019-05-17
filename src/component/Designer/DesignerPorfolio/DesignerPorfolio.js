@@ -19,8 +19,7 @@ import './style.css';
 import DesignerLogo from '../DesignerLogo/DesignerLogo';
 import StatusMessage from '../../StatusMessage/StatusMessage';
 import NoPortfilo from '../NoPortfilo/NoPortfilo';
-
-
+ 
 class DesignerPorfolio extends Component {
 
     constructor(props) {

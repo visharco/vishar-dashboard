@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 
 import usergrey from '../../../assets/icons/usergrey.svg';
 import Input from '../../common/input/Input';
+import TextArea from '../../common/textarea/textarea'
 import Button from '../../common/Button/Button';
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
 import MessageBox from '../../StatusMessage/StatusMessage'
@@ -39,7 +40,14 @@ class DesignerProfile extends Component {
             tellError: '',
             cityError: '',
             selectedFile: '',
-            successMessage:''
+            successMessage:'',
+            experienceError:'',
+            summaryError:'',
+            experience:'',
+            summary:'',
+            cart_number:'',
+            name_cart_number:'',
+            bank_name:''
 
         }
     }
@@ -62,6 +70,8 @@ class DesignerProfile extends Component {
             city: res.data.city,
             isLoadingGetData: false,
             image: res.data.image,
+            summary:res.data.summary,
+            experience: res.data.experience
         })
 
     }
@@ -90,7 +100,10 @@ class DesignerProfile extends Component {
             emailError: '',
             phoneError: '',
             tellError: '',
-            cityError: ''
+            cityError: '',
+            experienceError:'',
+            summaryError:''
+
         })
 
         //
@@ -103,6 +116,8 @@ class DesignerProfile extends Component {
         data.append('phone', this.state.phone);
         data.append('tell', this.state.tell);
         data.append('city', this.state.city);
+        data.append('summary', this.state.summary);
+        data.append('experience', this.state.experience);
         data.append('image', this.state.selectedFile, this.state.selectedFile.name || '')
 
 
@@ -145,6 +160,56 @@ class DesignerProfile extends Component {
         this.setState({
             isLoading: false
         })
+    }
+
+
+    //
+    // -------------------------- Bank Save ------------------------------------------------------?
+    //
+
+    saveBanck = async () => {
+        this.setState({
+            isLoading: true
+        })
+
+        this.setState({
+            nameError: '',
+            emailError: '',
+            phoneError: '',
+            tellError: '',
+            cityError: '',
+            experienceError:'',
+            summaryError:''
+
+        });
+
+          //
+        // provider data for API --------------------------------------------------------------->
+        //
+        const data = new FormData();
+
+        data.append('cart_number', this.state.cart_number);
+        data.append('name_cart_number', this.state.name_cart_number);
+        data.append('bank_name', this.state.bank_name); 
+
+
+
+        const res = await PostToApi(data, 'profile/update/bank');
+        console.log(res);
+
+        if(res.status === 200){
+            this.setState({
+                successMessage:'تغیرات با موفقیت ذخیره شده است.'
+            })
+        }
+
+
+        this.setState({
+            isLoading: false
+        })
+
+
+
     }
 
 
@@ -201,29 +266,31 @@ class DesignerProfile extends Component {
                                 <div className="DPE-inputs" >
                                     <Input
                                         type={'text'}
-                                        name={'cardNumber'}
+                                        name={'cart_number'}
                                         placeholder={'شماره کارت'}
                                         changed={this.changedHandler}
                                         error={this.state.forgetEmailError}
-                                        val={this.state.name}
+                                        val={this.state.cart_number}
                                     />
                                     <div className="sample-card" >XXXX - XXXX - XXXX - XXXX</div>
                                     <Input
                                         type={'text'}
-                                        name={'nameFamily'}
-                                        placeholder={'نام و نام خانوادگی'}
+                                        name={'name_cart_number'}
+                                        placeholder={'نام و نام خانوادگی صاحب حساب'}
                                         changed={this.changedHandler}
                                         error={this.state.forgetEmailError}
-                                        val={this.state.name}
+                                        val={this.state.name_cart_number}
                                     />
                                     <Input
                                         type={'text'}
-                                        name={'bandName'}
+                                        name={'bank_name'}
                                         placeholder={' نام بانک'}
                                         changed={this.changedHandler}
                                         error={this.state.forgetEmailError}
-                                        val={this.state.name}
+                                        val={this.state.bank_name}
                                     />
+
+                             
                                     
                                     <div className="DPE-btns" >
                                         <div className="DPE-cancel" >
@@ -234,7 +301,7 @@ class DesignerProfile extends Component {
                                             title={'ذخیره'}
                                             bgcolor={'#0080FF'}
                                             hoverbgcolor={'#rgb(160, 160, 160)'}
-                                            click={this.callSubmit}
+                                            click={this.saveBanck}
                                             borderRadius="30px"
                                             color="#fff"
                                         />
@@ -260,6 +327,7 @@ class DesignerProfile extends Component {
                                     changed={this.changedHandler}
                                     error={this.state.emailError}
                                     val={this.state.email}
+                                    readonly={true}
                                 />
                                 <Input
                                     type={'text'}
@@ -285,6 +353,29 @@ class DesignerProfile extends Component {
                                     error={this.state.cityError}
                                     val={this.state.city}
                                 />
+
+                                <TextArea 
+                                    type={'text'} 
+                                    name={'summary'}
+                                    placeholder={'درباره من'}
+                                    changed={this.changedHandler}
+                                    error={this.state.summaryError}
+                                    val={this.state.summary}
+                                />
+
+
+
+                                <TextArea 
+                                    type={'text'} 
+                                    name={'experience'}
+                                    placeholder={'تجربیات من'}
+                                    changed={this.changedHandler}
+                                    error={this.state.experienceError}
+                                    val={this.state.experience}
+                                />
+
+
+
                                 <div className="DPE-btns" >
                                     <div className="DPE-cancel" >
                                         انصراف
