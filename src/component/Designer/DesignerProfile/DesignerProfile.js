@@ -47,7 +47,8 @@ class DesignerProfile extends Component {
             summary:'',
             cart_number:'',
             name_cart_number:'',
-            bank_name:''
+            bank_name:'', 
+            image:usergrey
 
         }
     }
