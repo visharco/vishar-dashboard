@@ -89,6 +89,7 @@ class ProjectDetail extends Component {
 
     openModalProject = async(id) => {
        await this.setState({ viewProject: true, desginId:id })
+       console.log(id)
 
     }
 
@@ -124,10 +125,11 @@ class ProjectDetail extends Component {
 
         const renderDesgins = (
             this.state.myProject.designs ? this.state.myProject.designs.map((data,index) => {
+                
                 return       <div className="PDD-box" key={index}>
                                 <p> توسط <span>{data.user.name}</span></p>
                                 {/* <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image , '_blanck')} /> */}
-                                <img src={data.image_thumb} alt="طرحها" onClick={() => this.openModalProject(this.state.myProject.designs.id)} />
+                                <img src={data.image_thumb} alt="طرحها" onClick={() => this.openModalProject(data.id)} />
                             </div>
             }) : ''
         )
@@ -151,7 +153,7 @@ class ProjectDetail extends Component {
                         {/* <div className="PD-desc-title" onClick={this.descriptionHandler} id="messages" ref={this.messages}>پیامها
                             <span className="PD-desc-number" >4</span>
                         </div> */}
-                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design}>طراحی
+                        <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design}>طرح های دریافتی
                             <span className="PD-desc-number" >4</span>
                         </div>
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="brief" ref={this.brief}>توضیحات

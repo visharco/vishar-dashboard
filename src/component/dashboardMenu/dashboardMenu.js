@@ -50,7 +50,7 @@ class DashboardMenu extends Component {
                 self.humberger.current.style.display = 'none'
             } else {
                 lastScroll = currentScroll;
-                self.humberger.current.style.display = 'block'
+               // self.humberger.current.style.display = 'block'
             }
         };
     }

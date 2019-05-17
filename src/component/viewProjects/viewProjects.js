@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GetToAPI from '../../controler/getToApi';
 
 //
 //
@@ -10,7 +11,7 @@ import img2 from '../../assets/images/img2.png';
 import tikw from '../../assets/icons/tikw.svg';
 import closethin from '../../assets/icons/closethin.svg';
 import report from '../../assets/icons/report.svg';
-
+import loadingImage from '../../assets/images/loading-image.gif'
 //
 //compoents
 //
@@ -23,17 +24,38 @@ class ViewProjects extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
-    }
+        this.state = {
+            data:[],
+            name:'',
+            image: loadingImage ,
+            desc:'',
+            avatar: loadingImage,
+            isSelected:false
 
+        }
+    }
+    componentWillMount= async() => {
+        const res = await GetToAPI('site/designer/portfolio/' + this.props.id)
+
+      await  this.setState({
+            data : res.data,
+            name: res.data.user.name,
+            image: res.data.image,
+            desc: res.data.desc,
+            avatar : res.data.user.image_thumb,
+            isSelected: res.data.is_selected
+
+
+        })
+
+    }
     render() {
         return (
             <div className="ViewProjects">
 
                 <div className="VP-body" >
                     <div className="VP-sliders" >
-                        <img src={img1} alt="طرحها" />
-                        <img src={img2} alt="طرحها" />
+                        <img src={this.state.image} alt="طرحها" />
                     </div>
                     <div className="VP-left" >
                         <img className="VPL-close" src={closethin} alt="بستن" onClick={this.props.closeProject} />
@@ -45,27 +67,24 @@ class ViewProjects extends Component {
 
                             <div className="VPL-title" >
                                 <div className="VPLT-up" >
-                                    <img src={charlz} alt="عکس طراح" />
+                                    <img src={this.state.avatar} alt="عکس طراح" />
                                     <div className="VPLT-desc" >
                                         <div className="VPLT-text" >
                                             <p>طراحی توسط</p>
-                                            <h2>سارا {this.props.id}</h2>
+                                            <h2> {this.state.name }</h2>
                                         </div>
-                                        <span>۳ ساعت قبل</span>
+                                        {/* <span>۳ ساعت قبل</span> */}
                                     </div>
                                 </div>
-                                <div className="VLP-message" >
+                                {/* <div className="VLP-message" >
                                     فرستادن پیام
-                            </div>
+                                </div> */}
                             </div>
                             <div className="VPL-desc" >
                                 <h1>توضیحات</h1>
                                 <p>
-                                    زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
-
-                                    زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
-
-                            </p>
+                                {this.state.data.desc}
+                                </p>
                             </div>
                             <div className="VPL-rating" >
 
@@ -91,10 +110,16 @@ class ViewProjects extends Component {
                                 <p>
                                     زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد
                             </p>
-                                <div className="VPL-button" >
+                           {!this.state.isSelected ?     
+                             <div className="VPL-button" >
                                     <img src={tikw} alt="تیک" />
                                     انتخاب طرح نهایی
-                            </div>
+                                </div> : 
+                             <div className="btn-desgin-selected " >
+                                <img src={tikw} alt="تیک" />
+                               این طرح به عنوان طرح نهایی انتخاب شد
+                            </div> 
+                        }
                             </div>
                        
 
