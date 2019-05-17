@@ -246,19 +246,25 @@ transition: all .2s linear;
 
 .DPDD-box{
     transition: all .2s linear;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
-    align-items: flex-start;
-    margin-left: 10px;
-    width: calc(25% - 10px);
+    -webkit-align-items: flex-start;
+    align-items: flex-start; 
+    width: calc(25% - 20px);
+    margin: 10px;
+
 }
 
 .DPDD-box img {
     width: 100%;
-    height: auto;
+    height: 200px;
     border-radius: 5px;
     cursor: pointer;
     transition: all .2s linear;
+    background-color: #aeaeae;
+
 }
 
 .DPDD-box > p {
@@ -359,6 +365,9 @@ transition: all .2s linear;
     z-index: 0;
     border: 4px solid #6FCF97;
 }
+
+
+ 
 @media screen and (max-width: 1300px){
     .DPD-check li {
         /* width: 33%; */

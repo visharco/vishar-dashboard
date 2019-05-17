@@ -137,7 +137,7 @@ class DesignerProjectDetail extends Component {
             this.state.data ? this.state.data.designs.map((data,index) => {
                 return    <div className="DPDD-box" key={index}>
                             <p> توسط <span>{data.user.name}</span></p>
-                            <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image, '_blank')} />
+                            <img src={data.image_thumb}  alt="طرحها" onClick={() => window.open(data.image, '_blank')} />
                             {/* <img src={data.image_thumb} alt="طرحها" onClick={this.openModalProject} /> */}
                         </div>
             }) : ''
