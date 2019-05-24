@@ -70,8 +70,7 @@ class RouterComponent extends Component {
                              <Route path="/" component={RootScreen} >
 
                                 <IndexRoute component={DashboardComponent} />
-        
-                                <Route path="/" component={DashboardComponent} />
+         
                                 <Route path="dashboard" component={DashboardComponent} />
                                 <Route path="register" component={RegisterScreen} />
                                 <Route path="profile" component={ProfileScreen} />
@@ -83,7 +82,7 @@ class RouterComponent extends Component {
                                 <Route path="notification" component={NotificationScreen} />
                                 <Route path="message" component={MessageScreen} />
                                 <Route path="chatBox" component={ChatBoxScreen} />
-                                <Route path="success-payment" component={successPaymentScreen} />
+                                <Route path="/success-payment" component={successPaymentScreen} />
                                 <Route path="faild-payment" component={faildPaymentScreen} />
                         
                             

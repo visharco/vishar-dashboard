@@ -82,11 +82,11 @@ class RootComponent extends Component {
       
 
         return (
-            <div >
+            <div className="container-fluid" >
                 <HeaderComponent />
                 <div className="dashboard" >
 
-                    <div className="container-fluid" >
+                    
                         <div className="container" >
                             <div className="dashboard-left" >
                                 {this.props.children}
@@ -94,7 +94,7 @@ class RootComponent extends Component {
                             <div className="dashboard-right" >
                             {this.state.userInfo.type ==='customer' ?  <DashboardMenu /> :   <DesignerDashboardMenu data={this.state.userInfo} />}
                                
-                                {/* <DesignerDashboardMenu /> */}
+                   
                                 
                             </div>
 
@@ -102,7 +102,7 @@ class RootComponent extends Component {
 
 
                         </div>
-                    </div>
+                   
                 </div>
             </div>
         );
