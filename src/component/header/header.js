@@ -53,10 +53,10 @@ class HeaderComponent extends Component {
                                 </Link>
                             </div>
                             <div className="envelope-boxes" >
-                                <div className="envelope-box" >
+                                {/* <div className="envelope-box" >
                                     <img className="envelope-icon" src={envelope} alt="صندوق ورودی" />
                                     <span className="envelope-number" >4</span>
-                                </div>
+                                </div> */}
                                 <div className="envelope-box" onClick={this.goToNotification} >
                                     <img className="envelope-icon" src={bell} alt="توجهات" />
                                     <span className="envelope-number" >1</span>

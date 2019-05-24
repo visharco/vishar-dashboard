@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GetToApi from '../../../controler/getToApi';
 
 //
 //
@@ -19,10 +20,34 @@ class DesignerPayments extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            data:[]
+        }
     }
 
+    componentWillMount =async () => {
+
+        const res = await GetToApi('profile/wallet/invoice');
+        console.log(res)
+        this.setState({
+            data : res.data
+        })
+    }
+
+    
     render() {
+
+        const _renderInvoice = (
+            this.state.data ? this.state.data.map((data,index) => {
+                return    <tr className="DPB-body">
+                            <td className="body-child1" >1</td>
+                            <td className="body-child" >150,000 ت</td>
+                            <td className="body-child" > 10:20 ب.ظ  10/10/1398</td>
+                            <td className="body-child paymentSuccess"  >موفق</td>
+                            <td className="body-child" >برای پروژه لوگو</td>
+                        </tr> 
+            }) :    <NoPaymentBox />
+        )
         return (
             <div className="DesignerPayments">
                 <div className="DP-title" >
@@ -68,7 +93,7 @@ class DesignerPayments extends Component {
                 
 
 
-                <NoPaymentBox />
+             
 
 
 

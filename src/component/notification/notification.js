@@ -27,8 +27,8 @@ class Notification extends Component {
             <div className="Notification">
 
                 
-                <div className="P-title" >
-                    اعلانها
+<div className="DP-title" >
+                    اعلانات
                 </div>
                 <div className="N-body" >
                     <NotificationBox />

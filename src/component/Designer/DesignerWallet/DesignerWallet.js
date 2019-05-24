@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GetToApi from '../../../controler/getToApi';
 
 //
 //
@@ -20,63 +21,70 @@ class DesignerWallet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            statusYellow:true
+            statusYellow:true,
+            data:[],
+            wallet:{}
         }
+    }
+    componentWillMount =async () => {
+
+        const res = await GetToApi('wallet/invoice');
+        console.log(res)
+        this.setState({
+            data : res.data.invoice,
+            wallet:res.data.wallet
+        })
     }
 
 
 
-
     render() {
+
+        const _renderInvoice = (
+            this.state.data ? this.state.data.map((data,index) => {
+                return        <tr className="DW-table-body" key={index}>
+                                <td className="DWT-child1" >{index+1}</td>
+                                <td className="DWT-child" >{data.price} تومان</td>
+                                {/* <td className="DWT-child" >{data.created_at}</td> */}
+                                <td className="DWT-child" >{data.created_at_persian}</td>
+                                <td className="DWT-child" >{data.invoice_status} </td>
+                                <td className={" DWT-child " + data.status  } >{data.status} </td>
+                            </tr>
+            }) :    <DesignerNoWallet />
+        )
+
+
         return (
 
             <div className="DesignerWallet">
                 <div className="DW-title" >
                     کیف پول
             </div>
-                    <StatusMessage
-                    bgColor="rgba(242, 201, 76, 0.7)"
-                    color="#A88823"
-                    text="
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.  برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                    
-                    " /> 
-             
+
+            <StatusMessage  
+                type="warning"
+                text='کاربر گرامی، شما زمانی می توانید از کیف پول خود برداشت کنید که موجودی شما بیش تر از 50،000 تومان باشد.' 
+            />
                 <div className="DW-table" >
                     <table  >
                         <tbody>
                             <tr className="DW-table-title">
                                 <th className="DWT-child1" >ردیف</th>
-                                <th className="DWT-child" >قیمت</th>
+                                <th className="DWT-child" >مبلغ </th>
                                 <th className="DWT-child" >تاریخ</th>
                                 <th className="DWT-child" >توضیحات</th>
+                                <th className="DWT-child" >وضعیت</th>
                             </tr>
-                            <tr className="DW-table-body">
-                                <td className="DWT-child1" >1</td>
-                                <td className="DWT-child" >100,000 ت</td>
-                                <td className="DWT-child" >10/10/1398 10:20 PM</td>
-                                <td className="DWT-child" >طراحی لوگوی محصول </td>
-                            </tr>
-                            <tr className="DW-table-body">
-                                <td className="DWT-child1" >2</td>
-                                <td className="DWT-child" >100,000 ت</td>
-                                <td className="DWT-child" >10/10/1398 10:20 PM</td>
-                                <td className="DWT-child" >طراحی لوگوی محصول </td>
-                            </tr>
-                            <tr className="DW-table-body">
-                                <td className="DWT-child1" >3</td>
-                                <td className="DWT-child" >100,000 ت</td>
-                                <td className="DWT-child" >10/10/1398 10:20 PM</td>
-                                <td className="DWT-child" >طراحی لوگوی محصول </td>
-                            </tr>
+                      
+                            {_renderInvoice}
                         </tbody>
                     </table>
 
                 </div>
                 <div className="DW-request-box" >
                     <div className="DW-money" >
-                        <span>کیف پول</span>
-                        <span>500,000 ت</span>
+                        <span>موجودی کیف پول</span>
+                        <span>{this.state.wallet.price} تومان</span>
                     </div>
                     <Button
                         isLoading={this.state.isLoading}
@@ -91,7 +99,7 @@ class DesignerWallet extends Component {
 
 
 
-                <DesignerNoWallet />
+                
 
 
 
