@@ -43,11 +43,12 @@ class ViewProjects extends Component {
             data: res.data,
             name: res.data.user.name,
             image: res.data.image,
+            psd: res.data.psd,
+            tif: res.data.tif,
             desc: res.data.desc,
             avatar: res.data.user.image_thumb,
-            isSelected: res.data.is_selected
-
-
+            isSelected: res.data.is_selected,
+            is_finish: res.data.is_finish
         })
 
     }
@@ -61,7 +62,8 @@ class ViewProjects extends Component {
             this.setState({
                 alertText: 'کاربر گرامی این طرح به عنوان طرح نهایی انتخاب شد.',
                 show: true,
-                isSelected: true
+                isSelected: true,
+                is_finish: true,
             });
         } else
             this.setState({
@@ -71,6 +73,21 @@ class ViewProjects extends Component {
     };
 
     render() {
+
+        const _renderDownloadFile = (
+            <div>
+                <br/>
+                <div onClick={() => window.location = this.state.psd} className="btn-desgin-selected ">
+                    دانلود فایل psd
+                </div>
+                <br/>
+                <div onClick={() => window.location = this.state.tif} className="btn-desgin-selected ">
+                    دانلود فایل tif
+                </div>
+            </div>
+
+
+        )
         return (
             <div className="ViewProjects">
                 <SweetAlert
@@ -137,15 +154,19 @@ class ViewProjects extends Component {
                                 زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود
                                 طراحی اساسا مورد استفاده قرار گیرد
                             </p>
-                            {!this.state.isSelected ?
+                            {!this.state.is_finish ?
                                 <div className="VPL-button" onClick={this._finalproject}>
                                     <img src={tikw} alt="تیک"/>
                                     انتخاب طرح نهایی
                                 </div> :
-                                <div className="btn-desgin-selected ">
-                                    <img src={tikw} alt="تیک"/>
-                                    این طرح به عنوان طرح نهایی انتخاب شد
-                                </div>
+                                this.state.isSelected ?
+                                    <div>
+                                        <div className="btn-desgin-selected ">
+                                            <img src={tikw} alt="تیک"/>
+                                            این طرح به عنوان طرح نهایی انتخاب شد
+                                        </div>
+                                        {_renderDownloadFile}
+                                    </div> : ''
                             }
                         </div>
 
