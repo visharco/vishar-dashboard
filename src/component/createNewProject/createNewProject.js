@@ -763,7 +763,7 @@ class CreateNewProject extends Component {
                                             <input {...getInputProps()} />
                                         
                                             <div  className="CNP-image-uploader">
-                                                    <h1>عکس پروفایل</h1>
+                                                    <h1> فایل های ضمیمه</h1>
                                                     <div className="CNPU-img" >
                                                         <img src={document} alt="اسناد" />
                                                     </div>

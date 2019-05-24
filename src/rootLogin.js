@@ -18,9 +18,8 @@ class RootLoginComponent extends Component {
     render() {
         return (
             <div > 
-                <div className="dashboard" >
-
-                {this.props.children}
+                <div className="" >
+                    {this.props.children}
                 </div>
             </div>
         );

@@ -131,7 +131,9 @@ class ProjectDetail extends Component {
                                 {/* <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image , '_blanck')} /> */}
                                 <img src={data.image_thumb} alt="طرحها" onClick={() => this.openModalProject(data.id)} />
                             </div>
-            }) : ''
+            }) : <div className="bg-red">
+                 <p>طرحی دریافت نشده است</p>
+                </div>
         )
 
   
@@ -154,7 +156,7 @@ class ProjectDetail extends Component {
                             <span className="PD-desc-number" >4</span>
                         </div> */}
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="design" ref={this.design}>طرح های دریافتی
-                            <span className="PD-desc-number" >4</span>
+                            {/* <span className="PD-desc-number" >10</span> */}
                         </div>
                         <div className="PD-desc-title" onClick={this.descriptionHandler} id="brief" ref={this.brief}>توضیحات
                         </div>
