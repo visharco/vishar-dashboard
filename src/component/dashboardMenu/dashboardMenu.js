@@ -101,6 +101,9 @@ class DashboardMenu extends Component {
     }
     goToSingleProject = () => {
         browserHistory.push('/singleProject');
+    } 
+    gotoCreateProject = () => {
+        browserHistory.push('/createNewProject');
     }
     goToCollaborateProject = () => {
         browserHistory.push('/collaborateProject');
@@ -184,6 +187,10 @@ class DashboardMenu extends Component {
                             <div className="DM-body-child" onClick={this.goToProfile} >
                                 <p>پروفایل</p>
                                 <img src={userblack} alt="کاربر" />
+                            </div>
+                            <div className="DM-body-child" onClick={this.gotoCreateProject} >
+                                <p>معرفی پروژه جدید</p>
+                                <img src={employee} alt="فردی" />
                             </div>
                             <div className="DM-body-child" onClick={this.goToSingleProject} >
                                 <p>پروژه های من</p>
