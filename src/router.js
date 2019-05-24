@@ -56,7 +56,17 @@ class RouterComponent extends Component {
                 <Route path="/register" component={RegisterScreen} ></Route>
                 <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route> */}
 
-                {Token ? 
+               
+
+                                <Route path="/" component={RootLooginScreen} >
+                                        <IndexRoute component={LoginScreen} />                               
+                                        <Route path="/login" component={LoginScreen} ></Route>
+                                        <Route path="/register" component={RegisterScreen} ></Route>
+                                        <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
+                                </Route>  
+
+
+
                              <Route path="/" component={RootScreen} >
 
                                 <IndexRoute component={DashboardComponent} />
@@ -93,17 +103,12 @@ class RouterComponent extends Component {
                                
                                 <Route path='*' exact={true} component={NotFoundScreen} />
      
-                            </Route> : 
+                            </Route> 
                                        
                                      
-                                <Route path="/" component={RootLooginScreen} >
-                                        <IndexRoute component={LoginScreen} />                               
-                                        <Route path="/login" component={LoginScreen} ></Route>
-                                        <Route path="/register" component={RegisterScreen} ></Route>
-                                        <Route path="forgetPassword" component={ForgetPasswordScreen} ></Route>
-                                </Route>    
+                             
                                 
-                                }
+                               
 
 
 

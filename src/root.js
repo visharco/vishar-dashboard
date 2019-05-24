@@ -41,7 +41,7 @@
 
 
 import React, { Component } from 'react';
-
+import { browserHistory } from 'react-router'
 import GetApi from './controler/getToApi';
 
 
@@ -60,17 +60,27 @@ class RootComponent extends Component {
     }
 
     componentWillMount = async() => {
-        const res = await GetApi('profile/init');
-
-       await this.setState({
-            userInfo: res.data
-        })
+        try {
+            const res = await GetApi('profile/init');
+            if(res.status === 200)
+                await this.setState({
+                    userInfo: res.data
+                })
+            else if(res.status === 400)
+                browserHistory.push('/login')
+        } catch (error) {
+            
+            
+        }
 
     }
 
 
 
     render() {
+
+      
+
         return (
             <div >
                 <HeaderComponent />
