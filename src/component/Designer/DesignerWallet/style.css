@@ -15,6 +15,9 @@ padding: 30px;
     color: #bababa;
 }
 
+.success {
+    color: #6FCF97!important;
+}
 
 .DW-table-title , .DW-table-body , .DW-request-box {
     display: flex;
