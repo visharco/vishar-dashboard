@@ -200,6 +200,9 @@
 import React , { Component } from 'react';
 import './style.css'; 
 import logo from '../../../assets/images/logo.png'
+import Input from '../../../component/common/input/Input';
+import Button from '../../../component/common/Button/Button';
+
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -214,6 +217,37 @@ class LoginComponent extends Component {
                     <div className="login-header">
                         <div className="col-50 login-header-item ">ثبت نام</div>
                         <div className="col-50 login-header-item ">ورود</div>
+                    </div>
+                    <div className="login-form">
+                        <h2>ورود به سیستم</h2>
+                        <p>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
+                        <Input
+                            type={'text'}
+                            name={'email'}
+                            placeholder={'ایمیل / شماره همراه'}
+                            changed={this.changedHandler}
+                            error={this.state.emailError}
+                            val={this.state.email}
+                        />
+
+                        <Input
+                            type={'password'}
+                            name={'password'}
+                            placeholder={'رمز عبور'}
+                            changed={this.changedHandler}
+                            error={this.state.passwordError}
+                            val={this.state.password}
+                        />
+
+                        <Button
+                            isLoading={this.state.isLoading}
+                            title={'ورود'}
+                            bgcolor={'#0080FF'}
+                            hoverbgcolor={'rgba(0, 128, 255, .8)'}
+                            click={this._callLogin}
+                            borderRadius="2px"
+                            color="#fff"
+                        />
                     </div>
                 </div>
 
