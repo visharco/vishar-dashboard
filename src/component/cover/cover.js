@@ -12,11 +12,11 @@ class Cover extends Component {
     render() {
         return (
             <div className="cover">
-                    <div className="cover-text">
+                    {/* <div className="cover-text">
                        <p className="cover-text1"> بیشتر از <span> 200 </span></p>
                         <p className="cover-text2" > پروژه موفق</p>
                         <p className="per-month" >در ماه</p>
-                    </div>
+                    </div> */}
             </div>
         );
     }

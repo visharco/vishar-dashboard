@@ -69,6 +69,81 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login-container {
+    width: 700px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 3px;
+   
+
+
+}
+
+.login-logo {
+    width: 200px;
+    margin: 20px;
+
+}
+
+.login-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.login-header-item {
+    font-size: 22px;
+    font-weight: 700;
+    width: 200px;
+    margin: 20px;
+    color: #0078af;
+    padding: 15px;
+    background-color: #fcfcfc;
+    border: 2px solid #0078af;
+    border-radius: 50px;
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 400px){
 .RL-right{
     padding: 20px;
