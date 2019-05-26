@@ -58,8 +58,8 @@ class DesignerSingleProject extends Component {
                     <div className="DSP-up" >
 
                         <div className="DSP-search-box " >
-                            <input type="text" />
-                            <img src={search} alt="جستجو" />
+                            {/*<input type="text" />*/}
+                            {/*<img src={search} alt="جستجو" />*/}
                         </div>
                    
                     </div>
