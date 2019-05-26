@@ -66,8 +66,8 @@ class SingleProject extends Component {
                     <div className="SP-up" >
 
                         <div className="SP-search-box " >
-                            <input type="text" />
-                            <img src={search} alt="جستجو" />
+                            {/*<input type="text" />*/}
+                            {/*<img src={search} alt="جستجو" />*/}
                         </div>
                         <div className="SP-create-project-btn" onClick={this.createNewProject} >
                             <p>ایجاد پروژه جدید</p>
