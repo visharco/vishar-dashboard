@@ -8,7 +8,7 @@ import logo from '../../../assets/images/logo.png'
 
 
 import EmailChecker from '../../../component/EmailChecker/EmailChecker'
-import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
+
 
 //
 // controler
@@ -67,87 +67,7 @@ class RegisterComponent extends Component {
         
 
 
-        // alert(this.state.name)
-        let validation = false;
- 
-
-        const data = new FormData();
- 
-        data.append('name', this.state.namefamily);
-        data.append('email', this.state.email); 
-        data.append('password', this.state.password); 
-        data.append('password_confirmation', this.state.password); 
-        data.append('type', this.state.userType); 
-
-
-
-
-        console.log(this.state.password.trim())
-
-        // chek simple validation // TODO later to be control correct
-        if (this.state.namefamily === '') {
-            this.setState({
-                nameFamilyError: 'نام و نام خانوادگی را وارد نکرده اید',
-            })
-        }else if(EnglishChecker(this.state.namefamily) === true){
-            this.setState({
-                nameFamilyError: 'نام و نام خانوادگی را به صورت فارسی بنویسید',
-            })
-        }
-
-        // //email
-        if (this.state.email.trim() === '') {
-            this.setState({
-                emailError: 'ایمیل را وارد نکرده اید ',
-            })
-        } else {
-            if (EmailChecker(this.state.email) === false) {
-                this.setState({
-                    emailError: 'ایمیل را اشتباه وارد کرده اید ',
-                })
-            }
-        }
-
-
-        // //password
-        if (this.state.password.trim() === '') {
-            console.log('pw')
-            this.setState({
-                passwordError: 'رمز عبور را وارد نکرده اید ',
-            })
-        } else if (this.state.password !== '' && this.state.password.length < 8) {
-            console.log('pw')
-            this.setState({
-                passwordError: 'رمز عبور باید بیشتر از ۸ کاراکتر باشد ',
-            })
-        }
-
-        // //user type
-        if (this.state.userType !== 'customer' && this.state.userType !== 'designer') {
-            this.setState({
-                userTypeError: true,
-                userTypeErrorText: 'سطح درسترسی خود را انتخاب کنید',
-            })
-        }
-
-        // final check for submit form
-        if (this.state.namefamily !== '' && EnglishChecker(this.state.namefamily) === false &&
-            this.state.email !== '' && EmailChecker(this.state.email) === true &&
-            this.state.password !== '' && this.state.password.length > 8 &&
-            (this.state.userType === 'customer' || this.state.userType === 'designer')) {
-            
-            this.setState({
-                userTypeError:false
-            })
-            const res = await PostData(data, 'auth/email/register');
-            console.log(res)
-            if (res.status === 200)
-                this.goToRegister();
-        }
-
-        this.setState({
-            isLoading: false
-        })
+       
 
     }
 
