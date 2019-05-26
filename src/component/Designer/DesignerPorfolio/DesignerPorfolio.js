@@ -74,8 +74,8 @@ class DesignerPorfolio extends Component {
                     <div className="DPO-up" >
 
                         <div className="DPO-search-box " >
-                            <input type="text" />
-                            <img src={search} alt="جستجو" />
+                            {/*<input type="text" />*/}
+                            {/*<img src={search} alt="جستجو" />*/}
                         </div>
 
                     </div>
