@@ -1,11 +1,9 @@
-
-
-import React , { Component } from 'react';
-import './style.css'; 
+import React, {Component} from 'react';
+import './style.css';
 import logo from '../../../assets/images/logo.png'
 import Input from '../../../component/common/input/Input';
 import Button from '../../../component/common/Button/Button';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import PostData from '../../../controler/postToApi';
 import EmailChecker from '../../../component/EmailChecker/EmailChecker'
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
@@ -13,15 +11,14 @@ import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
 class LoginComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            type:'login',
+        this.state = {
+            type: 'login',
             email: '',
             password: '',
             emailError: '',
             passwordError: ''
-         }
+        }
     }
-
 
 
     goToLogin = () => {
@@ -38,27 +35,27 @@ class LoginComponent extends Component {
             passwordError: ''
         })
 
-        if ( this.state.email.trim() === '') {
+        if (this.state.email.trim() === '') {
             this.setState({
                 emailError: 'ایمیل را وارد نکردید'
             })
 
         }
 
-        if ( this.state.email.trim() !== '') {
+        if (this.state.email.trim() !== '') {
             if (EmailChecker(this.state.email) === false) {
-                this.setState({ emailError: 'ایمیل را اشتباه وارد کرده اید'})
+                this.setState({emailError: 'ایمیل را اشتباه وارد کرده اید'})
             }
         }
 
 
-        if (this.state.password.trim() === '' ) {
+        if (this.state.password.trim() === '') {
             this.setState({
                 passwordError: 'پسورد را وارد نکردید'
             })
         }
 
-        if (this.state.password.trim() !== '' && this.state.password.length < 8 ) {
+        if (this.state.password.trim() !== '' && this.state.password.length < 8) {
             this.setState({
                 passwordError: 'رمز عبور باید بیشتر از ۸ کاراکتر باشد'
             })
@@ -68,9 +65,9 @@ class LoginComponent extends Component {
         // provider data for API --------------------------------------------------------------->
         //
         const data = new FormData();
- 
+
         data.append('email', this.state.email);
-        data.append('password', this.state.password); 
+        data.append('password', this.state.password);
 
 
         if (this.state.email !== '' && this.state.password !== '' && EmailChecker(this.state.email) === true) {
@@ -102,16 +99,15 @@ class LoginComponent extends Component {
             }
         }
     }
-    
 
 
     _opentabs(val) {
-       this.setState({
-           type : val
-       })
+        this.setState({
+            type: val
+        })
     }
 
-        changedHandler = (e) => {
+    changedHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -131,7 +127,6 @@ class LoginComponent extends Component {
     }
 
 
-
     _onClickRegister = async () => {
 
         this.setState({
@@ -144,221 +139,218 @@ class LoginComponent extends Component {
             namefamily: '',
             email: '',
             password: '',
-            type: '',   
-            userTypeError: false, 
+            type: '',
+            userTypeError: false,
         })
 
 
+        // alert(this.state.name)
+        let validation = false;
 
-         // alert(this.state.name)
-         let validation = false;
- 
 
-         const data = new FormData();
-  
-         data.append('name', this.state.namefamily);
-         data.append('email', this.state.email); 
-         data.append('password', this.state.password); 
-         data.append('password_confirmation', this.state.password); 
-         data.append('type', this.state.userType); 
- 
- 
- 
- 
+        const data = new FormData();
+
+        data.append('name', this.state.namefamily);
+        data.append('email', this.state.email);
+        data.append('password', this.state.password);
+        data.append('password_confirmation', this.state.password);
+        data.append('type', this.state.userType);
+
+
         // console.log(this.state.password.trim())
- 
-         // chek simple validation // TODO later to be control correct
-         if (this.state.namefamily === '') {
-             this.setState({
-                 nameFamilyError: 'نام و نام خانوادگی را وارد نکرده اید',
-             })
-         }else if(EnglishChecker(this.state.namefamily) === true){
-             this.setState({
-                 nameFamilyError: 'نام و نام خانوادگی را به صورت فارسی بنویسید',
-             })
-         }
- 
-         // //email
-         if (this.state.email.trim() === '') {
-             this.setState({
-                 emailError: 'ایمیل را وارد نکرده اید ',
-             })
-         } else {
-             if (EmailChecker(this.state.email) === false) {
-                 this.setState({
-                     emailError: 'ایمیل را اشتباه وارد کرده اید ',
-                 })
-             }
-         }
- 
- 
-         // //password
-         if (this.state.password.trim() === '') {
-             console.log('pw')
-             this.setState({
-                 passwordError: 'رمز عبور را وارد نکرده اید ',
-             })
-         } else if (this.state.password !== '' && this.state.password.length < 6) {
-             console.log('pw')
-             this.setState({
-                 passwordError: 'رمز عبور باید بیشتر از 6 کاراکتر باشد ',
-             })
-         }
- 
-         // //user type
-         if (this.state.userType !== 'customer' && this.state.userType !== 'designer') {
-             this.setState({
-                 userTypeError: true,
-                 userTypeErrorText: 'سطح درسترسی خود را انتخاب کنید',
-             })
-         }
- 
-         // final check for submit form
-         if (this.state.namefamily !== '' && EnglishChecker(this.state.namefamily) === false &&
-             this.state.email !== '' && EmailChecker(this.state.email) === true &&
-             this.state.password !== '' && this.state.password.length > 8 &&
-             (this.state.userType === 'customer' || this.state.userType === 'designer')) {
-             
-             this.setState({
-                 userTypeError:false
-             })
-             const res = await PostData(data, 'auth/email/register');
-             console.log(res)
-             if (res.status === 200)
-                 alert('success')
-         }
- 
-         this.setState({
-             isLoading: false
-         })
 
+        // chek simple validation // TODO later to be control correct
+        if (this.state.namefamily === '') {
+            this.setState({
+                nameFamilyError: 'نام و نام خانوادگی را وارد نکرده اید',
+            })
+        } else if (EnglishChecker(this.state.namefamily) === true) {
+            this.setState({
+                nameFamilyError: 'نام و نام خانوادگی را به صورت فارسی بنویسید',
+            })
+        }
+
+        // //email
+        if (this.state.email.trim() === '') {
+            this.setState({
+                emailError: 'ایمیل را وارد نکرده اید ',
+            })
+        } else {
+            if (EmailChecker(this.state.email) === false) {
+                this.setState({
+                    emailError: 'ایمیل را اشتباه وارد کرده اید ',
+                })
+            }
+        }
+
+
+        // //password
+        if (this.state.password.trim() === '') {
+            console.log('pw')
+            this.setState({
+                passwordError: 'رمز عبور را وارد نکرده اید ',
+            })
+        } else if (this.state.password !== '' && this.state.password.length < 6) {
+            console.log('pw')
+            this.setState({
+                passwordError: 'رمز عبور باید بیشتر از 6 کاراکتر باشد ',
+            })
+        }
+
+        // //user type
+        if (this.state.userType !== 'customer' && this.state.userType !== 'designer') {
+            this.setState({
+                userTypeError: true,
+                userTypeErrorText: 'سطح درسترسی خود را انتخاب کنید',
+            })
+        }
+
+        // final check for submit form
+        if (this.state.namefamily !== '' && EnglishChecker(this.state.namefamily) === false &&
+            this.state.email !== '' && EmailChecker(this.state.email) === true &&
+            this.state.password !== '' && this.state.password.length > 8 &&
+            (this.state.userType === 'customer' || this.state.userType === 'designer')) {
+
+            this.setState({
+                userTypeError: false
+            })
+            const res = await PostData(data, 'auth/email/register');
+            console.log(res)
+            if (res.status === 200) {
+                localStorage.setItem('@authorization_vishar', res.data.token);
+                browserHistory.push('/dashboard');
+                window.location.reload();
+            }
+        }
+
+        this.setState({
+            isLoading: false
+        })
 
 
     }
 
 
-
-
-    render() { 
+    render() {
 
         const _renderLogin = (
             <div className="login-form">
-            <h2>ورود به سیستم</h2>
-            <p>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
-            <Input
-                type={'text'}
-                name={'email'}
-                placeholder={'ایمیل / شماره همراه'}
-                changed={this.changedHandler}
-                error={this.state.emailError}
-                val={this.state.email}
-            />
+                <h2>ورود به سیستم</h2>
+                <p>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
+                <Input
+                    type={'text'}
+                    name={'email'}
+                    placeholder={'ایمیل / شماره همراه'}
+                    changed={this.changedHandler}
+                    error={this.state.emailError}
+                    val={this.state.email}
+                />
 
-            <Input
-                type={'password'}
-                name={'password'}
-                placeholder={'رمز عبور'}
-                changed={this.changedHandler}
-                error={this.state.passwordError}
-                val={this.state.password}
-            />
+                <Input
+                    type={'password'}
+                    name={'password'}
+                    placeholder={'رمز عبور'}
+                    changed={this.changedHandler}
+                    error={this.state.passwordError}
+                    val={this.state.password}
+                />
 
-            <Button
-                isLoading={this.state.isLoading}
-                title={'ورود'}
-                bgcolor={'#0080FF'}
-                hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                click={this._callLogin}
-                borderRadius="2px"
-                color="#fff"
-            />
-        </div>
+                <Button
+                    isLoading={this.state.isLoading}
+                    title={'ورود'}
+                    bgcolor={'#0080FF'}
+                    hoverbgcolor={'rgba(0, 128, 255, .8)'}
+                    click={this._callLogin}
+                    borderRadius="2px"
+                    color="#fff"
+                />
+            </div>
         )
 
 
         const _renderRegister = (
             <div className="login-form">
-                   <h2> عضویت در ویشار</h2>
-            <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
-             
-             <Input
-                                    type={'text'}
-                                    name={'namefamily'}
-                                    placeholder={'نام و نام خانوادگی'}
-                                    changed={this.changedHandler}
-                                    error={this.state.nameFamilyError}
-                                    val={this.state.nameFamily}
-                                />
-                                {/* <span>لطفا نام و نام خانودادگی خود را به صورت فارسی وارد نمایید</span> */}
-                                <Input
-                                    type={'email'}
-                                    name={'email'}
-                                    placeholder={'ایمیل '}
-                                    changed={this.changedHandler}
-                                    error={this.state.emailError}
-                                />
-                                <Input
-                                    type={'password'}
-                                    name={'password'}
-                                    placeholder={'رمز عبور'}
-                                    changed={this.changedHandler}
-                                    error={this.state.passwordError}
-                                />
-                                <div className="R-checkbox" >
+                <h2> عضویت در ویشار</h2>
+                <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
 
-                                    <p>
-                                        <input type="radio" id="customer" name="radio-group" onChange={this.changedHandlerRadio} />
-                                        <label htmlFor="customer">
-                                            <span>من نیاز به یک طرح دارم</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <input type="radio" id="designer" name="radio-group" onChange={this.changedHandlerRadio} />
-                                        <label htmlFor="designer">
-                                            <span>من یک طراحم</span>
-                                        </label>
-                                    </p>
-                                    {
-                                        this.state.userTypeError ?
-                                            <span className="type-person bounceIn" >{this.state.userTypeErrorText}</span> : ''
-                                    }
+                <Input
+                    type={'text'}
+                    name={'namefamily'}
+                    placeholder={'نام و نام خانوادگی'}
+                    changed={this.changedHandler}
+                    error={this.state.nameFamilyError}
+                    val={this.state.nameFamily}
+                />
+                {/* <span>لطفا نام و نام خانودادگی خود را به صورت فارسی وارد نمایید</span> */}
+                <Input
+                    type={'email'}
+                    name={'email'}
+                    placeholder={'ایمیل '}
+                    changed={this.changedHandler}
+                    error={this.state.emailError}
+                />
+                <Input
+                    type={'password'}
+                    name={'password'}
+                    placeholder={'رمز عبور'}
+                    changed={this.changedHandler}
+                    error={this.state.passwordError}
+                />
+                <div className="R-checkbox">
 
-                                </div>
-                                <br />
-                                <br />
+                    <p>
+                        <input type="radio" id="customer" name="radio-group" onChange={this.changedHandlerRadio}/>
+                        <label htmlFor="customer">
+                            <span>من نیاز به یک طرح دارم</span>
+                        </label>
+                    </p>
+                    <p>
+                        <input type="radio" id="designer" name="radio-group" onChange={this.changedHandlerRadio}/>
+                        <label htmlFor="designer">
+                            <span>من یک طراحم</span>
+                        </label>
+                    </p>
+                    {
+                        this.state.userTypeError ?
+                            <span className="type-person bounceIn">{this.state.userTypeErrorText}</span> : ''
+                    }
 
-                                <Button
-                                    isLoading={this.state.isLoading}
-                                    title={'ثبت نام'}
-                                    bgcolor={'#0080FF'}
-                                    hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                                    click={this._onClickRegister}
-                                    borderRadius="2px"
-                                    color="#fff"
-                                />
+                </div>
+                <br/>
+                <br/>
 
-        </div>
+                <Button
+                    isLoading={this.state.isLoading}
+                    title={'ثبت نام'}
+                    bgcolor={'#0080FF'}
+                    hoverbgcolor={'rgba(0, 128, 255, .8)'}
+                    click={this._onClickRegister}
+                    borderRadius="2px"
+                    color="#fff"
+                />
+
+            </div>
         )
 
 
-        return ( 
-                      <div className="cover">
-                 <img src={logo} className="login-logo" alt="لوگو" />
+        return (
+            <div className="cover">
+                <img src={logo} className="login-logo" alt="لوگو"/>
                 <div className="login-container">
                     <div className="login-header">
-                        <div className="col-50 login-header-item " onClick={() => this._opentabs('register')}>ثبت نام</div>
+                        <div className="col-50 login-header-item " onClick={() => this._opentabs('register')}>ثبت نام
+                        </div>
                         <div className="col-50 login-header-item " onClick={() => this._opentabs('login')}>ورود</div>
                     </div>
 
                     {this.state.type === 'login' ? _renderLogin : _renderRegister}
-                   
+
                 </div>
 
 
-
             </div>
-         );
+        );
     }
 }
- 
+
 export default LoginComponent;
