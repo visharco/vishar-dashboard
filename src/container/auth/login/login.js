@@ -252,7 +252,7 @@ class LoginComponent extends Component {
                 <Input
                     type={'text'}
                     name={'email'}
-                    placeholder={'ایمیل / شماره همراه'}
+                    placeholder={'پست الکترونیک'}
                     changed={this.changedHandler}
                     error={this.state.emailError}
                     val={this.state.email}
