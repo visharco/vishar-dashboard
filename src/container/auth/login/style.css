@@ -92,7 +92,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column; 
-    padding: 20px 0;
+
    
 }
 
@@ -140,6 +140,7 @@
     margin: auto;
     text-align: right;
     direction: rtl;
+    padding: 20px 0;
 }
 
 
@@ -148,7 +149,7 @@
     margin: auto;
     text-align: right;
     direction: rtl;
-
+    padding: 20px 0;
     
 }
 
