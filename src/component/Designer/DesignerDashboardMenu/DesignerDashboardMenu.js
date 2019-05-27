@@ -111,7 +111,8 @@ class DesignerDashboardMenu extends Component {
         browserHistory.push('/DesignerPorfolio');
     }  
     goToProjects = (e) => {
-       window.location = "http://vishar.com/projects"
+    //    window.location = "http://vishar.com/projects"
+    browserHistory.push('/all-projects');
     }
 
     menuTablet = React.createRef()
