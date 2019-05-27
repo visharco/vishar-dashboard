@@ -35,6 +35,7 @@ import DesignerPaymentsScreen from './component/Designer/DesignerPayments/Design
 import SubmitDesignScreen from './component/Designer/SubmitDesign/SubmitDesign'
 import DesignerPorfolioScreen from './component/Designer/DesignerPorfolio/DesignerPorfolio'
 import DesignerLogoesScreen from './component/Designer/DesignerLogoes/DesignerLogoes'
+import AllProjectScreen from './component/Designer/allProjects/allProjectsComponent'
 
 
 import NotFoundScreen from './container/notFound/notFound';
@@ -98,6 +99,7 @@ class RouterComponent extends Component {
                                 <Route path="SubmitDesigne/:id" component={SubmitDesignScreen} /> 
                                 <Route path="DesignerPorfolio" component={DesignerPorfolioScreen} /> 
                                 <Route path="DesignerLogoes" component={DesignerLogoesScreen} /> 
+                                <Route path="all-projects" component={AllProjectScreen} /> 
                                 
                                
                                 <Route path='*' exact={true} component={NotFoundScreen} />
