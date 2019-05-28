@@ -578,7 +578,7 @@ class CreateNewProject extends Component {
         const renderPlans = (
             this.state.categoryId > 0 ?
                  this.state.plans.map((data,index) => {
-                return <div key={index} style={{width:'28%'}}>
+                return <div key={index} className="plan-container-cover">
                     <input type="radio" id={'ss' + data.id} name="select" value={data.id} onClick={() => this._getPlanId(data.id, data.title, data.price) }/>
                     <label htmlFor={'ss' + data.id}>
                         <div className="CNP-label">
@@ -607,7 +607,7 @@ class CreateNewProject extends Component {
         const  renderDuration = ( 
                            this.state.durations ? 
                                 this.state.durations.map((data,index) => {
-                                    return   <div key={index}>
+                                    return   <div key={index} className="selector-container">
                                     <input type="radio" id={'dd' + index} name="select" value={data.id}  onClick={() => this._getDurationId(data.id, data.title, data.price) }/>
                                     <label htmlFor={'dd' + index}>
                                         <div className="CNPD-title" >

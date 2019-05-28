@@ -226,7 +226,10 @@ width: 40px;
 
 }
   
+.plan-container-cover {
+    width: 28%;
 
+}
 
 /* //RADIO BOX  END */
 
@@ -362,6 +365,7 @@ transition: all .2s linear;
     border-radius: 10px;
     min-width: 200px;
 }
+
 
 
  
@@ -976,6 +980,15 @@ padding: 10px 5px;
 
 
 @media screen and (max-width: 500px){
+    .plan-container-cover {
+        width: 100%;
+        line-height: 3;
+    
+    }
+    .selector-container {
+        width: 46%;
+    
+    }
 .CNP-1-radio{
     justify-content: center;
 }

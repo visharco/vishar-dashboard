@@ -25,7 +25,9 @@ class LoginComponent extends Component {
             passwordErrorReg: '',
             userTypeErrorText: '',
             emailReg:'',
-            passwordReg:''
+            passwordReg:'',
+            namefamily:'',
+            userTypeErrorText:''
 
 
         }
@@ -220,7 +222,7 @@ class LoginComponent extends Component {
         // final check for submit form
         if (this.state.namefamily !== ''  &&
             this.state.emailReg !== '' && EmailChecker(this.state.emailReg) === true &&
-            this.state.passwordReg !== '' && this.state.passwordReg.length > 8 &&
+            this.state.passwordReg !== '' && this.state.passwordReg.length > 6 &&
             (this.state.userType === 'customer' || this.state.userType === 'designer')) {
 
             this.setState({
