@@ -173,8 +173,10 @@ class LoginComponent extends Component {
 
         // chek simple validation // TODO later to be control correct
         if (this.state.namefamily === '') {
-            this.setState({
+            
+           return this.setState({
                 nameFamilyErrorReg: 'نام و نام خانوادگی را وارد نکرده اید',
+                isLoadingReg: false
             })
         } 
         
@@ -186,48 +188,43 @@ class LoginComponent extends Component {
 
         // //email
         if (this.state.emailReg.trim() === '') {
-            this.setState({
+            return this.setState({
                 emailErrorReg: 'ایمیل را وارد نکرده اید ',
+                isLoadingReg: false
             })
         } else {
             if (EmailChecker(this.state.emailReg) === false) {
-                this.setState({
+                return  this.setState({
                     emailErrorReg: 'ایمیل را اشتباه وارد کرده اید ',
+                    isLoadingReg: false
                 })
             }
         }
 
 
         // //password
-        if (this.state.passwordReg.trim() === '') {
-            console.log('pw')
-            this.setState({
+        if (this.state.passwordReg.trim() === '') { 
+            return this.setState({
                 passwordErrorReg: 'رمز عبور را وارد نکرده اید ',
+                isLoadingReg: false
             })
-        } else if (this.state.passwordReg !== '' && this.state.passwordReg.length < 6) {
-            console.log('pw')
-            this.setState({
+        } else if (this.state.passwordReg !== '' && this.state.passwordReg.length < 6) { 
+            return this.setState({
                 passwordErrorReg: 'رمز عبور باید بیشتر از 6 کاراکتر باشد ',
+                isLoadingReg: false
             })
         }
 
         // //user type
-        if (this.state.userType !== 'customer' && this.state.userType !== 'designer') {
-            this.setState({
+        if (this.state.userType === '') {
+            return this.setState({
                 userTypeError: true,
                 userTypeErrorText: 'سطح درسترسی خود را انتخاب کنید',
+                isLoadingReg: false
             })
         }
 
-        // final check for submit form
-        if (this.state.namefamily !== ''  &&
-            this.state.emailReg !== '' && EmailChecker(this.state.emailReg) === true &&
-            this.state.passwordReg !== '' && this.state.passwordReg.length > 6 &&
-            (this.state.userType === 'customer' || this.state.userType === 'designer')) {
-
-            this.setState({
-                userTypeError: false
-            })
+      
             const res = await PostData(data, 'auth/email/register');
             console.log(res)
             if (res.status === 200) {
@@ -235,7 +232,7 @@ class LoginComponent extends Component {
                 browserHistory.push('/dashboard');
                 window.location.reload();
             }
-        }
+     
 
         this.setState({
             isLoadingReg: false
