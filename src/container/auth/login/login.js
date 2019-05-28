@@ -348,7 +348,9 @@ class LoginComponent extends Component {
 
         return (
             <div className="cover">
-                <img src={logo} className="login-logo" alt="لوگو"/>
+                <a href="http://www.vishar.com">
+                    <img src={logo} className="login-logo" alt="لوگو"/>
+                </a>
                 <div className="login-container">
                     <div className="login-header">
                         <div className="col-50 login-header-item " onClick={() => this._opentabs('register')}>ثبت نام
