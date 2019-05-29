@@ -21,7 +21,7 @@ class LoginComponent extends Component {
             passwordLoginError: '',
             isLoading:false,
 
-            isLoadingRegister: true,
+            isLoadingRegister: false,
             emailErrorRegister: '',
             nameFamilyErrorRegister: '',
             passwordErrorRegister: '',
@@ -111,13 +111,29 @@ class LoginComponent extends Component {
     }
 
 
-    _opentabs(val) {
-        this.setState({
-            type: val
+    _opentabs =async(val) => {
+       await this.setState({
+            type: val,
+            emailLogin: '',
+            passwordLogin: '',
+            emailLoginError: '',
+            passwordLoginError: '',
+            isLoading:false,
+
+            isLoadingRegister: false,
+            emailErrorRegister: '',
+            nameFamilyErrorRegister: '',
+            passwordErrorRegister: '',
+            userTypeErrorText: '',
+            name: '',
+            emailRegister: '',
+            passwordRegister: '',
         })
     }
 
     changedHandler = (e) => {
+        console.log(e.target.name);
+        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -241,7 +257,7 @@ class LoginComponent extends Component {
                     name={'emailLogin'}
                     placeholder={'پست الکترونیک'}
                     changed={this.changedHandler}
-                    error={this.state.emailLoginError}
+                    error={this.state.emailLoginError} 
                     val={this.state.emailLogin}
                     autocomplete="off"
                 />
@@ -357,7 +373,7 @@ class LoginComponent extends Component {
                         <div className="col-50 login-header-item " onClick={() => this._opentabs('login')}>ورود</div>
                     </div>
 
-                    {this.state.type === 'login' ? _renderLogin : _renderRegister}
+                    {this.state.type !== 'login' ?   _renderRegister :_renderLogin}
 
                 </div>
 
