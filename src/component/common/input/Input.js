@@ -32,6 +32,7 @@ const input = (props) => {
                           id={props.name}
                           value={props.val}
                           readOnly={props.readonly} 
+                          autoComplete = {props.autocomplete}
                           />
 
                 <span className="span-label"   onClick={()=> handleFocus(props)}>{props.placeholder }</span>
