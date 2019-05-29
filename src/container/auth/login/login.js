@@ -7,6 +7,8 @@ import {browserHistory} from 'react-router';
 import PostData from '../../../controler/postToApi';
 import EmailChecker from '../../../component/EmailChecker/EmailChecker'
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
+import SweetAlert from 'sweetalert-react';
+
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -226,11 +228,17 @@ class LoginComponent extends Component {
 
       
             const res = await PostData(data, 'auth/email/register');
-            console.log(res)
             if (res.status === 200) {
                 localStorage.setItem('@authorization_vishar', res.data.token);
                 browserHistory.push('/dashboard');
                 window.location.reload();
+            }
+            else
+            {
+                this.setState({
+                    show:true,
+                    errorMessage: res.error
+                })
             }
      
 
@@ -345,6 +353,12 @@ class LoginComponent extends Component {
 
         return (
             <div className="cover">
+                 <SweetAlert
+                            show={this.state.show}
+                            title=""
+                            text={this.state.errorMessage}
+                            onConfirm={() => this.setState({ show: false })}
+                        />
                 <a href="http://www.vishar.com">
                     <img src={logo} className="login-logo" alt="لوگو"/>
                 </a>
