@@ -132,9 +132,16 @@
 }
 
 .login-header-item:hover {
-    background-color: #2D9CDB;
-    color: #ffffff !important;
+    background-color: #f3f3f3;
+    color: #333333 !important;
     border: 0;
+
+}
+.activeTab {
+    background-color: #2D9CDB;
+    color: #ffffff!important;
+    border: 0;
+
 
 }
 

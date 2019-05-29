@@ -44,6 +44,10 @@ class LoginComponent extends Component {
         }
     }
 
+    componentDidMount(){
+        document.getElementById('login').classList.add ( "activeTab");
+
+    }
 
     
     goToLogin = () => {
@@ -112,6 +116,8 @@ class LoginComponent extends Component {
 
 
     _opentabs =async(val) => {
+        document.getElementById('login').classList.remove ( "activeTab");
+        document.getElementById('register').classList.remove ( "activeTab");
        await this.setState({
             type: val,
             emailLogin: '',
@@ -129,6 +135,10 @@ class LoginComponent extends Component {
             emailRegister: '',
             passwordRegister: '',
         })
+ 
+        document.getElementById(val).classList.add ( "activeTab");
+        // document.getElementById("MyElement").classList.add('MyClass');
+
     }
 
     changedHandler = (e) => {
@@ -323,7 +333,7 @@ class LoginComponent extends Component {
                     <p>
                         <input type="radio" id="customer" name="radio-group" onChange={this.changedHandlerRadio}/>
                         <label htmlFor="customer">
-                            <span>من نیاز به یک طرح دارم</span>
+                            <span>من نیاز به طرح دارم</span>
                         </label>
                     </p>
                     <p>
@@ -368,9 +378,9 @@ class LoginComponent extends Component {
                 </a>
                 <div className="login-container">
                     <div className="login-header">
-                        <div className="col-50 login-header-item " onClick={() => this._opentabs('register')}>ثبت نام
+                        <div id="register" className={"col-50 login-header-item " }  onClick={() => this._opentabs('register')}>ثبت نام
                         </div>
-                        <div className="col-50 login-header-item " onClick={() => this._opentabs('login')}>ورود</div>
+                        <div id="login" className={"col-50 login-header-item "  } onClick={() => this._opentabs('login')}>ورود</div>
                     </div>
 
                     {this.state.type !== 'login' ?   _renderRegister :_renderLogin}
