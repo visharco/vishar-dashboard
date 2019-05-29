@@ -36,6 +36,7 @@ class LoginComponent extends Component {
     }
 
 
+    
     goToLogin = () => {
         browserHistory.push('/register');
     }
