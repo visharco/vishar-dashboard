@@ -285,10 +285,10 @@ class LoginComponent extends Component {
                 <Button
                     isLoading={this.state.isLoading}
                     title={'ورود'}
-                    bgcolor={'#0080FF'}
-                    hoverbgcolor={'rgba(0, 128, 255, .8)'}
+                    bgcolor={'#2d9cdb'}
+                    hoverbgcolor={'#2d9cdb'}
                     click={this._callLogin}
-                    borderRadius="2px"
+                    borderRadius="5px"
                     color="#fff"
                 />
             </div>
@@ -354,10 +354,10 @@ class LoginComponent extends Component {
                 <Button
                     isLoading={this.state.isLoadingReg}
                     title={'ثبت نام'}
-                    bgcolor={'#0080FF'}
-                    hoverbgcolor={'rgba(0, 128, 255, .8)'}
+                    bgcolor={'#2d9cdb'}
+                    hoverbgcolor={'#2d9cdb'}
                     click={this._onClickRegister}
-                    borderRadius="2px"
+                    borderRadius="5px"
                     color="#fff"
                 />
 
