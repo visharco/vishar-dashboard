@@ -8,6 +8,7 @@ import PostData from '../../../controler/postToApi';
 import EmailChecker from '../../../component/EmailChecker/EmailChecker'
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
 import SweetAlert from 'sweetalert-react';
+import Token from '../../../api/token';
 
 
 class LoginComponent extends Component {
@@ -49,6 +50,10 @@ class LoginComponent extends Component {
         document.getElementById('register').classList.add ( "activeTab");
         document.getElementById('registerForm').classList.add ( "activeForm");
 
+    }
+    componentWillMount(){
+        if(Token !== null)
+            browserHistory.push('/dashboard');
     }
 
     
@@ -102,7 +107,7 @@ class LoginComponent extends Component {
 
         if (res.status === 200) {
             localStorage.setItem('@authorization_vishar', res.data.token);
-            browserHistory.push('/dashboard');
+           
             window.location.reload();
         }
         else{
