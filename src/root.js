@@ -49,6 +49,7 @@ import GetApi from './controler/getToApi';
 import DashboardMenu from './component/dashboardMenu/dashboardMenu';
 import HeaderComponent from './component/header/header';
 import DesignerDashboardMenu from './component/Designer/DesignerDashboardMenu/DesignerDashboardMenu';
+import LoadingComponent from './component/loading/loadingComponent';
 
 
 class RootComponent extends Component {
@@ -83,6 +84,7 @@ class RootComponent extends Component {
 
         return (
             <div className="container-fluid" >
+                <LoadingComponent />
                 <HeaderComponent />
                 <div className="dashboard" >
 
