@@ -110,7 +110,6 @@ class LoginComponent extends Component {
                 isLoading: false, 
             })
         }
-   
     }
 
 
