@@ -107,7 +107,7 @@ class LoginComponent extends Component {
 
         if (res.status === 200) {
             localStorage.setItem('@authorization_vishar', res.data.token);
-            document.cookie = "auth=" + res.data.token+";";
+            document.cookie = "auth=" + res.data.token+"; path=/";
            
             window.location.reload();
         }
@@ -244,7 +244,7 @@ class LoginComponent extends Component {
             if (res.status === 200) {
                 localStorage.setItem('@authorization_vishar', res.data.token);
                 sessionStorage.setItem('@authorization_vishar', res.data.token)
-                document.cookie = "auth=" + res.data.token+";";
+                document.cookie = "auth=" + res.data.token+"; path=/";
                 browserHistory.push('/dashboard');
                 window.location.reload();
             }
