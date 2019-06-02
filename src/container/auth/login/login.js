@@ -385,6 +385,8 @@ class LoginComponent extends Component {
 
                     {this.state.type !== 'login' ?   _renderRegister :_renderLogin}
 
+
+         
                 </div>
 
 
