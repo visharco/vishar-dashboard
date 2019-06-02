@@ -112,7 +112,7 @@ class Profile extends Component {
 
         data.append('name', this.state.name);
         data.append('email', this.state.email);
-        data.append('phone', this.state.phone);
+        data.append('mobile', this.state.phone);
         data.append('tell', this.state.tell);
         data.append('city', this.state.city);
         data.append('image', this.state.selectedFile, this.state.selectedFile.name || '')
