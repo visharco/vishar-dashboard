@@ -866,48 +866,68 @@ class CreateNewProject extends Component {
                             <h2>سه قلم دلخواه را انتخاب کن</h2>
 
                             <div className="CNP-check-font CNP-check">
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" id="font1"/>
-                                        <label htmlFor="font1"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font2"/>
-                                        <label htmlFor="font2"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font3"/>
-                                        <label htmlFor="font3"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font4"/>
-                                        <label htmlFor="font4"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font5"/>
-                                        <label htmlFor="font5"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font6"/>
-                                        <label htmlFor="font6"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font7"/>
-                                        <label htmlFor="font7"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="font8"/>
-                                        <label htmlFor="font8"><img className="font-padding" src={font}
-                                                                    alt="رنگها"/></label>
-                                    </li>
-                                </ul>
+
+                            <ul>
+                                        <li>
+                                            <input type="checkbox" id="font1" />
+                                            <label htmlFor="font1">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>ایران سنس</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font2" />
+                                            <label htmlFor="font2">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>امید سنس</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font3" />
+                                            <label htmlFor="font3">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>تاهوما </span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font4" />
+                                            <label htmlFor="font4">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> عربیکیا</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font5" />
+                                            <label htmlFor="font5">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> امید سنس</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font6" />
+                                            <label htmlFor="font6">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span>ایران سنس</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font7" />
+                                            <label htmlFor="font7">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> میترا</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="font8" />
+                                            <label htmlFor="font8">
+                                                <img className="font-padding" src={font} alt="رنگها" />
+                                                <span> کودک</span>
+                                            </label>
+                                        </li>
+
+
+                                    </ul>
+
                             </div>
                         </div>
 

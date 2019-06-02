@@ -8,13 +8,15 @@ import PostData from '../../../controler/postToApi';
 import EmailChecker from '../../../component/EmailChecker/EmailChecker'
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
 import SweetAlert from 'sweetalert-react';
+import Token from '../../../api/token';
 
 
 class LoginComponent extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            type: 'login',
+            type: 'login', 
             emailLogin: '',
             passwordLogin: '',
             emailLoginError: '',
@@ -45,8 +47,13 @@ class LoginComponent extends Component {
     }
 
     componentDidMount(){
-        document.getElementById('login').classList.add ( "activeTab");
+        document.getElementById('register').classList.add ( "activeTab");
+        document.getElementById('registerForm').classList.add ( "activeForm");
 
+    }
+    componentWillMount(){
+        if(Token !== null)
+            browserHistory.push('/dashboard');
     }
 
     
@@ -71,12 +78,12 @@ class LoginComponent extends Component {
             })
         }
         
-            if (EmailChecker(this.state.emailLogin) === false) {
-                return   this.setState({
-                    emailLoginError: 'ایمیل را اشتباه وارد کرده اید',
-                    isLoading:false
-                })
-            }
+        if (EmailChecker(this.state.emailLogin) === false) {
+            return   this.setState({
+                emailLoginError: 'ایمیل را اشتباه وارد کرده اید',
+                isLoading:false
+            })
+        }
          
         if (this.state.passwordLogin.trim() === '') {
             return  this.setState({
@@ -100,7 +107,7 @@ class LoginComponent extends Component {
 
         if (res.status === 200) {
             localStorage.setItem('@authorization_vishar', res.data.token);
-            browserHistory.push('/dashboard');
+           
             window.location.reload();
         }
         else{
@@ -116,6 +123,9 @@ class LoginComponent extends Component {
     _opentabs =async(val) => {
         document.getElementById('login').classList.remove ( "activeTab");
         document.getElementById('register').classList.remove ( "activeTab");
+        document.getElementById('loginForm').classList.remove ( "activeForm");
+        document.getElementById('registerForm').classList.remove ( "activeForm");
+
        await this.setState({
             type: val,
             emailLogin: '',
@@ -132,9 +142,9 @@ class LoginComponent extends Component {
             name: '',
             emailRegister: '',
             passwordRegister: '',
-        })
- 
+        }) 
         document.getElementById(val).classList.add ( "activeTab");
+        document.getElementById(val + 'Form' ).classList.add ( "activeForm");
         // document.getElementById("MyElement").classList.add('MyClass');
 
     }
@@ -165,15 +175,13 @@ class LoginComponent extends Component {
 
         this.setState({
             isLoadingRegister: true,
-            emailErrorRegister: '',
+            // emailErrorRegister: '',
             nameError: '',
-            passwordErrorRegister: '',
-            userTypeErrorText: '',
+            // passwordErrorRegister: '',
+            // userTypeErrorText: '',
         })
 
-
-        // console.log(this.state.password.trim())
-
+ 
         // chek simple validation // TODO later to be control correct
         if (this.state.name === '') {
             
@@ -201,21 +209,21 @@ class LoginComponent extends Component {
  
  
          // //password
-         if (this.state.passwordRegister.trim() === '') { 
-             return this.setState({
-                 passwordErrorRegister: 'رمز عبور را وارد نکرده اید ',
-                 isLoadingRegister: false
-             })
-         } 
+        //  if (this.state.passwordRegister.trim() === '') { 
+        //      return this.setState({
+        //          passwordErrorRegister: 'رمز عبور را وارد نکرده اید ',
+        //          isLoadingRegister: false
+        //      })
+        //  } 
  
          // //user type
-         if (this.state.userType === '') {
-             return this.setState({
-                 userTypeError: true,
-                 userTypeErrorText: 'سطح درسترسی خود را انتخاب کنید',
-                 isLoadingRegister: false
-             })
-         }
+        //  if (this.state.userType === '') {
+        //      return this.setState({
+        //          userTypeError: true,
+        //          userTypeErrorText: 'سطح درسترسی خود را انتخاب کنید',
+        //          isLoadingRegister: false
+        //      })
+        //  }
 
          
 
@@ -234,6 +242,7 @@ class LoginComponent extends Component {
             const res = await PostData(data, 'auth/email/register');
             if (res.status === 200) {
                 localStorage.setItem('@authorization_vishar', res.data.token);
+                sessionStorage.setItem('@authorization_vishar', res.data.token)
                 browserHistory.push('/dashboard');
                 window.location.reload();
             }
@@ -241,13 +250,14 @@ class LoginComponent extends Component {
             {
                 this.setState({
                     show:true,
-                    errorMessage: res.error
+                    errorMessage: res.error,
+                    isLoadingRegister: false
                 })
             }
      
 
         this.setState({
-            isLoadingReg: false
+            isLoadingRegister: false
         })
 
 
@@ -257,7 +267,7 @@ class LoginComponent extends Component {
     render() {
 
         const _renderLogin = (
-            <div className="login-form">
+            <div  id="registerForm" className=" login-form ">
                 <h2>ورود به سیستم</h2>
                 <p>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
                 <Input
@@ -294,7 +304,7 @@ class LoginComponent extends Component {
 
 
         const _renderRegister = (
-            <div className="register-form">
+            <div id="loginForm" className=" register-form " >
                 <h2> ثبت نام در ویشار</h2>
                 <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
 
@@ -311,7 +321,7 @@ class LoginComponent extends Component {
                 <Input
                     type={'email'}
                     name={'emailRegister'}
-                    placeholder={'ایمیل '}
+                    placeholder={'پست الکترونیک'}
                     changed={this.changedHandler}
                     error={this.state.emailErrorRegister}
                     vla={this.state.emailRegister}
@@ -350,7 +360,7 @@ class LoginComponent extends Component {
                 <br/>
 
                 <Button
-                    isLoading={this.state.isLoadingReg}
+                    isLoading={this.state.isLoadingRegister}
                     title={'ثبت نام'}
                     bgcolor={'#2d9cdb'}
                     hoverbgcolor={'#2d9cdb'}
@@ -376,13 +386,15 @@ class LoginComponent extends Component {
                 </a>
                 <div className="login-container">
                     <div className="login-header">
-                        <div id="register" className={"col-50 login-header-item " }  onClick={() => this._opentabs('register')}>ثبت نام
+                        <div id="register" className={"col-50 login-header-item " }  onClick={() => this._opentabs('login')}>ثبت نام
                         </div>
-                        <div id="login" className={"col-50 login-header-item "  } onClick={() => this._opentabs('login')}>ورود</div>
+                        <div id="login" className={"col-50 login-header-item "  } onClick={() => this._opentabs('register')}>ورود</div>
                     </div>
 
-                    {this.state.type !== 'login' ?   _renderRegister :_renderLogin}
+                    {/* {this.state.type !== 'login' ?    :} */}
 
+                    {_renderRegister}
+                    {_renderLogin}
 
          
                 </div>
