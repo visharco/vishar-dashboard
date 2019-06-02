@@ -242,6 +242,7 @@ class LoginComponent extends Component {
             const res = await PostData(data, 'auth/email/register');
             if (res.status === 200) {
                 localStorage.setItem('@authorization_vishar', res.data.token);
+                sessionStorage.setItem('@authorization_vishar', res.data.token)
                 browserHistory.push('/dashboard');
                 window.location.reload();
             }
