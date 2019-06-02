@@ -128,20 +128,20 @@ class LoginComponent extends Component {
 
        await this.setState({
             type: val,
-            emailLogin: '',
-            passwordLogin: '',
-            emailLoginError: '',
-            passwordLoginError: '',
-            isLoading:false,
+            // emailLogin: '',
+            // passwordLogin: '',
+            // emailLoginError: '',
+            // passwordLoginError: '',
+            // isLoading:false,
 
-            isLoadingRegister: false,
-            emailErrorRegister: '',
-            nameFamilyErrorRegister: '',
-            passwordErrorRegister: '',
-            userTypeErrorText: '',
-            name: '',
-            emailRegister: '',
-            passwordRegister: '',
+            // isLoadingRegister: false,
+            // emailErrorRegister: '',
+            // nameFamilyErrorRegister: '',
+            // passwordErrorRegister: '',
+            // userTypeErrorText: '',
+            // name: '',
+            // emailRegister: '',
+            // passwordRegister: '',
         }) 
         document.getElementById(val).classList.add ( "activeTab");
         document.getElementById(val + 'Form' ).classList.add ( "activeForm");
