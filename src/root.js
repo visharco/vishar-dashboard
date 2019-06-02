@@ -56,7 +56,8 @@ class RootComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userInfo: []
+            userInfo: [],
+            isLoading: true
         }
     }
 
@@ -65,7 +66,10 @@ class RootComponent extends Component {
             const res = await GetApi('profile/init');
             if(res.status === 200)
                 await this.setState({
-                    userInfo: res.data
+                  
+                    userInfo: res.data,
+                    isLoading: false,
+                    
                 })
             else if(res.status === 400)
                 browserHistory.push('/login')
@@ -84,8 +88,9 @@ class RootComponent extends Component {
 
         return (
             <div className="container-fluid" >
-                <LoadingComponent />
-                <HeaderComponent />
+               
+               {this.state.isLoading === true ?  <LoadingComponent /> : ''}
+               <HeaderComponent />
                 <div className="dashboard" >
 
                     
