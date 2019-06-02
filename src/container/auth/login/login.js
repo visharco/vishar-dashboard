@@ -171,9 +171,7 @@ class LoginComponent extends Component {
             userTypeErrorText: '',
         })
 
-
-        // console.log(this.state.password.trim())
-
+ 
         // chek simple validation // TODO later to be control correct
         if (this.state.name === '') {
             
@@ -294,7 +292,7 @@ class LoginComponent extends Component {
 
 
         const _renderRegister = (
-            <div className="register-form">
+            <div className={this.state.type + " register-form "} >
                 <h2> ثبت نام در ویشار</h2>
                 <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
 
@@ -381,8 +379,10 @@ class LoginComponent extends Component {
                         <div id="login" className={"col-50 login-header-item "  } onClick={() => this._opentabs('login')}>ورود</div>
                     </div>
 
-                    {this.state.type !== 'login' ?   _renderRegister :_renderLogin}
+                    {/* {this.state.type !== 'login' ?    :} */}
 
+                    {_renderRegister}
+                    {/* {_renderLogin} */}
 
          
                 </div>
