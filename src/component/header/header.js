@@ -27,7 +27,7 @@ class HeaderComponent extends Component {
     }
 
 
-
+    
 
     goToNotification = () => {
         browserHistory.push('/notification');

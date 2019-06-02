@@ -107,6 +107,7 @@ class LoginComponent extends Component {
 
         if (res.status === 200) {
             localStorage.setItem('@authorization_vishar', res.data.token);
+            document.cookie = "auth=" + res.data.token+";";
            
             window.location.reload();
         }
