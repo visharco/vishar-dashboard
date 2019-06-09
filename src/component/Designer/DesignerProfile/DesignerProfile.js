@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import SweetAlert from 'sweetalert-react';
 //
 //
 //
@@ -62,8 +62,7 @@ class DesignerProfile extends Component {
     componentWillMount = async() => {
 
         const res = await GetApi('profile/init');
-        const resBanck = await GetApi('profile/init/bank');
-        console.log(resBanck)
+        const resBanck = await GetApi('profile/init/bank'); 
         this.setState({
             name: res.data.name,
             email: res.data.email,
@@ -153,11 +152,19 @@ class DesignerProfile extends Component {
 
 
         const res = await PostToApi(data, 'profile/update');
-        console.log(res);
+        
 
         if(res.status === 200){
             this.setState({
-                successMessage:'تغیرات با موفقیت ذخیره شده است.'
+                show: true,
+                alertMessage: 'کاربر گرامی،اطلاعات با موفقیت ذخیره شد',
+                isLoading: false
+            })
+        }else{
+            this.setState({
+                show: true,
+                alertMessage: res.error,
+                isLoading: false  
             })
         }
 
@@ -204,7 +211,15 @@ class DesignerProfile extends Component {
 
         if(res.status === 200){
             this.setState({
-                successMessage:'تغیرات با موفقیت ذخیره شده است.'
+                show: true,
+                alertMessage: 'کاربر گرامی،اطلاعات با موفقیت ذخیره شد',
+                isLoading: false
+            })
+        }else {
+            this.setState({
+                show: true,
+                alertMessage: res.error,
+                isLoading: false
             })
         }
 
@@ -252,6 +267,12 @@ class DesignerProfile extends Component {
     render() {
         return (
             <div className="DesignerProfile">
+                  <SweetAlert
+                            show={this.state.show}
+                            title=""
+                            text={this.state.alertMessage}
+                            onConfirm={() => this.setState({show: false})}
+                        />
                 <div className="DPE-title" >
                     پروفایل
                 </div>
