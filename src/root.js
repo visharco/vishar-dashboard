@@ -71,8 +71,11 @@ class RootComponent extends Component {
                     isLoading: false,
                     
                 })
-            else if(res.status === 400)
+            else if(res.status === 400 || res.status === 401)
+               {
+                localStorage.removeItem('@authorization_vishar');   // remove local storage.
                 browserHistory.push('/login')
+               }
         } catch (error) {
             
             
