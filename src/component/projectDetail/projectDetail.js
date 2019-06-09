@@ -325,7 +325,7 @@ class ProjectDetail extends Component {
                                 </p>
 
                             </div>
-                            <div className="PD-desc-text" >
+                            {/* <div className="PD-desc-text" >
                                 <h1>نتایج بررسیها</h1>
                                 <div className="contest" >
                                     <p className="contest-DL" >
@@ -335,7 +335,7 @@ class ProjectDetail extends Component {
                                     <h1>طراحی لوگو</h1>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="PD-desc-texts " ref={this.designText} >

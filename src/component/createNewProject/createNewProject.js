@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 import StatusMessage from '../../component/StatusMessage/StatusMessage';
 import SweetAlert from 'sweetalert-react';
 import '../../../node_modules/sweetalert/dist/sweetalert.css';
-
+import PriceDigit from '../../component/priceDigit/priceDigit';
 
 //
 //
@@ -235,7 +235,7 @@ class CreateNewProject extends Component {
         if (e.target.id === 'CNP-N1') {
 
             if (this.state.categoryId !== 0) {
-                this.CNP1.current.style.position = 'fixed'
+                this.CNP1.current.style.display = 'none'
                 this.CNP2.current.style.position = 'unset'
                 this.target1.current.className = 'CNP-btnBox-regular'
 
@@ -342,7 +342,7 @@ class CreateNewProject extends Component {
 
         //prev2 pushed
         if (e.target.id === 'CNP-P2') {
-            this.CNP1.current.style.position = 'unset'
+            this.CNP1.current.style.display = 'block'
             this.CNP2.current.style.position = 'fixed'
             this.target2.current.className = 'CNP-btnBox-regular'
 
@@ -573,7 +573,7 @@ class CreateNewProject extends Component {
                                     <p>اولیه</p>
                                     <p>تضمین برگشت پول</p>
                                     {data.price === 0 ? <p>رایگان</p> :
-                                        <p>{data.price} <span> تومان </span></p>
+                                        <p>{PriceDigit(data.price , 'price')} <span> تومان </span></p>
                                     }
                                 </div>
                                 <div className="CNP-SD-end">
@@ -595,7 +595,7 @@ class CreateNewProject extends Component {
                         <label htmlFor={'dd' + index}>
                             <div className="CNPD-title">
                                 <p>{data.title}</p>
-                                {data.price !== 0 ? <h1>  {data.price} تومان</h1> : <h1>رایگان</h1>}
+                                {data.price !== 0 ? <h1>  {PriceDigit(data.price , 'price')} تومان</h1> : <h1>رایگان</h1>}
                             </div>
                         </label>
                     </div>
@@ -647,11 +647,11 @@ class CreateNewProject extends Component {
                                 {renderCategory}
 
 
-                                <div onClick={this.moreCategory}>
+                                {/* <div onClick={this.moreCategory}>
                                     <div className="CNP-logoBox" style={{backgroundImage: 'url(' + threedot + ')'}}>
                                         <span className="CNP-logoBoxTitle">بیشتر</span>
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>
@@ -1087,17 +1087,22 @@ class CreateNewProject extends Component {
                             <h1>صورتحساب</h1>
                             <ul>
                                 <li> دسته بندی :<span>{this.state.categoryTitle}</span></li>
-                                <li> قیمت :<span>{this.state.categoryPrice}</span></li>
+                                {/* <li> قیمت :<span>{this.state.categoryPrice}</span></li> */}
                                 <li>نوع پروژه : <span>پروژه انفرادی</span></li>
                                 <li>عنوان پروژه :<span>{this.state.title}</span></li>
-                                <li>زمان : <span>{this.state.projectDuration} - {this.state.projectDurationPrice}</span>
-                                    <span>تومان</span></li>
-                                <li>قیمت پلن :<span>{this.state.planPrice}</span> <span>تومان</span></li>
+                                <li>زمان : <span>{ this.state.projectDuration }</span>
+                                  
+                                </li>
+                                <li>
+                                    هزینه زمان اجرا : <span>{PriceDigit(this.state.projectDurationPrice, 'price')}</span>
+                                    <span>تومان</span>
+                                </li>
+                                <li>قیمت پلن :<span>{PriceDigit(this.state.planPrice,'price')}</span> <span>تومان</span></li>
                             </ul>
                             <p>
                                 مجموع هزینه ها :
                                 <h2>
-                                    {this.state.projectDurationPrice + this.state.planPrice + this.state.categoryPrice}
+                                    {PriceDigit(this.state.projectDurationPrice + this.state.planPrice + this.state.categoryPrice, 'price')}
                                     <span>تومان</span>
                                 </h2>
                             </p>

@@ -191,6 +191,7 @@ width: 40px;
 .CNP-1-radio{
     display: flex;
     flex-wrap: wrap;
+    z-index: 0;
 }
 
 
@@ -980,13 +981,19 @@ padding: 10px 5px;
 
 
 @media screen and (max-width: 500px){
+    .CNP-duration{
+        display: flex;
+        flex-direction: column;
+
+    }
     .plan-container-cover {
         width: 100%;
         line-height: 3;
     
     }
     .selector-container {
-        width: 46%;
+       width: 100%;
+        margin: 10px 0;
     
     }
 .CNP-1-radio{
@@ -1033,6 +1040,7 @@ padding: 10px 5px;
 
 .CNP-duration label{
     width: 100%;
+
 }
 .CNP-invoice p h2{
     font-size: 18px;

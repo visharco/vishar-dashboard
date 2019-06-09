@@ -337,7 +337,7 @@ class DesignerProjectDetail extends Component {
                                 </p>
 
                             </div>
-                            <div className="DPD-desc-text" >
+                            {/* <div className="DPD-desc-text" >
                                 <h1>نتایج بررسیها</h1>
                                 <div className="contest" >
                                     <p className="contest-DL" >
@@ -347,7 +347,7 @@ class DesignerProjectDetail extends Component {
                                     <h1>{this.state.data ? this.state.data.invoice.category : '' }</h1>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="DPD-desc-texts " ref={this.designText} >

@@ -34,10 +34,10 @@ class Profile extends Component {
         this.state = {
             isLoadingGetData: true,
             name: '',
-            email: '',
-            phone: '',
-            tell: '',
-            city: '',
+            email: ' ',
+            phone: ' ',
+            tell: ' ',
+            city: ' ',
             nameError: '',
             emailError: '',
             phoneError: '',
@@ -136,12 +136,7 @@ class Profile extends Component {
             })
         }
 
-        // tell validation        
-        if (isNaN(this.state.tell) === true) {
-            this.setState({
-                tellError: 'شماره موبایل باید فقط شامل عدد  انگلیسی باشد ',
-            })
-        }
+      
 
 
         const res = await PostToApi(data, 'profile/update');

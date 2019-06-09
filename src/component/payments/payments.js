@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PriceDigit from '../../component/priceDigit/priceDigit';
 //
 //
 //
@@ -42,7 +42,7 @@ class Payments extends Component {
                 <td className="body-child1" >{index + 1}</td>
                 <td className="body-child2" >{data.project.title}</td>
                 <td className="body-child" >{data.updated_at}</td>
-                <td className="body-child" >{data.price_all}</td>
+                <td className="body-child" >{PriceDigit(data.price_all , 'price')} تومان</td>
                 <td className="body-child" >{data.market}</td>
                 <td className="body-child" >{data.payment_token ? data.payment_token : '---'}</td>
                 <td className={"body-child " + "payment"+data.status}  >{data.status}</td>
