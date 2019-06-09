@@ -59,16 +59,20 @@ class DashboardMenu extends Component {
         window.addEventListener('scroll', this.handleScroll);
         const  res = await GetApi('profile/init');
 
-        console.log(res);          // data, error,status
-        console.log(res.status);   // 200 means success
-        console.log(res.error);    // show the error from server
-        console.log(res.data);     // show the data from server
-       await this.setState({
-            nameFamily:res.data.name,
-            email:res.data.email,
-            type:res.data.type,
-            avatar:res.data.image || defualtAvata,
-        })
+        if(res.status === 200){
+            await this.setState({
+                nameFamily:res.data.name,
+                email:res.data.email,
+                type:res.data.type,
+                avatar:res.data.image || defualtAvata,
+            })
+        } else if(res.status === 401) {
+
+            localStorage.removeItem('@authorization_vishar');   // remove local storage.
+             browserHistory.push('/login');      
+
+        }
+        
 
 
     }
