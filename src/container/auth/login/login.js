@@ -92,8 +92,6 @@ class LoginComponent extends Component {
             })
         }
 
-     
-
         //
         // provider data for API --------------------------------------------------------------->
         //

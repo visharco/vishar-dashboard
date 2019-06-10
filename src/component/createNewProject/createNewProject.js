@@ -713,7 +713,7 @@ class CreateNewProject extends Component {
                                 <TextArea
                                     type={'text'}
                                     name={'otherDescription'}
-                                    placeholder={'چشز دیگری در مورد پروژه نیاز هست را اضافه کن'}
+                                    placeholder={'اطلاعات دیگری در مورد پروژه نیاز هست را اضافه کن'}
                                     changed={this.changedHandler}
                                     error={this.state.errorOtherDescription}
                                     val={this.state.otherDescription}
