@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
 import Dropzone from 'react-dropzone';
 import StatusMessage from '../../component/StatusMessage/StatusMessage';
 import SweetAlert from 'sweetalert-react';
@@ -485,8 +487,10 @@ class CreateNewProject extends Component {
     moreCategory = () => {
 
     }
+  
 
     getPlan = async (id, title, price) => {
+       
        
         this.setState({
             categoryId: id,
@@ -661,7 +665,7 @@ class CreateNewProject extends Component {
                             <p>- اطلاعات در مورد پروژه ای که قصد داری انجامش بدی</p>
                             <p>- لطفا مستندات مناسبی رو برای پروژه ات انتخاب کن</p>
                         </div>
-                        <div className="CNP-btnBox-regular"  ref={this.target1}>
+                        <div className="CNP-btnBox-regular" id="aras" ref={this.target1}>
                             <div className="CNP-100">
                                 <img src={success} alt="موفق"/>
                                 <p>
