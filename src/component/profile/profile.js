@@ -188,7 +188,7 @@ class Profile extends Component {
                             readonly={true}
                         />
                         <Input
-                            type={'text'}
+                            type={'number'}
                             name={'phone'}
                             placeholder={' تلفن همراه'}
                             changed={this.changedHandler}
@@ -196,7 +196,7 @@ class Profile extends Component {
                             val={this.state.phone}
                         />
                         <Input
-                            type={'text'}
+                            type={'number'}
                             name={'tell'}
                             placeholder={'تلفن'}
                             changed={this.changedHandler}

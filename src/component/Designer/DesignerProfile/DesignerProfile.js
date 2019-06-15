@@ -356,7 +356,7 @@ class DesignerProfile extends Component {
                                     readonly={true}
                                 />
                                 <Input
-                                    type={'text'}
+                                    type={'number'}
                                     name={'phone'}
                                     placeholder={' موبایل'}
                                     changed={this.changedHandler}
@@ -364,7 +364,7 @@ class DesignerProfile extends Component {
                                     val={this.state.phone}
                                 />
                                 <Input
-                                    type={'text'}
+                                    type={'number'}
                                     name={'tell'}
                                     placeholder={'تلفن'}
                                     changed={this.changedHandler}
