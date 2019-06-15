@@ -487,6 +487,7 @@ class CreateNewProject extends Component {
     }
 
     getPlan = async (id, title, price) => {
+       
         this.setState({
             categoryId: id,
             categoryTitle: title,
@@ -496,7 +497,9 @@ class CreateNewProject extends Component {
         this.setState({
             plans: res.data
         })
-        console.log(res.data)
+        // console.log(res.data)
+        // document.getElementById('step1').focus();
+        
     }
 
 
@@ -541,10 +544,10 @@ class CreateNewProject extends Component {
         //
         const renderCategory = (
             this.state.category ? this.state.category.map((data, index) => {
-                return <div key={index}>
+                return <div key={index}  >
                     <input type="radio" name="emotion" id={index} className="input-hidden"
                            onClick={() => this.getPlan(data.id, data.title, data.pay)}/>
-                    <label htmlFor={index}>
+                    <label htmlFor={index} >
                         <div className="CNP-logoBox" style={{backgroundImage: 'url(' + data.icon + ')'}}>
                             <span className="CNP-logoBoxTitle">{data.title}</span>
                         </div>
@@ -646,7 +649,6 @@ class CreateNewProject extends Component {
 
                                 {renderCategory}
 
-
                                 {/* <div onClick={this.moreCategory}>
                                     <div className="CNP-logoBox" style={{backgroundImage: 'url(' + threedot + ')'}}>
                                         <span className="CNP-logoBoxTitle">بیشتر</span>
@@ -660,15 +662,15 @@ class CreateNewProject extends Component {
                             <p>- اطلاعات در مورد پروژه ای که قصد داری انجامش بدی</p>
                             <p>- لطفا مستندات مناسبی رو برای پروژه ات انتخاب کن</p>
                         </div>
-                        <div className="CNP-btnBox-regular" ref={this.target1}>
+                        <div className="CNP-btnBox-regular"  ref={this.target1}>
                             <div className="CNP-100">
                                 <img src={success} alt="موفق"/>
                                 <p>
                                     <span>گارانتی برگشت 100% پول</span>
-                                    <span>طراحی مناسب بود یا پول رو برگردون</span>
+                                    <span>در صورت عدم دریافت طرح ، پرداخت کامل هزینه</span>
                                 </p>
                             </div>
-                            <div className="CNP-BTNS">
+                            <div className="CNP-BTNS"  >
                                 <button className="nextBTN nextBTN1" id="CNP-N1" onClick={this.nextPart}> بعدی</button>
                             </div>
                         </div>
@@ -776,7 +778,7 @@ class CreateNewProject extends Component {
                                 <img src={success} alt="موفق"/>
                                 <p>
                                     <span>گارانتی برگشت 100% پول</span>
-                                    <span>طراحی مناسب بود یا پول رو برگردون</span>
+                                    <span>در صورت عدم دریافت طرح ، پرداخت کامل هزینه</span>
                                 </p>
                             </div>
                             <div className="CNP-BTNS">
@@ -943,7 +945,7 @@ class CreateNewProject extends Component {
                                 <img src={success} alt="موفق"/>
                                 <p>
                                     <span>گارانتی برگشت 100% پول</span>
-                                    <span>طراحی مناسب بود یا پول رو برگردون</span>
+                                    <span>در صورت عدم دریافت طرح ، پرداخت کامل هزینه</span>
                                 </p>
                             </div>
                             <div className="CNP-BTNS">
@@ -988,7 +990,7 @@ class CreateNewProject extends Component {
                                 <img src={success} alt="موفق"/>
                                 <p>
                                     <span>گارانتی برگشت 100% پول</span>
-                                    <span>طراحی مناسب بود یا پول رو برگردون</span>
+                                    <span>در صورت عدم دریافت طرح ، پرداخت کامل هزینه</span>
                                 </p>
                             </div>
                             <div className="CNP-BTNS">
@@ -1063,7 +1065,7 @@ class CreateNewProject extends Component {
                                 <img src={success} alt="موفق"/>
                                 <p>
                                     <span>گارانتی برگشت 100% پول</span>
-                                    <span>طراحی مناسب بود یا پول رو برگردون</span>
+                                    <span>در صورت عدم دریافت طرح ، پرداخت کامل هزینه</span>
                                 </p>
                             </div>
                             <div className="CNP-BTNS">
@@ -1119,7 +1121,7 @@ class CreateNewProject extends Component {
                                 <img src={success} alt="موفق"/>
                                 <p>
                                     <span>گارانتی برگشت 100% پول</span>
-                                    <span>طراحی مناسب بود یا پول رو برگردون</span>
+                                    <span>در صورت عدم دریافت طرح ، پرداخت کامل هزینه</span>
                                 </p>
                             </div>
                             <div className="CNP-BTNS">
