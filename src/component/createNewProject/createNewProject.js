@@ -606,7 +606,6 @@ class CreateNewProject extends Component {
                 :
                 ''
 
-
         )
 
 
