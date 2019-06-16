@@ -182,10 +182,11 @@ width: 40px;
     cursor: pointer;
 }
 .CNP-logoBoxTitle{
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 900;
     color: #666;
     transition: all .2s linear;
+    text-align: center;
 
 }
 .CNP-1-radio{

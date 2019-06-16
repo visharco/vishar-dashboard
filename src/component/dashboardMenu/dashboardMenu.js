@@ -69,7 +69,8 @@ class DashboardMenu extends Component {
         } else if(res.status === 401) {
 
             localStorage.removeItem('@authorization_vishar');   // remove local storage.
-             browserHistory.push('/login');      
+            //  browserHistory.push('/login');      
+            window.location.reload();
 
         }
         
