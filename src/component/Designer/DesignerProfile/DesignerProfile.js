@@ -280,7 +280,7 @@ class DesignerProfile extends Component {
                     <div className="DPE-desc-box">
                         <div className="DPE-desc-title" onClick={this.descriptionHandler} id="profile" ref={this.profile} >پروفایل
                         </div>
-                        <div className="DPE-desc-title" onClick={this.descriptionHandler} id="account" ref={this.account}>حساب کاربری
+                        <div className="DPE-desc-title" onClick={this.descriptionHandler} id="account" ref={this.account}>حساب بانکی
                         </div>
                     </div>
 
