@@ -184,7 +184,7 @@ class DashboardMenu extends Component {
                             <div className="DM-title-name">
                                 <h1>{this.state.nameFamily}</h1>
                                 <h2>{this.state.email}</h2>
-                                <span>{this.state.type}</span>
+                                <span>{this.state.type === 'customer' ? 'پنل مدیریت مشتری' : 'پنل مدیریت طراح'}</span>
                             </div>
                         </div>
                         <div className="DM-body" >
