@@ -122,7 +122,8 @@ class DesignerProfile extends Component {
         data.append('city', this.state.city);
         data.append('summary', this.state.summary);
         data.append('experience', this.state.experience);
-        data.append('image', this.state.selectedFile, this.state.selectedFile.name || '')
+        if(this.state.selectedFile)
+            data.append('image', this.state.selectedFile, this.state.selectedFile.name )
 
 
         // name validation
