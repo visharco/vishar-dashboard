@@ -699,31 +699,31 @@ class CreateNewProject extends Component {
                                     error={this.state.errorTitle}
                                     val={this.state.title}
                                 />
-                                <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
+                                <p>برای مثال : طراحی لوگو برای وب سایت ویشار</p>
                             </div>
 
                             <div className="CNP-description">
                                 <TextArea
                                     type={'text'}
                                     name={'description'}
-                                    placeholder={'هرچیزی که در پروژه نیاز داری رو شرح بده'}
+                                    placeholder={'اطلاعات مربوط به پروژه'}
                                     changed={this.changedHandler}
                                     error={this.state.errorDescription}
                                     val={this.state.description}
                                 />
-                                <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
+                                <p>برای مثال : معرفی کسب و کار مرتبط با پروژه و توضیحات لازم در ارتباط با پروژه</p>
 
                             </div>
                             <div className="CNP-other-desc">
                                 <TextArea
                                     type={'text'}
                                     name={'otherDescription'}
-                                    placeholder={'اطلاعات دیگری در مورد پروژه نیاز هست را اضافه کن'}
+                                    placeholder={'اطلاعات که طراح باید بداند'}
                                     changed={this.changedHandler}
                                     error={this.state.errorOtherDescription}
                                     val={this.state.otherDescription}
                                 />
-                                <p>برای مثال : انتخاب نام لوگوی شرکت خودتان مثل گوگل</p>
+                                <p>لطفا اطلاعات که به طراح کمک می کند تا دقیق تر و بهتر بتواند خواسته شما را اجرا کند را بیان کنید</p>
 
                             </div>
 
