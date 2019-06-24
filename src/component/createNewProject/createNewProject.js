@@ -1093,7 +1093,7 @@ class CreateNewProject extends Component {
                             <ul>
                                 <li> دسته بندی :<span>{this.state.categoryTitle}</span></li>
                                 {/* <li> قیمت :<span>{this.state.categoryPrice}</span></li> */}
-                                <li>نوع پروژه : <span>پروژه انفرادی</span></li>
+                                <li>نوع پروژه : <span>پروژه گروهی</span></li>
                                 <li>عنوان پروژه :<span>{this.state.title}</span></li>
                                 <li>زمان : <span>{ this.state.projectDuration }</span>
                                   
