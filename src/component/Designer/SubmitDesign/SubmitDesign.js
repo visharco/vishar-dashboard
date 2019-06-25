@@ -126,7 +126,7 @@ class SubmitDesign extends Component {
 
         if (validation === true) {
  
-         axios({
+        await axios({
                 method: 'post',
                 url: 'projects/design',
                 data: data,
@@ -135,9 +135,16 @@ class SubmitDesign extends Component {
                     this.setState({
                         progressPercent : progressPercent
                     })
+                    // if(progressPercent === 100){
+                    //     this.setState({
+                    //         isLoadingGetData: false,
+                    //         submitDesignSuccess: true
+                    //     })
+                    // }
                 }
             })
                 .then(res => {
+                    console.log(res)
     
                     if (res.status === 200)
                         this.setState({
@@ -153,10 +160,7 @@ class SubmitDesign extends Component {
                     }
                 })
                 .catch(err => {
-                    this.setState({
-                        show: true, 
-                        errorMessage: err
-                    })
+                 console.log(err)
                 })
     
     
