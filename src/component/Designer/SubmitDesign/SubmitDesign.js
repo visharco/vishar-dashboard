@@ -229,7 +229,6 @@ class SubmitDesign extends Component {
 
     render() {
         return (
-
             <div className="SubmitDesign">
                 {this.state.isLoadingGetData ? <LoadingComponent progress={this.state.progressPercent + '%'}/> : ''}
                 {this.state.designerExample ? <DesignerExample closeProject={this.closeModalProject}/> : ''}
