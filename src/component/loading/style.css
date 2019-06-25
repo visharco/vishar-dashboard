@@ -25,6 +25,25 @@
    
 
 }
+
+.loadingPercent{
+   width: 450px;
+   height: 20px;
+   border-radius: 3px;
+   background-color: #eaeaea;
+   margin: auto;
+   position: relative;
+
+}
+.lp {
+    width: 1%;
+    background-color: #3dcfc3;
+    height: 20px;  
+}
+
+
+
+
 .loading-container {
   
     z-index: 9999;

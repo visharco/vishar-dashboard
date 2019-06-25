@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SweetAlert from 'sweetalert-react';
 import PostToApi from '../../../controler/postToApi';
 import LoadingComponent from '../../loading/loadingComponent';
-import axios from '../axios';  // set base URL from axios --->
+import axios from './axios';  // set base URL from axios --->
 
 //
 //
@@ -40,6 +40,7 @@ class SubmitDesign extends Component {
             isLoadingGetData: false,
             psd: '',
             tiff: '',
+            progressPercent: 0,
         }
     }
 
@@ -77,7 +78,8 @@ class SubmitDesign extends Component {
 
 
     // success submit files
-    submitDesign = async () => {
+    submitDesign = async ( ) => { 
+
         console.log(this.state.cover.length)
 
         this.setState({
@@ -118,63 +120,46 @@ class SubmitDesign extends Component {
                 errorMessage: 'لطفا فایل پی اس دی  را وارد نمایید'
             })
         }
-
-        console.log(validation)
+ 
+       
 
 
         if (validation === true) {
-
-
-
-
-            axios({
+ 
+         axios({
                 method: 'post',
-                url: `api/v1/article/${this.state.orderForm.category.value}`,
-                data: bodyFormData,
+                url: 'projects/design',
+                data: data,
                 onUploadProgress: progressBar => {
                     let progressPercent = Math.round(progressBar.loaded / progressBar.total * 100)
-                    if (this.state.image.name !== null ||
-                        this.state.video.name !== null ||
-                        this.state.audio.name !== null ||
-                        this.state.orderForm.title.value !== '' ||
-                        this.state.orderForm.short_description.value ||
-                        this.state.orderForm.description !== '') {
-    
-                        this.setState({ progressPercent: progressPercent })
-                    } else {
-                        this.setState({ progressPercent: null })
-                    }
-    
-                    (progressPercent !== 100 || progressPercent !== null) ? this.setState({ loading: true }) : this.setState({ loading: false })
+                    this.setState({
+                        progressPercent : progressPercent
+                    })
                 }
             })
                 .then(res => {
     
-                    // res.status !== 200 ? this.setState({ loading: true }) : this.setState({ loading: false })
-    
-                    if (res.status !== 200) {
-                        this.setState({ loading: true })
-                    } else {
+                    if (res.status === 200)
                         this.setState({
-                            ...initialState,
-                            success: true,
-                            successText: 'عملیات با موفقیت انجام شد',
-                            errorText: '',
-                            loading: false
+                            isLoadingGetData: false,
+                            submitDesignSuccess: true
+                        })
+                    else {
+                        this.setState({
+                            show: true,
+                            isLoadingGetData: false,
+                            errorMessage: res.error
                         })
                     }
                 })
                 .catch(err => {
                     this.setState({
-                        error: true,
-                        errorText: 'خطا در انجام عملیات، لطفا دوباره امتحان کنید',
-                        successText: ' ',
-                        loading: false
+                        show: true, 
+                        errorMessage: err
                     })
                 })
     
     
-
 
 
 
@@ -199,11 +184,12 @@ class SubmitDesign extends Component {
             //     })
             // }
         }
-        this.setState({
-            isLoadingGetData: false,
-        })
+        // this.setState({
+        //     isLoadingGetData: false,
+        // })
 
 
+        console.log(this.state.progressPercent)
     }
 
 
@@ -234,7 +220,8 @@ class SubmitDesign extends Component {
         return (
 
             <div className="SubmitDesign">
-                {this.state.isLoadingGetData ? <LoadingComponent/> : ''}
+                <h1>{this.state.progressPercent}</h1>
+                {this.state.isLoadingGetData ? <LoadingComponent progress={this.state.progressPercent + '%'}/> : ''}
                 {this.state.designerExample ? <DesignerExample closeProject={this.closeModalProject}/> : ''}
 
                 {
