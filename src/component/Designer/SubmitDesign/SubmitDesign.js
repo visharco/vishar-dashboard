@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import SweetAlert from 'sweetalert-react';
 import PostToApi from '../../../controler/postToApi';
 import LoadingComponent from '../../loading/loadingComponent';
-
+import axios from './axios';  // set base URL from axios --->
+import Token from '../../../api/token'
 //
 //
 //
@@ -39,6 +40,7 @@ class SubmitDesign extends Component {
             isLoadingGetData: false,
             psd: '',
             tiff: '',
+            progressPercent: 0,
         }
     }
 
@@ -76,7 +78,8 @@ class SubmitDesign extends Component {
 
 
     // success submit files
-    submitDesign = async () => {
+    submitDesign = async ( ) => { 
+
         console.log(this.state.cover.length)
 
         this.setState({
@@ -117,32 +120,87 @@ class SubmitDesign extends Component {
                 errorMessage: 'لطفا فایل پی اس دی  را وارد نمایید'
             })
         }
-
-        console.log(validation)
+ 
+       
 
 
         if (validation === true) {
+ 
+        await axios({
+                method: 'post',
+                url: 'projects/design',
+                data: data,
+                headers: {
+                    // "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "agent" : "web" ,
+                    "Authorization" : Token  
+                },
 
-            const res = await PostToApi(data, 'projects/design');
-            console.log(res);
-            if (res.status === 200)
-                this.setState({
-                    isLoadingGetData: false,
-                    submitDesignSuccess: true
+                onUploadProgress: progressBar => {
+                    let progressPercent = Math.round(progressBar.loaded / progressBar.total * 100)
+                    this.setState({
+                        progressPercent : progressPercent
+                    })
+                    // if(progressPercent === 100){
+                    //     this.setState({
+                    //         isLoadingGetData: false,
+                    //         submitDesignSuccess: true
+                    //     })
+                    // }
+                }
+            })
+                .then(res => {
+                    console.log(res)
+    
+                    if (res.status === 200)
+                        this.setState({
+                            isLoadingGetData: false,
+                            submitDesignSuccess: true
+                        })
+                    else {
+                        this.setState({
+                            show: true,
+                            isLoadingGetData: false,
+                            errorMessage: res.error
+                        })
+                    }
                 })
-            else {
-                this.setState({
-                    show: true,
-                    isLoadingGetData: false,
-                    errorMessage: res.error
+                .catch(err => {
+                 console.log(err)
                 })
-            }
+    
+    
+
+
+
+
+
+
+
+
+
+            // const res = await PostToApi(data, 'projects/design');
+            // console.log(res);
+            // if (res.status === 200)
+            //     this.setState({
+            //         isLoadingGetData: false,
+            //         submitDesignSuccess: true
+            //     })
+            // else {
+            //     this.setState({
+            //         show: true,
+            //         isLoadingGetData: false,
+            //         errorMessage: res.error
+            //     })
+            // }
         }
-        this.setState({
-            isLoadingGetData: false,
-        })
+        // this.setState({
+        //     isLoadingGetData: false,
+        // })
 
 
+        console.log(this.state.progressPercent)
     }
 
 
@@ -171,9 +229,8 @@ class SubmitDesign extends Component {
 
     render() {
         return (
-
             <div className="SubmitDesign">
-                {this.state.isLoadingGetData ? <LoadingComponent/> : ''}
+                {this.state.isLoadingGetData ? <LoadingComponent progress={this.state.progressPercent + '%'}/> : ''}
                 {this.state.designerExample ? <DesignerExample closeProject={this.closeModalProject}/> : ''}
 
                 {
