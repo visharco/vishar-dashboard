@@ -3,7 +3,7 @@ import SweetAlert from 'sweetalert-react';
 import PostToApi from '../../../controler/postToApi';
 import LoadingComponent from '../../loading/loadingComponent';
 import axios from './axios';  // set base URL from axios --->
-
+import Token from '../../../api/token'
 //
 //
 //
@@ -130,6 +130,13 @@ class SubmitDesign extends Component {
                 method: 'post',
                 url: 'projects/design',
                 data: data,
+                headers: {
+                    // "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "agent" : "web" ,
+                    "Authorization" : Token  
+                },
+
                 onUploadProgress: progressBar => {
                     let progressPercent = Math.round(progressBar.loaded / progressBar.total * 100)
                     this.setState({
