@@ -277,7 +277,7 @@ class LoginComponent extends Component {
                     changed={this.changedHandler}
                     error={this.state.emailLoginError} 
                     val={this.state.emailLogin}
-                    autocomplete="off"
+                    // autocomplete="on"
                 />
 
                 <Input
@@ -287,7 +287,7 @@ class LoginComponent extends Component {
                     changed={this.changedHandler}
                     error={this.state.passwordLoginError}
                     val={this.state.passwordLogin}
-                    autocomplete="off"
+                    // autocomplete="on"
                 />
 
                 <Button

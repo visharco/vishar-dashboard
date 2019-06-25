@@ -9,7 +9,9 @@ import LoadingComponent from '../../loading/loadingComponent';
 
 import gallery from '../../../assets/icons/cover.png';
 import psd from '../../../assets/icons/psd.svg';
+import psdOk from '../../../assets/icons/psd-ok.svg';
 import tiff from '../../../assets/icons/tiff.svg';
+import tiffOk from '../../../assets/icons/tif-ok.svg';
 import tikgreen from '../../../assets/icons/tikgreen.svg';
 
 //
@@ -241,7 +243,7 @@ class SubmitDesign extends Component {
                                                    id="psd"
                                                    value=""/>
                                             <div className="SDUF-img">
-                                                <img src={psd} alt="کاربر"/>
+                                                <img src={!this.state.psd ? psd : psdOk} alt="کاربر"/>
                                             </div>
                                             <p className="SDUF-text">
                                                 برای آپلود عکس کلیک کنید یا عکس را رها کنید
@@ -257,7 +259,7 @@ class SubmitDesign extends Component {
                                                    value=""/>
 
                                             <div className="SDUF-img">
-                                                <img src={tiff} alt="کاربر"/>
+                                                <img src={!this.state.tiff ? tiff : tiffOk } alt="کاربر"/>
                                             </div>
                                             <p className="SDUF-text">
                                                 برای آپلود عکس کلیک کنید یا عکس را رها کنید
