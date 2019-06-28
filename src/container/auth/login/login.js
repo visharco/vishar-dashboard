@@ -306,8 +306,8 @@ class LoginComponent extends Component {
 
         const _renderRegister = (
             <div id="loginForm" className=" register-form " >
-                <h2> ثبت نام در ویشار</h2>
-                <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
+                {/* <h2> ثبت نام در ویشار</h2>
+                <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p> */}
 
                 <div className="slect-type-conatiner">
                     <ul>
