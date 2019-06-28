@@ -270,7 +270,7 @@ class LoginComponent extends Component {
         const _renderLogin = (
             <div  id="registerForm" className=" login-form ">
                 <h2>ورود به سیستم</h2>
-                <p>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
+                <p style={{paddingBottom:'20px'}}>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
                 <Input
                     type={'text'}
                     name={'emailLogin'}
