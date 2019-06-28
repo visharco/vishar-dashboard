@@ -9,7 +9,8 @@ import EmailChecker from '../../../component/EmailChecker/EmailChecker'
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
 import SweetAlert from 'sweetalert-react';
 import Token from '../../../api/token';
-
+import IconDesginer from '../../../assets/icons/desginer.svg'
+import IconCustomer from '../../../assets/icons/customer.svg'
 
 class LoginComponent extends Component {
 
@@ -308,6 +309,25 @@ class LoginComponent extends Component {
                 <h2> ثبت نام در ویشار</h2>
                 <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
 
+                <div className="slect-type-conatiner">
+                    <ul>
+                        <li>
+                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <label htmlFor="customer">
+                                <img src={IconCustomer} className="login-select-image" alt="desginer" />
+                                مشتری
+                            </label>
+                         </li>
+                        <li>
+                            <input type="radio" id="designer" name="radio-group"  className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <label htmlFor="designer">
+                                <img src={IconDesginer} className="login-select-image" alt="desginer" />
+                                طراح
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
                 <Input
                     type={'text'}
                     name={'name'}
@@ -336,7 +356,7 @@ class LoginComponent extends Component {
                     autocomplete="off"
                     vla={this.state.passwordRegister}
                 />
-                <div className="R-checkbox">
+                {/* <div className="R-checkbox">
 
                     <p>
                         <input type="radio" id="customer" name="radio-group" onChange={this.changedHandlerRadio}/>
@@ -355,9 +375,7 @@ class LoginComponent extends Component {
                             <span className="type-person bounceIn">{this.state.userTypeErrorText}</span> : ''
                     }
 
-                </div>
-                <br/>
-                <br/>
+                </div> */} 
 
                 <Button
                     isLoading={this.state.isLoadingRegister}
