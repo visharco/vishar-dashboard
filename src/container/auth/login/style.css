@@ -204,9 +204,13 @@
     top: 5px;
     left: 5px;  
 }
+.eye-show:hover{
+    opacity: 0.6;
+}
+ 
 
 .eye-show:active{
-    opacity: 0.5;
+    opacity: 0.3;
 }
  
 
