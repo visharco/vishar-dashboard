@@ -287,6 +287,7 @@ class LoginComponent extends Component {
                     // autocomplete="on"
                 />
 
+                <div className="password-container">
                 <Input
                     type={'password'}
                     name={'passwordLogin'}
@@ -296,9 +297,9 @@ class LoginComponent extends Component {
                     val={this.state.passwordLogin}
                     // autocomplete="on"
                 />
-                <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}>
-                    dfdfdf
+                <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
                 </div>
+                
 
                 <Button
                     isLoading={this.state.isLoading}
