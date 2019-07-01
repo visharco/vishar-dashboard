@@ -489,18 +489,29 @@ class CreateNewProject extends Component {
     }
   
 
-    getPlan = async (id, title, price) => {
-       
+    getPlan = async (id, title, price) => { 
        
         this.setState({
             categoryId: id,
             categoryTitle: title,
-            categoryPrice: price
+            categoryPrice: price,
+            isLoadingGetData: true
         })
         const res = await GetToApi('category/' + id + '/plan');
-        this.setState({
+        await this.setState({
             plans: res.data
         })
+        
+        this.CNP1.current.style.display = 'none'
+        this.CNP2.current.style.position = 'unset'
+        this.target1.current.className = 'CNP-btnBox-regular'
+
+        this.setState({
+            part1: false,
+            part2: true,
+            isLoadingGetData:false
+        })
+
         // console.log(res.data)
         // document.getElementById('step1').focus();
         

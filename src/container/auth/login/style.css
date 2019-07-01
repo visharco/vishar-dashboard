@@ -188,6 +188,31 @@
 
 
 }
+.password-container {
+    position: relative;
+}
+
+.eye-show {
+    width: 50px;
+    height: 30px; 
+    background-image: url('../../../assets/icons/view.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    left: 5px;  
+}
+
+.eye-show:hover{
+    opacity: 0.6;
+}
+ 
+
+.eye-show:active{
+    opacity: 0.3;
+}
  
 
  

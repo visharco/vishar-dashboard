@@ -157,6 +157,12 @@ class LoginComponent extends Component {
         })
     }
 
+    showPassword = () => {
+        document.getElementById('passwordLogin').type="text"
+    }    
+    hidePassword = () => {
+        document.getElementById('passwordLogin').type="password"
+    }
 
     //
     // -------------------------------------------------- register ------------------------------------------------
@@ -281,6 +287,7 @@ class LoginComponent extends Component {
                     // autocomplete="on"
                 />
 
+                <div className="password-container">
                 <Input
                     type={'password'}
                     name={'passwordLogin'}
@@ -290,6 +297,9 @@ class LoginComponent extends Component {
                     val={this.state.passwordLogin}
                     // autocomplete="on"
                 />
+                <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
+                </div>
+                
 
                 <Button
                     isLoading={this.state.isLoading}

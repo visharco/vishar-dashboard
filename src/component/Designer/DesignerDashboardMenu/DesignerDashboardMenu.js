@@ -168,7 +168,7 @@ class DesignerDashboardMenu extends Component {
                             <div className="DDM-title-name">
                                 <h1>{this.props.data.name}</h1>
                                 <h2>{this.props.data.email}</h2>
-                                <span>{this.props.data.type}</span>
+                                <span>{this.props.data.type ==='designer' ? 'پنل مدیریت طراح' : 'پنل مدیریت مشتری'}</span>
                             </div>
                         </div>
                         <div className="DDM-body" >
