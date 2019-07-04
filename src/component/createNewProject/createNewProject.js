@@ -870,7 +870,7 @@ class CreateNewProject extends Component {
                                         <input type="checkbox" id="colors8" onClick={this.getValueColor}/>
                                         <label htmlFor="colors8">
                                             <img src={color8} alt="رنگها"/>
-                                            <span>قرمز</span>
+                                            <span>مشکی</span>
                                         </label>
                                     </li>
 
@@ -891,13 +891,7 @@ class CreateNewProject extends Component {
                                                 <span>ایران سنس</span>
                                             </label>
                                         </li>
-                                        <li>
-                                            <input type="checkbox" id="font2" />
-                                            <label htmlFor="font2">
-                                                <img className="font-padding" src={font} alt="رنگها" />
-                                                <span>امید سنس</span>
-                                            </label>
-                                        </li>
+                       
                                         <li>
                                             <input type="checkbox" id="font3" />
                                             <label htmlFor="font3">
@@ -919,13 +913,7 @@ class CreateNewProject extends Component {
                                                 <span> امید سنس</span>
                                             </label>
                                         </li>
-                                        <li>
-                                            <input type="checkbox" id="font6" />
-                                            <label htmlFor="font6">
-                                                <img className="font-padding" src={font} alt="رنگها" />
-                                                <span>ایران سنس</span>
-                                            </label>
-                                        </li>
+                            
                                         <li>
                                             <input type="checkbox" id="font7" />
                                             <label htmlFor="font7">
