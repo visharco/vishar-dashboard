@@ -710,7 +710,7 @@ class CreateNewProject extends Component {
                                     error={this.state.errorTitle}
                                     val={this.state.title}
                                 />
-                                <p>برای مثال : طراحی لوگو برای وب سایت ویشار</p>
+                                <p>برای مثال :  {this.state.categoryTitle} برای شرکت ویشار</p>
                             </div>
 
                             <div className="CNP-description">
