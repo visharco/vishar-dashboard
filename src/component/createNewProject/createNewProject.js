@@ -1012,7 +1012,7 @@ class CreateNewProject extends Component {
                         </div>
                         <div className="CNP-desc-text">
                             <h1>زمانبندی</h1>
-                            <h2>آیا مایلید طراح های خود را سریعتر دریافت نمایید؟</h2>
+                            <h2>آیا مایلید طرح های خود را سریعتر دریافت نمایید؟</h2>
 
                             <div className="CNP-duration">
 
