@@ -1014,6 +1014,7 @@ class CreateNewProject extends Component {
                             <h1>زمانبندی</h1>
                             <h2>آیا مایلید طرح های خود را سریعتر دریافت نمایید؟</h2>
 
+                    
                             <div className="CNP-duration">
 
                                 {/* <input type="radio" id="duration1" name="select" value="1" />
