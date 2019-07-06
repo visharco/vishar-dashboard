@@ -87,8 +87,8 @@
 
 
 .login-container {
-    width: 700px; 
-    background-color: #fff;
+    width: 500px; 
+    background-color: #ffffff9c;
     border-radius: 5px;
     display: flex;
     flex-direction: column; 
@@ -166,15 +166,14 @@
 }
 
 .slect-type-conatiner ul li {
-    width: 123px;
-    height: 100%;
+    width: 110px;
+    /* height: 115px; */
     background-color: #fff;
     margin: 0 20px;
     border-radius: 5px;
     /* padding: 15px; */
-    border: 1px solid #e0f4ff;
+    /* border: 1px solid #e0f4ff; */
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
-
 }
 
 .slect-type-conatiner ul li label{ 
@@ -184,6 +183,9 @@
     display: block;
     text-align: center;
     padding: 11px;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
     cursor: pointer;
 
 
@@ -193,7 +195,7 @@
 }
 
 .eye-show {
-    width: 50px;
+    width: 33px;
     height: 30px; 
     background-image: url('../../../assets/icons/view.svg');
     background-position: center;
@@ -236,7 +238,7 @@
 
  
 .login-select-image {
-    width: 80%;
+    width: 35px;
 
 }
 

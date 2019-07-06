@@ -307,8 +307,9 @@ class LoginComponent extends Component {
                     bgcolor={'#2d9cdb'}
                     hoverbgcolor={'#2d9cdb'}
                     click={this._callLogin}
-                    borderRadius="5px"
+                    borderRadius="100px"
                     color="#fff"
+                    width="100%"
                 />
             </div>
         )
@@ -393,7 +394,7 @@ class LoginComponent extends Component {
                     bgcolor={'#2d9cdb'}
                     hoverbgcolor={'#2d9cdb'}
                     click={this._onClickRegister}
-                    borderRadius="5px"
+                    borderRadius="100px"
                     color="#fff"
                 />
 

@@ -5,7 +5,8 @@
     padding: 0;
     margin: 0;
     position: relative;
-    background: linear-gradient(25deg, #fcfcfc 10%,#5DADE2 20%, #3498DB 30%, #5DADE2 40%, #5DADE2 50%, #5499C7 66%, #aeaeae 100%);
+    /* background: linear-gradient(25deg, #fcfcfc 10%,#5DADE2 20%, #3498DB 30%, #5DADE2 40%, #5DADE2 50%, #5499C7 66%, #aeaeae 100%); */
+    background: linear-gradient(25deg, #EC7063 10%,#9B59B6 20%, #2980B9 30%, #5DADE2 40%, #48C9B0 50%, #58D68D 66%, #F4D03F 100%);
     background-size: 400% 400%;
     animation: gradient 20s ease infinite;
     background-color: #5499C7;
