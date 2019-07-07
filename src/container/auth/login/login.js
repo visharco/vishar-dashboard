@@ -68,7 +68,7 @@ class LoginComponent extends Component {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     _actionModal = (val) => { 
         if(val === 'open')
-            this.Modal.current.style.display = 'block';
+            this.Modal.current.style.display = 'flex';
         else if (val === 'close')
             this.Modal.current.style.display = 'none';
 
@@ -462,6 +462,7 @@ class LoginComponent extends Component {
         return (
             <div className="cover">
                  <div ref={this.Modal} className="modal-fff fadeInDown">
+                     <div className="close-modal"  onClick={() => this._actionModal('close')}></div>
                     <div className="forget-password-form">
                         <h3>بازیابی کلمه عبور</h3>
                         <p>جهت بازیابی کلمه عبور ، لطفا پست الکترونیک خود را وارد نمایید</p>

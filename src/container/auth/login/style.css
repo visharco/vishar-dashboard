@@ -180,7 +180,7 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: #333333c7; /* Fallback color */  
+    background-color: #b9b9b9c7; /* Fallback color */  
     text-align: center; 
     display: flex;
     align-items: center;
@@ -190,12 +190,12 @@
 }
 
 .forget-password-form {
-    width: 50%;
+    width: 40%;
     margin: auto;
     height: 450px;
     background-color: #ffffff;
     border-radius: 5px;
-    padding: 50px 25px;
+    padding: 100px;
     direction: rtl;
 }
 
@@ -209,6 +209,25 @@
     /* border: 1px solid #e0f4ff; */
     box-shadow: 0 2px 10px rgba(157,206,255,.34);
     
+}
+
+.close-modal {
+    width: 80px;
+    height: 80px; 
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-image: url('../../../assets/icons/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 37%; 
+    cursor: pointer;
+    z-index: 5555;
+
+}
+
+.close-modal:hover {
+    opacity: 0.5;
 }
 
 .slect-type-conatiner ul li label{ 
@@ -350,6 +369,14 @@
 
 
 
+@media screen and (max-width : 900px) {
+    .forget-password-form {
+        width: 100%;
+    }
+}
+
+
+
 @media screen and (max-width : 600px) {
 
 
@@ -357,9 +384,13 @@
         width:95%;
 
     }
+    .forget-password-form {
+        padding:60px 20px;
+    }
     .cover {
         height: auto;
     }
+  
 }
 
 
