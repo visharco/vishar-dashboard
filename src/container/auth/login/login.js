@@ -486,7 +486,7 @@ class LoginComponent extends Component {
                                 title={'بازیابی رمز عبور'}
                                 bgcolor={'#2d9cdb'}
                                 hoverbgcolor={'#2d9cdb'}
-                                click={this._onClickRegister}
+                                click={() => alert("dast nazan kharab mishe!  :D")}
                                 borderRadius="100px"
                                 color="#fff"
                                 width="100%"
