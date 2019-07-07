@@ -195,6 +195,8 @@
     height: 450px;
     background-color: #ffffff;
     border-radius: 5px;
+    padding: 25px;
+    direction: rtl;
 }
 
 .slect-type-conatiner ul li {
