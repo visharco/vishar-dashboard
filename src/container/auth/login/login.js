@@ -10,7 +10,11 @@ import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
 import SweetAlert from 'sweetalert-react';
 import Token from '../../../api/token';
 import IconDesginer from '../../../assets/icons/desginer.svg'
-import IconCustomer from '../../../assets/icons/customer.svg'
+import IconCustomer from '../../../assets/icons/customer.svg';
+
+import iconPassword from '../../../assets/icons/login/lock.svg'
+import iconUser from '../../../assets/icons/login/user.svg'
+import iconEmail from '../../../assets/icons/login/email.svg'
 
 class LoginComponent extends Component {
 
@@ -74,21 +78,24 @@ class LoginComponent extends Component {
  
         if (this.state.emailLogin.trim() === '') {
             return  this.setState({
-                emailLoginError: 'ایمیل را وارد نکردید',
+                show:true,
+                errorMessage: 'ایمیل را وارد نکردید',
                 isLoading:false
             })
         }
         
         if (EmailChecker(this.state.emailLogin) === false) {
             return   this.setState({
-                emailLoginError: 'ایمیل را اشتباه وارد کرده اید',
+                show:true,
+                errorMessage: 'ایمیل را اشتباه وارد کرده اید',
                 isLoading:false
             })
         }
          
         if (this.state.passwordLogin.trim() === '') {
             return  this.setState({
-                passwordLoginError: 'پسورد را وارد نکردید',
+                show:true,
+                errorMessage: 'پسورد را وارد نکردید',
                 isLoading:false
             })
         }
@@ -277,26 +284,30 @@ class LoginComponent extends Component {
             <div  id="registerForm" className=" login-form ">
                 <h2>ورود به سیستم</h2>
                 <p style={{paddingBottom:'20px'}}>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
-                <Input
+                {/* <Input
                     type={'text'}
                     name={'emailLogin'}
                     placeholder={'پست الکترونیک'}
                     changed={this.changedHandler}
                     error={this.state.emailLoginError} 
                     val={this.state.emailLogin}
-                    // autocomplete="on"
-                />
+                /> */}
+                 <div className="password-container">
+                    <img src={iconEmail}  className="login-input-icon"/>
+                    <input className="login-input" id="emailLogin" name="emailLogin"  type="text" value={this.state.emailLogin} onChange={this.changedHandler} placeholder="پست الکترونیک" />
+                </div>
 
                 <div className="password-container">
-                    <Input
+                    {/* <Input
                         type={'password'}
                         name={'passwordLogin'}
                         placeholder={'رمز عبور'}
                         changed={this.changedHandler}
                         error={this.state.passwordLoginError}
-                        val={this.state.passwordLogin}
-                        // autocomplete="on"
-                    />
+                        val={this.state.passwordLogin} 
+                    /> */}
+                    <img src={iconPassword}  className="login-input-icon"/>
+                    <input className="login-input" id="passwordLogin" name="passwordLogin"  type="password" value={this.state.passwordLogin} onChange={this.changedHandler} placeholder="کلمه عبور" />
                     <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
                 </div>
                 <p className="forget-password-link">رمز عبور خود را فراموش کرده اید؟</p>
