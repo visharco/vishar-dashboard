@@ -3,11 +3,12 @@ import Radium from 'radium'
 import './Button.css';
 
 const button = (props) => (
-    <div  className="button-box" id={props.id}>
+    <div  className="button-box" id={props.id} >
         <button className="button-style"  
                 onClick={props.click} 
                 style={{backgroundColor : props.bgcolor ,
-                        ':hover' : {backgroundColor : props.hoverbgcolor} ,
+                        width:props.width,
+                        ':hover' : {opacity : '0.8'} ,
                         borderRadius: props.borderRadius ,
                         color:props.color} } >
                     {props.isLoading ? (
@@ -30,16 +31,17 @@ export default Radium(button);
 How can use this button : ------->                                                  
                                                                                     
                                                                                     
-           <Button                                                                  
-                isLoading={this.state.isLoading}                                    
-                title={'Send'}                                                      
-                bgcolor={'#0080FF'}                                                 
-                hoverbgcolor={'#1fc056cc'}                                          
-                click={this.callSubmit}
-                borderRadius="10px"
-                color="#fff"
-                id={'1'}
-                />                                           
+             <Button                                                                  
+                    isLoading={this.state.isLoading}                                    
+                    title={'Send'}                                                      
+                    bgcolor={'#0088F9'}                                                 
+                    hoverbgcolor={'#0088F9'}                                          
+                    click={this.callSubmit}
+                    color="#fff"
+                    id={'1'}
+                    width={'100%'}
+                    borderRadius={'500px'}
+                />                                          
                                                                                     
                                                                                     
 =====================================================================================

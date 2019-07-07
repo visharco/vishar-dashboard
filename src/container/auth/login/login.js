@@ -288,17 +288,18 @@ class LoginComponent extends Component {
                 />
 
                 <div className="password-container">
-                <Input
-                    type={'password'}
-                    name={'passwordLogin'}
-                    placeholder={'رمز عبور'}
-                    changed={this.changedHandler}
-                    error={this.state.passwordLoginError}
-                    val={this.state.passwordLogin}
-                    // autocomplete="on"
-                />
-                <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
+                    <Input
+                        type={'password'}
+                        name={'passwordLogin'}
+                        placeholder={'رمز عبور'}
+                        changed={this.changedHandler}
+                        error={this.state.passwordLoginError}
+                        val={this.state.passwordLogin}
+                        // autocomplete="on"
+                    />
+                    <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
                 </div>
+                <p className="forget-password-link">رمز عبور خود را فراموش کرده اید؟</p>
                 
 
                 <Button
@@ -396,6 +397,7 @@ class LoginComponent extends Component {
                     click={this._onClickRegister}
                     borderRadius="100px"
                     color="#fff"
+                    width="100%"
                 />
 
             </div>
