@@ -441,7 +441,6 @@ class LoginComponent extends Component {
                     />
                 </div>
 
-            
  
                 <br/>
                 <Button
