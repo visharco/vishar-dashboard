@@ -465,7 +465,7 @@ class LoginComponent extends Component {
                     <div className="forget-password-form">
                         <h3>بازیابی کلمه عبور</h3>
                         <p>جهت بازیابی کلمه عبور ، لطفا پست الکترونیک خود را وارد نمایید</p>
-
+                        < br />
                         <div className="password-container">
                             <img src={iconEmail}  className="login-input-icon"/>
                             <input 
@@ -476,8 +476,20 @@ class LoginComponent extends Component {
                                 value={this.state.emailRegister} 
                                 onChange={this.changedHandler} 
                                 placeholder="پست الکترونیک"
-                            />
+                            /> 
                         </div>
+                                
+                        <br/>
+                            <Button
+                                isLoading={this.state.isLoadingRegister}
+                                title={'بازیابی رمز عبور'}
+                                bgcolor={'#2d9cdb'}
+                                hoverbgcolor={'#2d9cdb'}
+                                click={this._onClickRegister}
+                                borderRadius="100px"
+                                color="#fff"
+                                width="100%"
+                            />
                     </div>
                  </div>
                  <SweetAlert
