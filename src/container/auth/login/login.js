@@ -329,27 +329,10 @@ class LoginComponent extends Component {
 
         const _renderRegister = (
             <div id="loginForm" className=" register-form " >
-                {/* <h2> ثبت نام در ویشار</h2>
-                <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p> */}
-
-                <div className="slect-type-conatiner">
-                    <ul>
-                        <li>
-                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio}/>
-                            <label htmlFor="customer">
-                                <img src={IconCustomer} className="login-select-image" alt="desginer" />
-                                مشتری
-                            </label>
-                         </li>
-                        <li>
-                            <input type="radio" id="designer" name="radio-group"  className="login-hide-radio" onChange={this.changedHandlerRadio}/>
-                            <label htmlFor="designer">
-                                <img src={IconDesginer} className="login-select-image" alt="desginer" />
-                                طراح
-                            </label>
-                        </li>
-                    </ul>
-                </div>
+                <h2> ثبت نام در ویشار</h2>
+                <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
+                <br/>
+    
 
                 {/* <Input
                     type={'text'}
@@ -375,7 +358,7 @@ class LoginComponent extends Component {
 
 
                 {/* <span>لطفا نام و نام خانودادگی خود را به صورت فارسی وارد نمایید</span> */}
-                <Input
+                {/* <Input
                     type={'email'}
                     name={'emailRegister'}
                     placeholder={'پست الکترونیک'}
@@ -383,15 +366,15 @@ class LoginComponent extends Component {
                     error={this.state.emailErrorRegister}
                     vla={this.state.emailRegister}
                     autocomplete="off"
-                />
+                /> */}
 
                 <div className="password-container">
                     <img src={iconEmail}  className="login-input-icon"/>
                     <input 
                         className="login-input" 
-                        id="email" 
-                        name="email"  
-                        type="email" 
+                        id="emailRegister" 
+                        name="emailRegister"  
+                        type="text" 
                         value={this.state.emailRegister} 
                         onChange={this.changedHandler} 
                         placeholder="پست الکترونیک"
@@ -399,7 +382,7 @@ class LoginComponent extends Component {
                 </div>
 
 
-                <Input
+                {/* <Input
                     type={'password'}
                     name={'passwordRegister'}
                     placeholder={'رمز عبور'}
@@ -407,27 +390,41 @@ class LoginComponent extends Component {
                     error={this.state.passwordErrorRegister}
                     autocomplete="off"
                     vla={this.state.passwordRegister}
-                />
-                {/* <div className="R-checkbox">
+                /> */}
 
-                    <p>
-                        <input type="radio" id="customer" name="radio-group" onChange={this.changedHandlerRadio}/>
-                        <label htmlFor="customer">
-                            <span>من نیاز به طرح دارم</span>
-                        </label>
-                    </p>
-                    <p>
-                        <input type="radio" id="designer" name="radio-group" onChange={this.changedHandlerRadio}/>
-                        <label htmlFor="designer">
-                            <span>من یک طراحم</span>
-                        </label>
-                    </p>
-                    {
-                        this.state.userTypeError ?
-                            <span className="type-person bounceIn">{this.state.userTypeErrorText}</span> : ''
-                    }
+                <div className="password-container">
+                    <img src={iconEmail}  className="login-input-icon"/>
+                    <input 
+                        className="login-input" 
+                        id="passwordRegister" 
+                        name="passwordRegister"  
+                        type="password" 
+                        value={this.state.passwordRegister} 
+                        onChange={this.changedHandler} 
+                        placeholder="رمز عبور"
+                        maxLength="12"
+                    />
+                </div>
 
-                </div> */} 
+                <div className="slect-type-conatiner">
+                    <ul>
+                        <li>
+                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <label htmlFor="customer">
+                                <img src={IconCustomer} className="login-select-image" alt="desginer" />
+                                مشتری
+                            </label>
+                         </li>
+                        <li>
+                            <input type="radio" id="designer" name="radio-group"  className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <label htmlFor="designer">
+                                <img src={IconDesginer} className="login-select-image" alt="desginer" />
+                                طراح
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+ 
 
                 <Button
                     isLoading={this.state.isLoadingRegister}
