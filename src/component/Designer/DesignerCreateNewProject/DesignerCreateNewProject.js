@@ -448,7 +448,7 @@
 //                         </div>
 //                         <div className="CNP-desc-text" >
 //                             <h1>توضیحات پس زمینه</h1>
-//                             <h2>عنوان پروزه را انتخاب کن</h2>
+//                             <h2>عنوان پرو‌ه را انتخاب کن</h2>
 
 //                             <div className="CNP-project-title" >
 //                                 <Input
