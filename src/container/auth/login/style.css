@@ -157,19 +157,24 @@
 }
 
 .slect-type-conatiner ul {
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: row;
     flex-direction: row;
+    -webkit-align-items: center;
     align-items: center;
-    justify-content: space-between; 
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    width: 100%;
 
 
 }
 
 .slect-type-conatiner ul li {
-    width: 110px;
+    width: 100%;
     /* height: 115px; */
     background-color: #fff;
-    margin: 0 20px;
+    margin: 0 9px;
     border-radius: 5px;
     /* padding: 15px; */
     /* border: 1px solid #e0f4ff; */
@@ -183,11 +188,14 @@
     display: block;
     text-align: center;
     padding: 11px;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-justify-content: space-around;
     justify-content: space-around;
+    display: -webkit-flex;
     display: flex;
+    flex-direction: column;
     cursor: pointer;
-
 
 }
 .password-container {

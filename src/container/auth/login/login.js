@@ -334,6 +334,28 @@ class LoginComponent extends Component {
                 <br/>
     
 
+
+                <div className="slect-type-conatiner">
+                    <ul>
+                        <li>
+                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <label htmlFor="customer">
+                                <img src={IconCustomer} className="login-select-image" alt="desginer" />
+                                مشتری
+                            </label>
+                         </li>
+                        <li>
+                            <input type="radio" id="designer" name="radio-group"  className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <label htmlFor="designer">
+                                <img src={IconDesginer} className="login-select-image" alt="desginer" />
+                                طراح
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+
+
                 {/* <Input
                     type={'text'}
                     name={'name'}
@@ -406,26 +428,9 @@ class LoginComponent extends Component {
                     />
                 </div>
 
-                <div className="slect-type-conatiner">
-                    <ul>
-                        <li>
-                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio}/>
-                            <label htmlFor="customer">
-                                <img src={IconCustomer} className="login-select-image" alt="desginer" />
-                                مشتری
-                            </label>
-                         </li>
-                        <li>
-                            <input type="radio" id="designer" name="radio-group"  className="login-hide-radio" onChange={this.changedHandlerRadio}/>
-                            <label htmlFor="designer">
-                                <img src={IconDesginer} className="login-select-image" alt="desginer" />
-                                طراح
-                            </label>
-                        </li>
-                    </ul>
-                </div>
+            
  
-
+                <br/>
                 <Button
                     isLoading={this.state.isLoadingRegister}
                     title={'ثبت نام'}
