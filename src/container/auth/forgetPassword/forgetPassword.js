@@ -24,7 +24,7 @@ class ForgetPasswordComponent extends Component {
         }
     }
     goToLogin = () => {
-        browserHistory.push('/register');
+        browserHistory.push('/login');
     }
 
     changedHandler = (e) => {
@@ -66,41 +66,16 @@ class ForgetPasswordComponent extends Component {
                 <div className="container-fluid" >
                     <div className="container" >
                         
-                            <Cover />
-                    
-                        <div className="RL-right" >
-                            <div className="RL-title" >
-                                <img src={logo} alt="لوگو"/>
-                                <h1>فراموشی رمز عبور</h1>
-                            </div>
-                            <div className="RL-inputs" >
-                                <Input
-                                    type={'text'}
-                                    name={'emailnumber'}
-                                    placeholder={'ایمیل / شماره همراه'}
-                                    changed={this.changedHandler}
-                                    error={this.state.resetPasswordError}
-                                    val={this.state.emailnumber}
-                                />
+                            {/* <Cover /> */}
+                            <div className="forget-password-container">
+                                <h2>بازیابی رمز عبور</h2>
                                 
-                            </div>
-                            <div className="RL-button" >
-                                <Button
-                                    isLoading={this.state.isLoading}
-                                    title={'به یادآوری رمز عبور'}
-                                    bgcolor={'#0080FF'}
-                                    hoverbgcolor={'rgba(0, 128, 255, .8)'}
-                                    click={this._resetPassword}
-                                    borderRadius="2px"
-                                    color="#fff"
-                                />
-
                                 <p className="change-page-text" >
                                     حساب کاربری داری ؟
                                     <span onClick={this.goToLogin} >ورود </span>
                                 </p>
                             </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>

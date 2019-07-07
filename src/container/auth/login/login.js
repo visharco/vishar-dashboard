@@ -51,6 +51,10 @@ class LoginComponent extends Component {
         }
     }
 
+    Modal = React.createRef();
+
+
+
     componentDidMount(){
         document.getElementById('register').classList.add ( "activeTab");
         document.getElementById('registerForm').classList.add ( "activeForm");
@@ -59,6 +63,15 @@ class LoginComponent extends Component {
     componentWillMount(){
         if(Token !== null)
             browserHistory.push('/dashboard');
+    }
+    // show image priview and big
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    _actionModal = (val) => { 
+        if(val === 'open')
+            this.Modal.current.style.display = 'block';
+        else if (val === 'close')
+            this.Modal.current.style.display = 'none';
+
     }
 
     
@@ -310,7 +323,7 @@ class LoginComponent extends Component {
                     <input className="login-input" id="passwordLogin" name="passwordLogin"  type="password" value={this.state.passwordLogin} onChange={this.changedHandler} placeholder="کلمه عبور" />
                     <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
                 </div>
-                <p className="forget-password-link">رمز عبور خود را فراموش کرده اید؟</p>
+                <p onClick={() => this._actionModal('open')} className="forget-password-link">رمز عبور خود را فراموش کرده اید؟</p>
                 
 
                 <Button
@@ -448,6 +461,25 @@ class LoginComponent extends Component {
 
         return (
             <div className="cover">
+                 <div ref={this.Modal} className="modal-fff fadeInDown">
+                    <div className="forget-password-form">
+                        <h3>بازیابی کلمه عبور</h3>
+                        <p>جهت بازیابی کلمه عبور ، لطفا پست الکترونیک خود را وارد نمایید</p>
+
+                        <div className="password-container">
+                            <img src={iconEmail}  className="login-input-icon"/>
+                            <input 
+                                className="login-input" 
+                                id="emailRegister" 
+                                name="emailRegister"  
+                                type="text" 
+                                value={this.state.emailRegister} 
+                                onChange={this.changedHandler} 
+                                placeholder="پست الکترونیک"
+                            />
+                        </div>
+                    </div>
+                 </div>
                  <SweetAlert
                             show={this.state.show}
                             title=""
