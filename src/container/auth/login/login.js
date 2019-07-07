@@ -351,15 +351,29 @@ class LoginComponent extends Component {
                     </ul>
                 </div>
 
-                <Input
+                {/* <Input
                     type={'text'}
                     name={'name'}
                     placeholder={'نام و نام خانوادگی'}
                     changed={this.changedHandler}
-                    error={this.state.nameError} 
-                    autocomplete="off"
+                    error={this.state.nameError}  
                     vla={this.state.name}
-                />
+                /> */}
+
+                <div className="password-container">
+                    <img src={iconUser}  className="login-input-icon"/>
+                    <input 
+                        className="login-input" 
+                        id="name" 
+                        name="name"  
+                        type="text" 
+                        value={this.state.name} 
+                        onChange={this.changedHandler} 
+                        placeholder="نام و نام خانوادگی" 
+                    />
+                </div>
+
+
                 {/* <span>لطفا نام و نام خانودادگی خود را به صورت فارسی وارد نمایید</span> */}
                 <Input
                     type={'email'}
@@ -370,6 +384,21 @@ class LoginComponent extends Component {
                     vla={this.state.emailRegister}
                     autocomplete="off"
                 />
+
+                <div className="password-container">
+                    <img src={iconEmail}  className="login-input-icon"/>
+                    <input 
+                        className="login-input" 
+                        id="email" 
+                        name="email"  
+                        type="email" 
+                        value={this.state.emailRegister} 
+                        onChange={this.changedHandler} 
+                        placeholder="پست الکترونیک"
+                    />
+                </div>
+
+
                 <Input
                     type={'password'}
                     name={'passwordRegister'}
