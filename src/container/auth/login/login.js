@@ -428,7 +428,7 @@ class LoginComponent extends Component {
                 /> */}
 
                 <div className="password-container">
-                    <img src={iconEmail}  className="login-input-icon"/>
+                    <img src={iconPassword}  className="login-input-icon"/>
                     <input 
                         className="login-input" 
                         id="passwordRegister" 
