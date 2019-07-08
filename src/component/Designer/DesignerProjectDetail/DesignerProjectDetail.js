@@ -238,7 +238,7 @@ class DesignerProjectDetail extends Component {
                                             <input type="checkbox" id="colors7" />
                                             <label htmlFor="colors7">
                                                 <img src={color7} alt="رنگها" />
-                                                <span>مشککی</span>
+                                                <span>مشکی</span>
                                             </label>
                                         </li>
                                         <li>
