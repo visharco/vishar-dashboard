@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import defualtImage from '../../../assets/images/defualtProjectImage.png'
+import defualtImage from '../../../assets/icons/ly.svg'
  
 
 import './style.css';
@@ -17,20 +17,34 @@ class DesignerProject extends Component {
     goToDesignerProjectDetail (id) {
         browserHistory.push('/DesignerProjectDetail/' + id);
     }
+
+    getStatus = (key) => { 
+        console.log(key)
+        switch (key) {
+            case 'active':
+                return 'پروژه فعال' 
+            case 'finish':
+                    return 'اتمام یافته' 
+    
+            default:
+                return null 
+        }
+    }
+
+
     render() {
         return (
             <div className="DesignerProject" onClick={() => this.goToDesignerProjectDetail(this.props.data.id)} >
                 <div className="DPT-left" >
-
-
                 </div>
                 <div className="DPT-right" >
-                    <img src={defualtImage} alt="طرح" />
+                    {/* <img src={defualtImage} alt="طرح" /> */}
+                    <div className="project-image"> </div>
                     <div className="DPT-right-title" >
                         <div className="DPT-right-text" >
                             <div className="DPT-status-box" >
                                 <h1>{this.props.data.title}</h1>
-                                <p className={this.props.status} >{this.props.status}</p>
+                                <p className={this.props.status} >{this.getStatus(this.props.status)}</p>
                             </div>
                             <p>
                             {this.props.data.desc}

@@ -277,20 +277,6 @@ class ProjectDetail extends Component {
                                             </label>
                                         </li>
                                         <li>
-                                            <input type="checkbox" id="font5" />
-                                            <label htmlFor="font5">
-                                                <img className="font-padding" src={font} alt="رنگها" />
-                                                <span> امید سنس</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="font6" />
-                                            <label htmlFor="font6">
-                                                <img className="font-padding" src={font} alt="رنگها" />
-                                                <span>ایران سنس</span>
-                                            </label>
-                                        </li>
-                                        <li>
                                             <input type="checkbox" id="font7" />
                                             <label htmlFor="font7">
                                                 <img className="font-padding" src={font} alt="رنگها" />

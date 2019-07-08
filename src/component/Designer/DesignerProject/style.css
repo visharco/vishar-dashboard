@@ -77,6 +77,24 @@ align-content: center;
 
 }
 
+.project-image {
+    width: 150px;
+    height: 150px;
+    background-image: url('../../../assets/icons/ly.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    border:1px solid #ececec;
+    border-radius: 5px;
+
+
+}
+
+.finish {
+    background-color:#E74C3C;
+
+}
+
 
 .DPT-icons{
     display: flex;
@@ -176,7 +194,7 @@ align-content: center;
 @media screen and (max-width: 500px){
 
 .DPT-right{
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding: 20px;
 }
 .DPT-right img{

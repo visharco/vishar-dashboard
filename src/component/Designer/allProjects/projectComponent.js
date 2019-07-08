@@ -28,7 +28,7 @@ class ProjectComponent extends Component {
 
        
         return ( 
-            <div className="project" onClick={this.props.showProject} >
+            <div className="project" onClick={() => this.showProject(this.props.data.id)} >
             <div className="p-left" >
                 <p className="p-price" >{PriceDigit(this.props.data.invoice.price_all,'price')} تومان</p>
                 <div className="p-icons" >
