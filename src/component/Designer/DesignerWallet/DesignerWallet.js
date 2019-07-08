@@ -49,6 +49,18 @@ class DesignerWallet extends Component {
     };
 
 
+    getStatus = (key) => { 
+        switch (key) {
+            case 'success':
+                return 'پرداخت موفق' 
+    
+            default:
+                return null 
+        }
+    }
+
+
+
     render() {
 
         const _renderInvoice = (
@@ -59,7 +71,7 @@ class DesignerWallet extends Component {
                     {/* <td className="DWT-child" >{data.created_at}</td> */}
                     <td className="DWT-child">{data.created_at_persian}</td>
                     <td className="DWT-child">{data.invoice_status} </td>
-                    <td className={" DWT-child " + data.status}>{data.status} </td>
+                    <td className={" DWT-child " + data.status}>{this.getStatus(data.status)} </td>
                 </tr>
             }) : <DesignerNoWallet/>
         )
