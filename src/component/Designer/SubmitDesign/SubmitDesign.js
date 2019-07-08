@@ -258,7 +258,7 @@ class SubmitDesign extends Component {
                                         <h1>کاور عکس</h1>
                                         <p>لطفا تصویر کاور خود را با پسوند JPG ذخیره کنید</p>
                                         <p>
-                                            <span>برای داشتن شانس بیشتر لطفا از کاور حرفه ای و زیبا برای ارائه به مشتری استاده نماید.</span>
+                                            <span>برای داشتن شانس بیشتر لطفا از کاور حرفه ای و زیبا برای ارائه به مشتری استفاده نماید.</span>
                                             <span className="SDUF-link" onClick={this.openModalDesignerExample}> مشاهده نمونه کاور</span>
                                         </p>
 
@@ -326,7 +326,7 @@ class SubmitDesign extends Component {
                                 </div>
                                 <div className="SD-desc">
                                     <h1>توضیحات</h1>
-                                    <p>در صورتی که نیاز به توضیحات برای ارائه طرح خود به مشتری می باشد، در این قسمت وارد
+                                    <p>در صورتی که نیاز به توضیحات برای ارائه طرح خود به مشتری می باشید در این قسمت وارد
                                         نمایید</p>
                                     <TextArea
                                         type={'text'}
