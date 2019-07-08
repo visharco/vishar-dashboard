@@ -33,6 +33,15 @@ class Payments extends Component {
             invoice: res.data
         })
     }
+    getStatus = (key) => { 
+        switch (key) {
+            case 'success':
+                return 'پرداخت موفق' 
+    
+            default:
+                return null 
+        }
+    }
 
     render() {
 
@@ -45,7 +54,7 @@ class Payments extends Component {
                 <td className="body-child" >{PriceDigit(data.price_all , 'price')} تومان</td>
                 <td className="body-child" >{data.market}</td>
                 <td className="body-child" >{data.payment_token ? data.payment_token : '---'}</td>
-                <td className={"body-child " + "payment"+data.status}  >{data.status}</td>
+                <td className={"body-child " + "payment"+data.status}  >{this.getStatus(data.status)}</td>
             </tr>
             }) :  <NoPaymentBox />
         )
