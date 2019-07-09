@@ -69,7 +69,9 @@ class ProjectComponent extends Component {
                         <p>{this.props.data.invoice.category}</p>
                     </div>
                 </div>
-                <img src={design1} alt="طرح" />
+                {/* <img src={design1} alt="طرح" /> */}
+                <div className="project-image" style={{backgroundImage:'url(' + this.props.data.image + ')'}}></div>
+
 
 
 

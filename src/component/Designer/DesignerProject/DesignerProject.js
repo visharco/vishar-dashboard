@@ -39,7 +39,7 @@ class DesignerProject extends Component {
                 </div>
                 <div className="DPT-right" >
                     {/* <img src={defualtImage} alt="طرح" /> */}
-                    <div className="project-image"> </div>
+                    <div className="project-image" style={{backgroundImage:'url(' + this.props.data.image + ')'}}></div>
                     <div className="DPT-right-title" >
                         <div className="DPT-right-text" >
                             <div className="DPT-status-box" >
