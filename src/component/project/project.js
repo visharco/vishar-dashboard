@@ -35,10 +35,10 @@ class Project extends Component {
     render() {
         return (
             <div key={this.props.id} className="project" onClick={() => this.goToProjectDetail(this.props.data.id)} >
-             
+                {console.log(this.props.data)}
                 <div className="p-right" >
                     {/* <img className="image-of-project" src={defualtDesing} alt="طرح"  /> */}
-                    <div className="image-of-project "></div>
+                    <div className="image-of-project " style={{backgroundImage:'url(' + this.props.data.image + ')'}}></div>
                     <div className="p-right-title" >
                         <div className="p-right-text" >
                             <div className="p-status-box" >

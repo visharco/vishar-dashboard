@@ -133,10 +133,10 @@
 }
 
 .image-of-project {
-    background-image: url('../../assets/icons/ly.svg');
+    /* background-image: url('../../assets/icons/ly.svg'); */
     width: 150px;
     height: 150px;
-    background-color: #f8f8ff;
+    /* background-color: #f8f8ff; */
     border-radius: 5px;
     box-shadow: 0 1px 8px #e8e8e8; 
     background-position: 50%;
