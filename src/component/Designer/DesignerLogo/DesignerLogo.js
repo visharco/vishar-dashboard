@@ -27,7 +27,7 @@ class DesignerLogo extends Component {
             <div className="DesignerLogo"
                 style={{ backgroundImage: 'url(' + this.state.projectImage+ ')' }}
                 // onClick={this.props.goToDesigns}
-                onClick={this.props.goToDesigns}
+                onClick={() => window.open(this.props.data.image)}
                 key={this.props.index}
             >
                 <div className="DL-status" >
