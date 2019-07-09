@@ -100,7 +100,7 @@ input[type="number"]:focus {
   color: #fff;
   top: 42px;
   user-select: none;
-  z-index: 4; 
+  z-index: 1; 
   background-color: rgba(215, 83, 81, 0.8);
   border-radius: 100px;
   padding: 3px 10px;
