@@ -229,14 +229,14 @@ class ProjectDetail extends Component {
                                             <input type="checkbox" id="colors7" />
                                             <label htmlFor="colors7">
                                                 <img src={color7} alt="رنگها" />
-                                                <span>مشکی</span>
+                                                <span>خاکستری</span>
                                             </label>
                                         </li>
                                         <li>
                                             <input type="checkbox" id="colors8" />
                                             <label htmlFor="colors8">
                                                 <img src={color8} alt="رنگها" />
-                                                <span>خاکستری</span>
+                                                <span>مشکی</span>
                                             </label>
                                         </li>
 
