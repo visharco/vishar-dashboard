@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 
 
-import defualtDesing from '../../assets/images/defualtProjectImage.png'
+import defualtDesing from '../../assets/icons/ly.svg'
 
 import './style.css';
 
@@ -19,9 +19,14 @@ class Project extends Component {
     }
 
     getStatus = (key) => { 
+        console.log(key)
         switch (key) {
             case 'active':
-                return 'تایید شده' 
+                return 'تایید شده'             
+            case 'finish':
+                return 'اتمام یافته' 
+            case 'pending':
+                return 'درحال بررسی' 
     
             default:
                 return null 
@@ -35,7 +40,8 @@ class Project extends Component {
 
                 </div>
                 <div className="p-right" >
-                    <img src={defualtDesing} alt="طرح"  />
+                    {/* <img className="image-of-project" src={defualtDesing} alt="طرح"  /> */}
+                    <div className="image-of-project "></div>
                     <div className="p-right-title" >
                         <div className="p-right-text" >
                             <div className="p-status-box" >
