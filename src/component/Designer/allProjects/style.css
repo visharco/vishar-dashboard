@@ -46,7 +46,7 @@
 }
 
 .p-right-text{
-    width: 80%;
+    width: 100%;
 }
 
 .p-right-tags{
@@ -162,7 +162,7 @@
 @media screen and (max-width: 500px){
 
 .p-right{
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding: 20px;
 }
 .p-right img{

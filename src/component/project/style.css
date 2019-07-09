@@ -89,7 +89,7 @@
 }
 
 .p-right-text{
-    width: 80%;
+    width: 100%;
 }
 
 .p-right-tags{
@@ -111,9 +111,10 @@
     cursor: pointer;
 }
 .p-status-box{
-display: flex;
-margin-bottom: 10px;
-align-content: center;
+    display: flex;
+    margin-bottom: 10px;
+    align-content: space-between;
+
 
 }
 .Completed{
