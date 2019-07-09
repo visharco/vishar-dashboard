@@ -238,13 +238,16 @@ width: 40px;
 
 
 .CNP-1-Note{
-    padding: 20px 0px;
+    padding: 20px;
+    background-color: #fff48f;
+    border-radius: 5px;
+    margin: 10px 0;
 
 }
 
 .CNP-1-Note h1  {
     font-size: 15px;
-    color: #747474;
+    color: #333333;
 }
 .CNP-1-Note p {
     font-size: 14px;
@@ -641,7 +644,7 @@ width: 50%;
   }
   
  .CNP-select-design label { 
-    height: 450px;
+    /* height: 450px; */
     display: block;
     background: #f1f1f1;
     border-radius: 20px;
@@ -927,7 +930,7 @@ padding: 10px 5px;
 
 @media screen and (max-width: 1100px){
     .CNP-select-design label{
-        width: 32%;
+        width: 100%;
     }
     .CNP-btnBox-fixed{
         right: 280px;
@@ -965,7 +968,7 @@ padding: 10px 5px;
         align-items: center;
     }
     .CNP-select-design label{
-        width: 80%;
+        width: 100%;
     }
     .nextBTN , .paymentBTN{
         width: 70px;
@@ -976,6 +979,11 @@ padding: 10px 5px;
     .CNP-btnBox-fixed{
         bottom: 10px;
         margin: 0px;
+    }
+    .plan-container-cover {
+        width: 100%!important;
+        line-height: 3;
+    
     }
 
 
@@ -988,11 +996,8 @@ padding: 10px 5px;
         flex-direction: column;
 
     }
-    .plan-container-cover {
-        width: 100%;
-        line-height: 3;
-    
-    }
+ 
+  
     .selector-container {
        width: 100%;
         margin: 10px 0;
