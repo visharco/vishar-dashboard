@@ -148,7 +148,7 @@ width: 50%;
 }
 
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 800px){
 .PE-body{
     flex-direction: column-reverse;
     
