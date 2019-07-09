@@ -34,9 +34,16 @@ class Payments extends Component {
         })
     }
     getStatus = (key) => { 
+        console.log(key)
         switch (key) {
             case 'success':
                 return 'پرداخت موفق' 
+    
+            case 'pending':
+                return 'پرداخت لغو شده' 
+    
+            case 'failed':
+                return 'پرداخت ناموفق' 
     
             default:
                 return null 
