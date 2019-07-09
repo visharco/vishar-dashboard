@@ -26,6 +26,7 @@ class DesignerLogo extends Component {
         return (
             <div className="DesignerLogo"
                 style={{ backgroundImage: 'url(' + this.state.projectImage+ ')' }}
+                // onClick={this.props.goToDesigns}
                 onClick={this.props.goToDesigns}
                 key={this.props.index}
             >
