@@ -57,7 +57,7 @@ class Payments extends Component {
                 return <tr className="PSB-body">
                 <td className="body-child1" >{index + 1}</td>
                 <td className="body-child2" >{data.project.title}</td>
-                <td className="body-child" >{data.updated_at}</td>
+                <td className="body-child" >{data.created_at_persian}</td>
                 <td className="body-child" >{PriceDigit(data.price_all , 'price')} تومان</td>
                 <td className="body-child" >{data.market}</td>
                 <td className="body-child" >{data.payment_token ? data.payment_token : '---'}</td>
