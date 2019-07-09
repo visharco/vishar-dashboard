@@ -13,6 +13,8 @@ import psd from '../../../assets/icons/psd.svg';
 import psdOk from '../../../assets/icons/psd-ok.svg';
 import tiff from '../../../assets/icons/tiff.svg';
 import tiffOk from '../../../assets/icons/tif-ok.svg';
+import zip from '../../../assets/icons/zip.svg';
+import zipOk from '../../../assets/icons/zip-ok.svg';
 import tikgreen from '../../../assets/icons/tikgreen.svg';
 
 //
@@ -40,6 +42,7 @@ class SubmitDesign extends Component {
             isLoadingGetData: false,
             psd: '',
             tiff: '',
+            zip: '',
             progressPercent: 0,
         }
     }
@@ -94,8 +97,9 @@ class SubmitDesign extends Component {
         data.append('project_id', this.state.projectId);
         data.append('desc', this.state.submitDescription);
         data.append('image', this.state.cover, this.state.cover.name || '')
-        data.append('psd', this.state.psd, this.state.psd.name || '')
-        data.append('tif', this.state.tiff, this.state.tiff.name || '');
+        // data.append('psd', this.state.psd, this.state.psd.name || '')
+        // data.append('tif', this.state.tiff, this.state.tiff.name || '');
+        data.append('zip', this.state.zip, this.state.zip.name || '');
 
 
         let validation = true;
@@ -287,12 +291,28 @@ class SubmitDesign extends Component {
                                     <div className="SDUF-up">
                                         <div className="SDUF-left">
                                             <h1>آپلود فایل</h1>
-                                            <p>لطفا فایل های خود را با پسند های خواسته شده بارگذاری نمایید</p>
+                                            <h3>لطفا تمام فایل های مورد نیاز خود را به صورت فایل فشرده بارگذاری نمایید.</h3>
+                                            <p>فایل های بارگذاری شده ، پس از برسی تیم ویشار برای مشتری ارسال می گردد</p>
                                         </div>
 
                                     </div>
                                     <div className="SDUF-down">
-                                        <label htmlFor="psd" className="SDUF-upload">
+                                        <label htmlFor="zip" className="SDC-upload">
+                                            <h1>آپلود فایل</h1>
+                                            <input type="file" accept=".zip"
+                                                   onChange={this._uploadPicture}
+                                                   name="zip"
+                                                   id="zip"
+                                                   value=""/>
+                                            <div className="SDUF-img">
+                                                <img src={!this.state.zip ? zip : zipOk} alt="کاربر"/>
+                                            </div>
+                                            <p className="SDUF-text">
+                                                برای آپلود فایل کلیک کنید یا فایل را رها کنید
+                                            </p>
+                                        </label>
+
+                                        {/* <label htmlFor="psd" className="SDUF-upload">
                                             <h1>آپلود عکس</h1>
                                             <input type="file" accept=".psd"
                                                    onChange={this._uploadPicture}
@@ -305,9 +325,11 @@ class SubmitDesign extends Component {
                                             <p className="SDUF-text">
                                                 برای آپلود عکس کلیک کنید یا عکس را رها کنید
                                             </p>
-                                        </label>
+                                        </label> */}
 
-                                        <label htmlFor="tiff" className="SDUF-upload">
+
+
+                                        {/* <label htmlFor="tiff" className="SDUF-upload">
                                             <h1>آپلود عکس</h1>
                                             <input type="file" accept=".tif,.tiff"
                                                    onChange={this._uploadPicture}
@@ -321,7 +343,7 @@ class SubmitDesign extends Component {
                                             <p className="SDUF-text">
                                                 برای آپلود عکس کلیک کنید یا عکس را رها کنید
                                             </p>
-                                        </label>
+                                        </label> */}
                                     </div>
                                 </div>
                                 <div className="SD-desc">

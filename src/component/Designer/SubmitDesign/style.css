@@ -104,6 +104,10 @@ padding: 0px 10px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: #eed27a;
+    padding: 10px;
+    border-radius: 5px;
+
 
 }
 .SD-upload-files{
@@ -169,6 +173,8 @@ padding: 0px 10px;
 
 .SDUF-upload{
     padding: 20px 0px;
+    
+
 }
 .SDUF-img{
     width: 150px;
