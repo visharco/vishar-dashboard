@@ -76,7 +76,9 @@ class SubmitDesign extends Component {
     }
 
     goBack = () => {
+
         window.location = "/DesignerSingleProject"
+
     }
 
 
@@ -99,7 +101,7 @@ class SubmitDesign extends Component {
         data.append('image', this.state.cover, this.state.cover.name || '')
         // data.append('psd', this.state.psd, this.state.psd.name || '')
         // data.append('tif', this.state.tiff, this.state.tiff.name || '');
-        data.append('zip', this.state.zip, this.state.zip.name || '');
+        data.append('compress', this.state.zip, this.state.zip.name || '');
 
 
         let validation = true;
@@ -107,23 +109,28 @@ class SubmitDesign extends Component {
         if (this.state.cover.length === 0) {
             validation = false;
             this.setState({
+                isLoadingGetData: false,
                 show: true,
                 errorMessage: 'لطفا فایل کاور را وارد نمایید'
             })
 
-        } else if (this.state.tiff.length === 0) {
+        } else if (this.state.zip.length === 0) {
             validation = false;
             this.setState({
+                isLoadingGetData: false,
                 show: true,
-                errorMessage: 'لطفا فایل تیف  را وارد نمایید'
+                errorMessage: 'لطفا فایل زیپ  را وارد نمایید',
+               
             })
-        } else if (this.state.psd.length === 0) {
-            validation = false;
-            this.setState({
-                show: true,
-                errorMessage: 'لطفا فایل پی اس دی  را وارد نمایید'
-            })
-        }
+        } 
+        // else if (this.state.psd.length === 0) {
+        //     validation = false;
+        //     this.setState({
+        //         show: true,
+        //         errorMessage: 'لطفا فایل پی اس دی  را وارد نمایید',
+        //         isLoadingGetData: false
+        //     })
+        // }
  
        
 
@@ -175,14 +182,6 @@ class SubmitDesign extends Component {
                 })
     
     
-
-
-
-
-
-
-
-
 
             // const res = await PostToApi(data, 'projects/design');
             // console.log(res);
@@ -299,7 +298,7 @@ class SubmitDesign extends Component {
                                     <div className="SDUF-down">
                                         <label htmlFor="zip" className="SDC-upload">
                                             <h1>آپلود فایل</h1>
-                                            <input type="file" accept=".zip"
+                                            <input type="file" accept=".zip,.rar"
                                                    onChange={this._uploadPicture}
                                                    name="zip"
                                                    id="zip"
