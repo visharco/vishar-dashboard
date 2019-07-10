@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import Input from '../../component/common/input/Input';
 import Button from '../../component/common/Button/Button';
 import EnglishChecker from '../../component/EnglishChecker/EnglishChecker'
-
+import SweetAlert from 'sweetalert-react'
 //
 // ّIcons -------------------->
 //
@@ -144,7 +144,8 @@ class Profile extends Component {
 
         if(res.status === 200){
             this.setState({
-                successMessage:'تغیرات با موفقیت ذخیره شده است.'
+                show:true,
+                errorMessage:'تغیرات با موفقیت ذخیره شده است.'
             })
         }
 
@@ -160,6 +161,13 @@ class Profile extends Component {
     render() {
         return (
             <div className="Profile">
+                       <SweetAlert
+                            show={this.state.show}
+                            title=""
+                            text={this.state.errorMessage}
+                            onConfirm={() => this.setState({show: false})}
+                        />
+                        
                 {this.state.isLoadingGetData ? <LoadingComponent /> : ''}
                 <div className="PE-title" >
                     پروفایل
