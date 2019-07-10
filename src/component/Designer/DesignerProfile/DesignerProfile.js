@@ -208,7 +208,7 @@ class DesignerProfile extends Component {
 
 
         const res = await PostToApi(data, 'profile/update/bank');
-        // console.log(res);
+        // // console.log(res);
 
         if(res.status === 200){
             this.setState({
@@ -242,7 +242,7 @@ class DesignerProfile extends Component {
             selectedFile: e.target.files[0],
             showImageForUpload:URL.createObjectURL(e.target.files[0])
         })
-        console.log(e.target.files[0])
+        // console.log(e.target.files[0])
     }
 
 

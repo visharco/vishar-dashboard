@@ -170,8 +170,8 @@ class LoginComponent extends Component {
     }
 
     changedHandler = (e) => {
-        console.log(e.target.name);
-        console.log(e.target.value);
+        // console.log(e.target.name);
+        // console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -190,7 +190,7 @@ class LoginComponent extends Component {
 
 
     changedHandlerRadio = (e) => {
-        console.log(e.target.id);
+        // console.log(e.target.id);
         this.setState({
             userType: e.target.id
         })
@@ -294,6 +294,37 @@ class LoginComponent extends Component {
         this.setState({
             isLoadingRegister: false
         })
+
+
+    }
+
+    forgetpassword = async() => {
+
+        this.setState({
+            isLoadingRegister : true
+        })
+        const data = new FormData();
+        data.append('email', this.state.emailForget);
+
+        const res = await PostData(data, 'auth/email/forgetPassword') 
+        // console.log(res)
+        if( res.status === 200){
+            this.setState({
+                isLoadingRegister : false,
+                show: true,
+                errorMessage:'لینک تغیر کلمه عبور به ایمیل شما ارسال گردیده است',
+                emailForget:''
+            })
+            this._actionModal('close');
+
+        } else { 
+           await this.setState({
+                isLoadingRegister : false,
+                show: true,
+                errorMessage: res.error
+            })
+        }
+
 
 
     }
@@ -497,10 +528,10 @@ class LoginComponent extends Component {
                             <img src={iconEmail}  className="login-input-icon"/>
                             <input 
                                 className="login-input" 
-                                id="emailRegister" 
-                                name="emailRegister"  
+                                id="emailForget" 
+                                name="emailForget"  
                                 type="text" 
-                                value={this.state.emailRegister} 
+                                value={this.state.emailForget} 
                                 onChange={this.changedHandler} 
                                 placeholder="پست الکترونیک"
                             /> 
@@ -512,7 +543,7 @@ class LoginComponent extends Component {
                                 title={'بازیابی رمز عبور'}
                                 bgcolor={'#2d9cdb'}
                                 hoverbgcolor={'#2d9cdb'}
-                                click={() => alert("dast nazan kharab mishe!  :D")}
+                                click={this.forgetpassword}
                                 borderRadius="100px"
                                 color="#fff"
                                 width="100%"

@@ -46,10 +46,10 @@ class ProjectDetail extends Component {
         let id = window.location.pathname.split('/')[2]
         const res =await GetApi('projects/'+ id);
 
-        // console.log(res);          // data, error,status
-        // console.log(res.status);   // 200 means success
-        // console.log(res.error);    // show the error from server
-        // console.log(res.data);     // show the data from server
+        // // console.log(res);          // data, error,status
+        // // console.log(res.status);   // 200 means success
+        // // console.log(res.error);    // show the error from server
+        // // console.log(res.data);     // show the data from server
 
         await this.setState({
             myProject:res.data
@@ -103,7 +103,7 @@ class ProjectDetail extends Component {
 
     openModalProject = async(id) => {
        await this.setState({ viewProject: true, desginId:id })
-       console.log(id)
+       // console.log(id)
 
     }
 

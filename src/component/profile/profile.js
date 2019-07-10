@@ -58,7 +58,7 @@ class Profile extends Component {
         // get data from API for showing to user ------------------------------->
         //
         const res = await GetToApi('profile/init');
-        console.log(res)
+        // console.log(res)
         this.setState({
             name: res.data.name,
             email: res.data.email,
@@ -88,7 +88,7 @@ class Profile extends Component {
             selectedFile: e.target.files[0],
             showImageForUpload:URL.createObjectURL(e.target.files[0])
         })
-        console.log(e.target.files[0])
+        // console.log(e.target.files[0])
     }
 
 
@@ -140,7 +140,7 @@ class Profile extends Component {
 
 
         const res = await PostToApi(data, 'profile/update');
-        console.log(res);
+        // console.log(res);
 
         if(res.status === 200){
             this.setState({

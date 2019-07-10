@@ -31,7 +31,7 @@ class ForgetPasswordComponent extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(isNaN(this.state.emailnumber))
+        // console.log(isNaN(this.state.emailnumber))
     }
 
     _resetPassword = () =>{

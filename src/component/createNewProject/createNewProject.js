@@ -84,7 +84,7 @@ class CreateNewProject extends Component {
             this.setState({
                 category: res.data
             })
-        console.log(res.data)
+        // console.log(res.data)
     }
 
     componentDidMount() {
@@ -126,14 +126,14 @@ class CreateNewProject extends Component {
     target6 = React.createRef()
 
     handleScroll = () => {
-        // console.log('1 :: ' + this.point1.current.offsetTop)
-        // console.log('H :: ' + window.innerHeight)
-        // console.log('Y :: ' + window.scrollY)
-        // console.log('2 ::  ' + this.point2.current.offsetTop)
-        // console.log(this.target2.current.style.position)
-        // console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
+        // // console.log('1 :: ' + this.point1.current.offsetTop)
+        // // console.log('H :: ' + window.innerHeight)
+        // // console.log('Y :: ' + window.scrollY)
+        // // console.log('2 ::  ' + this.point2.current.offsetTop)
+        // // console.log(this.target2.current.style.position)
+        // // console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
 
-        // console.log()
+        // // console.log()
 
 
         //     if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
@@ -231,7 +231,7 @@ class CreateNewProject extends Component {
 
     // go to next part
     nextPart = (e) => {
-        console.log(this.state.categoryId)
+        // console.log(this.state.categoryId)
 
         // next1 pushedfi
         if (e.target.id === 'CNP-N1') {
@@ -415,22 +415,22 @@ class CreateNewProject extends Component {
     //
 
     getValueColor = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
     //PAYMENT 
     paymentHandler = async () => {
 
-        console.log(`
-        category_id : ${this.state.categoryId}
-        category_plan_id : ${this.state.category_plan_id}
-        category_timing_id : ${this.state.category_timing_id}
-        title : ${this.state.title}
-        desc : ${this.state.description}
-        desc_more : ${this.state.otherDescription}
-        colors :
-        fonts :
-        path :
-        `);
+        //  console.log(`
+        // category_id : ${this.state.categoryId}
+        // category_plan_id : ${this.state.category_plan_id}
+        // category_timing_id : ${this.state.category_timing_id}
+        // title : ${this.state.title}
+        // desc : ${this.state.description}
+        // desc_more : ${this.state.otherDescription}
+        // colors :
+        // fonts :
+        // path :
+        // `);
 
         this.setState({
             isLoadingGetData: true
@@ -454,22 +454,22 @@ class CreateNewProject extends Component {
         data.append('colors', details);
         data.append('fonts', details);
 
-        //console.log(this.state.fileZop)
+        //// console.log(this.state.fileZop)
         if (this.state.fileZop[0])
             for (const file of this.state.fileZop[0]) {
                 data.append('path[]', file, file.name);
             }
 
 
-        console.log(`${data}`)
+        // console.log(`${data}`)
 
 
         const res = await PostToApii(data, 'projects');
 
-        console.log(res);          // data, error,status
-        console.log(res.status);   // 200 means success
-        console.log(res.error);    // show the error from server
-        console.log(res.data);     // show the data from server
+        // console.log(res);          // data, error,status
+        // console.log(res.status);   // 200 means success
+        // console.log(res.error);    // show the error from server
+        // console.log(res.data);     // show the data from server
 
 
         window.location = res.data.url;
@@ -512,7 +512,7 @@ class CreateNewProject extends Component {
             isLoadingGetData:false
         })
 
-        // console.log(res.data)
+        // // console.log(res.data)
         // document.getElementById('step1').focus();
         
     }
@@ -524,14 +524,14 @@ class CreateNewProject extends Component {
         this.setState({
             durations: res.data
         })
-        console.log(res.data)
+        // console.log(res.data)
     }
 
     //
     // get plan id ----------------------->
     //
     _getPlanId = (id, title, price) => {
-        console.log(id) // TODO delete later
+        // console.log(id) // TODO delete later
         this.setState({
             category_plan_id: id,
             planPrice: price
@@ -543,7 +543,7 @@ class CreateNewProject extends Component {
     //
     //
     _getDurationId = (id, title, price) => {
-        console.log(id) // TODO delete later
+        // console.log(id) // TODO delete later
 
         this.setState({
             category_timing_id: id,
@@ -629,7 +629,7 @@ class CreateNewProject extends Component {
                     var xx = data;
                     return xx.map((val, ind) => {
                         return <div key={ind}>
-                            {/* <p onClick={ () =>  console.log(ind)}>  Delete</p> */}
+                            {/* <p onClick={ () =>  // console.log(ind)}>  Delete</p> */}
                             <img src={URL.createObjectURL(val)} alt="" className="CNP-file-attach-view"/>
                         </div>
                     })
@@ -753,15 +753,15 @@ class CreateNewProject extends Component {
                                 <div>
                                     <Dropzone onDrop={acceptedFiles => {
                                         // TODO delete not working.!
-                                        console.log(acceptedFiles);
+                                        // console.log(acceptedFiles);
 
                                         // this.setState({fileZop: acceptedFiles})
                                         var newArray = this.state.fileZop.slice();
                                         newArray.push(acceptedFiles);
                                         this.setState({fileZop: newArray})
 
-                                        // console.log(typeof(this.state.fileZop))
-                                        // console.log(this.state.fileZop)
+                                        // // console.log(typeof(this.state.fileZop))
+                                        // // console.log(this.state.fileZop)
                                     }}>
                                         {({getRootProps, getInputProps}) => (
                                             <section className="tests">

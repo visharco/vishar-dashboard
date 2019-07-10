@@ -27,7 +27,7 @@ class DesignerPayments extends Component {
     componentWillMount = async () => {
 
         const res = await GetToApi('wallet/invoice/request');
-        console.log(res)
+        // console.log(res)
         this.setState({
             data: res.data.invoice
         })

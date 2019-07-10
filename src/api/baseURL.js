@@ -25,10 +25,10 @@
 
 import base from '../../../../api/baseURL';
 
-console.log(base);  // http:api.example.com
-console.log(base.baseURL);  // http:api.example.com
-console.log(base.versioan);  // v1
-console.log(base.api);  // api
+// console.log(base);  // http:api.example.com
+// console.log(base.baseURL);  // http:api.example.com
+// console.log(base.versioan);  // v1
+// console.log(base.api);  // api
 
 
 

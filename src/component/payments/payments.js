@@ -27,14 +27,14 @@ class Payments extends Component {
     componentWillMount = async() => {
         const res = await GetApi('invoice');
 
-        console.log(res.data)
+        // console.log(res.data)
 
         await this.setState({
             invoice: res.data
         })
     }
     getStatus = (key) => { 
-        console.log(key)
+        // console.log(key)
         switch (key) {
             case 'success':
                 return 'پرداخت موفق' 

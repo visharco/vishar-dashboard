@@ -49,9 +49,9 @@ class SubmitDesign extends Component {
 
 
     componentWillMount = async () => {
-        // console.log(window.location.pathname.split('/')[2]);
+        // // console.log(window.location.pathname.split('/')[2]);
         let id = window.location.pathname.split('/')[2]
-        console.log(id);
+        // console.log(id);
         this.setState({
             projectId: id
         })
@@ -61,7 +61,7 @@ class SubmitDesign extends Component {
         //     projectId: id,
         //     data: res.data
         // });
-        // console.log(res.data)
+        // // console.log(res.data)
 
 
     }
@@ -85,7 +85,7 @@ class SubmitDesign extends Component {
     // success submit files
     submitDesign = async ( ) => { 
 
-        console.log(this.state.cover.length)
+        // console.log(this.state.cover.length)
 
         this.setState({
             isLoadingGetData: true
@@ -162,7 +162,7 @@ class SubmitDesign extends Component {
                 }
             })
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
     
                     if (res.status === 200)
                         this.setState({
@@ -178,13 +178,13 @@ class SubmitDesign extends Component {
                     }
                 })
                 .catch(err => {
-                 console.log(err)
+                 // console.log(err)
                 })
     
     
 
             // const res = await PostToApi(data, 'projects/design');
-            // console.log(res);
+            // // console.log(res);
             // if (res.status === 200)
             //     this.setState({
             //         isLoadingGetData: false,
@@ -203,7 +203,7 @@ class SubmitDesign extends Component {
         // })
 
 
-        console.log(this.state.progressPercent)
+        // console.log(this.state.progressPercent)
     }
 
 
@@ -216,7 +216,7 @@ class SubmitDesign extends Component {
     }
 
     _uploadPicture = (e) => {
-        console.log(e.target.name)
+        // console.log(e.target.name)
 
         this.setState({
             selectedFile: e.target.files[0],
@@ -225,8 +225,8 @@ class SubmitDesign extends Component {
         })
 
 
-        console.log(e.target.files[0])
-        console.log(this.state.tiff)
+        // console.log(e.target.files[0])
+        // console.log(this.state.tiff)
     }
 
 

@@ -8,7 +8,7 @@ import Token from '../api/token';
 
 function postApi(data,key){
 
-    console.log(Token)
+    // console.log(Token)
 
     const url =  base.baseURL + key;
 
@@ -32,7 +32,7 @@ function postApi(data,key){
       return Promise.all([statusCode, data])
     })
     .then(([res, data]) => {
-      //console.log(res, data) 
+      //// console.log(res, data) 
       return ({'status':res, 'data':data.data , 'error':data.error, 'isLoading':false})
     })
  
@@ -67,10 +67,10 @@ import PostData  from './controler/postToApi';
 
 const res = PostData(data,'api url');
 
-  console.log(res);          // data, error,status
-  console.log(res.status);   // 200 means success
-  console.log(res.error);    // show the error from server
-  console.log(res.data);     // show the data from server
+  // console.log(res);          // data, error,status
+  // console.log(res.status);   // 200 means success
+  // console.log(res.error);    // show the error from server
+  // console.log(res.data);     // show the data from server
 
 
 */

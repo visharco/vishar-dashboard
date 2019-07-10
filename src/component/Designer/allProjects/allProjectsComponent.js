@@ -16,7 +16,7 @@ class AllProjectsComponent extends Component {
 
     componentWillMount = async() =>{
         const res= await GetToApi('site/projects');
-        console.log(res.data)
+        // console.log(res.data)
         this.setState({
             projects : res.data
         })

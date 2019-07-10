@@ -47,7 +47,7 @@ class DesignerProjectDetail extends Component {
 
 
     componentWillMount = async() => {
-        // console.log(window.location.pathname.split('/')[2]);
+        // // console.log(window.location.pathname.split('/')[2]);
         let id = window.location.pathname.split('/')[2]
       
         const resD = await GetToApi('profile/init')
@@ -57,7 +57,7 @@ class DesignerProjectDetail extends Component {
             data: res.data,
             userType:resD.data.type
         });
-        console.log(res.data)
+        // console.log(res.data)
 
 
     }

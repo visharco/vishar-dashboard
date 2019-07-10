@@ -19,7 +19,7 @@ class Project extends Component {
     }
 
     getStatus = (key) => { 
-        console.log(key)
+        // console.log(key)
         switch (key) {
             case 'active':
                 return 'تایید شده'             
@@ -35,7 +35,6 @@ class Project extends Component {
     render() {
         return (
             <div key={this.props.id} className="project" onClick={() => this.goToProjectDetail(this.props.data.id)} >
-                {console.log(this.props.data)}
                 <div className="p-right" >
                     {/* <img className="image-of-project" src={defualtDesing} alt="طرح"  /> */}
                     <div className="image-of-project " style={{backgroundImage:'url(' + this.props.data.image + ')'}}></div>

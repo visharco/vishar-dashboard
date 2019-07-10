@@ -88,7 +88,7 @@ class DesignerDashboardMenu extends Component {
 
     goToDesignerProfile = () => {
         browserHistory.push('/DesignerProfile');
-        console.log('0')
+        // console.log('0')
 
     }
     goToDesignerWallet = () => {
@@ -96,7 +96,7 @@ class DesignerDashboardMenu extends Component {
     }
     goToDesignerSingleProject = () => {
         browserHistory.push('/DesignerSingleProject');
-        console.log('0')
+        // console.log('0')
     }
     goToDesignerCollaborateProject = () => {
         browserHistory.push('/DesignerCollaborateProject');

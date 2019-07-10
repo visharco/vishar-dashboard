@@ -23,7 +23,7 @@ export default Token;
 import Token from '../../../.....';
 
 
-console.log(Token);
+// console.log(Token);
 
 
 

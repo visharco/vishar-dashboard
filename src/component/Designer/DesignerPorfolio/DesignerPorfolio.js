@@ -39,7 +39,7 @@ class DesignerPorfolio extends Component {
             data : res.data
         })
 
-        console.log(res.data)
+        // console.log(res.data)
     }
 
     createNewProject = () => {

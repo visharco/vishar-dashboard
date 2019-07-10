@@ -18,7 +18,7 @@ class DashboardComponent extends Component {
 
     componentDidMount = async () => {
         const  res = await GetApi('profile/init');
-        console.log(res)
+        // console.log(res)
         if(res.status === 200){
             await this.setState({
                 type:res.data.type, 

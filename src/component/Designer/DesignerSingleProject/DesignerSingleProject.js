@@ -37,7 +37,7 @@ class DesignerSingleProject extends Component {
         await this.setState({
             data:res.data
         })
-        console.log(res.data)
+        // console.log(res.data)
 
     }
 

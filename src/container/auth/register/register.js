@@ -39,15 +39,15 @@ class RegisterComponent extends Component {
     }
 
     changedHandler = (e) => {
-        //console.log(e.target.name);
-        //console.log(e.target.value);
+        //// console.log(e.target.name);
+        //// console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
     changedHandlerRadio = (e) => {
-        console.log(e.target.id);
+        // console.log(e.target.id);
         this.setState({
             userType: e.target.id
         })

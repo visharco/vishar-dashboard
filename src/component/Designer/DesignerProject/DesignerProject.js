@@ -19,7 +19,7 @@ class DesignerProject extends Component {
     }
 
     getStatus = (key) => { 
-        console.log(key)
+        // console.log(key)
         switch (key) {
             case 'active':
                 return 'پروژه فعال' 

@@ -75,14 +75,14 @@
 //     target6 = React.createRef()
 
 //     handleScroll = () => {
-//         console.log('1 :: ' + this.point1.current.offsetTop)
-//         console.log('H :: ' + window.innerHeight)
-//         console.log('Y :: ' + window.scrollY)
-//         console.log('2 ::  ' + this.point2.current.offsetTop)
-//         console.log(this.target2.current.style.position)
-//         console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
+//         // console.log('1 :: ' + this.point1.current.offsetTop)
+//         // console.log('H :: ' + window.innerHeight)
+//         // console.log('Y :: ' + window.scrollY)
+//         // console.log('2 ::  ' + this.point2.current.offsetTop)
+//         // console.log(this.target2.current.style.position)
+//         // console.log(((window.scrollY + 600) < this.point6.current.offsetTop) && this.state.part6)
 
-//         console.log()
+//         // console.log()
 
 
 //             if (((window.scrollY + 600) >= this.point1.current.offsetTop) ) {
