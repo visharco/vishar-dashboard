@@ -232,6 +232,14 @@ class LoginComponent extends Component {
                  })
              }
          }
+
+         if(this.state.passwordRegister !== this.state.passwordRegisterTwo){
+            return  this.setState({
+                show: true,
+                errorMessage: 'رمز عبور شما با یکدیگر یکسان نمی باشد',
+                isLoadingRegister: false
+            })
+         }
  
  
          // //password
@@ -440,6 +448,19 @@ class LoginComponent extends Component {
                         maxLength="12"
                     />
                 </div>
+                <div className="password-container">
+                    <img src={iconPassword}  className="login-input-icon"/>
+                    <input 
+                        className="login-input" 
+                        id="passwordRegisterTwo" 
+                        name="passwordRegisterTwo"  
+                        type="password" 
+                        value={this.state.passwordRegisterTwo} 
+                        onChange={this.changedHandler} 
+                        placeholder="تکرار رمز عبور"
+                        maxLength="12"
+                    />
+                </div>
 
  
                 <br/>
@@ -460,6 +481,12 @@ class LoginComponent extends Component {
 
         return (
             <div className="cover">
+                       <SweetAlert
+                            show={this.state.show}
+                            title=""
+                            text={this.state.errorMessage}
+                            onConfirm={() => this.setState({show: false})}
+                        />
                  <div ref={this.Modal} className="modal-fff fadeInDown">
                      <div className="close-modal"  onClick={() => this._actionModal('close')}></div>
                     <div className="forget-password-form">
@@ -492,12 +519,7 @@ class LoginComponent extends Component {
                             />
                     </div>
                  </div>
-                 <SweetAlert
-                            show={this.state.show}
-                            title=""
-                            text={this.state.errorMessage}
-                            onConfirm={() => this.setState({ show: false })}
-                        />
+        
                 <a href="http://www.vishar.com">
                     <img src={logo} className="login-logo" alt="لوگو"/>
                 </a>
