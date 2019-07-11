@@ -189,14 +189,14 @@ class DesignerProjectDetail extends Component {
                             </div>
                             <div className="DPD-desc-text" >
                                 <h1>استایل ظاهری</h1>
-                                <h2>رنگها را پیدا کن</h2>
+                                <h2>رنگهای منتخب و پیشنهادی</h2>
                                 <div className="DPD-check-color PD-check">
                                     <ul>
                                         <li>
                                             <input type="checkbox" id="colors1" />
                                             <label htmlFor="colors1">
                                                 <img src={color1} alt="رنگها" />
-                                                <span>بنفش</span>
+                                                <span>آبی</span>
                                             </label>
                                         </li>
                                         <li>
@@ -210,7 +210,7 @@ class DesignerProjectDetail extends Component {
                                             <input type="checkbox" id="colors3" />
                                             <label htmlFor="colors3">
                                                 <img src={color3} alt="رنگها" />
-                                                <span>آبی</span>
+                                                <span>بنفش</span>
                                             </label>
                                         </li>
                                         <li>
