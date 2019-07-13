@@ -14,6 +14,7 @@ padding:40px 30px;
 .true {
     border: 5px solid #52BE80;
     position: relative;
+    border-radius: 10px;
 
 }
 
