@@ -44,12 +44,13 @@ class ProjectDetail extends Component {
 
     componentWillMount = async() => {
         let id = window.location.pathname.split('/')[2]
-        const res =await GetApi('projects/'+ id);
+        const res = await GetApi('projects/'+ id);
 
         // // console.log(res);          // data, error,status
         // // console.log(res.status);   // 200 means success
         // // console.log(res.error);    // show the error from server
         // // console.log(res.data);     // show the data from server
+        console.log(res.data)
 
         await this.setState({
             myProject:res.data
@@ -123,12 +124,14 @@ class ProjectDetail extends Component {
                                     
                                  </div> 
             }) : ''
-        )
+        ) 
 
         const renderDesgins = (
             this.state.myProject.designs ? this.state.myProject.designs.map((data,index) => {
                 
-                return       <div className="PDD-box" key={index}>
+                return       <div className={"PDD-box " + data.is_selected} key={index}>
+                                    {data.is_selected ?  <div className="check-point">طرح نهایی</div> : ''}
+                                   
                                 <p> توسط <span>{data.user.name}</span></p>
                                 {/* <img src={data.image_thumb} alt="طرحها" onClick={() => window.open(data.image , '_blanck')} /> */}
                                 <img src={data.image_thumb} alt="طرحها" onClick={() => this.openModalProject(data.id)} />

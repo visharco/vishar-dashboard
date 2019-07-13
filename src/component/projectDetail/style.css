@@ -11,6 +11,23 @@ padding:40px 30px;
     direction: rtl;
     color: #bababa;
 }
+.true {
+    border: 5px solid #52BE80;
+    position: relative;
+
+}
+
+.check-point {
+    width: 83px;
+    height: 35px;
+    background-color: #52BE80;
+    position: absolute;
+    top: 0;
+    display: flex;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+}
 
 
 .PD-desc-up {
