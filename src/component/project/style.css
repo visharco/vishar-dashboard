@@ -196,6 +196,11 @@
     padding: 0 25px;
 
 }
+.project-details-number {
+    display: flex;
+    flex-direction: row;
+
+}
 
 .p-icons{
     display: flex;
@@ -293,6 +298,11 @@
 
 
 @media screen and (max-width: 500px){
+
+    .p-status-box {
+        flex-direction: column;
+        
+    }
 
 .p-right{
     flex-direction: column-reverse;
