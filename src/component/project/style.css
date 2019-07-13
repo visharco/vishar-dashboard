@@ -301,31 +301,32 @@
 
     .p-status-box {
         flex-direction: column;
-        
+
     }
 
-.p-right{
-    flex-direction: column-reverse;
-    padding: 20px;
-}
-.p-right img{
-    width: 100%;
-    border-radius: 10px;
-}
-.p-price {
-    position: unset;
-    border-radius: 30px;
-    width: 90%;
-    border: 2px solid #ebebeb;
-    background-color: #f9f9f9;
-}
-.p-left{
-    align-items: center;
-}
-.p-icons{
-    padding: 0px;
-}
-.p-icons p{
-    font-size: 10px;
-}
+    .p-right{
+        flex-direction: column-reverse;
+        padding: 20px;
+    }
+    .p-right img{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .p-price {
+        position: unset;
+        border-radius: 30px;
+        width: 90%;
+        border: 2px solid #ebebeb;
+        background-color: #f9f9f9;
+    }
+    .p-left{
+        align-items: center;
+    }
+    .p-icons{
+        padding: 0px;
+    }
+    .p-icons p{
+        font-size: 10px;
+    }
+    
 }
