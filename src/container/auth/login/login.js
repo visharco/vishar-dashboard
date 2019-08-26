@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './style.css';
 import logo from '../../../assets/images/logo.png'
 import Input from '../../../component/common/input/Input';
 import Button from '../../../component/common/Button/Button';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 import PostData from '../../../controler/postToApi';
 import EmailChecker from '../../../component/EmailChecker/EmailChecker'
 import EnglishChecker from '../../../component/EnglishChecker/EnglishChecker'
@@ -21,12 +21,12 @@ class LoginComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: 'login', 
+            type: 'login',
             emailLogin: '',
             passwordLogin: '',
             emailLoginError: '',
             passwordLoginError: '',
-            isLoading:false,
+            isLoading: false,
 
             isLoadingRegister: false,
             emailErrorRegister: '',
@@ -55,31 +55,31 @@ class LoginComponent extends Component {
 
 
 
-    componentDidMount(){
-        document.getElementById('register').classList.add ( "activeTab");
-        document.getElementById('registerForm').classList.add ( "activeForm");
+    componentDidMount() {
+        document.getElementById('register').classList.add("activeTab");
+        document.getElementById('registerForm').classList.add("activeForm");
 
     }
-    componentWillMount(){
-        if(Token !== null)
+    componentWillMount() {
+        if (Token !== null)
             browserHistory.push('/dashboard');
     }
     // show image priview and big
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    _actionModal = (val) => { 
-        if(val === 'open')
+    _actionModal = (val) => {
+        if (val === 'open')
             this.Modal.current.style.display = 'flex';
         else if (val === 'close')
             this.Modal.current.style.display = 'none';
 
     }
 
-    
+
     goToLogin = () => {
         browserHistory.push('/register');
     }
     goToForgetPassword = () => {
-      //  browserHistory.push('/forgetPassword');
+        //  browserHistory.push('/forgetPassword');
     }
 
     _callLogin = async () => {
@@ -88,28 +88,28 @@ class LoginComponent extends Component {
             emailLoginError: '',
             passwordLoginError: ''
         })
- 
+
         if (this.state.emailLogin.trim() === '') {
-            return  this.setState({
-                show:true,
+            return this.setState({
+                show: true,
                 errorMessage: 'ایمیل را وارد نکردید',
-                isLoading:false
+                isLoading: false
             })
         }
-        
+
         if (EmailChecker(this.state.emailLogin) === false) {
-            return   this.setState({
-                show:true,
+            return this.setState({
+                show: true,
                 errorMessage: 'ایمیل را اشتباه وارد کرده اید',
-                isLoading:false
+                isLoading: false
             })
         }
-         
+
         if (this.state.passwordLogin.trim() === '') {
-            return  this.setState({
-                show:true,
+            return this.setState({
+                show: true,
                 errorMessage: 'پسورد را وارد نکردید',
-                isLoading:false
+                isLoading: false
             })
         }
 
@@ -122,31 +122,31 @@ class LoginComponent extends Component {
         data.append('password', this.state.passwordLogin);
 
 
-        const res = await PostData(data, 'auth/email/login', null) 
+        const res = await PostData(data, 'auth/email/login', null)
 
         if (res.status === 200) {
             localStorage.setItem('@authorization_vishar', res.data.token);
-            document.cookie = "auth=" + res.data.token+"; path=/; Domain=.vishar.com";
-           
+            document.cookie = "auth=" + res.data.token + "; path=/; Domain=.vishar.com";
+
             window.location.reload();
         }
-        else{
+        else {
             this.setState({
-                show:true,
-                errorMessage : res.error,
-                isLoading: false, 
+                show: true,
+                errorMessage: res.error,
+                isLoading: false,
             })
         }
     }
 
 
-    _opentabs =async(val) => {
-        document.getElementById('login').classList.remove ( "activeTab");
-        document.getElementById('register').classList.remove ( "activeTab");
-        document.getElementById('loginForm').classList.remove ( "activeForm");
-        document.getElementById('registerForm').classList.remove ( "activeForm");
+    _opentabs = async (val) => {
+        document.getElementById('login').classList.remove("activeTab");
+        document.getElementById('register').classList.remove("activeTab");
+        document.getElementById('loginForm').classList.remove("activeForm");
+        document.getElementById('registerForm').classList.remove("activeForm");
 
-       await this.setState({
+        await this.setState({
             type: val,
             // emailLogin: '',
             // passwordLogin: '',
@@ -162,9 +162,9 @@ class LoginComponent extends Component {
             // name: '',
             // emailRegister: '',
             // passwordRegister: '',
-        }) 
-        document.getElementById(val).classList.add ( "activeTab");
-        document.getElementById(val + 'Form' ).classList.add ( "activeForm");
+        })
+        document.getElementById(val).classList.add("activeTab");
+        document.getElementById(val + 'Form').classList.add("activeForm");
         // document.getElementById("MyElement").classList.add('MyClass');
 
     }
@@ -178,10 +178,10 @@ class LoginComponent extends Component {
     }
 
     showPassword = () => {
-        document.getElementById('passwordLogin').type="text"
-    }    
+        document.getElementById('passwordLogin').type = "text"
+    }
     hidePassword = () => {
-        document.getElementById('passwordLogin').type="password"
+        document.getElementById('passwordLogin').type = "password"
     }
 
     //
@@ -202,55 +202,55 @@ class LoginComponent extends Component {
         this.setState({
             isLoadingRegister: true,
             // emailErrorRegister: '',
-            nameError: '',
+            // nameError: '',
             // passwordErrorRegister: '',
             // userTypeErrorText: '',
         })
 
- 
-        // chek simple validation // TODO later to be control correct
-        if (this.state.name === '') {
-            
-            return this.setState({
-                 nameError: 'نام و نام خانوادگی را وارد نکرده اید',
-                 isLoadingRegister: false
-             })
-         } 
-         
-     
-         // //email
-         if (this.state.emailRegister.trim() === '') {
-             return this.setState({
-                 emailErrorRegister: 'ایمیل را وارد نکرده اید ',
-                 isLoadingRegister: false
-             })
-         } else {
-             if (EmailChecker(this.state.emailRegister) === false) {
-                 return  this.setState({
-                     emailErrorRegister: 'ایمیل را اشتباه وارد کرده اید ',
-                     isLoadingRegister: false
-                 })
-             }
-         }
 
-         if(this.state.passwordRegister !== this.state.passwordRegisterTwo){
-            return  this.setState({
-                show: true,
-                errorMessage: 'رمز عبور شما با یکدیگر یکسان نمی باشد',
-                isLoadingRegister: false
-            })
-         }
- 
- 
-         // //password
+        // chek simple validation // TODO later to be control correct
+        // if (this.state.name === '') {
+
+        //     return this.setState({
+        //         nameError: 'نام و نام خانوادگی را وارد نکرده اید',
+        //         isLoadingRegister: false
+        //     })
+        // }
+
+
+        // // //email
+        // if (this.state.emailRegister.trim() === '') {
+        //     return this.setState({
+        //         emailErrorRegister: 'ایمیل را وارد نکرده اید ',
+        //         isLoadingRegister: false
+        //     })
+        // } else {
+        //     if (EmailChecker(this.state.emailRegister) === false) {
+        //         return this.setState({
+        //             emailErrorRegister: 'ایمیل را اشتباه وارد کرده اید ',
+        //             isLoadingRegister: false
+        //         })
+        //     }
+        // }
+
+        // if (this.state.passwordRegister !== this.state.passwordRegisterTwo) {
+        //     return this.setState({
+        //         show: true,
+        //         errorMessage: 'رمز عبور شما با یکدیگر یکسان نمی باشد',
+        //         isLoadingRegister: false
+        //     })
+        // }
+
+
+        // //password
         //  if (this.state.passwordRegister.trim() === '') { 
         //      return this.setState({
         //          passwordErrorRegister: 'رمز عبور را وارد نکرده اید ',
         //          isLoadingRegister: false
         //      })
         //  } 
- 
-         // //user type
+
+        // //user type
         //  if (this.state.userType === '') {
         //      return this.setState({
         //          userTypeError: true,
@@ -259,7 +259,7 @@ class LoginComponent extends Component {
         //      })
         //  }
 
-         
+
 
 
         const data = new FormData();
@@ -267,29 +267,28 @@ class LoginComponent extends Component {
         data.append('name', this.state.name);
         data.append('email', this.state.emailRegister);
         data.append('password', this.state.passwordRegister);
-        data.append('password_confirmation', this.state.passwordRegister);
+        data.append('rePassword', this.state.passwordRegister);
         data.append('type', this.state.userType);
 
 
-       
-      
-            const res = await PostData(data, 'auth/email/register');
-            if (res.status === 200) {
-                await localStorage.setItem('@authorization_vishar', res.data.token);
-                await sessionStorage.setItem('@authorization_vishar', res.data.token)
-                  document.cookie = "auth=" + res.data.token+"; path=/; Domain=.vishar.com";
-                // browserHistory.push('/dashboard');
-                window.location.reload();
-            }
-            else
-            {
-                this.setState({
-                    show:true,
-                    errorMessage: res.error,
-                    isLoadingRegister: false
-                })
-            }
-     
+
+
+        const res = await PostData(data, 'auth/email/register');
+        if (res.status === 200) {
+            await localStorage.setItem('@authorization_vishar', res.data.token);
+            await sessionStorage.setItem('@authorization_vishar', res.data.token)
+            document.cookie = "auth=" + res.data.token + "; path=/; Domain=.vishar.com";
+            // browserHistory.push('/dashboard');
+            window.location.reload();
+        }
+        else {
+            this.setState({
+                show: true,
+                errorMessage: res.error,
+                isLoadingRegister: false
+            })
+        }
+
 
         this.setState({
             isLoadingRegister: false
@@ -298,28 +297,28 @@ class LoginComponent extends Component {
 
     }
 
-    forgetpassword = async() => {
+    forgetpassword = async () => {
 
         this.setState({
-            isLoadingRegister : true
+            isLoadingRegister: true
         })
         const data = new FormData();
         data.append('email', this.state.emailForget);
 
-        const res = await PostData(data, 'auth/email/forgetPassword') 
+        const res = await PostData(data, 'auth/email/forgetPassword')
         // console.log(res)
-        if( res.status === 200){
+        if (res.status === 200) {
             this.setState({
-                isLoadingRegister : false,
+                isLoadingRegister: false,
                 show: true,
-                errorMessage:'لینک تغیر کلمه عبور به ایمیل شما ارسال گردیده است',
-                emailForget:''
+                errorMessage: 'لینک تغیر کلمه عبور به ایمیل شما ارسال گردیده است',
+                emailForget: ''
             })
             this._actionModal('close');
 
-        } else { 
-           await this.setState({
-                isLoadingRegister : false,
+        } else {
+            await this.setState({
+                isLoadingRegister: false,
                 show: true,
                 errorMessage: res.error
             })
@@ -333,9 +332,9 @@ class LoginComponent extends Component {
     render() {
 
         const _renderLogin = (
-            <div  id="registerForm" className=" login-form ">
+            <div id="registerForm" className=" login-form ">
                 <h2>ورود به سیستم</h2>
-                <p style={{paddingBottom:'20px'}}>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
+                <p style={{ paddingBottom: '20px' }}>جهت ورود به سیستم ، لطفا اطلاعات زیر را وارد نمایید</p>
                 {/* <Input
                     type={'text'}
                     name={'emailLogin'}
@@ -344,9 +343,9 @@ class LoginComponent extends Component {
                     error={this.state.emailLoginError} 
                     val={this.state.emailLogin}
                 /> */}
-                 <div className="password-container">
-                    <img src={iconEmail}  className="login-input-icon"/>
-                    <input className="login-input" id="emailLogin" name="emailLogin"  type="text" value={this.state.emailLogin} onChange={this.changedHandler} placeholder="پست الکترونیک" />
+                <div className="password-container">
+                    <img src={iconEmail} className="login-input-icon" />
+                    <input className="login-input" id="emailLogin" name="emailLogin" type="text" value={this.state.emailLogin} onChange={this.changedHandler} placeholder="پست الکترونیک" />
                 </div>
 
                 <div className="password-container">
@@ -358,12 +357,12 @@ class LoginComponent extends Component {
                         error={this.state.passwordLoginError}
                         val={this.state.passwordLogin} 
                     /> */}
-                    <img src={iconPassword}  className="login-input-icon"/>
-                    <input className="login-input" id="passwordLogin" name="passwordLogin"  type="password" value={this.state.passwordLogin} onChange={this.changedHandler} placeholder="کلمه عبور" />
+                    <img src={iconPassword} className="login-input-icon" />
+                    <input className="login-input" id="passwordLogin" name="passwordLogin" type="password" value={this.state.passwordLogin} onChange={this.changedHandler} placeholder="کلمه عبور" />
                     <div className="eye-show" onMouseDown={this.showPassword} onMouseUp={this.hidePassword}></div>
                 </div>
                 <p onClick={() => this._actionModal('open')} className="forget-password-link">رمز عبور خود را فراموش کرده اید؟</p>
-                
+
 
                 <Button
                     isLoading={this.state.isLoading}
@@ -372,7 +371,7 @@ class LoginComponent extends Component {
                     hoverbgcolor={'#2d9cdb'}
                     click={this._callLogin}
                     borderRadius="100px"
-                    color="#fff"
+                    color="#fferror={this.state.nameError}  f"
                     width="100%"
                 />
             </div>
@@ -383,21 +382,21 @@ class LoginComponent extends Component {
             <div id="loginForm" className=" register-form " >
                 <h2> ثبت نام در ویشار</h2>
                 <p>جهت عضویت در ویشار لطفا اطلاعات زیر را وارد نمایید</p>
-                <br/>
-    
+                <br />
+
 
 
                 <div className="slect-type-conatiner">
                     <ul>
                         <li>
-                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <input type="radio" id="customer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio} />
                             <label htmlFor="customer">
                                 <img src={IconCustomer} className="login-select-image" alt="desginer" />
                                 مشتری
                             </label>
-                         </li>
+                        </li>
                         <li>
-                            <input type="radio" id="designer" name="radio-group"  className="login-hide-radio" onChange={this.changedHandlerRadio}/>
+                            <input type="radio" id="designer" name="radio-group" className="login-hide-radio" onChange={this.changedHandlerRadio} />
                             <label htmlFor="designer">
                                 <img src={IconDesginer} className="login-select-image" alt="desginer" />
                                 طراح
@@ -418,15 +417,15 @@ class LoginComponent extends Component {
                 /> */}
 
                 <div className="password-container">
-                    <img src={iconUser}  className="login-input-icon"/>
-                    <input 
-                        className="login-input" 
-                        id="name" 
-                        name="name"  
-                        type="text" 
-                        value={this.state.name} 
-                        onChange={this.changedHandler} 
-                        placeholder="نام و نام خانوادگی" 
+                    <img src={iconUser} className="login-input-icon" />
+                    <input
+                        className="login-input"
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={this.state.name}
+                        onChange={this.changedHandler}
+                        placeholder="نام و نام خانوادگی"
                     />
                 </div>
 
@@ -443,14 +442,14 @@ class LoginComponent extends Component {
                 /> */}
 
                 <div className="password-container">
-                    <img src={iconEmail}  className="login-input-icon"/>
-                    <input 
-                        className="login-input" 
-                        id="emailRegister" 
-                        name="emailRegister"  
-                        type="text" 
-                        value={this.state.emailRegister} 
-                        onChange={this.changedHandler} 
+                    <img src={iconEmail} className="login-input-icon" />
+                    <input
+                        className="login-input"
+                        id="emailRegister"
+                        name="emailRegister"
+                        type="text"
+                        value={this.state.emailRegister}
+                        onChange={this.changedHandler}
                         placeholder="پست الکترونیک"
                     />
                 </div>
@@ -467,34 +466,34 @@ class LoginComponent extends Component {
                 /> */}
 
                 <div className="password-container">
-                    <img src={iconPassword}  className="login-input-icon"/>
-                    <input 
-                        className="login-input" 
-                        id="passwordRegister" 
-                        name="passwordRegister"  
-                        type="password" 
-                        value={this.state.passwordRegister} 
-                        onChange={this.changedHandler} 
+                    <img src={iconPassword} className="login-input-icon" />
+                    <input
+                        className="login-input"
+                        id="passwordRegister"
+                        name="passwordRegister"
+                        type="password"
+                        value={this.state.passwordRegister}
+                        onChange={this.changedHandler}
                         placeholder="رمز عبور"
                         maxLength="12"
                     />
                 </div>
                 <div className="password-container">
-                    <img src={iconPassword}  className="login-input-icon"/>
-                    <input 
-                        className="login-input" 
-                        id="passwordRegisterTwo" 
-                        name="passwordRegisterTwo"  
-                        type="password" 
-                        value={this.state.passwordRegisterTwo} 
-                        onChange={this.changedHandler} 
+                    <img src={iconPassword} className="login-input-icon" />
+                    <input
+                        className="login-input"
+                        id="passwordRegisterTwo"
+                        name="passwordRegisterTwo"
+                        type="password"
+                        value={this.state.passwordRegisterTwo}
+                        onChange={this.changedHandler}
                         placeholder="تکرار رمز عبور"
                         maxLength="12"
                     />
                 </div>
 
- 
-                <br/>
+
+                <br />
                 <Button
                     isLoading={this.state.isLoadingRegister}
                     title={'ثبت نام'}
@@ -512,53 +511,53 @@ class LoginComponent extends Component {
 
         return (
             <div className="cover">
-                       <SweetAlert
-                            show={this.state.show}
-                            title=""
-                            text={this.state.errorMessage}
-                            onConfirm={() => this.setState({show: false})}
-                        />
-                 <div ref={this.Modal} className="modal-fff fadeInDown">
-                     <div className="close-modal"  onClick={() => this._actionModal('close')}></div>
+                <SweetAlert
+                    show={this.state.show}
+                    title=""
+                    text={this.state.errorMessage}
+                    onConfirm={() => this.setState({ show: false })}
+                />
+                <div ref={this.Modal} className="modal-fff fadeInDown">
+                    <div className="close-modal" onClick={() => this._actionModal('close')}></div>
                     <div className="forget-password-form">
                         <h3>بازیابی کلمه عبور</h3>
                         <p>جهت بازیابی کلمه عبور ، لطفا پست الکترونیک خود را وارد نمایید</p>
                         < br />
                         <div className="password-container">
-                            <img src={iconEmail}  className="login-input-icon"/>
-                            <input 
-                                className="login-input" 
-                                id="emailForget" 
-                                name="emailForget"  
-                                type="text" 
-                                value={this.state.emailForget} 
-                                onChange={this.changedHandler} 
+                            <img src={iconEmail} className="login-input-icon" />
+                            <input
+                                className="login-input"
+                                id="emailForget"
+                                name="emailForget"
+                                type="text"
+                                value={this.state.emailForget}
+                                onChange={this.changedHandler}
                                 placeholder="پست الکترونیک"
-                            /> 
-                        </div>
-                                
-                        <br/>
-                            <Button
-                                isLoading={this.state.isLoadingRegister}
-                                title={'بازیابی رمز عبور'}
-                                bgcolor={'#2d9cdb'}
-                                hoverbgcolor={'#2d9cdb'}
-                                click={this.forgetpassword}
-                                borderRadius="100px"
-                                color="#fff"
-                                width="100%"
                             />
+                        </div>
+
+                        <br />
+                        <Button
+                            isLoading={this.state.isLoadingRegister}
+                            title={'بازیابی رمز عبور'}
+                            bgcolor={'#2d9cdb'}
+                            hoverbgcolor={'#2d9cdb'}
+                            click={this.forgetpassword}
+                            borderRadius="100px"
+                            color="#fff"
+                            width="100%"
+                        />
                     </div>
-                 </div>
-        
+                </div>
+
                 <a href="http://www.vishar.com">
-                    <img src={logo} className="login-logo" alt="لوگو"/>
+                    <img src={logo} className="login-logo" alt="لوگو" />
                 </a>
                 <div className="login-container">
                     <div className="login-header">
-                        <div id="register" className={"col-50 login-header-item " }  onClick={() => this._opentabs('login')}>ثبت نام
+                        <div id="register" className={"col-50 login-header-item "} onClick={() => this._opentabs('login')}>ثبت نام
                         </div>
-                        <div id="login" className={"col-50 login-header-item "  } onClick={() => this._opentabs('register')}>ورود</div>
+                        <div id="login" className={"col-50 login-header-item "} onClick={() => this._opentabs('register')}>ورود</div>
                     </div>
 
                     {/* {this.state.type !== 'login' ?    :} */}
@@ -566,7 +565,7 @@ class LoginComponent extends Component {
                     {_renderRegister}
                     {_renderLogin}
 
-         
+
                 </div>
 
 

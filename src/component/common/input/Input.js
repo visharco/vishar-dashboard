@@ -17,6 +17,7 @@ const input = (props) => {
     const handleFocus = (props) =>{ 
         document.getElementById(props.name).focus();
     }
+    console.log(props)
     
     return (
         <div className="Inputbox">
