@@ -169,12 +169,10 @@ class DesignerProfile extends Component {
             })
         }
 
-
         this.setState({
             isLoading: false
         })
     }
-
 
     //
     // -------------------------- Bank Save ------------------------------------------------------?
@@ -196,7 +194,7 @@ class DesignerProfile extends Component {
 
         });
 
-          //
+        //
         // provider data for API --------------------------------------------------------------->
         //
         const data = new FormData();
@@ -205,11 +203,7 @@ class DesignerProfile extends Component {
         data.append('name_cart_number', this.state.name_cart_number);
         data.append('bank_name', this.state.bank_name); 
 
-
-
         const res = await PostToApi(data, 'profile/update/bank');
-        // // console.log(res);
-
         if(res.status === 200){
             this.setState({
                 show: true,
@@ -224,7 +218,6 @@ class DesignerProfile extends Component {
             })
         }
 
-
         this.setState({
             isLoading: false
         })
@@ -232,7 +225,6 @@ class DesignerProfile extends Component {
 
 
     }
-
 
     //
     //  get image uploader for avatar of user ----------------------------------------------------------->
@@ -244,7 +236,6 @@ class DesignerProfile extends Component {
         })
         // console.log(e.target.files[0])
     }
-
 
     descriptionHandler = (e) => {
 
@@ -262,7 +253,6 @@ class DesignerProfile extends Component {
             e.target.style.backgroundColor = "#D8D8D8"
             this.account.current.style.backgroundColor = "#f1f1f1"
         }
-
     }
 
     render() {
@@ -284,7 +274,6 @@ class DesignerProfile extends Component {
                         <div className="DPE-desc-title" onClick={this.descriptionHandler} id="account" ref={this.account}>حساب بانکی
                         </div>
                     </div>
-
                 </div>
                 <div className="DPE-desc-down" >
                     <div className="DPE-desc-box2" >
