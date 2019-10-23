@@ -115,6 +115,7 @@ class Profile extends Component {
         data.append('mobile', this.state.phone);
         data.append('tell', this.state.tell);
         data.append('city', this.state.city);
+        if(this.state.selectedFile)
         data.append('image', this.state.selectedFile, this.state.selectedFile.name || '')
 
 
